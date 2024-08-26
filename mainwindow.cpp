@@ -1,0 +1,61 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QIcon>
+#include <QDebug>
+#include <QSqlQuery>
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+//    db = QSqlDatabase::addDatabase("QSQLITE");
+//    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
+//    db.open();
+    ui->setupUi(this);
+//    QObject::connect(&x, &Tables::editDevice, &m, &DeviceEdit::receiveTableIndex);
+    QObject::connect(&x, &Tables::edit, &e, &EditTable::receiveTableIndex);
+    QObject::connect(&x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);
+    QObject::connect(&r, &SearchForm::searchWorking, &x, &Tables::searchInfo);
+    QObject::connect(&x, &Tables::editProduct,&b, &ProductRegister::trigger);
+    QObject::connect(&x, &Tables::refreshActive, &r, &SearchForm::refresh);
+    QObject::connect(&x, &Tables::addProduct,&b, &ProductRegister::addTrigger);
+//    QObject::connect(&x, &Tables::addDevice,&z, &RequestForm::addTrigger);
+    QObject::connect(&x, &Tables::addService,&s, &serviceEdit::regOn);
+    QObject::connect(&x, &Tables::editService,&s, &serviceEdit::trigger);
+    QObject::connect(&x, &Tables::addCustomer,&c, &CustomerForm::regOn);
+    QObject::connect(&x, &Tables::editCustomer,&c, &CustomerForm::trigger);
+    QObject::connect(&d, &DeviceForm::optionPage,&a, &AddOption::setupOption);
+    QObject::connect(&d, &DeviceForm::itemPage,&a, &AddOption::setupItem);
+    QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);
+    QObject::connect(&a, &AddOption::updatePage,&d , &DeviceForm::refresh);
+    QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
+
+    setBtnIcon();
+    d.show();
+    x.show();
+}
+
+//QLabel lblImage;
+
+//lblImage->setPixmap( QPixmap( "big_image.jpg" ) );
+
+//lblImage->setScaledContents( true );
+
+//lblImage->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
+
+void MainWindow::setBtnIcon(){
+
+    ui->productBtn->setIconSize(ui->productBtn->size());
+    qDebug() <<"size : " <<ui->customerBtn->iconSize();
+
+}
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
+
+void MainWindow::on_productBtn_clicked()
+{
+    setBtnIcon();
+}
+
