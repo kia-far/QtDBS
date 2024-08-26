@@ -36,7 +36,6 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
 
-    ui->tableView->setModel(Product);
     QFile file("C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/style/Style.qss"); // Use resource system or provide a direct path
     if (file.open(QFile::ReadOnly)) {
         QTextStream stream(&file);
@@ -55,10 +54,47 @@ Tables::~Tables()
 }
 
 void Tables::setupTable(QString table){
-    if (table == "product"){currentTable = 3;}
-    else if(table == "device") {currentTable = 2;}
-    else if(table == "service") {currentTable = 1;}
-    else if(table == "customer") {currentTable = 0;}
+    if (table == "product"){
+        qDebug () << "product opened -------------------------------";
+        currentTable = 3;
+        ui->comboBox->setCurrentIndex(currentTable);
+        ui->tableView->setModel(Product);
+
+    }
+    else if(table == "device") {
+        qDebug () << "device opened -------------------------------";
+
+        QString aa = "SerialNum";
+        QString bb = "";
+        View->setSearchParameters(aa, bb);
+        currentTable = 2;
+        ui->comboBox->setCurrentIndex(currentTable);
+        ui->tableView->setModel(View);
+
+    }
+    else if(table == "service") {
+        qDebug () << "service opened -------------------------------";
+        QSqlQuery q(db.getConnection());
+        q.exec("SELECT * FROM ServiceInfo");
+        QSqlQueryModel *m = new QSqlQueryModel;
+        m -> setQuery(q);
+        currentTable =1;
+        ui->comboBox->setCurrentIndex(currentTable);
+        ui->tableView->setModel(m);
+
+    }
+    else if(table == "customer") {
+        qDebug () << "customer opened -------------------------------";
+        QSqlQuery q(db.getConnection());
+        q.exec("SELECT * FROM CustomerInfo");
+        QSqlQueryModel *m = new QSqlQueryModel;
+        m -> setQuery(q);
+        currentTable = 0;
+        ui->comboBox->setCurrentIndex(currentTable);
+        ui->tableView->setModel(m);
+
+
+}
     else {qDebug() << "wrong input";}
     this->show();
 }
