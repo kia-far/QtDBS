@@ -9,7 +9,8 @@
 
 serviceEdit::serviceEdit(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::serviceEdit)
+    ui(new Ui::serviceEdit),
+    db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
 
@@ -42,7 +43,7 @@ void serviceEdit::regSubmit(){
     b[3]=ui->lineEdit_4->text();
     b[4]=ui->lineEdit_5->text();
 
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     query.prepare("INSERT INTO ServiceInfo (Date , Authority , ServiceType , Description , ImpairedPart) VALUES ( ? , ? , ? , ? , ?)");
     query.addBindValue(b[0]);
     query.addBindValue(b[1]);
@@ -63,7 +64,7 @@ void serviceEdit::editSubmit(){
     b[3] = ui->lineEdit_3->text();
     b[4] = ui->lineEdit_4->text();
     b[5] = ui->lineEdit_5->text();
-    QSqlQuery q(dbConnection.getConnection());
+    QSqlQuery q(db.getConnection());
     q.prepare("UPDATE ServiceInfo SET Date = ?, Authority = ?, ServiceType = ?, Description = ?, ImpairedPart = ? WHERE ID = ?");
     q.addBindValue(b[1]);
     q.addBindValue(b[2]);
@@ -97,7 +98,7 @@ void serviceEdit::setup(){
         ui->lineEdit_4->setText("");
         ui->lineEdit_5->setText("");
     } else if (Modee == "EDIT") {
-        QSqlQuery query(dbConnection.getConnection());
+        QSqlQuery query(db.getConnection());
         query.prepare("SELECT * FROM ServiceInfo WHERE ID = ?");
         query.addBindValue(ID);
         if (!query.exec()) {

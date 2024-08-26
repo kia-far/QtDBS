@@ -35,10 +35,10 @@ private slots:
 
 private:
     Ui::ProductRegister *ui;
-    QSqlDatabase db;
+//    QSqlDatabase db;
     QString Mode;
     int Serialnum;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 };
 

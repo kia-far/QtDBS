@@ -51,7 +51,7 @@ private:
 
     QVector<QVector<QVariant>> rows;
     QVector<QString> columns;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 };
 

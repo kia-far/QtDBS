@@ -13,7 +13,6 @@ SOURCES += \
     DatabaseConnection.cpp \
     addoption.cpp \
     customerform.cpp \
-    deviceedit.cpp \
     deviceform.cpp \
     edittable.cpp \
     itemabstract.cpp \
@@ -36,7 +35,6 @@ HEADERS += \
     DatabaseConnection.h \
     addoption.h \
     customerform.h \
-    deviceedit.h \
     deviceform.h \
     edittable.h \
     itemabstract.h \
@@ -57,7 +55,6 @@ HEADERS += \
 FORMS += \
     addoption.ui \
     customerform.ui \
-    deviceedit.ui \
     deviceform.ui \
     edittable.ui \
     mainwindow.ui \

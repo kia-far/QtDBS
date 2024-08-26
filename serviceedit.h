@@ -31,11 +31,11 @@ private slots:
 
 private:
     Ui::serviceEdit *ui;
-    QSqlDatabase db;
+//    QSqlDatabase db;
     QString Modee;
     QString b[6];
     int ID;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 
 };

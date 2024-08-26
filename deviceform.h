@@ -60,7 +60,7 @@ private:
     QList<QPushButton*> addBtns;
     QList<QCheckBox*> checkBoxes;
     QStringList getCustomers(QString something);
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 };
 

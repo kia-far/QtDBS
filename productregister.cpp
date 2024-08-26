@@ -13,7 +13,8 @@
 
 ProductRegister::ProductRegister(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::ProductRegister)
+    ui(new Ui::ProductRegister),
+    db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
 //    db = QSqlDatabase::addDatabase("QSQLITE");
@@ -110,7 +111,7 @@ void ProductRegister::setup() {
 void ProductRegister::loadProductInfo(){
 
 
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     query.prepare("SELECT * FROM ProductInfo WHERE SerialNO = :serialNumber");
     query.bindValue(":serialNumber", QString::number(Serialnum));
     qDebug() << "Executing query for ProductInfo with Serialnum:" << Serialnum;
@@ -131,7 +132,7 @@ void ProductRegister::loadProductInfo(){
 void ProductRegister::loadProductSecInfo(){
 
 
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     query.prepare("SELECT * FROM ProductSecInfo WHERE SerialNO = :serialNumber");
     query.bindValue(":serialNumber", QString::number(Serialnum));
     qDebug() << "Executing query for ProductSecInfo with Serialnum:" << Serialnum;
@@ -163,7 +164,7 @@ void ProductRegister::addTrigger() {
 void ProductRegister::updateProductInfo(){
 
 
-    QSqlQuery q(dbConnection.getConnection());
+    QSqlQuery q(db.getConnection());
     q.prepare("UPDATE ProductInfo SET ProductName = ?, Invoice = ?, AnyDeskNO = ? WHERE SerialNO = ?");
     q.addBindValue(a[1]);
     q.addBindValue(a[2]);
@@ -180,7 +181,7 @@ void ProductRegister::updateProductInfo(){
 
 void ProductRegister::updateProductSecInfo(){
 
-    QSqlQuery qe(dbConnection.getConnection());
+    QSqlQuery qe(db.getConnection());
     qe.prepare("UPDATE ProductSecInfo SET GuarantyExp = ?, PurchaseDate = ?, Description = ? WHERE SerialNO = ?");
     qe.addBindValue(a[4]);
     qe.addBindValue(a[5]);
@@ -199,7 +200,7 @@ void ProductRegister::updateProductSecInfo(){
 void ProductRegister::registerProductInfo(){
 
 
-    QSqlQuery q(dbConnection.getConnection());
+    QSqlQuery q(db.getConnection());
     q.prepare("INSERT INTO ProductInfo (SerialNO, ProductName, Invoice, AnyDeskNO) VALUES (?, ?, ?, ?)");
     q.addBindValue(a[0]);
     q.addBindValue(a[1]);
@@ -215,7 +216,7 @@ void ProductRegister::registerProductInfo(){
 void ProductRegister::registerProductSecInfo(){
 
 
-    QSqlQuery q(dbConnection.getConnection());
+    QSqlQuery q(db.getConnection());
     q.prepare("INSERT INTO ProductSecInfo (SerialNO, GuarantyExp, PurchaseDate, Description) VALUES (?, ?, ?, ?)");
     q.addBindValue(a[0]);
     q.addBindValue(a[4]);

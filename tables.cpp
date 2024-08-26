@@ -1,6 +1,7 @@
 #include "tables.h"
 #include "ui_tables.h"
 #include "myfunctions.h"
+#include "mainwindow.h"
 #include <QSqlDriver>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -18,11 +19,13 @@ int clickedID =0;
 //bool inSearch=false;
 QString searchParam;
 
-Tables::Tables(QWidget *parent) :
+Tables::Tables(MainWindow *mainWin,QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Tables),
     View(new ProxyView(this)),
-    Product(new ProductProxy(this))
+    Product(new ProductProxy(this)),
+    db(DatabaseConnection::getInstance()),
+    mainwindow(mainWin)
 
 {
 
@@ -43,7 +46,7 @@ Tables::Tables(QWidget *parent) :
     }
 
     ui->tableView->setAlternatingRowColors(true);
-    currentTable = 3;
+//    currentTable = 3;
 }
 
 Tables::~Tables()
@@ -51,6 +54,14 @@ Tables::~Tables()
     delete ui;
 }
 
+void Tables::setupTable(QString table){
+    if (table == "product"){currentTable = 3;}
+    else if(table == "device") {currentTable = 2;}
+    else if(table == "service") {currentTable = 1;}
+    else if(table == "customer") {currentTable = 0;}
+    else {qDebug() << "wrong input";}
+    this->show();
+}
 void Tables::searchInfo(QString currentSearchParam,QString searchText){
     searchParam = currentSearchParam;
     qDebug()<<QString::number(currentTable)+"  "  + "  "+ searchParam+ "   " +searchText;
@@ -64,7 +75,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         QString res;
         if (searchText==""){res = "SELECT * FROM CustomerInfo";}
         else{res = "SELECT * FROM CustomerInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-        QSqlQuery query(dbConnection.getConnection());
+        QSqlQuery query(db.getConnection());
         query.exec(res);
         QSqlQueryModel *m = new QSqlQueryModel;
         m -> setQuery(query);
@@ -73,7 +84,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 
     }
     else if (currentTable==1) {
-        QSqlQuery query(dbConnection.getConnection());
+        QSqlQuery query(db.getConnection());
         QString res;
         if(searchText==""){res = "SELECT * FROM ServiceInfo";}
         else{res = "SELECT * FROM ServiceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
@@ -87,12 +98,10 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 
         View->setSearchParameters(searchParam, searchText);
         ui->tableView->setModel(View);
-
     }
     else {
         Product->setSearchParameters(searchParam,searchText);
         ui->tableView->setModel(Product);
-
     }
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
@@ -104,7 +113,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable =3;
     }
     else if(arg1 == "Customers"){
-        QSqlQuery q(dbConnection.getConnection());
+        QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM CustomerInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
         m -> setQuery(q);
@@ -113,7 +122,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable = 0;
     }
     else if (arg1 == "Services"){
-        QSqlQuery q(dbConnection.getConnection());
+        QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM ServiceInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
         m -> setQuery(q);
@@ -169,5 +178,12 @@ void Tables::on_AddBtn_clicked()
 void Tables::on_RefreshBtn_clicked()
 {
     emit refreshActive(currentTable);
+}
+
+
+void Tables::on_mainWindowBtn_clicked()
+{
+    this->hide();
+    mainwindow->show();
 }
 

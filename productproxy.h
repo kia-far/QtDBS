@@ -57,7 +57,7 @@ private:
     QString m_searchText;
     QVector<QVector<QVariant>> rows;
     QVector<QString> columns;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 };
 

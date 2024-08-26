@@ -24,7 +24,7 @@
        <enum>QLayout::SetNoConstraint</enum>
       </property>
       <item row="0" column="0">
-       <widget class="QPushButton" name="hardwareBtn">
+       <widget class="QPushButton" name="deviceBtn">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
           <horstretch>0</horstretch>

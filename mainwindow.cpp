@@ -7,23 +7,21 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , tables(new Tables(this))
+    , db(DatabaseConnection::getInstance())
 {
-//    db = QSqlDatabase::addDatabase("QSQLITE");
-//    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
-//    db.open();
     ui->setupUi(this);
-//    QObject::connect(&x, &Tables::editDevice, &m, &DeviceEdit::receiveTableIndex);
-    QObject::connect(&x, &Tables::edit, &e, &EditTable::receiveTableIndex);
-    QObject::connect(&x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);
-    QObject::connect(&r, &SearchForm::searchWorking, &x, &Tables::searchInfo);
-    QObject::connect(&x, &Tables::editProduct,&b, &ProductRegister::trigger);
-    QObject::connect(&x, &Tables::refreshActive, &r, &SearchForm::refresh);
-    QObject::connect(&x, &Tables::addProduct,&b, &ProductRegister::addTrigger);
-//    QObject::connect(&x, &Tables::addDevice,&z, &RequestForm::addTrigger);
-    QObject::connect(&x, &Tables::addService,&s, &serviceEdit::regOn);
-    QObject::connect(&x, &Tables::editService,&s, &serviceEdit::trigger);
-    QObject::connect(&x, &Tables::addCustomer,&c, &CustomerForm::regOn);
-    QObject::connect(&x, &Tables::editCustomer,&c, &CustomerForm::trigger);
+    this->show();
+    QObject::connect(x, &Tables::edit, &e, &EditTable::receiveTableIndex);
+    QObject::connect(x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);
+    QObject::connect(&r, &SearchForm::searchWorking, x, &Tables::searchInfo);
+    QObject::connect(x, &Tables::editProduct,&b, &ProductRegister::trigger);
+    QObject::connect(x, &Tables::refreshActive, &r, &SearchForm::refresh);
+    QObject::connect(x, &Tables::addProduct,&b, &ProductRegister::addTrigger);
+    QObject::connect(x, &Tables::addService,&s, &serviceEdit::regOn);
+    QObject::connect(x, &Tables::editService,&s, &serviceEdit::trigger);
+    QObject::connect(x, &Tables::addCustomer,&c, &CustomerForm::regOn);
+    QObject::connect(x, &Tables::editCustomer,&c, &CustomerForm::trigger);
     QObject::connect(&d, &DeviceForm::optionPage,&a, &AddOption::setupOption);
     QObject::connect(&d, &DeviceForm::itemPage,&a, &AddOption::setupItem);
     QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);
@@ -31,8 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
 
     setBtnIcon();
-    d.show();
-    x.show();
+//    d.show();
+//    x.show();
 }
 
 //QLabel lblImage;
@@ -49,13 +47,40 @@ void MainWindow::setBtnIcon(){
     qDebug() <<"size : " <<ui->customerBtn->iconSize();
 
 }
+void MainWindow::setupTable(QString a){
+    emit setupTables(a);
+}
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete tables;
 }
 
 void MainWindow::on_productBtn_clicked()
 {
-    setBtnIcon();
+    x->setupTable("product");
+    this->hide();
+}
+
+
+void MainWindow::on_deviceBtn_clicked()
+{
+    x->setupTable("device");
+    this->hide();
+}
+
+
+void MainWindow::on_serviceBtn_clicked()
+{
+    x->setupTable("service");
+    this->hide();
+}
+
+
+void MainWindow::on_customerBtn_clicked()
+{
+    x->setupTable("customer");
+    this->hide();
+
 }
 

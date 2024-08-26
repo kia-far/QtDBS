@@ -7,7 +7,8 @@
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::DeviceForm)
+    ui(new Ui::DeviceForm),
+    db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
     setup();
@@ -173,7 +174,7 @@ void DeviceForm::on_addDeviceBtn_clicked()
 }
 
 QStringList DeviceForm::getCustomers(QString halfText) {
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
 
     QStringList res;
 

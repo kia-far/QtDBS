@@ -9,7 +9,8 @@
 
 
 ProductEdit::ProductEdit(QObject *parent)
-    : QAbstractTableModel(parent), rows(), columns()
+    : QAbstractTableModel(parent), rows(), columns(),
+      db(DatabaseConnection::getInstance())
 {
 }
 
@@ -21,7 +22,7 @@ void ProductEdit::loadData(int serialNum) {
 //        return;
 //    }
 
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     query.prepare("SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description "
                   "FROM ProductInfo "
                   "INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO "

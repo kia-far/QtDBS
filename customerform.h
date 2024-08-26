@@ -36,11 +36,11 @@ private slots:
 
 private:
     Ui::CustomerForm *ui;
-    QSqlDatabase db;
+//    QSqlDatabase db;
     QString Modee;
     QString b[5];
     int ID;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 
 };

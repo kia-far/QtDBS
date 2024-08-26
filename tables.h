@@ -9,15 +9,16 @@
 namespace Ui {
 class Tables;
 }
-
+class MainWindow;
 class Tables : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit Tables(QWidget *parent = nullptr);
+    explicit Tables(MainWindow *mainWin,QWidget *parent = nullptr);
     ~Tables();
     void searchInfo(QString searchParam,QString searchText);
+    void setupTable(QString table);
 
 
 signals:
@@ -47,11 +48,14 @@ private slots:
     void on_RefreshBtn_clicked();
 
 
+    void on_mainWindowBtn_clicked();
+
 private:
     Ui::Tables *ui;
     ProxyView *View;
     ProductProxy *Product;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
+    MainWindow *mainwindow;
 
 };
 

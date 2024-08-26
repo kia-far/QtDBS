@@ -8,7 +8,8 @@
 #include <QSqlQuery>
 
 ItemHandler::ItemHandler(QObject *parent)
-    : QAbstractItemModel(parent)
+    : QAbstractItemModel(parent),
+      db(DatabaseConnection::getInstance())
 {
 }
 
@@ -100,8 +101,8 @@ void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     deviceObj.insert(deviceName,emptyArr);
     QJsonDocument updatedDoc(deviceObj);
     JsonHandler::saveJson(updatedDoc);
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
-    QSqlQuery query(dbConnection.getConnection());
+    DatabaseConnection& db = DatabaseConnection::getInstance();
+    QSqlQuery query(db.getConnection());
     QString createTableQuery = QString("CREATE TABLE IF NOT EXISTS %1 (SerialNumber INTEGER PRIMARY KEY,CustomerName TEXT ,description TEXT, belongings TEXT)").arg(deviceName);
 
     if (!query.exec(createTableQuery)) {
@@ -159,8 +160,8 @@ void ItemHandler::addItems(QString deviceName, QString itemName){
     deviceObj[deviceName] = deviceArr;
     QJsonDocument updatedDoc(deviceObj);
     JsonHandler::saveJson(updatedDoc);
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
-    QSqlQuery query(dbConnection.getConnection());
+    DatabaseConnection& db = DatabaseConnection::getInstance();
+    QSqlQuery query(db.getConnection());
     QString addColumnQuery = QString("ALTER TABLE %1 ADD COLUMN %2 TEXT").arg(deviceName, itemName);
 
     if (!query.exec(addColumnQuery)) {
@@ -192,7 +193,7 @@ void ItemHandler::addOptions(QString deviceName , QString itemName , QString opt
 }
 
 void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues) {
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection& db = DatabaseConnection::getInstance();
 
 
 
@@ -206,7 +207,7 @@ void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringLis
                           .arg(tableName)
                           .arg(columnNames.join(", "))
                           .arg(placeholders.join(", "));
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
 
 
     query.prepare(insertQuery);

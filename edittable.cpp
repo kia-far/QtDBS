@@ -11,7 +11,8 @@
 EditTable::EditTable(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::EditTable),
-    model(new ProductEdit(this))
+    model(new ProductEdit(this)),
+    db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
 

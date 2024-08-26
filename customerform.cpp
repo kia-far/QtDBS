@@ -10,7 +10,8 @@
 
 CustomerForm::CustomerForm(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::CustomerForm)
+    ui(new Ui::CustomerForm),
+    db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
 
@@ -39,7 +40,7 @@ void CustomerForm::regSubmit(){
     b[2]=ui->lineEdit_3->text();
     b[3]=ui->lineEdit_4->text();
 
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     query.prepare("INSERT INTO CustomerInfo (Name , ContactInfo , RepresentName) VALUES ( ? , ? , ?)");
     query.addBindValue(b[1]);
     query.addBindValue(b[2]);
@@ -56,7 +57,7 @@ void CustomerForm::editSubmit(){
     b[1] = ui->lineEdit_2->text();
     b[2] = ui->lineEdit_3->text();
     b[3] = ui->lineEdit_4->text();
-    QSqlQuery q(dbConnection.getConnection());
+    QSqlQuery q(db.getConnection());
     q.prepare("UPDATE CustomerInfo SET Name = ?, ContactInfo = ?, RepresentName = ? WHERE ID = ?");
     q.addBindValue(b[1]);
     q.addBindValue(b[2]);
@@ -82,7 +83,7 @@ void CustomerForm::setup(){
 
 
     if (Modee == "REGISTER") {
-        QSqlQuery query(dbConnection.getConnection());
+        QSqlQuery query(db.getConnection());
         query.prepare("SELECT MAX(ID) FROM CustomerInfo");
         if (!query.exec()) {
             qDebug() << "Database query error:" << query.lastError().text();
@@ -93,7 +94,7 @@ void CustomerForm::setup(){
         ui->lineEdit_3->setText("");
         ui->lineEdit_4->setText("");
     } else if (Modee == "EDIT") {
-        QSqlQuery query(dbConnection.getConnection());
+        QSqlQuery query(db.getConnection());
         query.prepare("SELECT * FROM CustomerInfo WHERE ID = ?");
         query.addBindValue(ID);
         if (!query.exec()) {

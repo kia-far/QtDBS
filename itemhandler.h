@@ -24,6 +24,7 @@ public:
     static QStringList readLetters();
 
 private:
+    DatabaseConnection &db;
 
 };
 

@@ -14,7 +14,8 @@ QString intToBinary(int number) {
 }
 
 ProxyView::ProxyView(QObject *parent)
-    : QAbstractTableModel(parent), m_searchParam("SerialNum"), m_searchText(""), rows(), columns()
+    : QAbstractTableModel(parent), m_searchParam("SerialNum"), m_searchText(""), rows(), columns(),
+      db(DatabaseConnection::getInstance())
 {
     loadData(m_searchParam, m_searchText);
 }
@@ -45,7 +46,7 @@ void ProxyView::loadData(QString searchParam,QString searchText) {
 //            else{res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '_____%"+searchText+"%'";}}
 //    }
 //    else {res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     QString res;
     QString context;
     QString space;

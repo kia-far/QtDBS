@@ -29,7 +29,7 @@ private:
     Ui::EditTable *ui;
     QSqlDatabase dbe;
     ProductEdit *model;
-    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    DatabaseConnection &db;
 
 };
 

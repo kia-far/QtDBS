@@ -11,7 +11,8 @@
 
 
 ProductProxy::ProductProxy(QObject *parent)
-    : QAbstractTableModel(parent),  m_searchParam("ProductInfo.SerialNO"), m_searchText(""), rows(), columns()
+    : QAbstractTableModel(parent),  m_searchParam("ProductInfo.SerialNO"), m_searchText(""), rows(), columns(),
+      db(DatabaseConnection::getInstance())
 {
     loadData(m_searchParam, m_searchText);
 }
@@ -24,7 +25,7 @@ void ProductProxy::setSearchParameters(const QString &searchParam, const QString
 void ProductProxy::loadData(QString searchParam,QString searchText) {
 
 
-    QSqlQuery query(dbConnection.getConnection());
+    QSqlQuery query(db.getConnection());
     QString res;
     QString context;
     QString space;
