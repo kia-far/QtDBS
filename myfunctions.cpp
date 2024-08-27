@@ -39,7 +39,7 @@ QString MyFunctions::reverseSN(const QString &input) {
 
     if (!result.isEmpty()) {
         QChar firstLetter = result.at(0).toUpper();
-        result[0] = snLetter(firstLetter);
+        result[0] = QString::number(snLetter(firstLetter)).at(0);
 //        if (firstLetter.toUpper() == 'B') {
 //            result[0] = '1';
 //        } else if (firstLetter.toUpper() == 'N') {

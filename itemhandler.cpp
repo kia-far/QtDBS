@@ -248,11 +248,29 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
     qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
 }
 
-QStringList ItemHandler::readLetters(){
+QStringList ItemHandler::readLetters() {
     QStringList res = {};
-    QStringList allDevices = loadedInfoObj.keys();
-    for(int i=0;i<allDevices.size();i++){
-        res.append(allDevices[i]);
+    QStringList allDevices = loadedInfoObj.keys(); // Assuming loadedInfoObj is a QJsonObject
+
+    for (const QString &device : allDevices) {
+        // Get the associated value for the device, which is an array
+        QJsonValue deviceValue = loadedInfoObj.value(device);
+
+        // Check if the value is an array
+        if (deviceValue.isArray()) {
+            QJsonArray deviceArray = deviceValue.toArray();
+
+            // Check if the array has at least two elements
+            if (deviceArray.size() > 1) {
+                // The second element is the letter
+                QString letter = deviceArray[1].toString();
+                res.append(letter);
+                qDebug() << "Device:" << device << "Letter:" << letter;
+            }
+        }
     }
+
+    qDebug() << "Whole letters:" << res;
     return res;
 }
+

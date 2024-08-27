@@ -70,7 +70,6 @@ void Tables::setupTable(QString table){
         currentTable = 2;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(View);
-
     }
     else if(table == "service") {
         qDebug () << "service opened -------------------------------";
