@@ -64,34 +64,38 @@ QStringList ItemHandler::loadOptions(QString device, QString item){
 }
 
 QStringList ItemHandler::loadbelongings(QString device) {
-    // Ensure device exists in loadedInfoObj
-    if (!loadedInfoObj.contains(device)) {
-        qDebug() << "Device not found!";
+    if (!loadedInfoObj.contains("devices")) {
+        qDebug() << "No devices found.";
         return QStringList();
     }
-
-    // Access the array associated with the device
-    QJsonArray itemArr = loadedInfoObj[device].toArray();
-
-    // Check if itemArr is not empty and contains at least one object
-    if (itemArr.isEmpty()) {
-        qDebug() << "No belongings found for device:" << device;
-        return QStringList();
-    }
-
-    // Access the belongings array from the first object in itemArr
-    QJsonArray belongingsArr = itemArr[0].toObject().value("belongings").toArray();
-
+    QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+    bool deviceFound = false;
     QStringList tempstr;
-
-    // Iterate through belongingsArr and populate tempstr
-    for (const QJsonValue &value : belongingsArr) {
-        tempstr.append(value.toString());
+    for (const QJsonValue &deviceValue : devicesArray) {
+        QJsonObject deviceObj = deviceValue.toObject();
+        if (deviceObj.contains(device)) {
+            QJsonArray deviceEntry = deviceObj[device].toArray();
+            if (!deviceEntry.isEmpty()) {
+                QJsonArray belongingsArr = deviceEntry[0].toObject().value("belongings").toArray();
+                for (const QJsonValue &value : belongingsArr) {
+                    tempstr.append(value.toString());
+                }
+                deviceFound = true;
+                break;
+            } else {
+                qDebug() << "No belongings found for device:" << device;
+                return QStringList();
+            }
+        }
     }
-
+    if (!deviceFound) {
+        qDebug() << "Device not found:" << device;
+        return QStringList();
+    }
     qDebug() << "Belongings loaded: " << tempstr;
     return tempstr;
 }
+
 
 
 void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
@@ -112,35 +116,42 @@ void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     }
 }
 void ItemHandler::addBelonging(QString device, QString itemName) {
-    // Check if the device exists in loadedInfoObj
-    if (!loadedInfoObj.contains(device)) {
-        // If not, create a new entry for this device
-        QJsonArray newItemArr;
-        QJsonObject newDeviceObj;
-        newDeviceObj["belongings"] = newItemArr; // Initialize with an empty belongings array
-        loadedInfoObj[device] = QJsonArray{ newDeviceObj }; // Set the device with the new object
+    if (!loadedInfoObj.contains("devices")) {
+        qDebug() << "No devices found.";
+        return;
     }
 
-    // Access the belongings array for the device
-    QJsonArray itemArr = loadedInfoObj[device].toArray();
-    QJsonArray belongingsArr = itemArr[0].toObject().find("belongings").value().toArray();
+    QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+    bool deviceFound = false;
 
-    // Append the new item to the belongings array
-    belongingsArr.append(itemName);
+    for (int i = 0; i < devicesArray.size(); ++i) {
+        QJsonObject deviceObj = devicesArray[i].toObject();
+        if (deviceObj.contains(device)) {
+            QJsonArray deviceEntry = deviceObj[device].toArray();
+            QJsonArray belongingsArr = deviceEntry[0].toObject().value("belongings").toArray();
+            belongingsArr.append(itemName);
+            QJsonObject updatedDeviceObj = deviceEntry[0].toObject();
+            updatedDeviceObj["belongings"] = belongingsArr;
+            deviceEntry[0] = updatedDeviceObj;
 
-    // Update the JSON object with the modified belongings array
-    QJsonObject updatedDeviceObj = itemArr[0].toObject();
-    updatedDeviceObj["belongings"] = belongingsArr;
-    itemArr[0] = updatedDeviceObj; // Update the item array with the modified object
-    loadedInfoObj[device] = itemArr; // Update loadedInfoObj with the modified item array
+            deviceObj[device] = deviceEntry;
+            devicesArray[i] = deviceObj;
 
-    // Save the updated JSON back to file
+            deviceFound = true;
+            break;
+        }
+    }
+    if (!deviceFound) {
+        qDebug() << "Device not found:" << device;
+        return;
+    }
+    loadedInfoObj["devices"] = devicesArray;
     QJsonDocument someDoc(loadedInfoObj);
     JsonHandler::saveInfoJson(someDoc);
 
-
     qDebug() << "Added item:" << itemName << "to device:" << device;
 }
+
 
 
 //void ItemHandler::addDevices(QString deviceName,QJsonArray itemList) {
@@ -222,55 +233,45 @@ void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringLis
 }
 
 void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
-    // Check if the device already exists
-    if (loadedInfoObj.contains(deviceName)) {
-        qDebug() << "Device already exists:" << deviceName;
-        return; // Exit if the device already exists
+    QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+    for (const QJsonValue &device : devicesArray) {
+        if (device.toObject().contains(deviceName)) {
+            qDebug() << "Device already exists:" << deviceName;
+            return;
+        }
     }
-
-    // Create a new JSON object for the new device
     QJsonObject newDeviceObj;
-    QJsonArray emptyBelongings; // Create an empty belongings array
-    newDeviceObj["belongings"] = emptyBelongings; // Set belongings to empty
+    QJsonArray emptyBelongings;
+    newDeviceObj["belongings"] = emptyBelongings;
 
-    // Create a QJsonArray to hold the new device object and its abbreviation
-    QJsonArray deviceArray;
-    deviceArray.append(newDeviceObj); // Append the belongings object
-    deviceArray.append(deviceAbr);      // Append the device abbreviation
+    QJsonArray newDeviceEntry;
+    newDeviceEntry.append(newDeviceObj);
+    newDeviceEntry.append(deviceAbr);
 
-    // Add the new device array to loadedInfoObj
-    loadedInfoObj[deviceName] = deviceArray;
+    QJsonObject deviceObject;
+    deviceObject[deviceName] = newDeviceEntry;
+
+    devicesArray.append(deviceObject);
+
+    loadedInfoObj["devices"] = devicesArray;
     QJsonDocument somedoc(loadedInfoObj);
 
-    // Save the updated JSON back to file
     JsonHandler::saveInfoJson(somedoc);
 
     qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
 }
 
+
 QStringList ItemHandler::readLetters() {
     QStringList res = {};
-    QStringList allDevices = loadedInfoObj.keys(); // Assuming loadedInfoObj is a QJsonObject
-
-    for (const QString &device : allDevices) {
-        // Get the associated value for the device, which is an array
-        QJsonValue deviceValue = loadedInfoObj.value(device);
-
-        // Check if the value is an array
-        if (deviceValue.isArray()) {
-            QJsonArray deviceArray = deviceValue.toArray();
-
-            // Check if the array has at least two elements
-            if (deviceArray.size() > 1) {
-                // The second element is the letter
-                QString letter = deviceArray[1].toString();
-                res.append(letter);
-                qDebug() << "Device:" << device << "Letter:" << letter;
-            }
-        }
+    QJsonArray deviceArr = loadedInfoObj["devices"].toArray(); // Assuming loadedInfoObj is a QJsonObject
+    QStringList objNames;
+    QStringList allDevices ={};
+    for (int i=0;i<deviceArr.size();i++){
+        objNames = deviceArr[i].toObject().keys();
+        res.append(deviceArr[i].toObject().value(objNames[0]).toArray()[1].toString());
     }
-
-    qDebug() << "Whole letters:" << res;
+//    qDebug() << "Whole letters:" << res;
     return res;
 }
 

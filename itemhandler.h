@@ -19,7 +19,7 @@ public:
     static void addNewInfoDevice(QString deviceName,QString deviceAbr);
     static void addItems(QString device, QString itemName);
     static void addOptions(QString deviceName , QString itemName, QString optionName);
-    static void addBelonging(QString deviceNAme, QString itemName);
+    static void addBelonging(QString deviceName, QString itemName);
     static void insertDataIntoTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues);
     static QStringList readLetters();
 

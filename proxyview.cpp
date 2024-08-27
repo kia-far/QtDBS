@@ -14,68 +14,70 @@ QString intToBinary(int number) {
 }
 
 ProxyView::ProxyView(QObject *parent)
-    : QAbstractTableModel(parent), m_searchParam("SerialNum"), m_searchText(""), rows(), columns(),
+    : QAbstractTableModel(parent), m_searchParam("SerialNum"), m_searchText(""), rows(), columns(),currentDevice(""),
       db(DatabaseConnection::getInstance())
 {
-    loadData(m_searchParam, m_searchText);
+    loadData(currentDevice,m_searchParam, m_searchText);
 }
-void ProxyView::setSearchParameters(const QString &searchParam, const QString &searchText)
+void ProxyView::setSearchParameters(QString device ,const QString &searchParam, const QString &searchText)
 {
     m_searchParam = searchParam;
     m_searchText = searchText;
-    loadData(m_searchParam,m_searchText);
+    currentDevice = device;
+    loadData(currentDevice,m_searchParam,m_searchText);
 }
-void ProxyView::loadData(QString searchParam,QString searchText) {
-//    QSqlDatabase dbpv = QSqlDatabase::addDatabase("QSQLITE");
-//    dbpv.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
-//    if (!dbpv.open()) {
-//        qDebug() << "Error: Unable to open database.";
-//        return;
-//    }
-//    QString res;
-//    if(searchParam=="SerialNum"){/*searchText=MyFunctions::reverseSN(searchText);*/
-//        if(searchText==""){res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-//        else if(searchText.at(0).isLetter()){
-//            if(searchText.at(0)=="B"||searchText.at(0)=="N"||searchText.at(0)=="S"){
-//                res="SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN(searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";
-//            }
-//            else{res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
-//        }
-//        else{
-//            if(searchText.length()<3) {res="SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '_"+searchText+"%' OR "+searchParam+" LIKE '_____%"+searchText+"%'";}
-//            else{res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '_____%"+searchText+"%'";}}
-//    }
-//    else {res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+void ProxyView::loadData(QString device ,QString searchParam,QString searchText) {
     QSqlQuery query(db.getConnection());
     QString res;
     QString context;
     QString space;
     if (searchParam=="SerialNum"){
-        if (searchText==""){res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+        if (searchText==""){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+        ////need to update this with the dynamic abbreviations___________________________________________________________________________________
+        //______________________________________________________________________________________________________________________
         else{
-            if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
+            if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
             else{
                 context = MyFunctions::smallSN(searchText);
                 space = MyFunctions::querySolver();
-                if(!(space=="-1")){res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '"+space+context+"%'";
+                if(!(space=="-1")){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '"+space+context+"%'";
                 qDebug()<<"LIKE debug try '"+space+context+"%'";}
                 else{
-                    res = "SELECT * FROM DeviceInfo WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
+                    res = "SELECT * FROM "+ device +" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
                                     qDebug()<<"LIKE debug try '"+space+context+"%'";
                 }
             }
         }
     }
-    else {res = "SELECT * FROM DeviceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+    else {res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
 
-
+    QStringList columnsToExclude = {"column_name_1", "column_name_2", "column_name_3"};
 
     query.exec(res);
     QSqlRecord record = query.record();
     int numCols = record.count();
+
     rows.clear();
     columns.clear();
+//_____________________________________________________________________________________________________________
+    for (int i = 0; i < numCols; ++i) {
+        QString columnName = record.fieldName(i);
+//        if (!columnsToExclude.contains(columnName)) {
+            columns.append(columnName);
+//        }
+    }
 
+//    while (query.next()) {
+//        QVector<QVariant> row;
+//        for (int i = 0; i < numCols; ++i) {
+//            QString columnName = record.fieldName(i);
+//            if (!columnsToExclude.contains(columnName)) {
+//                row.append(query.value(i));
+//            }
+//        }
+//        rows.append(row);
+//    }
+//_____________________________________________________________________________________________________________
     while (query.next()) {
         QVector<QVariant> row;
         for (int i = 0; i < numCols; ++i) {
@@ -85,49 +87,18 @@ void ProxyView::loadData(QString searchParam,QString searchText) {
     }
 
     if (!rows.isEmpty()) {
-        // Convert the first column using intToStr()
         for (int i = 0; i < rows.size(); ++i) {
-            rows[i][0] =  MyFunctions::intToStr(rows[i][0].toInt());
-        }
-
-        // Process the last column into 14-bit binary string and add new columns
-        for (int i = 0; i < rows.size(); ++i) {
-            QVector<QVariant> row = rows[i];
-            QString binaryStr = intToBinary(row[8].toInt()).rightJustified(14, '0'); // Ensure 14-bit binary
-            row.remove(8); // Remove the original 9th column
-            for (QChar bit : binaryStr) {
-                row.append(bit);
-            }
-            rows[i] = row; // Update the row with the new columns
-        }
-
-        // Add custom column headers
-        // Replace these names with your desired names
-        QStringList originalColumnNames = {
-            "SerialNumber", "Cell", "Power", "Charger", "Battery", "ACCBoard", "MotherBoard", "Ram"
-        };
-        QStringList binaryColumnNames = {
-            "Pactos USB", "Metec USB", "USB Cable", "Bag", "زیر کیبرد", "Navid",
-            "Pacjaws", "سامانه", "Extended Stereo Cable", "Lan Cable", "Braille Guide", "2 Mono Stereo",
-            "HDMI Cable", "Instruction DVD"
-        };
-
-        // Add original column names
-        for (const QString &name : originalColumnNames) {
-            columns.append(name);
-        }
-
-        // Add binary column names
-        for (const QString &name : binaryColumnNames) {
-            columns.append(name);
+            rows[i][0] = MyFunctions::intToStr(rows[i][0].toInt());
         }
     }
 
     qDebug() << "Rows loaded:" << rows.size();
-    qDebug() << "Columns loaded:" << columns.size();
+//    qDebug() << "Columns loaded:" << columns.size();
 
     emit layoutChanged();
 }
+
+
 
 
 

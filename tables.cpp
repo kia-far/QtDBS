@@ -35,7 +35,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 //    db = QSqlDatabase ::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
-
+    ui->comboBox_2->addItems(ItemHandler::loadDevices());
     QFile file("C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/style/Style.qss"); // Use resource system or provide a direct path
     if (file.open(QFile::ReadOnly)) {
         QTextStream stream(&file);
@@ -54,6 +54,7 @@ Tables::~Tables()
 }
 
 void Tables::setupTable(QString table){
+    ui->comboBox_2->hide();
     if (table == "product"){
         qDebug () << "product opened -------------------------------";
         currentTable = 3;
@@ -62,11 +63,12 @@ void Tables::setupTable(QString table){
 
     }
     else if(table == "device") {
+        ui->comboBox_2->show();
+        currentDevice=ui->comboBox_2->currentText();
         qDebug () << "device opened -------------------------------";
-
-        QString aa = "SerialNum";
-        QString bb = "";
-        View->setSearchParameters(aa, bb);
+        QString searchParam = "SerialNum";
+        QString searchText = "";
+        View->setSearchParameters(currentDevice,searchParam, searchText);
         currentTable = 2;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(View);
@@ -131,7 +133,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
     }
     else if(currentTable==2){
 
-        View->setSearchParameters(searchParam, searchText);
+        View->setSearchParameters(currentDevice,searchParam, searchText);
         ui->tableView->setModel(View);
     }
     else {
@@ -141,6 +143,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 {
+    ui->comboBox_2->hide();
     if(arg1 == "Products"){
         ui->tableView->setModel(Product);
 
@@ -165,9 +168,11 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable =1;
     }
     else if (arg1 == "Devices") {
-        QString aa = "SerialNum";
-        QString bb = "";
-        View->setSearchParameters(aa, bb);
+        ui->comboBox_2->show();
+        currentDevice=ui->comboBox_2->currentText();
+        QString searchParam = "SerialNum";
+        QString searchText = "";
+        View->setSearchParameters(currentDevice,searchParam, searchText);
 
         ui->tableView->setModel(View);
         currentTable = 2;
@@ -220,5 +225,18 @@ void Tables::on_mainWindowBtn_clicked()
 {
     this->hide();
     mainwindow->show();
+}
+
+
+
+
+
+void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
+{
+    currentDevice = arg1;
+    QString searchParam = "SerialNum";
+    QString searchText = "";
+    View->setSearchParameters(currentDevice,searchParam, searchText);
+    ui->tableView->setModel(View);
 }
 

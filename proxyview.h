@@ -15,7 +15,7 @@ class ProxyView : public QAbstractTableModel
 
 public:
     explicit ProxyView(QObject *parent = nullptr);
-    void setSearchParameters(const QString &searchParam, const QString &searchText);
+    void setSearchParameters(QString device ,const QString &searchParam, const QString &searchText);
 
     // Header:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
@@ -53,13 +53,13 @@ public:
     bool removeColumns(int column, int count, const QModelIndex &parent = QModelIndex()) override;
 
 private:
-    void loadData(QString searchParam, QString searchText);
+    void loadData(QString device,QString searchParam, QString searchText);
     QString m_searchParam;
     QString m_searchText;
     QVector<QVector<QVariant>> rows;
     QVector<QString> columns;
     DatabaseConnection &db;
-
+    QString currentDevice;
 
 };
 

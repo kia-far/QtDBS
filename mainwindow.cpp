@@ -29,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
 
     setBtnIcon();
-//    d.show();
+    d.show();
 //    x.show();
 }
 

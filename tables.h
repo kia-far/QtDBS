@@ -50,13 +50,16 @@ private slots:
 
     void on_mainWindowBtn_clicked();
 
+
+    void on_comboBox_2_currentIndexChanged(const QString &arg1);
+
 private:
     Ui::Tables *ui;
     ProxyView *View;
     ProductProxy *Product;
     DatabaseConnection &db;
     MainWindow *mainwindow;
-
+    QString currentDevice;
 };
 
 #endif // TABLES_H
