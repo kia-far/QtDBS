@@ -66,7 +66,7 @@ void Tables::setupTable(QString table){
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
         qDebug () << "device opened -------------------------------";
-        QString searchParam = "SerialNum";
+        QString searchParam = "SerialNumber";
         QString searchText = "";
         View->setSearchParameters(currentDevice,searchParam, searchText);
         currentTable = 2;
@@ -170,7 +170,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
     else if (arg1 == "Devices") {
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
-        QString searchParam = "SerialNum";
+        QString searchParam = "SerialNumber";
         QString searchText = "";
         View->setSearchParameters(currentDevice,searchParam, searchText);
 
@@ -184,7 +184,7 @@ void Tables::on_EditBtn_clicked()
 {
     if (currentTable == 0){emit editCustomer(clickedID);}
     else if (currentTable == 1){emit editService(clickedID);}
-    else if (currentTable == 2){emit editDevice(lastClicked);}
+    else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
     else {emit editProduct(lastClicked );}
 }
 
@@ -209,7 +209,7 @@ void Tables::on_SearchBtn_clicked()
 void Tables::on_AddBtn_clicked()
 {
     if (currentTable==3){emit addProduct();}
-    else if(currentTable==2){emit addDevice();}
+    else if(currentTable==2){emit addDevice(currentDevice);}
     else if(currentTable==1){emit addService();}
     else{emit addCustomer();}
 }
@@ -234,7 +234,7 @@ void Tables::on_mainWindowBtn_clicked()
 void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 {
     currentDevice = arg1;
-    QString searchParam = "SerialNum";
+    QString searchParam = "SerialNumber";
     QString searchText = "";
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);

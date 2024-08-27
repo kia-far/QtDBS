@@ -31,8 +31,10 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
     QString res;
     QString context;
     QString space;
-    if (searchParam=="SerialNum"){
-        if (searchText==""){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+    if (searchParam=="SerialNumber"){
+        if (searchText==""){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";
+            qDebug() << device<<searchParam<< "text is :" <<searchText;
+}
         ////need to update this with the dynamic abbreviations___________________________________________________________________________________
         //______________________________________________________________________________________________________________________
         else{
@@ -51,9 +53,10 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
     }
     else {res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
 
-    QStringList columnsToExclude = {"column_name_1", "column_name_2", "column_name_3"};
+    QStringList columnsToExclude = {/*"column_name_1", "column_name_2", "column_name_3"*/};
 
     query.exec(res);
+    qDebug() << res;
     QSqlRecord record = query.record();
     int numCols = record.count();
 
@@ -93,7 +96,7 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
     }
 
     qDebug() << "Rows loaded:" << rows.size();
-//    qDebug() << "Columns loaded:" << columns.size();
+    qDebug() << "Columns loaded:" << columns.size();
 
     emit layoutChanged();
 }

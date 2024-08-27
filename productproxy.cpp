@@ -49,6 +49,7 @@ void ProductProxy::loadData(QString searchParam,QString searchText) {
 
 
     query.exec(res);
+    qDebug() << res;
     QSqlRecord record = query.record();
     int numCols = record.count();
 

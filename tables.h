@@ -22,13 +22,13 @@ public:
 
 
 signals:
-    void editDevice(int serialNum);
+    void editDevice(QString device,int id);
     void edit(int serialNum,int index);
     void searchActive(int current);
     void editProduct(int serialNum);
     void refreshActive(int current);
     void addProduct();
-    void addDevice();
+    void addDevice(QString device);
     void addService();
     void editService(int serialNum);
     void addCustomer();

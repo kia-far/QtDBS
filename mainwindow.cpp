@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(x, &Tables::editService,&s, &serviceEdit::trigger);
     QObject::connect(x, &Tables::addCustomer,&c, &CustomerForm::regOn);
     QObject::connect(x, &Tables::editCustomer,&c, &CustomerForm::trigger);
+    QObject::connect(x, &Tables::addDevice, &d ,&DeviceForm::trigger);
+    QObject::connect(x, &Tables::editDevice, &d ,&DeviceForm::editDevice);
     QObject::connect(&d, &DeviceForm::optionPage,&a, &AddOption::setupOption);
     QObject::connect(&d, &DeviceForm::itemPage,&a, &AddOption::setupItem);
     QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);

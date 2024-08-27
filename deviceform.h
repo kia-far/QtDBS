@@ -24,6 +24,8 @@ public:
     explicit DeviceForm(QWidget *parent = nullptr);
     ~DeviceForm();
     void setup ();
+    void editDevice(QString device, int id);
+    void trigger(QString device);
     void refresh();
 
 signals:
@@ -44,6 +46,7 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void populateEdit(QString device, int id);
 private:
     void createBelonging(QString itemName,int index);
     void createNewItem(QString itemName , int index);

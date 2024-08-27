@@ -4,6 +4,7 @@
 #include "myfunctions.h"
 #include <QBoxLayout>
 #include <QDebug>
+#include "QSqlRecord"
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -18,13 +19,22 @@ DeviceForm::~DeviceForm()
 {
     delete ui;
 }
-
+void DeviceForm::trigger(QString device){
+    this->show();
+    currentDevice = device;
+    setup();
+}
 void DeviceForm::setup(){
     QStringList devices = ItemHandler::loadDevices();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
 }
-
+void DeviceForm::editDevice(QString device , int id){
+    trigger(device);
+    ui->comboBox->setCurrentText(device);
+    ui->lineEdit->setText(MyFunctions::intToStr(id));
+    populateEdit(device,id);
+}
 void DeviceForm::refresh(){
     clearLayout(ui->vb);
     labels.clear();
@@ -121,7 +131,57 @@ void DeviceForm::clearLayout(QLayout *layout) {
         //delete item;
     }
 }
+void DeviceForm::populateEdit(QString device,int id){
+    QString newText="";
+    QSqlQuery query(db.getConnection());
 
+    QStringList res;
+
+    query.prepare("SELECT * FROM " + device + " WHERE SerialNumber LIKE "+QString::number(id));
+
+    if (query.exec()) {
+        QSqlRecord record = query.record();
+        int numCols = record.count();
+        qDebug() << "Fetch the results";
+        while (query.next()) {
+            for (int i=0;i<numCols;i++){
+            res.append( query.value(i).toString());
+        }}
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    ui->CustomerCombo->setCurrentText(res[1]);
+    ui->textEdit->setText(res[2]);
+    QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
+//    for (QLabel *label : labels) {
+//        QString text = label->text(); // Get the text from the QLineEdit
+//        qDebug() << "column" << label->objectName() << ":" << text;
+//        for(int i=0;i<text.size(); i++){
+//            if (text.at(i)==" "){newText.append("_");}
+//            else{newText.append(text.at(i));}
+//        }
+//        columns.append(text);
+//    }
+    QString checks = "";
+    for (QCheckBox *checkBox : checkBoxes){
+//        if(checkBox->isChecked()){
+//        checks.append(checkBox->text()+" ");}
+        if(res[3].contains(checkBox->text())){checkBox->setChecked(true);}
+        else{checkBox->setChecked(false);}
+    }
+    int count =4;
+//    QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
+    for (QComboBox *comboBox : comboBoxes) {
+//        QString text = comboBox->currentText();
+//        qDebug() << "Data" << comboBox->objectName() << ":" << text;
+//        givenData.append(text);
+    comboBox->setCurrentText(res[count]);
+    count++;
+    }
+//    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+
+}
 void DeviceForm::on_SubmitBtn_clicked()
 {
 
@@ -195,22 +255,11 @@ QStringList DeviceForm::getCustomers(QString halfText) {
 }
 
 void DeviceForm::on_CustomerCombo_editTextChanged(const QString &arg1) {
-    // Block signals to prevent recursion
     ui->CustomerCombo->blockSignals(true);
-
-    // Clear the existing items in the combo box
     ui->CustomerCombo->clear();
-
-    // Get the filtered customer names based on the input text
     QStringList customers = getCustomers(arg1);
-
-    // Add the new items to the combo box
     ui->CustomerCombo->addItems(customers);
-
-    // Optionally, set the current text back to what was entered
     ui->CustomerCombo->setCurrentText(arg1);
-
-    // Unblock signals after updating
     ui->CustomerCombo->blockSignals(false);
 }
 
@@ -218,7 +267,6 @@ void DeviceForm::on_CustomerCombo_editTextChanged(const QString &arg1) {
 
 void DeviceForm::on_pushButton_clicked()
 {
-//    emit addCustomer();
-    qDebug() << ItemHandler::loadbelongings(currentDevice);
+    emit addCustomer();
 }
 
