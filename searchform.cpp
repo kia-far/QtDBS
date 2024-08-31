@@ -24,7 +24,7 @@ void SearchForm::refresh(int current){
     currentSearch = current;
     if (currentSearch==0){emit searchWorking("ID","");}
     else if(currentSearch==1){emit searchWorking("ID","");}
-    else if(currentSearch==2){emit searchWorking("SerialNum","");}
+    else if(currentSearch==2){emit searchWorking("SerialNumber","");}
     else{emit searchWorking("ProductInfo.SerialNO","");}
 };
 
@@ -68,9 +68,9 @@ void SearchForm::on_buttonBox_accepted()
         else {}
     }
     else if (currentSearch == 2){/*Devices*/
-        if (ui->comboBox->currentText()=="Serial Number"){emit searchWorking("SerialNum",searchText);}
-        else if (ui->comboBox->currentText()=="Customer name"){emit searchWorking("Customer name",searchText);}
-        else if (ui->comboBox->currentText()=="Belongings"){emit searchWorking("Belongings",searchText);}
+        if (ui->comboBox->currentText()=="Serial Number"){emit searchWorking("SerialNumber",searchText);}
+        else if (ui->comboBox->currentText()=="Customer name"){emit searchWorking("CustomerName",searchText);}
+        else if (ui->comboBox->currentText()=="Belongings"){emit searchWorking("belongings",searchText);}
         else {}
     }
     else {/*Product*/

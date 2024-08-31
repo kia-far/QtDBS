@@ -32,24 +32,26 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
     QString context;
     QString space;
     if (searchParam=="SerialNumber"){
-        if (searchText==""){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";
-            qDebug() << device<<searchParam<< "text is :" <<searchText;
-}
-        ////need to update this with the dynamic abbreviations___________________________________________________________________________________
-        //______________________________________________________________________________________________________________________
-        else{
-            if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
-            else{
-                context = MyFunctions::smallSN(searchText);
-                space = MyFunctions::querySolver();
-                if(!(space=="-1")){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '"+space+context+"%'";
-                qDebug()<<"LIKE debug try '"+space+context+"%'";}
-                else{
-                    res = "SELECT * FROM "+ device +" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
-                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
-                }
-            }
-        }
+        res = MyFunctions::searchHandler("*",device,searchParam,searchText);
+//        if (searchText==""){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";
+//            qDebug() << device<<searchParam<< "text is :" <<searchText;
+//}
+//        ////need to update this with the dynamic abbreviations___________________________________________________________________________________
+//        //______________________________________________________________________________________________________________________
+//        else{
+//            if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
+//            else{
+//                context = MyFunctions::smallSN(searchText);
+//                space = MyFunctions::querySolver();
+//                if(!(space=="-1")){res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '"+space+context+"%'";
+//                qDebug()<<"LIKE debug try '"+space+context+"%'";}
+//                else{
+//                    res = "SELECT * FROM "+ device +" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
+//                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
+//                }
+//            }
+//        }
+
     }
     else {res = "SELECT * FROM "+ device +" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
 
