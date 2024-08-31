@@ -51,7 +51,7 @@ void serviceEdit::regSubmit(){
     query.addBindValue(b[3]);
     query.addBindValue(b[4]);
 
-    qDebug() << "Executing query for ProductInfo with Serialnum:" <<ID;
+//    qDebug() << "Executing query for ProductInfo with Serialnum:" <<ID;
 
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
@@ -78,7 +78,7 @@ void serviceEdit::editSubmit(){
     if (!er) {
         qDebug() << "Error in ProductInfo update:" << q.lastError().text();
     } else {
-        qDebug() << "success 1 " + b[0];
+//        qDebug() << "success 1 " + b[0];
     }
 
 

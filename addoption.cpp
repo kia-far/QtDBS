@@ -66,7 +66,7 @@ void AddOption::on_pushButton_clicked()
     }
     else if (func == "option"){
     QString option = ui->lineEdit->text();
-    qDebug() << "these are gonna go out " <<device << item << option;
+//    qDebug() << "these are gonna go out " <<device << item << option;
     ItemHandler::addOptions(device,item,option);
     }
     else;

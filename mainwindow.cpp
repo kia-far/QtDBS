@@ -31,7 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
 
     setBtnIcon();
-    d.show();
+//    d.show();
 //    x.show();
 }
 
@@ -46,7 +46,9 @@ MainWindow::MainWindow(QWidget *parent)
 void MainWindow::setBtnIcon(){
 
     ui->productBtn->setIconSize(ui->productBtn->size());
-    qDebug() <<"size : " <<ui->customerBtn->iconSize();
+    ui->deviceBtn->setIconSize(ui->deviceBtn->size());
+    ui->customerBtn->setIconSize(ui->customerBtn->size());
+    ui->serviceBtn->setIconSize(ui->serviceBtn->size());
 
 }
 void MainWindow::setupTable(QString a){

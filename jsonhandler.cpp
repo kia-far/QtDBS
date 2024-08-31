@@ -26,7 +26,7 @@ QJsonObject JsonHandler::loadJson() {
             qDebug() << "error in json data : " << JsonError.errorString();
         }
         else{
-            qDebug() << "no error in json data. ";
+//            qDebug() << "no error in json data. ";
         }
         if(Document.isObject()){
            obj = Document.object();
@@ -57,7 +57,7 @@ QJsonObject JsonHandler::loadInfoJson() {
             qDebug() << "error in json data : " << JsonError.errorString();
         }
         else{
-            qDebug() << "no error in json data. ";
+//            /*qDebug() << "no error in json data. "*/;
         }
         if(Document.isObject()){
            obj = Document.object();

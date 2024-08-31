@@ -56,7 +56,7 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
     QStringList columnsToExclude = {/*"column_name_1", "column_name_2", "column_name_3"*/};
 
     query.exec(res);
-    qDebug() << res;
+//    qDebug() << res;
     QSqlRecord record = query.record();
     int numCols = record.count();
 
@@ -95,8 +95,8 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
         }
     }
 
-    qDebug() << "Rows loaded:" << rows.size();
-    qDebug() << "Columns loaded:" << columns.size();
+//    qDebug() << "Rows loaded:" << rows.size();
+//    qDebug() << "Columns loaded:" << columns.size();
 
     emit layoutChanged();
 }

@@ -64,8 +64,8 @@ void ProductEdit::loadData(int serialNum) {
         }
     }
 
-    qDebug() << "Rows loaded:" << rows.size();
-    qDebug() << "Columns loaded:" << columns.size();
+//    qDebug() << "Rows loaded:" << rows.size();
+//    qDebug() << "Columns loaded:" << columns.size();
 
     emit layoutChanged();
 }

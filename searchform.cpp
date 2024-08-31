@@ -41,9 +41,9 @@ void SearchForm::createCombo(){
         ui->comboBox->addItem("ID");
     } else if(currentSearch == 2) {
         ui->comboBox->addItem("Serial Number");
-        ui->comboBox->addItem("Cell");
-        ui->comboBox->addItem("Power");
-        ui->comboBox->addItem("Motherboard");
+        ui->comboBox->addItem("Customer name");
+        ui->comboBox->addItem("Belongings");
+
     } else{
         ui->comboBox->addItem("Serial Number");
         ui->comboBox->addItem("Product Name");
@@ -54,7 +54,7 @@ void SearchForm::createCombo(){
 void SearchForm::on_buttonBox_accepted()
 {
     QString searchText = ui->lineEdit->text();
-    qDebug() << "accepted";
+//    qDebug() << "accepted";
     if (currentSearch == 0){/*Customers*/
         if (ui->comboBox->currentText()=="Name"){emit searchWorking("Name",searchText);}
         else if (ui->comboBox->currentText()=="Product"){emit searchWorking("Product",searchText);}
@@ -69,9 +69,8 @@ void SearchForm::on_buttonBox_accepted()
     }
     else if (currentSearch == 2){/*Devices*/
         if (ui->comboBox->currentText()=="Serial Number"){emit searchWorking("SerialNum",searchText);}
-        else if (ui->comboBox->currentText()=="Cell"){emit searchWorking("Cell",searchText);}
-        else if (ui->comboBox->currentText()=="Power"){emit searchWorking("Power",searchText);}
-        else if (ui->comboBox->currentText()=="Motherboard"){emit searchWorking("MotherBoard",searchText);}
+        else if (ui->comboBox->currentText()=="Customer name"){emit searchWorking("Customer name",searchText);}
+        else if (ui->comboBox->currentText()=="Belongings"){emit searchWorking("Belongings",searchText);}
         else {}
     }
     else {/*Product*/

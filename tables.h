@@ -53,6 +53,8 @@ private slots:
 
     void on_comboBox_2_currentIndexChanged(const QString &arg1);
 
+    void on_tableView_doubleClicked(const QModelIndex &index);
+
 private:
     Ui::Tables *ui;
     ProxyView *View;

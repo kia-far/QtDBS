@@ -62,7 +62,7 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
     for (int i=0;i<belongings.size();i++){
         createBelonging(belongings[i],i);
     }
-    qDebug () <<  currentDevice;
+//    qDebug () <<  currentDevice;
 }
 void DeviceForm::createBelonging(QString itemName,int index){
     QCheckBox *checkBox = new QCheckBox(itemName);
@@ -142,7 +142,7 @@ void DeviceForm::populateEdit(QString device,int id){
     if (query.exec()) {
         QSqlRecord record = query.record();
         int numCols = record.count();
-        qDebug() << "Fetch the results";
+//        qDebug() << "Fetch the results";
         while (query.next()) {
             for (int i=0;i<numCols;i++){
             res.append( query.value(i).toString());
@@ -190,7 +190,7 @@ void DeviceForm::on_SubmitBtn_clicked()
 //description TEXT, belongings TEXT
     for (QLabel *label : labels) {
         QString text = label->text(); // Get the text from the QLineEdit
-        qDebug() << "column" << label->objectName() << ":" << text;
+//        qDebug() << "column" << label->objectName() << ":" << text;
         for(int i=0;i<text.size(); i++){
             if (text.at(i)==" "){newText.append("_");}
             else{newText.append(text.at(i));}
@@ -205,7 +205,7 @@ void DeviceForm::on_SubmitBtn_clicked()
     QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
     for (QComboBox *comboBox : comboBoxes) {
         QString text = comboBox->currentText();
-        qDebug() << "Data" << comboBox->objectName() << ":" << text;
+//        qDebug() << "Data" << comboBox->objectName() << ":" << text;
         givenData.append(text);
     }
     ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
@@ -213,7 +213,7 @@ void DeviceForm::on_SubmitBtn_clicked()
 }
 
 void DeviceForm::addOption(QString deviceName,QString itemName){
-    qDebug() << "option possibly added : " << itemName;
+//    qDebug() << "option possibly added : " << itemName;
     emit optionPage(deviceName,itemName);
 }
 void DeviceForm::addItem(QString deviceName){
@@ -243,7 +243,7 @@ QStringList DeviceForm::getCustomers(QString halfText) {
 
     // Execute the query
     if (query.exec()) {
-        qDebug() << "Fetch the results";
+//        qDebug() << "Fetch the results";
         while (query.next()) {
             res << query.value(0).toString();  // Assuming 'name' is the first column
         }

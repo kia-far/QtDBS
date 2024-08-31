@@ -60,7 +60,7 @@ QString MyFunctions::reverseSN(const QString &input) {
         }
     }
 
-    qDebug() << "reverseSN result:" << result;
+//    qDebug() << "reverseSN result:" << result;
     return result;
 }
 
@@ -70,24 +70,24 @@ QString MyFunctions::smallSN(QString input) {
     if(!input.isEmpty()){
         for(int i=0;i<input.length();i++){
             if(letter&&(input.at(i).isLetter())){
-                qDebug()<<i <<"time";
+//                qDebug()<<i <<"time";
                 input = input.toUpper();
                 int positionInAlphabet = input.at(i).toLatin1() - 'A' + 1;
                 if (positionInAlphabet >= 1 && positionInAlphabet <= 26) {
                     QString positionString = QString::number(positionInAlphabet).rightJustified(2, '0');
                     result.append(positionString);
-                    qDebug() <<"positionstring isssss: "<<positionString;
+//                    qDebug() <<"positionstring isssss: "<<positionString;
                 }
                 poslet = i;
             }
             else{
                 result.append(input.at(i));
-                qDebug()<< "what?!";
+//                qDebug()<< "what?!";
             }
         }
 
     }
-    qDebug()<<"this is inside smallsn func"<<result;
+//    qDebug()<<"this is inside smallsn func"<<result;
             return result;
 }
 QString MyFunctions::querySolver(){
@@ -99,7 +99,7 @@ QString MyFunctions::querySolver(){
         }
     }
     else{res="-1";}
-    qDebug()<< res<< "hello"<<poslet;
+//    qDebug()<< res<< "hello"<<poslet;
     poslet =-1;
     return res;
 }
@@ -166,4 +166,24 @@ int MyFunctions::snLetter(QString letter){
         index++;
     }
     return 0;
+}
+QString MyFunctions::searchHandler(QString column,QString tableName, QString searchParam ,QString searchText){
+    QString res;
+    QString context;
+    QString space;
+    if (searchText==""){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+    else{
+        if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
+        else{
+            context = MyFunctions::smallSN(searchText);
+            space = MyFunctions::querySolver();
+            if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
+            /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
+            else{
+                res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
+//                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
+            }
+        }
+    }
+    return res;
 }

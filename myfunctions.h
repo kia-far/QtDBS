@@ -17,7 +17,7 @@ public:
     static bool checkSN(QString sn);
     static QString querySolver();
     static int snLetter(QString letter);
-
+    static QString searchHandler(QString column,QString tableName, QString searchParam ,QString searchText);
 
 private:
    static int poslet;

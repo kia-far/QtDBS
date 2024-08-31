@@ -56,7 +56,7 @@ Tables::~Tables()
 void Tables::setupTable(QString table){
     ui->comboBox_2->hide();
     if (table == "product"){
-        qDebug () << "product opened -------------------------------";
+//        qDebug () << "product opened -------------------------------";
         currentTable = 3;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(Product);
@@ -65,7 +65,7 @@ void Tables::setupTable(QString table){
     else if(table == "device") {
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
-        qDebug () << "device opened -------------------------------";
+//        qDebug () << "device opened -------------------------------";
         QString searchParam = "SerialNumber";
         QString searchText = "";
         View->setSearchParameters(currentDevice,searchParam, searchText);
@@ -74,7 +74,7 @@ void Tables::setupTable(QString table){
         ui->tableView->setModel(View);
     }
     else if(table == "service") {
-        qDebug () << "service opened -------------------------------";
+//        qDebug () << "service opened -------------------------------";
         QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM ServiceInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
@@ -85,7 +85,7 @@ void Tables::setupTable(QString table){
 
     }
     else if(table == "customer") {
-        qDebug () << "customer opened -------------------------------";
+//        qDebug () << "customer opened -------------------------------";
         QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM CustomerInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
@@ -238,5 +238,14 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     QString searchText = "";
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);
+}
+
+
+void Tables::on_tableView_doubleClicked(const QModelIndex &index)
+{
+    if (currentTable == 0){emit editCustomer(clickedID);}
+    else if (currentTable == 1){emit editService(clickedID);}
+    else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
+    else {emit editProduct(lastClicked );}
 }
 

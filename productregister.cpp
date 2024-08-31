@@ -55,7 +55,7 @@ void ProductRegister::regSubmit()
         a[5] = ui->lineEdit_13->text();
         a[6] = ui->textEdit->toPlainText();
 
-        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
+//        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
 
         // Call register functions here
         registerProductInfo();
@@ -82,7 +82,7 @@ void ProductRegister::editSubmit()
     a[5] = ui->lineEdit_13->text();
     a[6] = ui->textEdit->toPlainText();
 
-    qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5];
+//    qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5];
 
     updateProductInfo();
     updateProductSecInfo();
@@ -114,7 +114,7 @@ void ProductRegister::loadProductInfo(){
     QSqlQuery query(db.getConnection());
     query.prepare("SELECT * FROM ProductInfo WHERE SerialNO = :serialNumber");
     query.bindValue(":serialNumber", QString::number(Serialnum));
-    qDebug() << "Executing query for ProductInfo with Serialnum:" << Serialnum;
+//    qDebug() << "Executing query for ProductInfo with Serialnum:" << Serialnum;
 
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
@@ -135,7 +135,7 @@ void ProductRegister::loadProductSecInfo(){
     QSqlQuery query(db.getConnection());
     query.prepare("SELECT * FROM ProductSecInfo WHERE SerialNO = :serialNumber");
     query.bindValue(":serialNumber", QString::number(Serialnum));
-    qDebug() << "Executing query for ProductSecInfo with Serialnum:" << Serialnum;
+//    qDebug() << "Executing query for ProductSecInfo with Serialnum:" << Serialnum;
 
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
@@ -151,7 +151,7 @@ void ProductRegister::loadProductSecInfo(){
 }
 
 void ProductRegister::trigger(int serialnum) {
-    qDebug() << "Serialnum set to:" << Serialnum; // Debugging statement
+//    qDebug() << "Serialnum set to:" << Serialnum; // Debugging statement
     editOn(serialnum);
     setup();
 }
@@ -175,7 +175,7 @@ void ProductRegister::updateProductInfo(){
     if (!er) {
         qDebug() << "Error in ProductInfo update:" << q.lastError().text();
     } else {
-        qDebug() << "success 1 " + a[0];
+//        qDebug() << "success 1 " + a[0];
     }
 }
 
@@ -192,7 +192,7 @@ void ProductRegister::updateProductSecInfo(){
     if (!err) {
         qDebug() << "Error in ProductSecInfo update:" << qe.lastError().text();
     } else {
-        qDebug() << "success 2";
+//        qDebug() << "success 2";
     }
 
 }

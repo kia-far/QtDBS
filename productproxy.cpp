@@ -30,26 +30,27 @@ void ProductProxy::loadData(QString searchParam,QString searchText) {
     QString context;
     QString space;
     if (searchParam=="ProductInfo.SerialNO"){
-        if (searchText==""){res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-        else{
-            if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
-            else{
-                context = MyFunctions::smallSN(searchText);
-                space = MyFunctions::querySolver();
-                if(!(space=="-1")){res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '"+space+context+"%'";
-                qDebug()<<"LIKE debug try '"+space+context+"%'";}
-                else{
-                    res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
-                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
-                }
-            }
-        }
+//        if (searchText==""){res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+//        else{
+//            if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
+//            else{
+//                context = MyFunctions::smallSN(searchText);
+//                space = MyFunctions::querySolver();
+//                if(!(space=="-1")){res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '"+space+context+"%'";
+//                /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
+//                else{
+//                    res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
+////                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
+//                }
+//            }
+//        }
+        res = MyFunctions::searchHandler("ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description", "ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO", searchParam,searchText);
     }
     else {res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
 
 
     query.exec(res);
-    qDebug() << res;
+//    qDebug() << res;
     QSqlRecord record = query.record();
     int numCols = record.count();
 
@@ -82,8 +83,8 @@ void ProductProxy::loadData(QString searchParam,QString searchText) {
         }
     }
 
-    qDebug() << "Rows loaded:" << rows.size();
-    qDebug() << "Columns loaded:" << columns.size();
+//    qDebug() << "Rows loaded:" << rows.size();
+//    qDebug() << "Columns loaded:" << columns.size();
 
     emit layoutChanged();
 }

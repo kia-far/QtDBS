@@ -32,7 +32,17 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Hardware.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Hardware.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>200</width>
+          <height>200</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -45,7 +55,7 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string/>
         </property>
         <property name="icon">
          <iconset>
@@ -68,7 +78,11 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Customers.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Customers.png</iconset>
         </property>
        </widget>
       </item>
@@ -81,7 +95,11 @@
          </sizepolicy>
         </property>
         <property name="text">
-         <string>PushButton</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset>
+          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Services.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Services.png</iconset>
         </property>
        </widget>
       </item>

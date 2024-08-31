@@ -39,7 +39,7 @@ QStringList ItemHandler::loadItems(QString device){
     for (int i=0;i<itemArr.size();i++){
         tempstr.append(itemArr[i].toObject().begin().key());
     }
-    qDebug() <<"item loaded: "<< tempstr;
+//    qDebug() <<"item loaded: "<< tempstr;
 //    qDebug() << "loadItems end";
     return tempstr;
 }
@@ -92,7 +92,7 @@ QStringList ItemHandler::loadbelongings(QString device) {
         qDebug() << "Device not found:" << device;
         return QStringList();
     }
-    qDebug() << "Belongings loaded: " << tempstr;
+//    qDebug() << "Belongings loaded: " << tempstr;
     return tempstr;
 }
 
@@ -112,7 +112,7 @@ void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     if (!query.exec(createTableQuery)) {
         qDebug() << "Failed to create table:" << query.lastError().text();
     } else {
-        qDebug() << "Table created successfully:" << deviceName;
+//        qDebug() << "Table created successfully:" << deviceName;
     }
 }
 void ItemHandler::addBelonging(QString device, QString itemName) {
@@ -149,7 +149,7 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
     QJsonDocument someDoc(loadedInfoObj);
     JsonHandler::saveInfoJson(someDoc);
 
-    qDebug() << "Added item:" << itemName << "to device:" << device;
+//    qDebug() << "Added item:" << itemName << "to device:" << device;
 }
 
 
@@ -178,7 +178,7 @@ void ItemHandler::addItems(QString deviceName, QString itemName){
     if (!query.exec(addColumnQuery)) {
         qDebug() << "Failed to add column:" << query.lastError().text();
     } else {
-        qDebug() << "Column added successfully:" << itemName << "to table:" << deviceName;
+//        qDebug() << "Column added successfully:" << itemName << "to table:" << deviceName;
     }
 }
 void ItemHandler::addOptions(QString deviceName , QString itemName , QString optionName){
@@ -228,7 +228,7 @@ void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringLis
     if (!query.exec()) {
         qDebug() << "Failed to insert data:" << query.lastError().text();
     } else {
-        qDebug() << "Data inserted successfully into table:" << tableName;
+//        qDebug() << "Data inserted successfully into table:" << tableName;
     }
 }
 
@@ -258,7 +258,7 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
 
     JsonHandler::saveInfoJson(somedoc);
 
-    qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
+//    qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
 }
 
 

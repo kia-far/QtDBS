@@ -46,7 +46,7 @@ void CustomerForm::regSubmit(){
     query.addBindValue(b[2]);
     query.addBindValue(b[3]);
 
-    qDebug() << "Executing query for CustomerInfo with ID:" <<ID;
+//    qDebug() << "Executing query for CustomerInfo with ID:" <<ID;
 
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
@@ -69,7 +69,7 @@ void CustomerForm::editSubmit(){
     if (!er) {
         qDebug() << "Error in CustomerInfo update:" << q.lastError().text();
     } else {
-        qDebug() << "success 1 " + b[0];
+//        qDebug() << "success 1 " + b[0];
     }
 
 
@@ -93,6 +93,7 @@ void CustomerForm::setup(){
         ui->lineEdit_2->setText("");
         ui->lineEdit_3->setText("");
         ui->lineEdit_4->setText("");
+        ui->lineEdit->hide();
     } else if (Modee == "EDIT") {
         QSqlQuery query(db.getConnection());
         query.prepare("SELECT * FROM CustomerInfo WHERE ID = ?");
@@ -105,7 +106,7 @@ void CustomerForm::setup(){
                 ui->lineEdit_2->setText(query.value("Name").toString());
                 ui->lineEdit_3->setText(query.value("ContactInfo").toString());
                 ui->lineEdit_4->setText(query.value("RepresentName").toString());
-
+                ui->lineEdit->hide();
             } else {
                 qDebug() << "No data found for ID: " << ID;
             }

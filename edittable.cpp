@@ -87,7 +87,7 @@ void EditTable::on_pushButton_clicked()
         if (!success) {
             qDebug() << "Error in CustomerInfo update:" << query.lastError().text();
         } else {
-            qDebug() << "CustomerInfo updated successfully.";
+//            qDebug() << "CustomerInfo updated successfully.";
         }
     } else {}/*if (currentIndex == 1) {
         // ServiceInfo table update
@@ -110,7 +110,7 @@ void EditTable::on_pushButton_clicked()
         if (!success) {
             qDebug() << "Error in ServiceInfo update:" << query.lastError().text();
         } else {
-            qDebug() << "ServiceInfo updated successfully.";
+//            qDebug() << "ServiceInfo updated successfully.";
         }
     } else if (currentIndex == 3) {
         // ProductInfo table update
@@ -118,7 +118,7 @@ void EditTable::on_pushButton_clicked()
         for (int i = 1; i < 7; i++) {
             a[i-1] = ui->tableView->model()->data(ui->tableView->model()->index(0, i)).toString();
         }
-        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5];
+//        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5];
 
         QSqlQuery q(db);
         q.prepare("UPDATE ProductInfo SET ProductName = ?, Invoice = ?, AnyDeskNO = ? WHERE SerialNO = ?");
@@ -140,7 +140,7 @@ void EditTable::on_pushButton_clicked()
 
         bool err = q.exec();
         if (!err) {
-            qDebug() << "Error in ProductSecInfo update:" << q.lastError().text();
+//            qDebug() << "Error in ProductSecInfo update:" << q.lastError().text();
         }
     }*/
 }
