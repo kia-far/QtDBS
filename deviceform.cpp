@@ -20,19 +20,24 @@ DeviceForm::~DeviceForm()
     delete ui;
 }
 void DeviceForm::trigger(QString device){
+    clearPage();
     this->show();
     currentDevice = device;
     setup();
 }
+
 void DeviceForm::setup(){
     edit = false;
+
     QStringList devices = ItemHandler::loadDevices();
     ui->comboBox->clear();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
 }
 void DeviceForm::editDevice(QString device , int id){
-    trigger(device);
+    this->show();
+    currentDevice = device;
+    setup();
     ui->comboBox->setCurrentText(device);
     ui->lineEdit->setText(MyFunctions::intToStr(id));
     populateEdit(device,id);
@@ -213,7 +218,23 @@ void DeviceForm::on_SubmitBtn_clicked()
         givenData.append(text);
     }
     if (!edit){
-    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);}
+    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+    QSqlQuery q(db.getConnection());
+    q.prepare("INSERT INTO ProductInfo (SerialNO) VALUES (?)");
+    q.addBindValue(givenData[0].toString());
+
+    bool er = q.exec();
+    if (!er) {
+        qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
+    }
+    q.prepare("INSERT INTO ProductSecInfo (SerialNO) VALUES (?)");
+    q.addBindValue(givenData[0].toString());
+
+    bool err = q.exec();
+    if (!err) {
+        qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
+    }
+    }
     else {
         ItemHandler::updateTable(currentDevice,columns,givenData);
     }
@@ -229,6 +250,13 @@ void DeviceForm::addItem(QString deviceName){
 }
 void DeviceForm::addDevice(){
     emit devicePage();
+}
+void DeviceForm::clearPage(){
+    for (QCheckBox *checkbox : checkBoxes){checkbox->setChecked(false);}
+    for (QComboBox *combobox : comboBoxes){combobox->setCurrentIndex(0);}
+    ui->CustomerCombo->setCurrentText("");
+    ui->textEdit->setText("");
+    ui->lineEdit->setText("");
 }
 void DeviceForm::on_AddItemBtn_clicked()
 {

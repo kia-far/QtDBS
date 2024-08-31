@@ -27,6 +27,7 @@ public:
     void editDevice(QString device, int id);
     void trigger(QString device);
     void refresh();
+    void clearPage();
 
 signals:
     void optionPage(QString deviceName,QString itemName);
