@@ -64,6 +64,7 @@ private:
     QList<QCheckBox*> checkBoxes;
     QStringList getCustomers(QString something);
     DatabaseConnection &db;
+    bool edit;
 
 };
 

@@ -231,6 +231,49 @@ void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringLis
 //        qDebug() << "Data inserted successfully into table:" << tableName;
     }
 }
+void ItemHandler::updateTable(const QString &tableName, const QStringList &columnNames, const QVariantList &dataValues) {
+    DatabaseConnection& db = DatabaseConnection::getInstance();
+
+    // Check if there are enough columns and data values
+    if (columnNames.size() != dataValues.size() || dataValues.isEmpty()) {
+        qDebug() << "Column names and data values size mismatch or empty data values.";
+        return;
+    }
+
+    // Extract the serial number (the first column) and prepare the update statement
+    QVariant serialNumber = dataValues[0]; // Assuming the first value is the serial number
+    QStringList setClauses;
+
+    // Prepare the SET clauses for the UPDATE statement
+    for (int i = 1; i < columnNames.size(); ++i) { // Start from 1 to skip the serial number
+        setClauses << QString("%1 = ?").arg(columnNames[i]); // Use placeholders for prepared statement
+    }
+
+    // Construct the SQL UPDATE query
+    QString updateQuery = QString("UPDATE %1 SET %2 WHERE %3 = ?")
+                          .arg(tableName)
+                          .arg(setClauses.join(", "))
+                          .arg(columnNames[0]); // Use the first column as the WHERE clause
+
+    QSqlQuery query(db.getConnection());
+    query.prepare(updateQuery);
+
+    // Bind values for the SET clauses
+    for (int i = 1; i < dataValues.size(); ++i) {
+        query.bindValue(i - 1, dataValues[i]); // Bind starting from index 0 for the SET values
+    }
+
+    // Bind the serial number for the WHERE clause
+    query.bindValue(dataValues.size() - 1, serialNumber); // Last bind value is the serial number
+
+    // Execute the query
+    if (!query.exec()) {
+        qDebug() << "Failed to update data:" << query.lastError().text();
+    } else {
+        qDebug() << "Data updated successfully in table:" << tableName;
+    }
+}
+
 
 void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();

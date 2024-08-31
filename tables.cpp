@@ -101,7 +101,7 @@ void Tables::setupTable(QString table){
 }
 void Tables::searchInfo(QString currentSearchParam,QString searchText){
     searchParam = currentSearchParam;
-    qDebug()<<QString::number(currentTable)+"  "  + "  "+ searchParam+ "   " +searchText;
+//    qDebug()<<QString::number(currentTable)+"  "  + "  "+ searchParam+ "   " +searchText;
     if(currentTable==0){
 
 

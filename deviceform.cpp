@@ -25,7 +25,9 @@ void DeviceForm::trigger(QString device){
     setup();
 }
 void DeviceForm::setup(){
+    edit = false;
     QStringList devices = ItemHandler::loadDevices();
+    ui->comboBox->clear();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
 }
@@ -132,6 +134,7 @@ void DeviceForm::clearLayout(QLayout *layout) {
     }
 }
 void DeviceForm::populateEdit(QString device,int id){
+    edit = true;
     QString newText="";
     QSqlQuery query(db.getConnection());
 
@@ -179,6 +182,7 @@ void DeviceForm::populateEdit(QString device,int id){
     comboBox->setCurrentText(res[count]);
     count++;
     }
+
 //    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
 
 }
@@ -208,7 +212,11 @@ void DeviceForm::on_SubmitBtn_clicked()
 //        qDebug() << "Data" << comboBox->objectName() << ":" << text;
         givenData.append(text);
     }
-    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+    if (!edit){
+    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);}
+    else {
+        ItemHandler::updateTable(currentDevice,columns,givenData);
+    }
 
 }
 
