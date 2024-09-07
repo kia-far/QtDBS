@@ -60,6 +60,7 @@ void ProductRegister::regSubmit()
         // Call register functions here
         registerProductInfo();
         registerProductSecInfo();
+
     } else {
         qDebug() << "incorrect serial number";
     }

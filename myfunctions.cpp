@@ -3,10 +3,11 @@
 #include <QDebug>
 
 int MyFunctions::poslet = -1;
-
+QStringList MyFunctions::letters ={};
 MyFunctions::MyFunctions(QObject *parent)
     : QAbstractItemModel(parent)
 {
+//    letters = {""};
 }
 QString MyFunctions:: intToStr(int number) {
     QString numberStr = QString::number(number);
@@ -15,12 +16,12 @@ QString MyFunctions:: intToStr(int number) {
         return QString();
 
     QChar firstDigit = numberStr.at(0);
-    if (firstDigit == '1')
-        numberStr[0] = 'B';
-    else if (firstDigit == '2')
-        numberStr[0] = 'N';
-    else if (firstDigit == '3')
-        numberStr[0] = 'S';
+    QString temp = "";
+    temp.append(firstDigit);
+    if(deviceFromSN(temp)!=""){
+    numberStr[0] = deviceFromSN(temp).at(0);}
+//    if(deviceFromSN(temp).size()!=1){qDebug() << "something wrong with deviceFromSN";}
+
 
     int fourthDigit = numberStr.mid(3, 1).toInt();
     int fifthDigit = numberStr.mid(4, 1).toInt();
@@ -187,3 +188,41 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     }
     return res;
 }
+QString MyFunctions::deviceFromSN(QString SN) {
+    try {
+        if (letters.size() == 0) {
+            MyFunctions::setLetters();
+        }
+
+        // Validate SN here
+        bool ok;
+        int index = SN.toInt(&ok) - 1;
+        if (!ok || index < 0 || index >= letters.size() / 2) {
+            // Handle invalid SN
+            qDebug() << "invalid SN";
+            return QString();
+        }
+
+        return letters[(index * 2) + 1];
+    } catch (const std::exception& e) {
+        qDebug() << "Exception caught:" << e.what();
+    }
+
+    return QString(); // Or return an appropriate value
+}
+
+void MyFunctions::setLetters() {
+    letters.clear();  // Ensure the list is reset
+    for (int i = 0; i < ItemHandler::nameLetter().size(); i++) {
+        letters.append(ItemHandler::nameLetter()[i]);
+    }
+}
+
+//QStringList MyFunctions::getLetters(){
+//    if(letters.size()!=0){
+//    return letters;}
+//    else {
+//        letters = ItemHandler::nameLetter();
+//        return letters;
+//    }
+//}

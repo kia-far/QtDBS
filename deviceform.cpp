@@ -33,6 +33,7 @@ void DeviceForm::setup(){
     ui->comboBox->clear();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
+    ui->pushButton->setFixedWidth(25);
 }
 void DeviceForm::editDevice(QString device , int id){
     this->show();
@@ -97,7 +98,8 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     QPushButton *addBtn = new QPushButton();
     QString buttonName = QString("addBtn_%1").arg(index+10*indexcounter);
     addBtn->setObjectName(buttonName);
-    addBtn->setText("Add");
+    addBtn->setText("+");
+    addBtn->setFixedWidth(25);
     connect(addBtn, &QPushButton::clicked, this, [this, itemName]() {
         addOption(currentDevice,itemName);
     });
@@ -106,7 +108,7 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     QHBoxLayout *hb = new QHBoxLayout;
     //size constraints:
     label->setAlignment(Qt::AlignRight);
-    addBtn->setMaximumWidth(40);
+//    addBtn->setMaximumWidth(40);
     addBtn->setMinimumHeight(25);
     comboBox->setMinimumHeight(25);
     label->setMinimumHeight(25);
@@ -303,6 +305,7 @@ void DeviceForm::on_CustomerCombo_editTextChanged(const QString &arg1) {
 
 void DeviceForm::on_pushButton_clicked()
 {
-    emit addCustomer();
+//    emit addCustomer();
+    qDebug() << MyFunctions::deviceFromSN("3");
 }
 

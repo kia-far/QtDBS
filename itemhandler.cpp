@@ -317,4 +317,19 @@ QStringList ItemHandler::readLetters() {
 //    qDebug() << "Whole letters:" << res;
     return res;
 }
+QStringList ItemHandler::nameLetter() {
+    QStringList res;
+    QJsonArray deviceArr = loadedInfoObj["devices"].toArray();
+
+    for (const QJsonValue& deviceObj : deviceArr) {
+        QString deviceName = deviceObj.toObject().keys().first();
+        QString firstLetter = deviceObj.toObject()[deviceName].toArray()[1].toString();
+
+        res.append(deviceName);
+        res.append(firstLetter);
+    }
+
+    return res;
+}
+
 

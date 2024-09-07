@@ -169,7 +169,7 @@
              </size>
             </property>
             <property name="text">
-             <string>New</string>
+             <string>+</string>
             </property>
            </widget>
           </item>

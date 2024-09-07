@@ -24,6 +24,7 @@ public:
     static void updateTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues);
 
     static QStringList readLetters();
+    static QStringList nameLetter();
 
 private:
     DatabaseConnection &db;
