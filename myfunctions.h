@@ -21,7 +21,9 @@ public:
     static QString deviceFromSN(QString SN);
     static void setLetters();
     static QStringList getLetters();
-
+//    static void initializeData();
+signals:
+    void dataReady();
 private:
    static int poslet;
    static QStringList letters;

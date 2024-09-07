@@ -13,6 +13,7 @@
 #include "itemhandler.h"
 #include "jsonhandler.h"
 #include "addoption.h"
+#include "myfunctions.h"
 class Tables;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +26,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void onDataReady();
     void setBtnIcon();
     void setupTable(QString a);
 

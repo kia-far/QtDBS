@@ -3,11 +3,10 @@
 #include <QDebug>
 
 int MyFunctions::poslet = -1;
-QStringList MyFunctions::letters ={};
+QStringList MyFunctions::letters = {};
 MyFunctions::MyFunctions(QObject *parent)
     : QAbstractItemModel(parent)
 {
-//    letters = {""};
 }
 QString MyFunctions:: intToStr(int number) {
     QString numberStr = QString::number(number);
@@ -190,16 +189,19 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
 }
 QString MyFunctions::deviceFromSN(QString SN) {
     try {
-        if (letters.size() == 0) {
+        if (letters.isEmpty()) {
+//            qDebug() << "letters is empty, setting letters...";
             MyFunctions::setLetters();
         }
 
         // Validate SN here
         bool ok;
         int index = SN.toInt(&ok) - 1;
-        if (!ok || index < 0 || index >= letters.size() / 2) {
+//        qDebug() << "letters :" << letters;
+
+        if (!ok || index < 0 || letters.isEmpty()) {
             // Handle invalid SN
-            qDebug() << "invalid SN";
+//            qDebug() << "invalid SN:" << SN;
             return QString();
         }
 
@@ -212,11 +214,26 @@ QString MyFunctions::deviceFromSN(QString SN) {
 }
 
 void MyFunctions::setLetters() {
+//    qDebug() << "Setting letters from ItemHandler::nameLetter()...";
     letters.clear();  // Ensure the list is reset
-    for (int i = 0; i < ItemHandler::nameLetter().size(); i++) {
-        letters.append(ItemHandler::nameLetter()[i]);
+
+    QStringList nameLetters = ItemHandler::nameLetter();
+
+    if (nameLetters.isEmpty()) {
+//        qDebug() << "Warning: ItemHandler::nameLetter() is empty!";
+        return;
     }
+
+    for (int i = 0; i < nameLetters.size(); i++) {
+        letters.append(nameLetters[i]);
+    }
+
+//    isDataReady = true;  // Mark data as ready
+//    emit dataReady();  // Notify that data is ready
+//    qDebug() << "Letters set: " << letters;
 }
+
+
 
 //QStringList MyFunctions::getLetters(){
 //    if(letters.size()!=0){
@@ -224,5 +241,17 @@ void MyFunctions::setLetters() {
 //    else {
 //        letters = ItemHandler::nameLetter();
 //        return letters;
+//    }
+//}
+//void MyFunctions::initializeData() {
+//    // Start loading data
+//    qDebug() << "Loading data from JSON file...";
+//    MyFunctions::setLetters();
+
+//    if (!letters.isEmpty()) {
+////        isDataReady = true;  // Mark data as ready
+//        qDebug() << "Data successfully loaded at startup!";
+//    } else {
+//        qDebug() << "Data loading failed or is still empty!";
 //    }
 //}

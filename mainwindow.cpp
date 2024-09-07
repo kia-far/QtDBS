@@ -29,7 +29,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);
     QObject::connect(&a, &AddOption::updatePage,&d , &DeviceForm::refresh);
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
-
+//    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
+//    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();
 //    d.show();
 //    x.show();
@@ -42,6 +43,10 @@ MainWindow::MainWindow(QWidget *parent)
 //lblImage->setScaledContents( true );
 
 //lblImage->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
+
+void MainWindow::onDataReady() {
+    qDebug() << "Data is ready, now we can safely use deviceFromSN()";
+}
 
 void MainWindow::setBtnIcon(){
 
@@ -56,6 +61,7 @@ void MainWindow::setupTable(QString a){
 }
 MainWindow::~MainWindow()
 {
+//    MyFunctions::initializeData();
     delete ui;
     delete tables;
 }

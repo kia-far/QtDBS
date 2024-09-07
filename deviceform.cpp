@@ -92,7 +92,8 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     labels.append(label);
     QComboBox *comboBox = new QComboBox();
     QString comboBoxName = QString("comboBox_%1").arg(index+10*indexcounter);
-    comboBox->insertItems(0,setupOptions(itemName));
+    comboBox->insertItem(0,"none");
+    comboBox->insertItems(1,setupOptions(itemName));
     comboBox->setObjectName(comboBoxName);
     comboBoxes.append(comboBox);
     QPushButton *addBtn = new QPushButton();
@@ -305,7 +306,6 @@ void DeviceForm::on_CustomerCombo_editTextChanged(const QString &arg1) {
 
 void DeviceForm::on_pushButton_clicked()
 {
-//    emit addCustomer();
-    qDebug() << MyFunctions::deviceFromSN("3");
+    emit addCustomer();
 }
 
