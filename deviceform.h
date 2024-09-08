@@ -34,6 +34,7 @@ signals:
     void itemPage(QString deviceName);
     void devicePage();
     void addCustomer();
+    void belongingPage(QString deviceName);
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
@@ -48,6 +49,13 @@ private slots:
     void on_pushButton_clicked();
 
     void populateEdit(QString device, int id);
+
+    void on_AddDevBtn_clicked();
+
+    void on_AddOptBtn_clicked();
+
+    void on_AddBelBtn_clicked();
+
 private:
     void createBelonging(QString itemName,int index);
     void createNewItem(QString itemName , int index);
@@ -56,6 +64,7 @@ private:
     void addOption(QString deviceName,QString itemName);
     void addItem(QString deviceName);
     void addDevice();
+    void addBelonging(QString deviceName);
     QString currentDevice;
     int adder;
     Ui::DeviceForm *ui;

@@ -27,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::optionPage,&a, &AddOption::setupOption);
     QObject::connect(&d, &DeviceForm::itemPage,&a, &AddOption::setupItem);
     QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);
+    QObject::connect(&d, &DeviceForm::belongingPage,&a,&AddOption::setupBelonging);
     QObject::connect(&a, &AddOption::updatePage,&d , &DeviceForm::refresh);
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object

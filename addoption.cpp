@@ -19,6 +19,15 @@ AddOption::~AddOption()
     delete ui;
 }
 
+void AddOption::setupBelonging(QString deviceName){
+    cleanupDevice();
+    device = deviceName;
+    func = "belonging";
+    this->setWindowTitle("Add Belonging");
+    ui->label->setText("New Belonging");
+    this->show();
+}
+
 void AddOption::setupDevice(){
     func = "device";
     this->setWindowTitle("Add Device");
@@ -55,6 +64,10 @@ void AddOption::on_pushButton_clicked()
             else{newText.append(text.at(i));}
         }
         ItemHandler::addDevices(text,lineEdit_2->text());
+    }
+    else if (func == "belonging"){
+        QString text = ui->lineEdit->text();
+        ItemHandler::addBelonging(device,text);
     }
     else if (func == "item"){
         QString text = ui->lineEdit->text();

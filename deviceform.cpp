@@ -14,6 +14,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui->setupUi(this);
     setup();
 }
+int indexx;
 int indexcounter = 0;
 DeviceForm::~DeviceForm()
 {
@@ -70,7 +71,14 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
     for (int i=0;i<belongings.size();i++){
         createBelonging(belongings[i],i);
     }
-//    qDebug () <<  currentDevice;
+    QPushButton *newBelBtn = new QPushButton();
+    QString buttonName = QString("new Belonging");
+    newBelBtn->setObjectName("newBelBtn");
+    newBelBtn->setText("new Belonging");
+//    newBelBtn->setFixedWidth(25);
+    connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
+    indexx++;
+    ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);
 }
 void DeviceForm::createBelonging(QString itemName,int index){
     QCheckBox *checkBox = new QCheckBox(itemName);
@@ -80,6 +88,7 @@ void DeviceForm::createBelonging(QString itemName,int index){
 //    checkBox->setText(itemName);
     checkBoxes.append(checkBox);
     ui->cbg->addWidget(checkBox,index/2,index%2);
+    indexx = index;
     ui->cbg->setRowMinimumHeight(index/2,30);
 }
 
@@ -165,15 +174,7 @@ void DeviceForm::populateEdit(QString device,int id){
     ui->CustomerCombo->setCurrentText(res[1]);
     ui->textEdit->setText(res[2]);
     QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
-//    for (QLabel *label : labels) {
-//        QString text = label->text(); // Get the text from the QLineEdit
-//        qDebug() << "column" << label->objectName() << ":" << text;
-//        for(int i=0;i<text.size(); i++){
-//            if (text.at(i)==" "){newText.append("_");}
-//            else{newText.append(text.at(i));}
-//        }
-//        columns.append(text);
-//    }
+
     QString checks = "";
     for (QCheckBox *checkBox : checkBoxes){
 //        if(checkBox->isChecked()){
@@ -254,6 +255,10 @@ void DeviceForm::addItem(QString deviceName){
 void DeviceForm::addDevice(){
     emit devicePage();
 }
+
+void DeviceForm::addBelonging(QString deviceName){
+    emit belongingPage(deviceName);
+}
 void DeviceForm::clearPage(){
     for (QCheckBox *checkbox : checkBoxes){checkbox->setChecked(false);}
     for (QComboBox *combobox : comboBoxes){combobox->setCurrentIndex(0);}
@@ -269,7 +274,7 @@ void DeviceForm::on_AddItemBtn_clicked()
 
 void DeviceForm::on_addDeviceBtn_clicked()
 {
-    addDevice();
+//    addDevice();
 }
 
 QStringList DeviceForm::getCustomers(QString halfText) {
@@ -308,4 +313,19 @@ void DeviceForm::on_pushButton_clicked()
 {
     emit addCustomer();
 }
+
+
+
+void DeviceForm::on_AddDevBtn_clicked()
+{
+    addDevice();
+}
+
+
+void DeviceForm::on_AddOptBtn_clicked()
+{
+
+}
+
+
 

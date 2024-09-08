@@ -15,6 +15,7 @@ class AddOption : public QWidget
 public:
     explicit AddOption(QWidget *parent = nullptr);
     ~AddOption();
+    void setupBelonging(QString deviceName);
     void setupDevice();
     void setupItem(QString deviceName);
     void setupOption(QString deviceName , QString itemName);

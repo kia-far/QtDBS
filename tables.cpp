@@ -36,6 +36,8 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
     ui->comboBox_2->addItems(ItemHandler::loadDevices());
+    qDebug() << "loadDevice result :"<<ItemHandler::loadDevices();
+    ui->comboBox_2->addItem("new");
     QFile file("C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/style/Style.qss"); // Use resource system or provide a direct path
     if (file.open(QFile::ReadOnly)) {
         QTextStream stream(&file);
@@ -233,12 +235,16 @@ void Tables::on_mainWindowBtn_clicked()
 
 void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 {
+    if(arg1 == "new"){
+
+    }
+    else{
     currentDevice = arg1;
     QString searchParam = "SerialNumber";
     QString searchText = "";
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);
-}
+}}
 
 
 void Tables::on_tableView_doubleClicked(const QModelIndex &index)
