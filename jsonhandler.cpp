@@ -14,30 +14,32 @@ QString fileName = "C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinG
 QString infoFileName = "C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/history/info.json";
 
 QJsonObject JsonHandler::loadJson() {
-
     QJsonObject obj;
     QFile jsonFile(fileName);
-    if(jsonFile.open(QFile::ReadOnly)){
+    if (jsonFile.open(QFile::ReadOnly)) {
         QByteArray Bytes = jsonFile.readAll();
         jsonFile.close();
         QJsonParseError JsonError;
-        QJsonDocument Document = QJsonDocument::fromJson(Bytes , &JsonError);
-        if(JsonError.error != QJsonParseError::NoError){
-            qDebug() << "error in json data : " << JsonError.errorString();
-        }
-        else{
-//            qDebug() << "no error in json data. ";
-        }
-        if(Document.isObject()){
-           obj = Document.object();
-//        qDebug() << "obj = " << obj ;
-//        qDebug() << "obj keys = " << obj.keys() ;
-//        qDebug() << "obj length = " << obj.length() ;
-//        qDebug() << "obj count = " << obj.count() ;
+        QJsonDocument Document = QJsonDocument::fromJson(Bytes, &JsonError);
+
+        if (JsonError.error != QJsonParseError::NoError) {
+            qDebug() << "error in json data: " << JsonError.errorString();
+        } else {
+            if (Document.isObject()) {
+                obj = Document.object();
+            }
+//            qDebug() << "hope this is shown in console :" << obj.contains("");
+
+            // Clean up any empty key if found
+            if (obj.contains("")) {
+//                qDebug() << "Removing empty key from loaded JSON";
+                obj.remove("");  // Remove the empty key
+            }
         }
     }
     return obj;
 }
+
 void JsonHandler::saveJson(QJsonDocument document) {
     QFile jsonFile(fileName);
     jsonFile.open(QFile::WriteOnly);

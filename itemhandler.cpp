@@ -12,7 +12,7 @@ ItemHandler::ItemHandler(QObject *parent)
       db(DatabaseConnection::getInstance())
 {
 }
-
+bool changemade=true;
 QJsonObject loadedObj;
 QJsonObject loadedInfoObj;
 
@@ -31,9 +31,12 @@ QStringList ItemHandler::loadDevices(){
     loadedObj = objs;
     loadedInfoObj = iObjs;
     return tempstr;
+    changemade = false;
 }
 QStringList ItemHandler::loadItems(QString device){
-//    qDebug() << "loadItems start";
+    if(changemade){loadDevices();}
+    else;
+    //    qDebug() << "loadItems start";
     QJsonArray itemArr = loadedObj[device].toArray();
     QStringList tempstr;
     for (int i=0;i<itemArr.size();i++){
@@ -44,7 +47,8 @@ QStringList ItemHandler::loadItems(QString device){
     return tempstr;
 }
 QStringList ItemHandler::loadOptions(QString device, QString item){
-
+    if(changemade){loadDevices();}
+    else;
     QJsonArray itemArr = loadedObj[device].toArray();
     QStringList tempstr;
     QJsonArray newArr;
@@ -64,6 +68,8 @@ QStringList ItemHandler::loadOptions(QString device, QString item){
 }
 
 QStringList ItemHandler::loadbelongings(QString device) {
+    if(changemade){loadDevices();}
+    else;
     if (!loadedInfoObj.contains("devices")) {
         qDebug() << "No devices found.";
         return QStringList();
@@ -99,6 +105,8 @@ QStringList ItemHandler::loadbelongings(QString device) {
 
 
 void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
+    if(changemade){loadDevices();}
+    else;
     addNewInfoDevice(deviceName,deviceAbr);
     QJsonObject deviceObj = loadedObj;
     QJsonArray emptyArr;
@@ -114,11 +122,15 @@ void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     } else {
 //        qDebug() << "Table created successfully:" << deviceName;
     }
+    changemade=true;
 }
 void ItemHandler::addBelonging(QString device, QString itemName) {
+    if(changemade){loadDevices();}
+    else;
     if (!loadedInfoObj.contains("devices")) {
         qDebug() << "No devices found.";
         return;
+
     }
 
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
@@ -148,6 +160,7 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
     loadedInfoObj["devices"] = devicesArray;
     QJsonDocument someDoc(loadedInfoObj);
     JsonHandler::saveInfoJson(someDoc);
+    changemade=true;
 
 //    qDebug() << "Added item:" << itemName << "to device:" << device;
 }
@@ -161,7 +174,17 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
 //    JsonHandler::saveJson(updatedDoc);
 //}
 
-void ItemHandler::addItems(QString deviceName, QString itemName){
+void ItemHandler::addItems(QString deviceName, QString itemName) {
+    if(changemade){loadDevices();}
+    else;
+    qDebug() << "Device Name:" << deviceName;
+    if (deviceName.isEmpty()) {
+        qDebug() << "Error: deviceName is empty. Aborting.";
+        return; // Exit early if deviceName is invalid
+    }
+    if (loadedObj.contains("")) {
+        qDebug() << "Warning: loadedObj contains an empty key!";
+    }
     QJsonArray deviceArr =loadedObj[deviceName].toArray();
     QJsonObject newItem;
     QJsonArray emptyArr;
@@ -180,8 +203,11 @@ void ItemHandler::addItems(QString deviceName, QString itemName){
     } else {
 //        qDebug() << "Column added successfully:" << itemName << "to table:" << deviceName;
     }
+    changemade=true;
 }
 void ItemHandler::addOptions(QString deviceName , QString itemName , QString optionName){
+    if(changemade){loadDevices();}
+    else;
     QJsonArray itemArr = loadedObj[deviceName].toArray();
     QStringList tempstr;
     QJsonArray newArr;
@@ -201,6 +227,7 @@ void ItemHandler::addOptions(QString deviceName , QString itemName , QString opt
     loadedObj[deviceName] = itemArr;
     QJsonDocument updatedDoc(loadedObj);
     JsonHandler::saveJson(updatedDoc);
+    changemade=true;
 }
 
 void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues) {
@@ -276,6 +303,8 @@ void ItemHandler::updateTable(const QString &tableName, const QStringList &colum
 
 
 void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
+    if(changemade){loadDevices();}
+    else;
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
     for (const QJsonValue &device : devicesArray) {
         if (device.toObject().contains(deviceName)) {
@@ -300,12 +329,15 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
     QJsonDocument somedoc(loadedInfoObj);
 
     JsonHandler::saveInfoJson(somedoc);
+    changemade=true;
 
 //    qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
 }
 
 
 QStringList ItemHandler::readLetters() {
+    if(changemade){loadDevices();}
+    else;
     QStringList res = {};
     QJsonArray deviceArr = loadedInfoObj["devices"].toArray(); // Assuming loadedInfoObj is a QJsonObject
     QStringList objNames;
@@ -318,6 +350,8 @@ QStringList ItemHandler::readLetters() {
     return res;
 }
 QStringList ItemHandler::nameLetter() {
+    if(changemade){loadDevices();}
+    else;
     QStringList res;
     QJsonArray deviceArr = loadedInfoObj["devices"].toArray();
 
