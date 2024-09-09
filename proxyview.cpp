@@ -108,15 +108,32 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 
 
 QVariant ProxyView::headerData(int section, Qt::Orientation orientation, int role) const {
+    // Define a QStringList with the first 4 column names
+    QStringList customColumnNames = QStringList({"شماره سریال", "نام مشتری", "توضیحات", "متعلقات"});  // Replace with your QStringList
+
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
+
     if (orientation == Qt::Horizontal) {
-        return columns.at(section);
+        if (section < customColumnNames.size()) {
+            // Return the name from the custom QStringList for the first 4 columns
+            return customColumnNames.at(section);
+        } else {
+            // Return the remaining column names from the database for other sections
+            int adjustedIndex = section - customColumnNames.size();
+            if (adjustedIndex >= 0 && adjustedIndex < columns.size()) {
+                return columns.at(adjustedIndex+customColumnNames.size());
+            } else {
+                return QVariant(); // Invalid section or out of bounds
+            }
+        }
     } else {
+        // For vertical orientation, return the section number
         return QString::number(section + 1);
     }
 }
+
 
 bool ProxyView::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role) {
     if (orientation == Qt::Horizontal && role == Qt::EditRole) {

@@ -11,6 +11,7 @@ QT+=sql
 
 SOURCES += \
     DatabaseConnection.cpp \
+    MyTableProxy.cpp \
     addoption.cpp \
     customerform.cpp \
     deviceform.cpp \
@@ -33,6 +34,7 @@ SOURCES += \
 
 HEADERS += \
     DatabaseConnection.h \
+    MyTableProxy.h \
     addoption.h \
     customerform.h \
     deviceform.h \

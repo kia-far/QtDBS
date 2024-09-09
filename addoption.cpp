@@ -23,17 +23,18 @@ void AddOption::setupBelonging(QString deviceName){
     cleanupDevice();
     device = deviceName;
     func = "belonging";
-    this->setWindowTitle("Add Belonging");
-    ui->label->setText("New Belonging");
+    this->setWindowTitle("افزودن متعلقات");
+    ui->label->setText("افزودن متعلقات");
     this->show();
 }
 
 void AddOption::setupDevice(){
     func = "device";
-    this->setWindowTitle("Add Device");
-    ui->label->setText("New Device");
+    this->setWindowTitle("افزودن دستگاه");
+    ui->label->setText("افزودن دستگاه");
     if(lineEdit_2->isHidden()){lineEdit_2->show();}
     lineEdit_2->setText("");
+    lineEdit_2->setPlaceholderText("مخفف نام دستگاه");
     this->show();
     devCalled =true;
 }
@@ -41,8 +42,8 @@ void AddOption::setupItem(QString deviceName){
     cleanupDevice();
     device = deviceName;
     func = "item";
-    this->setWindowTitle("Add Item");
-    ui->label->setText("New Item");
+    this->setWindowTitle("افزودن قطعه");
+    ui->label->setText("افزودن قطعه");
     this->show();
 }
 void AddOption::setupOption(QString deviceName,QString itemName){
@@ -50,8 +51,8 @@ void AddOption::setupOption(QString deviceName,QString itemName){
     device = deviceName;
     item = itemName;
     func = "option";
-    this->setWindowTitle("Add Option");
-    ui->label->setText("New Option");
+    this->setWindowTitle("افزودن گزینه");
+    ui->label->setText("افزودن گزینه");
     this->show();
 }
 void AddOption::on_pushButton_clicked()

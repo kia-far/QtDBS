@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "proxyview.h"
+#include "MyTableProxy.h"
 #include "productproxy.h"
 #include <DatabaseConnection.h>
 
@@ -59,6 +60,8 @@ private:
     Ui::Tables *ui;
     void keybinds();
     ProxyView *View;
+    MyTableProxy *Customer;
+    MyTableProxy *Services;
     ProductProxy *Product;
     DatabaseConnection &db;
     MainWindow *mainwindow;

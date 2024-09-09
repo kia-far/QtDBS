@@ -46,7 +46,7 @@ void DeviceForm::setup(){
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
     if(admiMode){
-    ui->comboBox->addItem("new device");}
+    ui->comboBox->addItem("دستگاه جدید");}
     ui->pushButton->setFixedWidth(25);
 }
 void DeviceForm::editDevice(QString device , int id){
@@ -69,7 +69,7 @@ void DeviceForm::refresh(){
 }
 void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
-    if(arg1=="new device"){
+    if(arg1=="دستگاه جدید"){
         addDevice();
     }
     else{
@@ -90,9 +90,9 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
     }
     if(admiMode){
     QPushButton *newBelBtn = new QPushButton();
-    QString buttonName = QString("new Belonging");
+    QString buttonName = QString("افزودن متعلقات");
     newBelBtn->setObjectName("newBelBtn");
-    newBelBtn->setText("new Belonging");
+    newBelBtn->setText("افزودن متعلقات");
 //    newBelBtn->setFixedWidth(25);
     connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
     indexx++;
@@ -119,10 +119,10 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     labels.append(label);
     QComboBox *comboBox = new QComboBox();
     QString comboBoxName = QString("comboBox_%1").arg(index+10*indexcounter);
-    comboBox->insertItem(0,"none");
+    comboBox->insertItem(0,"هیچ کدام");
     comboBox->insertItems(1,setupOptions(itemName));
     if (admiMode){
-    comboBox->insertItem(setupOptions(itemName).size()+1,"add option");
+    comboBox->insertItem(setupOptions(itemName).size()+1,"افزودن گزینه");
     connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, itemName](int index) {
         if (index == setupOptions(itemName).size() + 1) {
             addOption(currentDevice, itemName);

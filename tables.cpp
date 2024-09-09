@@ -2,6 +2,7 @@
 #include "ui_tables.h"
 #include "myfunctions.h"
 #include "mainwindow.h"
+#include "MyTableProxy.h"
 #include <QSqlDriver>
 #include <QSqlQuery>
 #include <QSqlQueryModel>
@@ -24,6 +25,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
     ui(new Ui::Tables),
     View(new ProxyView(this)),
     Product(new ProductProxy(this)),
+//    MyTableProxy(new MyTableProxy(this)),
     db(DatabaseConnection::getInstance()),
     mainwindow(mainWin)
 
@@ -81,6 +83,7 @@ void Tables::setupTable(QString table){
         q.exec("SELECT * FROM ServiceInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
         m -> setQuery(q);
+
         currentTable =1;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(m);
@@ -88,14 +91,19 @@ void Tables::setupTable(QString table){
     }
     else if(table == "مشتریان") {
 //        qDebug () << "customer opened -------------------------------";
-        QSqlQuery q(db.getConnection());
-        q.exec("SELECT * FROM CustomerInfo");
-        QSqlQueryModel *m = new QSqlQueryModel;
-        m -> setQuery(q);
-        currentTable = 0;
-        ui->comboBox->setCurrentIndex(currentTable);
-        ui->tableView->setModel(m);
-
+//        QSqlQuery q(db.getConnection());
+//        q.exec("SELECT * FROM CustomerInfo");
+//        QSqlQueryModel *m = new QSqlQueryModel;
+//        m -> setQuery(q);
+//        currentTable = 0;
+//        ui->comboBox->setCurrentIndex(currentTable);
+//        ui->tableView->setModel(m);
+//+++++++++++++++++++++++++
+        QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
+        QSqlDatabase a = (db.getConnection());
+        MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
+        Customer->loadData("SELECT * FROM CustomerInfo");
+        ui->tableView->setModel(Customer);
 
 }
     else {qDebug() << "wrong input";}
@@ -114,12 +122,12 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         QString res;
         if (searchText==""){res = "SELECT * FROM CustomerInfo";}
         else{res = "SELECT * FROM CustomerInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-        QSqlQuery query(db.getConnection());
-        query.exec(res);
-        QSqlQueryModel *m = new QSqlQueryModel;
-        m -> setQuery(query);
+        QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
+        QSqlDatabase a = (db.getConnection());
+        MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
+        Customer->loadData(res);
+        ui->tableView->setModel(Customer);
 
-        ui->tableView->setModel(m);
 
     }
     else if (currentTable==1) {
@@ -128,9 +136,9 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         if(searchText==""){res = "SELECT * FROM ServiceInfo";}
         else{res = "SELECT * FROM ServiceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
         query.exec(res);
-        QSqlQueryModel *m = new QSqlQueryModel;
-        m -> setQuery(query);
-        ui->tableView->setModel(m);
+//        QSqlQueryModel *m = new QSqlQueryModel;
+//        m -> setQuery(query);
+//        ui->tableView->setModel(m);
 
     }
     else if(currentTable==2){
@@ -153,13 +161,12 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable =3;
     }
     else if(arg1 == "مشتریان"){
-        QSqlQuery q(db.getConnection());
-        q.exec("SELECT * FROM CustomerInfo");
-        QSqlQueryModel *m = new QSqlQueryModel;
-        m -> setQuery(q);
-        ui->tableView->setModel(m);
-
-        currentTable = 0;
+        QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
+        QSqlDatabase a = (db.getConnection());
+        MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
+        Customer->loadData("SELECT * FROM CustomerInfo");
+        ui->tableView->setModel(Customer);
+        currentTable =0;
     }
     else if (arg1 == "خدمات"){
         QSqlQuery q(db.getConnection());
