@@ -34,6 +34,7 @@ void DeviceForm::setup(){
     ui->comboBox->clear();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
+    ui->comboBox->addItem("new device");
     ui->pushButton->setFixedWidth(25);
 }
 void DeviceForm::editDevice(QString device , int id){
@@ -56,6 +57,10 @@ void DeviceForm::refresh(){
 }
 void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
+    if(arg1=="new device"){
+        addDevice();
+    }
+    else{
     clearLayout(ui->vb);
     clearLayout(ui->cbg);
     labels.clear();
@@ -79,7 +84,7 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
     connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
     indexx++;
     ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);
-}
+}}
 void DeviceForm::createBelonging(QString itemName,int index){
     QCheckBox *checkBox = new QCheckBox(itemName);
     QString checkBoxName = QString("check_%1").arg(index);
@@ -103,27 +108,35 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     QString comboBoxName = QString("comboBox_%1").arg(index+10*indexcounter);
     comboBox->insertItem(0,"none");
     comboBox->insertItems(1,setupOptions(itemName));
+    comboBox->insertItem(setupOptions(itemName).size()+1,"add option");
+    connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, itemName](int index) {
+        if (index == setupOptions(itemName).size() + 1) {
+            addOption(currentDevice, itemName);
+        }
+    });
+
+    //adding option button here
     comboBox->setObjectName(comboBoxName);
     comboBoxes.append(comboBox);
-    QPushButton *addBtn = new QPushButton();
-    QString buttonName = QString("addBtn_%1").arg(index+10*indexcounter);
-    addBtn->setObjectName(buttonName);
-    addBtn->setText("+");
-    addBtn->setFixedWidth(25);
-    connect(addBtn, &QPushButton::clicked, this, [this, itemName]() {
-        addOption(currentDevice,itemName);
-    });
-    addBtns.append(addBtn);
+//    QPushButton *addBtn = new QPushButton();
+//    QString buttonName = QString("addBtn_%1").arg(index+10*indexcounter);
+//    addBtn->setObjectName(buttonName);
+//    addBtn->setText("+");
+//    addBtn->setFixedWidth(25);
+//    connect(addBtn, &QPushButton::clicked, this, [this, itemName]() {
+//        addOption(currentDevice,itemName);
+//    });
+//    addBtns.append(addBtn);
     QString hbName = QString("hb_%1").arg(index);
     QHBoxLayout *hb = new QHBoxLayout;
     //size constraints:
     label->setAlignment(Qt::AlignRight);
 //    addBtn->setMaximumWidth(40);
-    addBtn->setMinimumHeight(25);
+//    addBtn->setMinimumHeight(25);
     comboBox->setMinimumHeight(25);
     label->setMinimumHeight(25);
     //----
-    hb->addWidget(addBtn);
+//    hb->addWidget(addBtn);
     hb->addWidget(comboBox);
     hb->addWidget(label);
     ui->vb->addLayout(hb);

@@ -75,7 +75,7 @@ private:
     QStringList getCustomers(QString something);
     DatabaseConnection &db;
     bool edit;
-
+    bool admiMode;
 };
 
 #endif // DEVICEFORM_H
