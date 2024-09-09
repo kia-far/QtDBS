@@ -2,8 +2,11 @@
 #include "ui_deviceform.h"
 #include "itemhandler.h"
 #include "myfunctions.h"
+#include <QShortcut>
+#include <QKeyEvent>
 #include <QBoxLayout>
 #include <QDebug>
+#include <QAction>
 #include "QSqlRecord"
 
 DeviceForm::DeviceForm(QWidget *parent) :
@@ -13,13 +16,20 @@ DeviceForm::DeviceForm(QWidget *parent) :
 {
     ui->setupUi(this);
     setup();
+    admiMode=false;
+    if(!admiMode){ui->AddItemBtn->hide();}
+//    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
+    keyBinds();
+
 }
 int indexx;
 int indexcounter = 0;
 DeviceForm::~DeviceForm()
 {
+
     delete ui;
 }
+
 void DeviceForm::trigger(QString device){
     clearPage();
     this->show();
@@ -31,10 +41,12 @@ void DeviceForm::setup(){
     edit = false;
 
     QStringList devices = ItemHandler::loadDevices();
+    qDebug() << devices;
     ui->comboBox->clear();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
-    ui->comboBox->addItem("new device");
+    if(admiMode){
+    ui->comboBox->addItem("new device");}
     ui->pushButton->setFixedWidth(25);
 }
 void DeviceForm::editDevice(QString device , int id){
@@ -76,6 +88,7 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
     for (int i=0;i<belongings.size();i++){
         createBelonging(belongings[i],i);
     }
+    if(admiMode){
     QPushButton *newBelBtn = new QPushButton();
     QString buttonName = QString("new Belonging");
     newBelBtn->setObjectName("newBelBtn");
@@ -83,7 +96,7 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 //    newBelBtn->setFixedWidth(25);
     connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
     indexx++;
-    ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);
+    ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);}
 }}
 void DeviceForm::createBelonging(QString itemName,int index){
     QCheckBox *checkBox = new QCheckBox(itemName);
@@ -108,12 +121,13 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     QString comboBoxName = QString("comboBox_%1").arg(index+10*indexcounter);
     comboBox->insertItem(0,"none");
     comboBox->insertItems(1,setupOptions(itemName));
+    if (admiMode){
     comboBox->insertItem(setupOptions(itemName).size()+1,"add option");
     connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, itemName](int index) {
         if (index == setupOptions(itemName).size() + 1) {
             addOption(currentDevice, itemName);
         }
-    });
+    });}
 
     //adding option button here
     comboBox->setObjectName(comboBoxName);
@@ -210,7 +224,7 @@ void DeviceForm::populateEdit(QString device,int id){
 }
 void DeviceForm::on_SubmitBtn_clicked()
 {
-
+    if(MyFunctions::checkSN( ui->lineEdit->text())){
     QString newText="";
     QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
 //description TEXT, belongings TEXT
@@ -256,6 +270,8 @@ void DeviceForm::on_SubmitBtn_clicked()
         ItemHandler::updateTable(currentDevice,columns,givenData);
     }
 
+}
+    else{qDebug() << "wrong serial number";}
 }
 
 void DeviceForm::addOption(QString deviceName,QString itemName){
@@ -333,12 +349,32 @@ void DeviceForm::on_AddDevBtn_clicked()
 {
     addDevice();
 }
-
-
-void DeviceForm::on_AddOptBtn_clicked()
-{
-
+void DeviceForm::adminMode(){
+    admiMode= !admiMode;
+    if(!admiMode){ui->AddItemBtn->hide();}
+    else {ui->AddItemBtn->show();}
+    setup();
 }
 
 
+
+
+void DeviceForm::keyBinds(){
+    QAction *f0 = new QAction(this);
+    f0->setShortcut(Qt::Key_Q | Qt::CTRL);
+
+    connect(f0, SIGNAL(triggered()), this, SLOT(close()));
+    this->addAction(f0);
+    QAction *f1 = new QAction(this);
+    f1->setShortcut(Qt::Key_S | Qt::CTRL);
+
+    connect(f1, SIGNAL(triggered()), this, SLOT(on_SubmitBtn_clicked()));
+    this->addAction(f1);
+    QAction *f2 = new QAction(this);
+    f2->setShortcut(Qt::Key_M | Qt::CTRL);
+
+    connect(f2, SIGNAL(triggered()), this, SLOT(adminMode()));
+    this->addAction(f2);
+
+}
 

@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlTableModel>
+#include <QAction>
 
 
 
@@ -17,6 +18,7 @@ ProductRegister::ProductRegister(QWidget *parent) :
     db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
+    keybinds();
 //    db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
@@ -228,4 +230,17 @@ void ProductRegister::registerProductSecInfo(){
     if (!err) {
         qDebug() << "Error in ProductSecInfo insert:" << q.lastError().text();
     }
+}
+
+void ProductRegister::keybinds(){
+    QAction *f0 = new QAction(this);
+    f0->setShortcut(Qt::Key_Q | Qt::CTRL);
+
+    connect(f0, SIGNAL(triggered()), this, SLOT(close()));
+    this->addAction(f0);
+    QAction *f1 = new QAction(this);
+    f1->setShortcut(Qt::Key_S | Qt::CTRL);
+
+    connect(f1, SIGNAL(triggered()), this, SLOT(on_pushButton_clicked()));
+    this->addAction(f1);
 }

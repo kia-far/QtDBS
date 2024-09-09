@@ -22,7 +22,10 @@ void recieveData(){
 
 }
 QStringList ItemHandler::loadDevices(){
-    if(changemade==true){
+    if(/*changemade==*/true){
+        //this has to change in the future !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //this has to change in the future !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //this has to change in the future !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     QJsonObject objs = JsonHandler::loadJson();
     QJsonObject iObjs = JsonHandler::loadInfoJson();
     QStringList tempstr = objs.keys();
@@ -191,6 +194,7 @@ void ItemHandler::addItems(QString deviceName, QString itemName) {
     QJsonObject deviceObj = loadedObj;
     deviceObj[deviceName] = deviceArr;
     QJsonDocument updatedDoc(deviceObj);
+    loadedObj = deviceObj;
     JsonHandler::saveJson(updatedDoc);
     DatabaseConnection& db = DatabaseConnection::getInstance();
     QSqlQuery query(db.getConnection());

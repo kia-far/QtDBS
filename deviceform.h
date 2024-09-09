@@ -52,9 +52,11 @@ private slots:
 
     void on_AddDevBtn_clicked();
 
-    void on_AddOptBtn_clicked();
+    void adminMode();
 
-    void on_AddBelBtn_clicked();
+//    void on_AddOptBtn_clicked();
+
+//    void on_AddBelBtn_clicked();
 
 private:
     void createBelonging(QString itemName,int index);
@@ -65,6 +67,7 @@ private:
     void addItem(QString deviceName);
     void addDevice();
     void addBelonging(QString deviceName);
+    void keyBinds();
     QString currentDevice;
     int adder;
     Ui::DeviceForm *ui;

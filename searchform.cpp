@@ -1,12 +1,18 @@
 #include "searchform.h"
 #include "ui_searchform.h"
 #include "QDebug"
+#include <QDialogButtonBox>
+#include <QPushButton>
 
 SearchForm::SearchForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::SearchForm)
 {
     ui->setupUi(this);
+    QPushButton *okbtn = ui->buttonBox->button(QDialogButtonBox::Ok);
+    okbtn->setText("جستجو");
+    QPushButton *rejbtn = ui->buttonBox->button(QDialogButtonBox::Cancel);
+    rejbtn->setText("بستن");
 }
 
 SearchForm::~SearchForm()

@@ -10,7 +10,7 @@
 #include <QApplication>
 #include <QFile>
 #include <QTextStream>
-
+#include <QAction>
 
 int lastClicked =0;
 int currentTable =0;
@@ -43,6 +43,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
         QString styleSheet = stream.readAll();
         this->setStyleSheet(styleSheet);
         file.close();
+        keybinds();
     }
 
     ui->tableView->setAlternatingRowColors(true);
@@ -254,3 +255,40 @@ void Tables::on_tableView_doubleClicked(const QModelIndex &index)
     else {emit editProduct(lastClicked );}
 }
 
+void Tables::keybinds(){
+    QAction *f0 = new QAction(this);
+    f0->setShortcut(Qt::Key_Q | Qt::CTRL);
+
+    connect(f0, SIGNAL(triggered()), this, SLOT(on_mainWindowBtn_clicked()));
+    this->addAction(f0);
+    QAction *f1 = new QAction(this);
+    f1->setShortcut(Qt::Key_R | Qt::CTRL);
+
+    connect(f1, SIGNAL(triggered()), this, SLOT(on_RefreshBtn_clicked()));
+    this->addAction(f1);
+    QAction *f2 = new QAction(this);
+    f2->setShortcut(Qt::Key_F | Qt::CTRL);
+
+    connect(f2, SIGNAL(triggered()), this, SLOT(on_SearchBtn_clicked()));
+    this->addAction(f2);
+    QAction *f3 = new QAction(this);
+    f3->setShortcut(Qt::Key_N | Qt::CTRL);
+
+    connect(f3, SIGNAL(triggered()), this, SLOT(on_AddBtn_clicked()));
+    this->addAction(f3);
+//    QAction *f4 = new QAction(this);
+//    f4->setShortcut(Qt::Key_P | Qt::CTRL);
+
+//    connect(f4, SIGNAL(triggered()), this, SLOT(on_comboBox_currentIndexChanged()));
+//    this->addAction(f4);
+//    QAction *f5 = new QAction(this);
+//    f5->setShortcut(Qt::Key_C | Qt::CTRL);
+
+//    connect(f5, SIGNAL(triggered()), this, SLOT(on_comboBox_currentIndexChanged("Customers")));
+//    this->addAction(f5);
+//    QAction *f6 = new QAction(this);
+//    f6->setShortcut(Qt::Key_S | Qt::CTRL);
+
+//    connect(f6, SIGNAL(triggered()), this, SLOT(on_comboBox_currentIndexChanged("Services")));
+//    this->addAction(f6);
+}

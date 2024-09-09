@@ -67,7 +67,7 @@
         <item>
          <widget class="QPushButton" name="AddItemBtn">
           <property name="text">
-           <string>Add Item</string>
+           <string>افزودن قطعه</string>
           </property>
          </widget>
         </item>
@@ -120,7 +120,7 @@
            </sizepolicy>
           </property>
           <property name="text">
-           <string>Serial Number</string>
+           <string>شماره سریال :</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -186,7 +186,7 @@
              </sizepolicy>
             </property>
             <property name="text">
-             <string>Customer Name</string>
+             <string>نام خریدار :</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -280,7 +280,7 @@
         <item>
          <widget class="QPushButton" name="SubmitBtn">
           <property name="text">
-           <string>Submit</string>
+           <string>ثبت</string>
           </property>
          </widget>
         </item>

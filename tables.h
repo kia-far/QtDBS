@@ -57,6 +57,7 @@ private slots:
 
 private:
     Ui::Tables *ui;
+    void keybinds();
     ProxyView *View;
     ProductProxy *Product;
     DatabaseConnection &db;

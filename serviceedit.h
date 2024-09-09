@@ -31,6 +31,7 @@ private slots:
 
 private:
     Ui::serviceEdit *ui;
+    void keyBinds();
 //    QSqlDatabase db;
     QString Modee;
     QString b[6];

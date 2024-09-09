@@ -135,12 +135,13 @@ QString MyFunctions :: decimalToBinary(int decimal) {
     return binary;
 }
 bool MyFunctions :: checkSN(QString sn){
+    setLetters();
     bool result = true;
     sn=sn.toUpper();
     if (sn==""){return false;}
     else{
         if (sn.length()==8){
-            if(sn.at(0)=="B"||sn.at(0)=="S"||sn.at(0)=="N"){
+            if(letters.contains(sn.at(0))){
                 if(sn.at(3).isLetter()){
                     for (int i = 1;i<3;i++){
                         if (!sn.at(i).isDigit()){result = false;}
@@ -173,7 +174,7 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     QString space;
     if (searchText==""){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
     else{
-        if(searchText.at(0).toUpper()=="B"||searchText.at(0).toUpper()=="S"||searchText.at(0).toUpper()=="N"){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
+        if(letters.contains(searchText.at(0))){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
         else{
             context = MyFunctions::smallSN(searchText);
             space = MyFunctions::querySolver();

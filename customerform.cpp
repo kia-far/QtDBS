@@ -5,6 +5,7 @@
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlTableModel>
+#include <QAction>
 
 
 
@@ -14,7 +15,7 @@ CustomerForm::CustomerForm(QWidget *parent) :
     db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
-
+    keyBinds();
 }
 
 CustomerForm::~CustomerForm()
@@ -114,3 +115,17 @@ void CustomerForm::setup(){
     }
     this->show();
 }
+void CustomerForm::keyBinds(){
+    QAction *f0 = new QAction(this);
+    f0->setShortcut(Qt::Key_Q | Qt::CTRL);
+
+    connect(f0, SIGNAL(triggered()), this, SLOT(close()));
+    this->addAction(f0);
+    QAction *f1 = new QAction(this);
+    f1->setShortcut(Qt::Key_S | Qt::CTRL);
+
+    connect(f1, SIGNAL(triggered()), this, SLOT(on_pushButton_clicked()));
+    this->addAction(f1);
+
+}
+

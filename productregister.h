@@ -35,6 +35,7 @@ private slots:
 
 private:
     Ui::ProductRegister *ui;
+    void keybinds();
 //    QSqlDatabase db;
     QString Mode;
     int Serialnum;

@@ -30,21 +30,21 @@
    <item row="0" column="8">
     <widget class="QPushButton" name="EditBtn">
      <property name="text">
-      <string>Edit</string>
+      <string>ویرایش</string>
      </property>
     </widget>
    </item>
    <item row="0" column="6">
     <widget class="QPushButton" name="AddBtn">
      <property name="text">
-      <string>Add</string>
+      <string>افزودن</string>
      </property>
     </widget>
    </item>
    <item row="0" column="5">
     <widget class="QPushButton" name="RefreshBtn">
      <property name="text">
-      <string>Refresh</string>
+      <string>بازخوانی</string>
      </property>
     </widget>
    </item>
@@ -77,22 +77,22 @@
      </property>
      <item>
       <property name="text">
-       <string>Customers</string>
+       <string>مشتریان</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Services</string>
+       <string>خدمات</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Devices</string>
+       <string>دستگاه ها</string>
       </property>
      </item>
      <item>
       <property name="text">
-       <string>Products</string>
+       <string>محصولات</string>
       </property>
      </item>
     </widget>
@@ -110,14 +110,14 @@
    <item row="0" column="3">
     <widget class="QPushButton" name="mainWindowBtn">
      <property name="text">
-      <string>Main Window</string>
+      <string>صفحه اصلی</string>
      </property>
     </widget>
    </item>
    <item row="0" column="7">
     <widget class="QPushButton" name="SearchBtn">
      <property name="text">
-      <string>Search</string>
+      <string>جستجو</string>
      </property>
     </widget>
    </item>

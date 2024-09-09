@@ -36,6 +36,7 @@ private slots:
 
 private:
     Ui::CustomerForm *ui;
+    void keyBinds();
 //    QSqlDatabase db;
     QString Modee;
     QString b[5];
