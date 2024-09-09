@@ -57,14 +57,14 @@ Tables::~Tables()
 
 void Tables::setupTable(QString table){
     ui->comboBox_2->hide();
-    if (table == "product"){
+    if (table == "محصولات"){
 //        qDebug () << "product opened -------------------------------";
         currentTable = 3;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(Product);
 
     }
-    else if(table == "device") {
+    else if(table == "دستگاه ها") {
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
 //        qDebug () << "device opened -------------------------------";
@@ -75,7 +75,7 @@ void Tables::setupTable(QString table){
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(View);
     }
-    else if(table == "service") {
+    else if(table == "خدمات") {
 //        qDebug () << "service opened -------------------------------";
         QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM ServiceInfo");
@@ -86,7 +86,7 @@ void Tables::setupTable(QString table){
         ui->tableView->setModel(m);
 
     }
-    else if(table == "customer") {
+    else if(table == "مشتریان") {
 //        qDebug () << "customer opened -------------------------------";
         QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM CustomerInfo");
@@ -146,13 +146,13 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 {
     ui->comboBox_2->hide();
-    if(arg1 == "Products"){
+    if(arg1 == "محصولات"){
         ui->tableView->setModel(Product);
 
 
         currentTable =3;
     }
-    else if(arg1 == "Customers"){
+    else if(arg1 == "مشتریان"){
         QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM CustomerInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
@@ -161,7 +161,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
         currentTable = 0;
     }
-    else if (arg1 == "Services"){
+    else if (arg1 == "خدمات"){
         QSqlQuery q(db.getConnection());
         q.exec("SELECT * FROM ServiceInfo");
         QSqlQueryModel *m = new QSqlQueryModel;
@@ -169,7 +169,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->setModel(m);
         currentTable =1;
     }
-    else if (arg1 == "Devices") {
+    else if (arg1 == "دستگاه ها") {
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
         QString searchParam = "SerialNumber";

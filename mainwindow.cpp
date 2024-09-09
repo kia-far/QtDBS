@@ -69,28 +69,28 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_productBtn_clicked()
 {
-    x->setupTable("product");
+    x->setupTable("محصولات");
     this->hide();
 }
 
 
 void MainWindow::on_deviceBtn_clicked()
 {
-    x->setupTable("device");
+    x->setupTable("دستگاه ها");
     this->hide();
 }
 
 
 void MainWindow::on_serviceBtn_clicked()
 {
-    x->setupTable("service");
+    x->setupTable("خدمات");
     this->hide();
 }
 
 
 void MainWindow::on_customerBtn_clicked()
 {
-    x->setupTable("customer");
+    x->setupTable("مشتریان");
     this->hide();
 
 }
