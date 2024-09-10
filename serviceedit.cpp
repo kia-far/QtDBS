@@ -6,6 +6,7 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QAction>
+#include <QCalendar>
 
 serviceEdit::serviceEdit(QWidget *parent) :
     QWidget(parent),
@@ -14,6 +15,13 @@ serviceEdit::serviceEdit(QWidget *parent) :
 {
     ui->setupUi(this);
     keyBinds();
+    QDate minDate (1,1,1);
+    // qDebug()<<QCalendar::;
+    QDate maxDate(9999, 12, 31);
+//    QJalaliCalendar
+    QCalendar calendar( QCalendar::System::Jalali);
+    ui->dateEdit->setCalendar(calendar);
+    ui->dateEdit->setDate(QDate::currentDate());
 //    db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();

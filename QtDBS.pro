@@ -18,6 +18,7 @@ SOURCES += \
     edittable.cpp \
     itemabstract.cpp \
     itemhandler.cpp \
+    jalali.cpp \
     jsonhandler.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -41,6 +42,7 @@ HEADERS += \
     edittable.h \
     itemabstract.h \
     itemhandler.h \
+    jalali.h \
     jsonhandler.h \
     mainwindow.h \
     myfunctions.h \

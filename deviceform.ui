@@ -233,6 +233,9 @@
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="tabChangesFocus">
+            <bool>true</bool>
+           </property>
           </widget>
          </item>
          <item>
@@ -314,6 +317,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>lineEdit</tabstop>
+  <tabstop>CustomerCombo</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>SubmitBtn</tabstop>
+  <tabstop>AddItemBtn</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

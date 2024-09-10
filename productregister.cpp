@@ -19,6 +19,7 @@ ProductRegister::ProductRegister(QWidget *parent) :
 {
     ui->setupUi(this);
     keybinds();
+    ui->textEdit->setTabChangesFocus(true);
 //    db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
