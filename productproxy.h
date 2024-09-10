@@ -14,7 +14,7 @@ class ProductProxy : public QAbstractTableModel
 public:
     explicit ProductProxy(QObject *parent = nullptr);
      void setSearchParameters(const QString &searchParam, const QString &searchText);
-
+     void sort(int column, Qt::SortOrder order);
     // Header:
     QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 

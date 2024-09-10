@@ -22,6 +22,25 @@ void ProductProxy::setSearchParameters(const QString &searchParam, const QString
     m_searchText = searchText;
     loadData(m_searchParam,m_searchText);
 }
+
+void ProductProxy::sort(int column, Qt::SortOrder order) {
+    if (column < 0 || column >= columnCount()) {
+        return;  // Invalid column
+    }
+
+    // Lambda function to compare rows based on the given column
+    std::sort(rows.begin(), rows.end(), [column, order](const QVector<QVariant> &a, const QVector<QVariant> &b) {
+        if (order == Qt::AscendingOrder) {
+            return a[column] < b[column];  // Ascending order comparison
+        } else {
+            return a[column] > b[column];  // Descending order comparison
+        }
+    });
+
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+    emit layoutChanged();  // Notify view about the sorted data
+}
+
 void ProductProxy::loadData(QString searchParam,QString searchText) {
 
 

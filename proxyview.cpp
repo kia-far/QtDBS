@@ -26,6 +26,25 @@ void ProxyView::setSearchParameters(QString device ,const QString &searchParam, 
     currentDevice = device;
     loadData(currentDevice,m_searchParam,m_searchText);
 }
+
+void ProxyView::sort(int column, Qt::SortOrder order) {
+    if (column < 0 || column >= columnCount()) {
+        return;  // Invalid column
+    }
+
+    // Lambda function to compare rows based on the given column
+    std::sort(rows.begin(), rows.end(), [column, order](const QVector<QVariant> &a, const QVector<QVariant> &b) {
+        if (order == Qt::AscendingOrder) {
+            return a[column] < b[column];  // Ascending order comparison
+        } else {
+            return a[column] > b[column];  // Descending order comparison
+        }
+    });
+
+    emit dataChanged(index(0, 0), index(rowCount() - 1, columnCount() - 1));
+    emit layoutChanged();  // Notify view about the sorted data
+}
+
 void ProxyView::loadData(QString device ,QString searchParam,QString searchText) {
     QSqlQuery query(db.getConnection());
     QString res;

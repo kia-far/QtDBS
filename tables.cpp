@@ -79,15 +79,13 @@ void Tables::setupTable(QString table){
     }
     else if(table == "خدمات") {
 //        qDebug () << "service opened -------------------------------";
-        QSqlQuery q(db.getConnection());
-        q.exec("SELECT * FROM ServiceInfo");
-        QSqlQueryModel *m = new QSqlQueryModel;
-        m -> setQuery(q);
-
+        QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
+        QSqlDatabase a = (db.getConnection());
+        MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
+        Services->loadData("SELECT * FROM ServiceInfo");
+        ui->tableView->setModel(Services);
         currentTable =1;
         ui->comboBox->setCurrentIndex(currentTable);
-        ui->tableView->setModel(m);
-
     }
     else if(table == "مشتریان") {
 //        qDebug () << "customer opened -------------------------------";
@@ -131,15 +129,14 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 
     }
     else if (currentTable==1) {
-        QSqlQuery query(db.getConnection());
         QString res;
         if(searchText==""){res = "SELECT * FROM ServiceInfo";}
         else{res = "SELECT * FROM ServiceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-        query.exec(res);
-//        QSqlQueryModel *m = new QSqlQueryModel;
-//        m -> setQuery(query);
-//        ui->tableView->setModel(m);
-
+        QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
+        QSqlDatabase a = (db.getConnection());
+        MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
+        Services->loadData(res);
+        ui->tableView->setModel(Services);
     }
     else if(currentTable==2){
 
@@ -169,11 +166,11 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable =0;
     }
     else if (arg1 == "خدمات"){
-        QSqlQuery q(db.getConnection());
-        q.exec("SELECT * FROM ServiceInfo");
-        QSqlQueryModel *m = new QSqlQueryModel;
-        m -> setQuery(q);
-        ui->tableView->setModel(m);
+        QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
+        QSqlDatabase a = (db.getConnection());
+        MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
+        Services->loadData("SELECT * FROM ServiceInfo");
+        ui->tableView->setModel(Services);
         currentTable =1;
     }
     else if (arg1 == "دستگاه ها") {
@@ -200,12 +197,14 @@ void Tables::on_EditBtn_clicked()
 
 void Tables::on_tableView_clicked(const QModelIndex &index)
 {
+    ui->tableView->setSortingEnabled(true);
     int selectedRow = index.row();
 //    qDebug() << "Selected row:" << selectedRow;
     QVariant data = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow, 0));
 //    qDebug() << "Data in the first column of the selected row:" << data.toString();
     lastClicked = (MyFunctions ::reverseSN(data.toString())).toInt();
     clickedID = data.toInt();
+    qDebug() << "sorted?";
 }
 
 
@@ -256,6 +255,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 
 void Tables::on_tableView_doubleClicked(const QModelIndex &index)
 {
+
     if (currentTable == 0){emit editCustomer(clickedID);}
     else if (currentTable == 1){emit editService(clickedID);}
     else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}

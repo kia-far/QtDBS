@@ -11,10 +11,10 @@ class MyTableProxy : public QAbstractTableModel {
 
 public:
     explicit MyTableProxy(const QStringList &customColumnNames, const QSqlDatabase &db, QObject *parent = nullptr);
-
+    void sort(int column, Qt::SortOrder order);
     // Method to load the data from the query
     void loadData(const QString &queryStr);
-
+//    void sort(int column, Qt::SortOrder order);
     QVariant headerData(int section, Qt::Orientation orientation, int role) const override;
     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
