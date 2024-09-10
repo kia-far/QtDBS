@@ -14,14 +14,14 @@
    <string>MainWindow</string>
   </property>
   <property name="toolButtonStyle">
-   <enum>Qt::ToolButtonTextBesideIcon</enum>
+   <enum>Qt::ToolButtonStyle::ToolButtonTextBesideIcon</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
     <item row="0" column="0">
      <layout class="QGridLayout" name="gridLayout">
       <property name="sizeConstraint">
-       <enum>QLayout::SetNoConstraint</enum>
+       <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
       </property>
       <item row="0" column="0">
        <widget class="QPushButton" name="deviceBtn">
@@ -36,7 +36,7 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Hardware.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Hardware.png</iconset>
+          <normaloff>images/Hardware.png</normaloff>images/Hardware.png</iconset>
         </property>
         <property name="iconSize">
          <size>
@@ -59,12 +59,12 @@
         </property>
         <property name="icon">
          <iconset>
-          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Products.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Products.png</iconset>
+          <normaloff>images/Products.png</normaloff>images/Products.png</iconset>
         </property>
         <property name="iconSize">
          <size>
-          <width>0</width>
-          <height>0</height>
+          <width>200</width>
+          <height>200</height>
          </size>
         </property>
        </widget>
@@ -80,9 +80,11 @@
         <property name="text">
          <string/>
         </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Customers.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Customers.png</iconset>
+        <property name="iconSize">
+         <size>
+          <width>200</width>
+          <height>200</height>
+         </size>
         </property>
        </widget>
       </item>
@@ -96,10 +98,6 @@
         </property>
         <property name="text">
          <string/>
-        </property>
-        <property name="icon">
-         <iconset>
-          <normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Services.png</normaloff>../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Services.png</iconset>
         </property>
        </widget>
       </item>

@@ -45,6 +45,11 @@ void ProductRegister::on_pushButton_clicked()
 
 void ProductRegister::regOn() { Mode = "REGISTER"; }
 
+void ProductRegister::editOn(int Serial) {
+    Mode = "EDIT";
+    Serialnum = Serial;
+}
+
 void ProductRegister::regSubmit()
 {
 
@@ -69,10 +74,6 @@ void ProductRegister::regSubmit()
     }
 }
 
-void ProductRegister::editOn(int Serial) {
-    Mode = "EDIT";
-    Serialnum = Serial;
-}
 
 void ProductRegister::editSubmit()
 {
@@ -155,7 +156,7 @@ void ProductRegister::loadProductSecInfo(){
 }
 
 void ProductRegister::trigger(int serialnum) {
-//    qDebug() << "Serialnum set to:" << Serialnum; // Debugging statement
+//  edit
     editOn(serialnum);
     setup();
 }

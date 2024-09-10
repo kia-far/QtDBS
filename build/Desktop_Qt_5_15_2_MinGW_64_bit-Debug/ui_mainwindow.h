@@ -39,14 +39,14 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
-        MainWindow->setToolButtonStyle(Qt::ToolButtonTextBesideIcon);
+        MainWindow->setToolButtonStyle(Qt::ToolButtonStyle::ToolButtonTextBesideIcon);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         gridLayout_2 = new QGridLayout(centralwidget);
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
+        gridLayout->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         deviceBtn = new QPushButton(centralwidget);
         deviceBtn->setObjectName(QString::fromUtf8("deviceBtn"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -55,7 +55,7 @@ public:
         sizePolicy.setHeightForWidth(deviceBtn->sizePolicy().hasHeightForWidth());
         deviceBtn->setSizePolicy(sizePolicy);
         QIcon icon;
-        icon.addFile(QString::fromUtf8("../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Hardware.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QString::fromUtf8("images/Hardware.png"), QSize(), QIcon::Normal, QIcon::Off);
         deviceBtn->setIcon(icon);
         deviceBtn->setIconSize(QSize(200, 200));
 
@@ -66,9 +66,9 @@ public:
         sizePolicy.setHeightForWidth(productBtn->sizePolicy().hasHeightForWidth());
         productBtn->setSizePolicy(sizePolicy);
         QIcon icon1;
-        icon1.addFile(QString::fromUtf8("../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Products.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon1.addFile(QString::fromUtf8("images/Products.png"), QSize(), QIcon::Normal, QIcon::Off);
         productBtn->setIcon(icon1);
-        productBtn->setIconSize(QSize(0, 0));
+        productBtn->setIconSize(QSize(200, 200));
 
         gridLayout->addWidget(productBtn, 0, 1, 1, 1);
 
@@ -76,9 +76,7 @@ public:
         customerBtn->setObjectName(QString::fromUtf8("customerBtn"));
         sizePolicy.setHeightForWidth(customerBtn->sizePolicy().hasHeightForWidth());
         customerBtn->setSizePolicy(sizePolicy);
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8("../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Customers.png"), QSize(), QIcon::Normal, QIcon::Off);
-        customerBtn->setIcon(icon2);
+        customerBtn->setIconSize(QSize(200, 200));
 
         gridLayout->addWidget(customerBtn, 1, 0, 1, 1);
 
@@ -86,9 +84,6 @@ public:
         serviceBtn->setObjectName(QString::fromUtf8("serviceBtn"));
         sizePolicy.setHeightForWidth(serviceBtn->sizePolicy().hasHeightForWidth());
         serviceBtn->setSizePolicy(sizePolicy);
-        QIcon icon3;
-        icon3.addFile(QString::fromUtf8("../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/images/Services.png"), QSize(), QIcon::Normal, QIcon::Off);
-        serviceBtn->setIcon(icon3);
 
         gridLayout->addWidget(serviceBtn, 1, 1, 1, 1);
 

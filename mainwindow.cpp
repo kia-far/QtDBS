@@ -51,6 +51,14 @@ void MainWindow::onDataReady() {
 
 void MainWindow::setBtnIcon(){
 
+
+    ui->productBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/products.png"));
+    ui->deviceBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/Hardware.png"));
+    ui->customerBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/customers.png"));
+    ui->serviceBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/services.png"));
+
+
+
     ui->productBtn->setIconSize(ui->productBtn->size());
     ui->deviceBtn->setIconSize(ui->deviceBtn->size());
     ui->customerBtn->setIconSize(ui->customerBtn->size());

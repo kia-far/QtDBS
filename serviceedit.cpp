@@ -19,9 +19,11 @@ serviceEdit::serviceEdit(QWidget *parent) :
     // qDebug()<<QCalendar::;
     QDate maxDate(9999, 12, 31);
 //    QJalaliCalendar
+    //
     QCalendar calendar( QCalendar::System::Jalali);
     ui->dateEdit->setCalendar(calendar);
     ui->dateEdit->setDate(QDate::currentDate());
+    //
 //    db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
@@ -39,16 +41,16 @@ void serviceEdit::on_pushButton_clicked()
     else if (Modee == "EDIT") { editSubmit(); }
     else { qDebug() << "what is the mode?"; }
 }
-void serviceEdit::regOn(){Modee = "REGISTER";this->show();}
+void serviceEdit::regOn(){Modee = "REGISTER";setup(); }
 void serviceEdit::editOn(int serial){
     Modee="EDIT";
     ID = serial;
 }
 void serviceEdit::regSubmit(){
-    b[0]=ui->lineEdit->text();
+    b[0] = ui->dateEdit->text();
     b[1]=ui->lineEdit_2->text();
     b[2]=ui->lineEdit_3->text();
-    b[3]=ui->lineEdit_4->text();
+    b[3]=ui->textEdit->toPlainText();
     b[4]=ui->lineEdit_5->text();
 
     QSqlQuery query(db.getConnection());
@@ -67,10 +69,10 @@ void serviceEdit::regSubmit(){
 }
 void serviceEdit::editSubmit(){
     b[0] = QString::number(ID);
-    b[1] = ui->lineEdit->text();
+    b[1] = ui->dateEdit->text();
     b[2] = ui->lineEdit_2->text();
     b[3] = ui->lineEdit_3->text();
-    b[4] = ui->lineEdit_4->text();
+    b[4] = ui->textEdit->toPlainText();
     b[5] = ui->lineEdit_5->text();
     QSqlQuery q(db.getConnection());
     q.prepare("UPDATE ServiceInfo SET Date = ?, Authority = ?, ServiceType = ?, Description = ?, ImpairedPart = ? WHERE ID = ?");
@@ -100,10 +102,12 @@ void serviceEdit::setup(){
 
 
     if (Modee == "REGISTER") {
-        ui->lineEdit->setText("");
+        QCalendar calendar( QCalendar::System::Jalali);
+        ui->dateEdit->setCalendar(calendar);
+        ui->dateEdit->setDate(QDate::currentDate());
         ui->lineEdit_2->setText("");
         ui->lineEdit_3->setText("");
-        ui->lineEdit_4->setText("");
+        ui->textEdit->setText("");
         ui->lineEdit_5->setText("");
     } else if (Modee == "EDIT") {
         QSqlQuery query(db.getConnection());
@@ -113,10 +117,26 @@ void serviceEdit::setup(){
             qDebug() << "Database query error:" << query.lastError().text();
         } else {
             if (query.next()) {
-                ui->lineEdit->setText(query.value("Date").toString());
+                QCalendar calendar(QCalendar::System::Jalali);
+                ui->dateEdit->setCalendar(calendar);
+                QString rt = query.value("Date").toString();
+                QStringList parts = rt.split('/');
+                if (parts.size() == 3) {
+                    int year = parts[0].toInt();
+                    int month = parts[1].toInt();
+                    int day = parts[2].toInt();
+                    QDate jalaliDate = QDate(year, month, day, calendar);
+                    if (jalaliDate.isValid()) {
+                        ui->dateEdit->setDate(jalaliDate);
+                    } else {
+                        qWarning() << "Invalid Jalali date!";
+                    }
+                } else {
+                    qWarning() << "Invalid date format!";
+                }
                 ui->lineEdit_2->setText(query.value("Authority").toString());
                 ui->lineEdit_3->setText(query.value("ServiceType").toString());
-                ui->lineEdit_4->setText(query.value("Description").toString());
+                ui->textEdit->setText(query.value("Description").toString());
                 ui->lineEdit_5->setText(query.value("ImpairedPart").toString());
 
             } else {
