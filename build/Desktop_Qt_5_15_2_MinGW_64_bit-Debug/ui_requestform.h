@@ -73,6 +73,7 @@ public:
         if (RequestForm->objectName().isEmpty())
             RequestForm->setObjectName(QString::fromUtf8("RequestForm"));
         RequestForm->resize(823, 555);
+        RequestForm->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         layoutWidget = new QWidget(RequestForm);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(10, 11, 781, 521));
@@ -83,7 +84,7 @@ public:
         gridLayout_7->setObjectName(QString::fromUtf8("gridLayout_7"));
         gridLayout_5 = new QGridLayout();
         gridLayout_5->setObjectName(QString::fromUtf8("gridLayout_5"));
-        gridLayout_5->setSizeConstraint(QLayout::SetNoConstraint);
+        gridLayout_5->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         cell = new QLineEdit(layoutWidget);
         cell->setObjectName(QString::fromUtf8("cell"));
         QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -130,7 +131,7 @@ public:
 
         gridLayout_6 = new QGridLayout();
         gridLayout_6->setObjectName(QString::fromUtf8("gridLayout_6"));
-        gridLayout_6->setSizeConstraint(QLayout::SetNoConstraint);
+        gridLayout_6->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         label = new QLabel(layoutWidget);
         label->setObjectName(QString::fromUtf8("label"));
 
@@ -297,7 +298,7 @@ public:
         checkBox_12->setObjectName(QString::fromUtf8("checkBox_12"));
         sizePolicy2.setHeightForWidth(checkBox_12->sizePolicy().hasHeightForWidth());
         checkBox_12->setSizePolicy(sizePolicy2);
-        checkBox_12->setLayoutDirection(Qt::RightToLeft);
+        checkBox_12->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
         gridLayout_2->addWidget(checkBox_12, 0, 0, 1, 1);
 
@@ -305,7 +306,7 @@ public:
         checkBox_9->setObjectName(QString::fromUtf8("checkBox_9"));
         sizePolicy2.setHeightForWidth(checkBox_9->sizePolicy().hasHeightForWidth());
         checkBox_9->setSizePolicy(sizePolicy2);
-        checkBox_9->setLayoutDirection(Qt::RightToLeft);
+        checkBox_9->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         checkBox_9->setAutoFillBackground(false);
 
         gridLayout_2->addWidget(checkBox_9, 0, 1, 1, 1);
@@ -314,7 +315,7 @@ public:
         checkBox_13->setObjectName(QString::fromUtf8("checkBox_13"));
         sizePolicy2.setHeightForWidth(checkBox_13->sizePolicy().hasHeightForWidth());
         checkBox_13->setSizePolicy(sizePolicy2);
-        checkBox_13->setLayoutDirection(Qt::RightToLeft);
+        checkBox_13->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
         gridLayout_2->addWidget(checkBox_13, 1, 0, 1, 1);
 
@@ -322,7 +323,7 @@ public:
         checkBox_10->setObjectName(QString::fromUtf8("checkBox_10"));
         sizePolicy2.setHeightForWidth(checkBox_10->sizePolicy().hasHeightForWidth());
         checkBox_10->setSizePolicy(sizePolicy2);
-        checkBox_10->setLayoutDirection(Qt::RightToLeft);
+        checkBox_10->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
         gridLayout_2->addWidget(checkBox_10, 1, 1, 1, 1);
 
@@ -330,7 +331,7 @@ public:
         checkBox_14->setObjectName(QString::fromUtf8("checkBox_14"));
         sizePolicy2.setHeightForWidth(checkBox_14->sizePolicy().hasHeightForWidth());
         checkBox_14->setSizePolicy(sizePolicy2);
-        checkBox_14->setLayoutDirection(Qt::RightToLeft);
+        checkBox_14->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
         gridLayout_2->addWidget(checkBox_14, 2, 0, 1, 1);
 
@@ -338,7 +339,7 @@ public:
         checkBox_11->setObjectName(QString::fromUtf8("checkBox_11"));
         sizePolicy2.setHeightForWidth(checkBox_11->sizePolicy().hasHeightForWidth());
         checkBox_11->setSizePolicy(sizePolicy2);
-        checkBox_11->setLayoutDirection(Qt::RightToLeft);
+        checkBox_11->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
         gridLayout_2->addWidget(checkBox_11, 2, 1, 1, 1);
 

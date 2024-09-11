@@ -41,6 +41,7 @@ public:
         if (Tables->objectName().isEmpty())
             Tables->setObjectName(QString::fromUtf8("Tables"));
         Tables->resize(802, 525);
+        Tables->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         gridLayout = new QGridLayout(Tables);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -83,11 +84,14 @@ public:
 
         tableView = new QTableView(Tables);
         tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContents);
-        tableView->setEditTriggers(QAbstractItemView::EditKeyPressed);
+        tableView->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
+        tableView->setEditTriggers(QAbstractItemView::EditTrigger::EditKeyPressed);
         tableView->setSortingEnabled(true);
+        tableView->setWordWrap(true);
+        tableView->horizontalHeader()->setCascadingSectionResizes(false);
         tableView->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
-        tableView->verticalHeader()->setProperty("showSortIndicator", QVariant(false));
+        tableView->horizontalHeader()->setStretchLastSection(false);
+        tableView->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
 
         gridLayout->addWidget(tableView, 2, 0, 1, 9);
 

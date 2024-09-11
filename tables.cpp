@@ -49,6 +49,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
     }
 
     ui->tableView->setAlternatingRowColors(true);
+    ui->tableView->resizeColumnsToContents();
 //    currentTable = 3;
 }
 
@@ -64,6 +65,7 @@ void Tables::setupTable(QString table){
         currentTable = 3;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(Product);
+        ui->tableView->resizeColumnsToContents();
 
     }
     else if(table == "دستگاه ها") {
@@ -76,6 +78,8 @@ void Tables::setupTable(QString table){
         currentTable = 2;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(View);
+        ui->tableView->resizeColumnsToContents();
+
     }
     else if(table == "خدمات") {
 //        qDebug () << "service opened -------------------------------";
@@ -86,6 +90,8 @@ void Tables::setupTable(QString table){
         ui->tableView->setModel(Services);
         currentTable =1;
         ui->comboBox->setCurrentIndex(currentTable);
+        ui->tableView->resizeColumnsToContents();
+
     }
     else if(table == "مشتریان") {
 //        qDebug () << "customer opened -------------------------------";
@@ -102,6 +108,8 @@ void Tables::setupTable(QString table){
         MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
         Customer->loadData("SELECT * FROM CustomerInfo");
         ui->tableView->setModel(Customer);
+        ui->tableView->resizeColumnsToContents();
+
 
 }
     else {qDebug() << "wrong input";}
@@ -125,6 +133,8 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
         Customer->loadData(res);
         ui->tableView->setModel(Customer);
+        ui->tableView->resizeColumnsToContents();
+
 
 
     }
@@ -137,15 +147,21 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
         Services->loadData(res);
         ui->tableView->setModel(Services);
+        ui->tableView->resizeColumnsToContents();
+
     }
     else if(currentTable==2){
 
         View->setSearchParameters(currentDevice,searchParam, searchText);
         ui->tableView->setModel(View);
+        ui->tableView->resizeColumnsToContents();
+
     }
     else {
         Product->setSearchParameters(searchParam,searchText);
         ui->tableView->setModel(Product);
+        ui->tableView->resizeColumnsToContents();
+
     }
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
@@ -153,6 +169,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
     ui->comboBox_2->hide();
     if(arg1 == "محصولات"){
         ui->tableView->setModel(Product);
+        ui->tableView->resizeColumnsToContents();
 
 
         currentTable =3;
@@ -164,6 +181,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         Customer->loadData("SELECT * FROM CustomerInfo");
         ui->tableView->setModel(Customer);
         currentTable =0;
+        ui->tableView->resizeColumnsToContents();
+
     }
     else if (arg1 == "خدمات"){
         QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
@@ -172,6 +191,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         Services->loadData("SELECT * FROM ServiceInfo");
         ui->tableView->setModel(Services);
         currentTable =1;
+        ui->tableView->resizeColumnsToContents();
+
     }
     else if (arg1 == "دستگاه ها") {
         ui->comboBox_2->show();
@@ -182,6 +203,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
         ui->tableView->setModel(View);
         currentTable = 2;
+        ui->tableView->resizeColumnsToContents();
+
     }
 }
 
@@ -197,14 +220,12 @@ void Tables::on_EditBtn_clicked()
 
 void Tables::on_tableView_clicked(const QModelIndex &index)
 {
-    ui->tableView->setSortingEnabled(true);
     int selectedRow = index.row();
 //    qDebug() << "Selected row:" << selectedRow;
     QVariant data = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow, 0));
 //    qDebug() << "Data in the first column of the selected row:" << data.toString();
     lastClicked = (MyFunctions ::reverseSN(data.toString())).toInt();
     clickedID = data.toInt();
-    qDebug() << "sorted?";
 }
 
 
@@ -241,16 +262,15 @@ void Tables::on_mainWindowBtn_clicked()
 
 void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 {
-    if(arg1 == "new"){
 
-    }
-    else{
     currentDevice = arg1;
     QString searchParam = "SerialNumber";
     QString searchText = "";
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);
-}}
+    ui->tableView->resizeColumnsToContents();
+
+}
 
 
 void Tables::on_tableView_doubleClicked(const QModelIndex &index)

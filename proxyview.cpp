@@ -91,6 +91,30 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 //        }
     }
 
+    int descriptionIndex = columns.indexOf("description");
+        if (descriptionIndex != -1) {
+            // Move the "description" column to the end of the columns list
+            QString descriptionColumn = columns.takeAt(descriptionIndex);
+            columns.append(descriptionColumn);
+            for (auto &row : rows) {
+                QVariant descriptionData = row.takeAt(descriptionIndex);
+                row.append(descriptionData);
+            }
+        }
+/*
+  int descriptionIndex = columns.indexOf("description");  // Assuming the column name is "description"
+    if (descriptionIndex != -1) {
+        // Move the "description" column to the end of the columns list
+        QString descriptionColumn = columns.takeAt(descriptionIndex);
+        columns.append(descriptionColumn);
+
+        // Move the corresponding data in each row to the end
+        for (auto &row : rows) {
+            QVariant descriptionData = row.takeAt(descriptionIndex);
+            row.append(descriptionData);
+        }
+    }
+*/
 //    while (query.next()) {
 //        QVector<QVariant> row;
 //        for (int i = 0; i < numCols; ++i) {

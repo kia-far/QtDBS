@@ -32,19 +32,19 @@ DeviceForm::~DeviceForm()
 
 void DeviceForm::trigger(QString device){
     clearPage();
-    this->show();
     currentDevice = device;
+    this->show();
     setup();
 }
 
 void DeviceForm::setup(){
     edit = false;
-
+    QString curDev = currentDevice;
     QStringList devices = ItemHandler::loadDevices();
-    qDebug() << devices;
     ui->comboBox->clear();
     for(int i=0;i<devices.length();i++){
     ui->comboBox->addItem(devices[i]);}
+    ui->comboBox->setCurrentText(curDev);
     if(admiMode){
     ui->comboBox->addItem("دستگاه جدید");}
     ui->pushButton->setFixedWidth(25);
@@ -111,51 +111,51 @@ void DeviceForm::createBelonging(QString itemName,int index){
 }
 
 void DeviceForm::createNewItem(QString itemName, int index) {
-    adder =0;
+    adder = 0;
     indexcounter += 1;
-    QLabel *label = new QLabel(itemName);
-    QString labelName = QString("label_%1").arg(index+10*indexcounter);
-    label->setObjectName(labelName);
-    labels.append(label);
-    QComboBox *comboBox = new QComboBox();
-    QString comboBoxName = QString("comboBox_%1").arg(index+10*indexcounter);
-    comboBox->insertItem(0,"هیچ کدام");
-    comboBox->insertItems(1,setupOptions(itemName));
-    if (admiMode){
-    comboBox->insertItem(setupOptions(itemName).size()+1,"افزودن گزینه");
-    connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, itemName](int index) {
-        if (index == setupOptions(itemName).size() + 1) {
-            addOption(currentDevice, itemName);
-        }
-    });}
 
-    //adding option button here
-    comboBox->setObjectName(comboBoxName);
+    QLabel *label = new QLabel(itemName);
+    QString labelName = QString("label_%1").arg(index + 10 * indexcounter);
+    label->setObjectName(labelName);
+
+    // Set size policy to adjust based on content
+    label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    label->adjustSize();
+
+    labels.append(label);
+
+    QComboBox *comboBox = new QComboBox();
+    QString comboBoxName = QString("comboBox_%1").arg(index + 10 * indexcounter);
+    comboBox->insertItem(0, "هیچ کدام");
+    comboBox->insertItems(1, setupOptions(itemName));
+
+    if (admiMode) {
+        comboBox->insertItem(setupOptions(itemName).size() + 1, "افزودن گزینه");
+        connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, itemName](int index) {
+            if (index == setupOptions(itemName).size() + 1) {
+                addOption(currentDevice, itemName);
+            }
+        });
+    }
+
+    // Set size policy and adjust combo box as well
+    comboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    comboBox->adjustSize();
+
     comboBoxes.append(comboBox);
-//    QPushButton *addBtn = new QPushButton();
-//    QString buttonName = QString("addBtn_%1").arg(index+10*indexcounter);
-//    addBtn->setObjectName(buttonName);
-//    addBtn->setText("+");
-//    addBtn->setFixedWidth(25);
-//    connect(addBtn, &QPushButton::clicked, this, [this, itemName]() {
-//        addOption(currentDevice,itemName);
-//    });
-//    addBtns.append(addBtn);
+
     QString hbName = QString("hb_%1").arg(index);
     QHBoxLayout *hb = new QHBoxLayout;
-    //size constraints:
+
+    // Set alignment and add widgets to layout
     label->setAlignment(Qt::AlignRight);
-//    addBtn->setMaximumWidth(40);
-//    addBtn->setMinimumHeight(25);
-    comboBox->setMinimumHeight(25);
-    label->setMinimumHeight(25);
-    //----
-//    hb->addWidget(addBtn);
     hb->addWidget(comboBox);
     hb->addWidget(label);
+
     ui->vb->addLayout(hb);
     hb->setObjectName(hbName);
 }
+
 
 QStringList DeviceForm::setupOptions(QString itemName){
     return ItemHandler::loadOptions(currentDevice,itemName);

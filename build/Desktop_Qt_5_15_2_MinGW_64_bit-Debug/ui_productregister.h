@@ -52,6 +52,7 @@ public:
         if (ProductRegister->objectName().isEmpty())
             ProductRegister->setObjectName(QString::fromUtf8("ProductRegister"));
         ProductRegister->resize(394, 438);
+        ProductRegister->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         verticalLayout = new QVBoxLayout(ProductRegister);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         gridLayout = new QGridLayout();

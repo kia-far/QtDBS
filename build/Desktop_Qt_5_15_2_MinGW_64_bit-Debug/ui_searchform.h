@@ -41,6 +41,7 @@ public:
         if (SearchForm->objectName().isEmpty())
             SearchForm->setObjectName(QString::fromUtf8("SearchForm"));
         SearchForm->resize(400, 300);
+        SearchForm->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         verticalLayout = new QVBoxLayout(SearchForm);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
@@ -54,7 +55,7 @@ public:
 
         horizontalLayout->addWidget(comboBox);
 
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer);
 
@@ -68,7 +69,7 @@ public:
 
         horizontalLayout->addWidget(lineEdit);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout->addItem(horizontalSpacer_2);
 
@@ -83,11 +84,11 @@ public:
 
         buttonBox = new QDialogButtonBox(SearchForm);
         buttonBox->setObjectName(QString::fromUtf8("buttonBox"));
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+        buttonBox->setStandardButtons(QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok);
 
         horizontalLayout_2->addWidget(buttonBox);
 
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Fixed, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
 
         horizontalLayout_2->addItem(horizontalSpacer_4);
 

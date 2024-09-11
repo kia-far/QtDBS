@@ -33,6 +33,7 @@ public:
         if (AddOption->objectName().isEmpty())
             AddOption->setObjectName(QString::fromUtf8("AddOption"));
         AddOption->resize(247, 218);
+        AddOption->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         verticalLayout_2 = new QVBoxLayout(AddOption);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout = new QVBoxLayout();
@@ -45,7 +46,7 @@ public:
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
         label->setMaximumSize(QSize(16777215, 30));
-        label->setAlignment(Qt::AlignCenter);
+        label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         verticalLayout->addWidget(label);
 

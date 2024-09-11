@@ -34,6 +34,7 @@ public:
         if (EditTable->objectName().isEmpty())
             EditTable->setObjectName(QString::fromUtf8("EditTable"));
         EditTable->resize(867, 444);
+        EditTable->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         layoutWidget = new QWidget(EditTable);
         layoutWidget->setObjectName(QString::fromUtf8("layoutWidget"));
         layoutWidget->setGeometry(QRect(30, 30, 821, 367));

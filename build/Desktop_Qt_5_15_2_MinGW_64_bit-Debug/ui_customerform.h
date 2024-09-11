@@ -45,13 +45,14 @@ public:
         if (CustomerForm->objectName().isEmpty())
             CustomerForm->setObjectName(QString::fromUtf8("CustomerForm"));
         CustomerForm->resize(718, 519);
+        CustomerForm->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         verticalLayout = new QVBoxLayout(CustomerForm);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         gridLayout_3 = new QGridLayout();
         gridLayout_3->setObjectName(QString::fromUtf8("gridLayout_3"));
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QString::fromUtf8("gridLayout_2"));
-        gridLayout_2->setSizeConstraint(QLayout::SetNoConstraint);
+        gridLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         lineEdit_4 = new QLineEdit(CustomerForm);
         lineEdit_4->setObjectName(QString::fromUtf8("lineEdit_4"));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
@@ -89,22 +90,22 @@ public:
 
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        gridLayout->setSizeConstraint(QLayout::SetNoConstraint);
+        gridLayout->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         label_2 = new QLabel(CustomerForm);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setAlignment(Qt::AlignCenter);
+        label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         gridLayout->addWidget(label_2, 0, 0, 1, 1);
 
         label_3 = new QLabel(CustomerForm);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setAlignment(Qt::AlignCenter);
+        label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         gridLayout->addWidget(label_3, 1, 0, 1, 1);
 
         label_4 = new QLabel(CustomerForm);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setAlignment(Qt::AlignCenter);
+        label_4->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         gridLayout->addWidget(label_4, 2, 0, 1, 1);
 
@@ -132,6 +133,10 @@ public:
 
         verticalLayout->addLayout(gridLayout_4);
 
+        QWidget::setTabOrder(lineEdit, lineEdit_2);
+        QWidget::setTabOrder(lineEdit_2, lineEdit_3);
+        QWidget::setTabOrder(lineEdit_3, lineEdit_4);
+        QWidget::setTabOrder(lineEdit_4, pushButton);
 
         retranslateUi(CustomerForm);
 

@@ -52,6 +52,7 @@ public:
         if (serviceEdit->objectName().isEmpty())
             serviceEdit->setObjectName(QString::fromUtf8("serviceEdit"));
         serviceEdit->resize(525, 377);
+        serviceEdit->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         verticalLayout = new QVBoxLayout(serviceEdit);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
@@ -133,6 +134,7 @@ public:
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
         textEdit = new QTextEdit(serviceEdit);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
+        textEdit->setTabChangesFocus(true);
 
         horizontalLayout_5->addWidget(textEdit);
 

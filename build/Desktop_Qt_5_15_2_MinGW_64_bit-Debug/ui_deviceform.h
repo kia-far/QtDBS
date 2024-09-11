@@ -66,15 +66,16 @@ public:
         if (DeviceForm->objectName().isEmpty())
             DeviceForm->setObjectName(QString::fromUtf8("DeviceForm"));
         DeviceForm->resize(665, 561);
+        DeviceForm->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         horizontalLayout_10 = new QHBoxLayout(DeviceForm);
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        horizontalSpacer_4 = new QSpacerItem(306, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_4 = new QSpacerItem(306, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Minimum);
 
         horizontalLayout_10->addItem(horizontalSpacer_4);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
-        verticalLayout->setSizeConstraint(QLayout::SetMinimumSize);
+        verticalLayout->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         verticalLayout_6 = new QVBoxLayout();
         verticalLayout_6->setObjectName(QString::fromUtf8("verticalLayout_6"));
         horizontalLayout_9 = new QHBoxLayout();
@@ -119,16 +120,16 @@ public:
 
         verticalLayout->addLayout(verticalLayout_6);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Minimum, QSizePolicy::Preferred);
+        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Preferred, QSizePolicy::Minimum);
 
         verticalLayout->addItem(verticalSpacer);
 
         verticalLayout_3 = new QVBoxLayout();
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
-        verticalLayout_3->setSizeConstraint(QLayout::SetNoConstraint);
+        verticalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalLayout->setSizeConstraint(QLayout::SetMinimumSize);
+        horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         lineEdit = new QLineEdit(DeviceForm);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -143,7 +144,7 @@ public:
         label->setObjectName(QString::fromUtf8("label"));
         sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy1);
-        label->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout->addWidget(label);
 
@@ -152,10 +153,10 @@ public:
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
-        verticalLayout_4->setSizeConstraint(QLayout::SetNoConstraint);
+        verticalLayout_4->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         horizontalLayout_3 = new QHBoxLayout();
         horizontalLayout_3->setObjectName(QString::fromUtf8("horizontalLayout_3"));
-        horizontalLayout_3->setSizeConstraint(QLayout::SetMinimumSize);
+        horizontalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         pushButton = new QPushButton(DeviceForm);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
         QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -180,7 +181,7 @@ public:
         label_3->setObjectName(QString::fromUtf8("label_3"));
         sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
         label_3->setSizePolicy(sizePolicy1);
-        label_3->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_3->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_3->addWidget(label_3);
 
@@ -195,16 +196,16 @@ public:
 
         vb = new QVBoxLayout();
         vb->setObjectName(QString::fromUtf8("vb"));
-        vb->setSizeConstraint(QLayout::SetMinimumSize);
+        vb->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
 
         verticalLayout->addLayout(vb);
 
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
-        verticalLayout_2->setSizeConstraint(QLayout::SetNoConstraint);
+        verticalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
-        horizontalLayout_2->setSizeConstraint(QLayout::SetMinimumSize);
+        horizontalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         textEdit = new QTextEdit(DeviceForm);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
         sizePolicy1.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
@@ -227,13 +228,13 @@ public:
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         cbg = new QGridLayout();
         cbg->setObjectName(QString::fromUtf8("cbg"));
-        cbg->setSizeConstraint(QLayout::SetMinimumSize);
+        cbg->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
 
         horizontalLayout_8->addLayout(cbg);
 
         label_4 = new QLabel(DeviceForm);
         label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        label_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_8->addWidget(label_4);
 

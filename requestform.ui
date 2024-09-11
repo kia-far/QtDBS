@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+  </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
@@ -28,7 +31,7 @@
       <item row="0" column="1">
        <layout class="QGridLayout" name="gridLayout_5">
         <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
+         <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
         </property>
         <item row="1" column="0" colspan="2">
          <widget class="QLineEdit" name="cell">
@@ -91,7 +94,7 @@
       <item row="0" column="2">
        <layout class="QGridLayout" name="gridLayout_6">
         <property name="sizeConstraint">
-         <enum>QLayout::SetNoConstraint</enum>
+         <enum>QLayout::SizeConstraint::SetNoConstraint</enum>
         </property>
         <item row="0" column="0">
          <widget class="QLabel" name="label">
@@ -337,7 +340,7 @@
          </sizepolicy>
         </property>
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="text">
          <string>تبدیل 2 به 1 استریو</string>
@@ -353,7 +356,7 @@
          </sizepolicy>
         </property>
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
@@ -372,7 +375,7 @@
          </sizepolicy>
         </property>
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="text">
          <string>کابل HDMI</string>
@@ -388,7 +391,7 @@
          </sizepolicy>
         </property>
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="text">
          <string>کابل LAN </string>
@@ -404,7 +407,7 @@
          </sizepolicy>
         </property>
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="text">
          <string>DVD راهنما</string>
@@ -420,7 +423,7 @@
          </sizepolicy>
         </property>
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="text">
          <string>راهنمای بریل</string>
@@ -434,7 +437,7 @@
       <item row="0" column="0">
        <spacer name="horizontalSpacer_2">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -454,7 +457,7 @@
       <item row="0" column="2">
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
