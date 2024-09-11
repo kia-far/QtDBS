@@ -66,6 +66,7 @@ private:
     void addOption(QString deviceName,QString itemName);
     void addItem(QString deviceName);
     void addDevice();
+    void submit();
     void addBelonging(QString deviceName);
     void keyBinds();
     QString currentDevice;

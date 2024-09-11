@@ -343,9 +343,12 @@ QStringList ItemHandler::readLetters() {
     QStringList allDevices ={};
     for (int i=0;i<deviceArr.size();i++){
         objNames = deviceArr[i].toObject().keys();
-        res.append(deviceArr[i].toObject().value(objNames[0]).toArray()[1].toString());
+        for(int j=1;j<deviceArr[i].toObject().value(objNames[0]).toArray().size();j++){
+            res.append(deviceArr[i].toObject().value(objNames[0]).toArray()[j].toString());
+
+        }
     }
-//    qDebug() << "Whole letters:" << res;
+       qDebug() << "Whole letters:" << res;
     return res;
 }
 QStringList ItemHandler::nameLetter() {

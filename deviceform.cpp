@@ -23,7 +23,6 @@ DeviceForm::DeviceForm(QWidget *parent) :
     keyBinds();
 
 }
-bool ask = true;
 int indexx;
 int indexcounter = 0;
 DeviceForm::~DeviceForm()
@@ -228,62 +227,31 @@ void DeviceForm::on_SubmitBtn_clicked()
 {
 
     if(MyFunctions::checkSN( ui->lineEdit->text())){
-        if(MyFunctions::deviceFromLetter(ui->lineEdit->text())!=currentDevice && ask){
+        if(MyFunctions::deviceFromLetter(ui->lineEdit->text())!=currentDevice){
             QMessageBox msgBox;
-            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setIcon(QMessageBox::Warning);
             msgBox.setWindowTitle("Error");
-            msgBox.setText("شماره سریال با دستگاه مطابقت ندارد\
-آیا مطمئنید؟");
-            msgBox.setStandardButtons(QMessageBox::Ok);
-            msgBox.exec();
-            ask = false;
+            msgBox.setText("شماره سریال با نوع دستگاه مطابقت ندارد"
+                           "آیا مطمئنید؟");
+            msgBox.setStandardButtons(QMessageBox::Yes| QMessageBox::No);
+            msgBox.setDefaultButton(QMessageBox::No);
+            int res = msgBox.exec();
+            switch(res) {
+            case QMessageBox::Yes :{
+                submit();
+                break;
+            }
+            case QMessageBox::No :{
+                break;
+            }
+            default :
+                break;
+
+            }
         }
         else{
+            submit();
 
-    QString newText="";
-    QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
-//description TEXT, belongings TEXT
-    for (QLabel *label : labels) {
-        QString text = label->text(); // Get the text from the QLineEdit
-//        qDebug() << "column" << label->objectName() << ":" << text;
-        for(int i=0;i<text.size(); i++){
-            if (text.at(i)==" "){newText.append("_");}
-            else{newText.append(text.at(i));}
-        }
-        columns.append(text);
-    }
-    QString checks = "";
-    for (QCheckBox *checkBox : checkBoxes){
-        if(checkBox->isChecked()){
-        checks.append(checkBox->text()+" ");}
-    }
-    QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
-    for (QComboBox *comboBox : comboBoxes) {
-        QString text = comboBox->currentText();
-//        qDebug() << "Data" << comboBox->objectName() << ":" << text;
-        givenData.append(text);
-    }
-    if (!edit){
-    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
-    QSqlQuery q(db.getConnection());
-    q.prepare("INSERT INTO ProductInfo (SerialNO) VALUES (?)");
-    q.addBindValue(givenData[0].toString());
-
-    bool er = q.exec();
-    if (!er) {
-        qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
-    }
-    q.prepare("INSERT INTO ProductSecInfo (SerialNO) VALUES (?)");
-    q.addBindValue(givenData[0].toString());
-
-    bool err = q.exec();
-    if (!err) {
-        qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
-    }
-    }
-    else {
-        ItemHandler::updateTable(currentDevice,columns,givenData);
-    }
         }
 }
     else{        QMessageBox msgBox;
@@ -303,6 +271,53 @@ void DeviceForm::addItem(QString deviceName){
 }
 void DeviceForm::addDevice(){
     emit devicePage();
+}
+
+void DeviceForm::submit(){
+    QString newText="";
+    QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
+    //description TEXT, belongings TEXT
+    for (QLabel *label : labels) {
+        QString text = label->text(); // Get the text from the QLineEdit
+        //        qDebug() << "column" << label->objectName() << ":" << text;
+        for(int i=0;i<text.size(); i++){
+            if (text.at(i)==" "){newText.append("_");}
+            else{newText.append(text.at(i));}
+        }
+        columns.append(text);
+    }
+    QString checks = "";
+    for (QCheckBox *checkBox : checkBoxes){
+        if(checkBox->isChecked()){
+            checks.append(checkBox->text()+" ");}
+    }
+    QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
+    for (QComboBox *comboBox : comboBoxes) {
+        QString text = comboBox->currentText();
+        //        qDebug() << "Data" << comboBox->objectName() << ":" << text;
+        givenData.append(text);
+    }
+    if (!edit){
+        ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+        QSqlQuery q(db.getConnection());
+        q.prepare("INSERT INTO ProductInfo (SerialNO) VALUES (?)");
+        q.addBindValue(givenData[0].toString());
+
+        bool er = q.exec();
+        if (!er) {
+            qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
+        }
+        q.prepare("INSERT INTO ProductSecInfo (SerialNO) VALUES (?)");
+        q.addBindValue(givenData[0].toString());
+
+        bool err = q.exec();
+        if (!err) {
+            qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
+        }
+    }
+    else {
+        ItemHandler::updateTable(currentDevice,columns,givenData);
+    }
 }
 
 void DeviceForm::addBelonging(QString deviceName){
