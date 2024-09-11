@@ -360,7 +360,7 @@ QStringList ItemHandler::nameLetter() {
         res.append(deviceName);
         res.append(firstLetter);
     }
-
+    qDebug () << res;
     return res;
 }
 

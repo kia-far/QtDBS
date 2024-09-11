@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QAction>
-
+#include <QMessageBox>
 
 
 CustomerForm::CustomerForm(QWidget *parent) :
@@ -36,11 +36,19 @@ void CustomerForm::editOn(int serial){
     ID = serial;
 }
 void CustomerForm::regSubmit(){
+
     b[0]=ui->lineEdit->text();
     b[1]=ui->lineEdit_2->text();
     b[2]=ui->lineEdit_3->text();
     b[3]=ui->lineEdit_4->text();
-
+    if(b[1].isEmpty()){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);  // Set error icon
+        msgBox.setWindowTitle("Error");         // Set title
+        msgBox.setText("نام را وارد کنید");           // Set error message
+        msgBox.setStandardButtons(QMessageBox::Ok);  // Add an OK button
+        msgBox.exec();     }
+    else{
     QSqlQuery query(db.getConnection());
     query.prepare("INSERT INTO CustomerInfo (Name , ContactInfo , RepresentName) VALUES ( ? , ? , ?)");
     query.addBindValue(b[1]);
@@ -51,13 +59,22 @@ void CustomerForm::regSubmit(){
 
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
-    }
+    }}
 }
 void CustomerForm::editSubmit(){
     b[0] = QString::number(ID);
     b[1] = ui->lineEdit_2->text();
     b[2] = ui->lineEdit_3->text();
     b[3] = ui->lineEdit_4->text();
+    if(b[1].isEmpty()){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);  // Set error icon
+        msgBox.setWindowTitle("Error");         // Set title
+        msgBox.setText("نام را وارد کنید");           // Set error message
+        msgBox.setStandardButtons(QMessageBox::Ok);  // Add an OK button
+        msgBox.exec();
+    }
+    else{
     QSqlQuery q(db.getConnection());
     q.prepare("UPDATE CustomerInfo SET Name = ?, ContactInfo = ?, RepresentName = ? WHERE ID = ?");
     q.addBindValue(b[1]);
@@ -72,7 +89,7 @@ void CustomerForm::editSubmit(){
     } else {
 //        qDebug() << "success 1 " + b[0];
     }
-
+    }
 
 }
 void CustomerForm::trigger(int serialnum){

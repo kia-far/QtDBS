@@ -2,6 +2,7 @@
 #include "ui_addoption.h"
 #include "itemhandler.h"
 #include <QDebug>
+#include <QMessageBox>
 AddOption::AddOption(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddOption),
@@ -26,6 +27,15 @@ void AddOption::setupBelonging(QString deviceName){
     this->setWindowTitle("افزودن متعلقات");
     ui->label->setText("افزودن متعلقات");
     this->show();
+}
+
+void AddOption::showError(QString errorMessage) {
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Critical);  // Set error icon
+    msgBox.setWindowTitle("Error");         // Set title
+    msgBox.setText(errorMessage);           // Set error message
+    msgBox.setStandardButtons(QMessageBox::Ok);  // Add an OK button
+    msgBox.exec();  // Show the message box
 }
 
 void AddOption::setupDevice(){
@@ -64,25 +74,36 @@ void AddOption::on_pushButton_clicked()
             if (text.at(i)==" "){newText.append("_");}
             else{newText.append(text.at(i));}
         }
-        ItemHandler::addDevices(text,lineEdit_2->text());
+        if(text.isEmpty()||lineEdit_2->text().isEmpty()){
+            showError("هر دو خانه را پر کنید");
+        }
+        else{
+            ItemHandler::addDevices(text,lineEdit_2->text());}
     }
     else if (func == "belonging"){
+
         QString text = ui->lineEdit->text();
-        ItemHandler::addBelonging(device,text);
+        if(text.isEmpty()){showError("خانه را پر کنید");}
+        else{
+            ItemHandler::addBelonging(device,text);}
     }
     else if (func == "item"){
         QString text = ui->lineEdit->text();
+        if(text.isEmpty()){showError("خانه را پر کنید");}
+        else{
         for(int i=0;i<text.size(); i++){
             if (text.at(i)==" "){newText.append("_");}
             else{newText.append(text.at(i));}
         }
         ItemHandler::addItems(device , newText);
-    }
+        }}
     else if (func == "option"){
     QString option = ui->lineEdit->text();
+        if(option.isEmpty()){showError("خانه را پر کنید");}
+        else{
 //    qDebug() << "these are gonna go out " <<device << item << option;
     ItemHandler::addOptions(device,item,option);
-    }
+        }}
     else;
 //    ItemHandler::addBelonging(device,ui->lineEdit->text());
     emit updatePage();

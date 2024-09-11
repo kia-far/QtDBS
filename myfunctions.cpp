@@ -214,6 +214,22 @@ QString MyFunctions::deviceFromSN(QString SN) {
     return QString(); // Or return an appropriate value
 }
 
+QString MyFunctions::deviceFromLetter(QString SN) {
+
+        if (letters.isEmpty()) {
+            //            qDebug() << "letters is empty, setting letters...";
+            MyFunctions::setLetters();
+        }
+        for(int i=0;i<letters.size()/2;i++){
+        if(SN.at(0).toUpper() == letters[2*i+1]){
+                return letters[2*i];
+        }
+        }
+
+
+    return QString();
+        }
+
 void MyFunctions::setLetters() {
 //    qDebug() << "Setting letters from ItemHandler::nameLetter()...";
     letters.clear();  // Ensure the list is reset

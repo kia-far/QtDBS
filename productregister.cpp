@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QAction>
-
+#include<itemhandler.h>
 
 
 // Function to get or create the database connection
@@ -52,9 +52,10 @@ void ProductRegister::editOn(int Serial) {
 
 void ProductRegister::regSubmit()
 {
+    if(ui->lineEdit_8->text().isEmpty()||!MyFunctions::checkSN(ui->lineEdit_8->text())){}
+    else{
+    QString dev = MyFunctions::deviceFromLetter((ui->lineEdit_8->text().at(0)));
 
-
-    if (MyFunctions::checkSN(ui->lineEdit_8->text())) {
         a[0] = MyFunctions::reverseSN(ui->lineEdit_8->text());
         a[1] = ui->lineEdit_9->text();
         a[2] = ui->lineEdit_10->text();
@@ -64,15 +65,15 @@ void ProductRegister::regSubmit()
         a[6] = ui->textEdit->toPlainText();
 
 //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
-
+        ItemHandler::insertDataIntoTable(dev,{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
         // Call register functions here
         registerProductInfo();
         registerProductSecInfo();
 
-    } else {
-        qDebug() << "incorrect serial number";
-    }
-}
+
+
+
+    }}
 
 
 void ProductRegister::editSubmit()

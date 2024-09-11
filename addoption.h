@@ -16,6 +16,7 @@ public:
     explicit AddOption(QWidget *parent = nullptr);
     ~AddOption();
     void setupBelonging(QString deviceName);
+    void showError(const QString errorMessage);
     void setupDevice();
     void setupItem(QString deviceName);
     void setupOption(QString deviceName , QString itemName);

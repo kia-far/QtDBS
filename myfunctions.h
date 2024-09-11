@@ -19,6 +19,7 @@ public:
     static int snLetter(QString letter);
     static QString searchHandler(QString column,QString tableName, QString searchParam ,QString searchText);
     static QString deviceFromSN(QString SN);
+    static QString deviceFromLetter(QString SN);
     static void setLetters();
     static QStringList getLetters();
 //    static void initializeData();
