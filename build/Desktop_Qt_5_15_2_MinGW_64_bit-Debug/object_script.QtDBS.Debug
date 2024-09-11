@@ -6,7 +6,6 @@ debug/deviceform.o
 debug/edittable.o
 debug/itemabstract.o
 debug/itemhandler.o
-debug/jalali.o
 debug/jsonhandler.o
 debug/main.o
 debug/mainwindow.o

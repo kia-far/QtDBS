@@ -6,7 +6,6 @@ release/deviceform.o
 release/edittable.o
 release/itemabstract.o
 release/itemhandler.o
-release/jalali.o
 release/jsonhandler.o
 release/main.o
 release/mainwindow.o

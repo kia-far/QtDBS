@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QAction>
 #include "QSqlRecord"
+#include <QMessageBox>
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -22,6 +23,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     keyBinds();
 
 }
+bool ask = true;
 int indexx;
 int indexcounter = 0;
 DeviceForm::~DeviceForm()
@@ -224,7 +226,20 @@ void DeviceForm::populateEdit(QString device,int id){
 }
 void DeviceForm::on_SubmitBtn_clicked()
 {
+
     if(MyFunctions::checkSN( ui->lineEdit->text())){
+        if(MyFunctions::deviceFromLetter(ui->lineEdit->text())!=currentDevice && ask){
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("شماره سریال با دستگاه مطابقت ندارد\
+آیا مطمئنید؟");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();
+            ask = false;
+        }
+        else{
+
     QString newText="";
     QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
 //description TEXT, belongings TEXT
@@ -269,9 +284,14 @@ void DeviceForm::on_SubmitBtn_clicked()
     else {
         ItemHandler::updateTable(currentDevice,columns,givenData);
     }
-
+        }
 }
-    else{qDebug() << "wrong serial number";}
+    else{        QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setWindowTitle("Error");
+    msgBox.setText("شماره سریال صحیح نمیباشد");
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();}
 }
 
 void DeviceForm::addOption(QString deviceName,QString itemName){

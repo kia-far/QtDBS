@@ -6,8 +6,8 @@
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QAction>
-#include<itemhandler.h>
-
+#include <itemhandler.h>
+#include <QMessageBox>
 
 // Function to get or create the database connection
 
@@ -52,36 +52,90 @@ void ProductRegister::editOn(int Serial) {
 
 void ProductRegister::regSubmit()
 {
-    if(ui->lineEdit_8->text().isEmpty()||!MyFunctions::checkSN(ui->lineEdit_8->text())){}
+    if(ui->lineEdit_8->text().isEmpty()||!MyFunctions::checkSN(ui->lineEdit_8->text())){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("شماره سریال صحیح نمیباشد");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+    }
     else{
-    QString dev = MyFunctions::deviceFromLetter((ui->lineEdit_8->text().at(0)));
+        if(ui->comboBox->currentIndex()==0){
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("نوع دستگاه را انتخاب کنید");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();
+        }
+        else{
+            if(ui->comboBox->currentText()!=MyFunctions::deviceFromLetter( ui->lineEdit_8->text().at(0))){
+                QMessageBox msgBox;
+                msgBox.setIcon(QMessageBox::Critical);
+                msgBox.setWindowTitle("Error");
+                msgBox.setText("شماره سریال با نوع دستگاه مطابقت ندارد"
+                               "آیا مطمئنید؟");
+                msgBox.setStandardButtons(QMessageBox::Yes| QMessageBox::No);
+                msgBox.setDefaultButton(QMessageBox::No);
+                int res = msgBox.exec();
+                switch(res) {
+                case QMessageBox::Yes :{
+                    a[0] = MyFunctions::reverseSN(ui->lineEdit_8->text());
+                    a[1] = ui->comboBox->currentText();
+                    a[2] = ui->lineEdit_10->text();
+                    a[3] = ui->lineEdit_11->text();
+                    a[4] = ui->lineEdit_12->text();
+                    a[5] = ui->lineEdit_13->text();
+                    a[6] = ui->textEdit->toPlainText();
 
-        a[0] = MyFunctions::reverseSN(ui->lineEdit_8->text());
-        a[1] = ui->lineEdit_9->text();
-        a[2] = ui->lineEdit_10->text();
-        a[3] = ui->lineEdit_11->text();
-        a[4] = ui->lineEdit_12->text();
-        a[5] = ui->lineEdit_13->text();
-        a[6] = ui->textEdit->toPlainText();
+                    //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
+                    ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                    // Call register functions here
+                    registerProductInfo();
+                    registerProductSecInfo();
+                    break;
+                }
+                case QMessageBox::No :{
+                    break;
+                }
+                default :
+                    break;
 
-//        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
-        ItemHandler::insertDataIntoTable(dev,{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
-        // Call register functions here
-        registerProductInfo();
-        registerProductSecInfo();
+                }
+            }
+            else
+            {
+            // QString dev = MyFunctions::deviceFromLetter((ui->lineEdit_8->text().at(0)));
+
+                a[0] = MyFunctions::reverseSN(ui->lineEdit_8->text());
+                a[1] = ui->comboBox->currentText();
+                a[2] = ui->lineEdit_10->text();
+                a[3] = ui->lineEdit_11->text();
+                a[4] = ui->lineEdit_12->text();
+                a[5] = ui->lineEdit_13->text();
+                a[6] = ui->textEdit->toPlainText();
+
+        //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
+                ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                // Call register functions here
+                registerProductInfo();
+                registerProductSecInfo();
 
 
 
 
-    }}
+            }
+        }
+    }
+}
 
 
 void ProductRegister::editSubmit()
 {
 
-
     a[0] = MyFunctions::reverseSN(ui->lineEdit_8->text());
-    a[1] = ui->lineEdit_9->text();
+    a[1] = ui->comboBox->currentText();
     a[2] = ui->lineEdit_10->text();
     a[3] = ui->lineEdit_11->text();
     a[4] = ui->lineEdit_12->text();
@@ -97,7 +151,12 @@ void ProductRegister::editSubmit()
 void ProductRegister::setup() {
     if (Mode == "REGISTER") {
         ui->lineEdit_8->setReadOnly(false);
-        ui->lineEdit_9->setText("");
+        QStringList devices = ItemHandler::loadDevices();
+        ui->comboBox->clear();
+        ui->comboBox->addItem("انتخاب نشده");
+        for(int i=0;i<devices.length();i++){
+            ui->comboBox->addItem(devices[i]);}
+        ui->comboBox->setCurrentIndex(0);
         ui->lineEdit_10->setText("");
         ui->lineEdit_11->setText("");
         ui->lineEdit_12->setText("");
@@ -126,7 +185,7 @@ void ProductRegister::loadProductInfo(){
         qDebug() << "Database query error:" << query.lastError().text();
     } else {
         if (query.next()) {
-            ui->lineEdit_9->setText(query.value("ProductName").toString());
+            ui->comboBox->setCurrentText(query.value("ProductName").toString());
             ui->lineEdit_10->setText(query.value("Invoice").toString());
             ui->lineEdit_11->setText(query.value("AnyDeskNO").toString());
         } else {

@@ -240,6 +240,7 @@ Makefile: ../../QtDBS.pro C:/newQt/5.15.2/mingw81_64/mkspecs/win32-g++/qmake.con
 		C:/newQt/5.15.2/mingw81_64/mkspecs/features/qt_config.prf \
 		C:/newQt/5.15.2/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		C:/newQt/5.15.2/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/newQt/5.15.2/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		C:/newQt/5.15.2/mingw81_64/mkspecs/features/toolchain.prf \
 		C:/newQt/5.15.2/mingw81_64/mkspecs/features/default_pre.prf \
@@ -269,7 +270,6 @@ Makefile: ../../QtDBS.pro C:/newQt/5.15.2/mingw81_64/mkspecs/win32-g++/qmake.con
 		C:/newQt/5.15.2/mingw81_64/lib/Qt5Sql.prl \
 		C:/newQt/5.15.2/mingw81_64/lib/Qt5Core.prl \
 		C:/newQt/5.15.2/mingw81_64/lib/qtmain.prl \
-		.qmake.stash \
 		C:/newQt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ..\..\QtDBS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/spec_pre.prf:
@@ -442,6 +442,7 @@ C:/newQt/5.15.2/mingw81_64/mkspecs/features/qt_functions.prf:
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/qt_config.prf:
 C:/newQt/5.15.2/mingw81_64/mkspecs/win32-g++/qmake.conf:
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/exclusive_builds.prf:
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/toolchain.prf:
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/default_pre.prf:
@@ -471,7 +472,6 @@ C:/newQt/5.15.2/mingw81_64/lib/Qt5Gui.prl:
 C:/newQt/5.15.2/mingw81_64/lib/Qt5Sql.prl:
 C:/newQt/5.15.2/mingw81_64/lib/Qt5Core.prl:
 C:/newQt/5.15.2/mingw81_64/lib/qtmain.prl:
-.qmake.stash:
 C:/newQt/5.15.2/mingw81_64/mkspecs/features/build_pass.prf:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ..\..\QtDBS.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
