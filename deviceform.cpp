@@ -227,7 +227,7 @@ void DeviceForm::on_SubmitBtn_clicked()
 {
 
     if(MyFunctions::checkSN( ui->lineEdit->text())){
-        if(MyFunctions::deviceFromLetter(ui->lineEdit->text())!=currentDevice){
+        if(!MyFunctions::deviceFromLetter(ui->lineEdit->text(),currentDevice)){
             QMessageBox msgBox;
             msgBox.setIcon(QMessageBox::Warning);
             msgBox.setWindowTitle("Error");
@@ -298,10 +298,10 @@ void DeviceForm::submit(){
         givenData.append(text);
     }
     if (!edit){
-        ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
         QSqlQuery q(db.getConnection());
-        q.prepare("INSERT INTO ProductInfo (SerialNO) VALUES (?)");
+        q.prepare("INSERT INTO ProductInfo (SerialNO , ProductName) VALUES (? ,?)");
         q.addBindValue(givenData[0].toString());
+        q.addBindValue(currentDevice);
 
         bool er = q.exec();
         if (!er) {
@@ -314,9 +314,23 @@ void DeviceForm::submit(){
         if (!err) {
             qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
         }
+        if(er&&err){
+            ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+            this->close();
+        }
+        else{
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("شماره سریال تکراری است");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();
+        }
+
     }
     else {
         ItemHandler::updateTable(currentDevice,columns,givenData);
+        this->close();
     }
 }
 

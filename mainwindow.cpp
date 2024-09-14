@@ -11,6 +11,9 @@ MainWindow::MainWindow(QWidget *parent)
     , db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
+
+    qDebug() << ItemHandler::loadDevices();
+    qDebug() << "reverseSN" << MyFunctions::reverseSN("B00n8892");
     this->show();
     QObject::connect(x, &Tables::edit, &e, &EditTable::receiveTableIndex);
     QObject::connect(x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);

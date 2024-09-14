@@ -70,7 +70,7 @@ void ProductRegister::regSubmit()
             msgBox.exec();
         }
         else{
-            if(ui->comboBox->currentText()!=MyFunctions::deviceFromLetter( ui->lineEdit_8->text().at(0))){
+            if(!(MyFunctions::deviceFromLetter( ui->lineEdit_8->text().at(0),ui->comboBox->currentText()))){
                 QMessageBox msgBox;
                 msgBox.setIcon(QMessageBox::Critical);
                 msgBox.setWindowTitle("Error");
@@ -90,10 +90,21 @@ void ProductRegister::regSubmit()
                     a[6] = ui->textEdit->toPlainText();
 
                     //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
-                    ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                    // registerProductInfo();
+                    // registerProductSecInfo();
+                    if(registerProductInfo()&&registerProductSecInfo()){
+                        ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                        this->close();
+                    }
                     // Call register functions here
-                    registerProductInfo();
-                    registerProductSecInfo();
+                    else{
+                        QMessageBox msgBox;
+                        msgBox.setIcon(QMessageBox::Critical);
+                        msgBox.setWindowTitle("Error");
+                        msgBox.setText("شماره سریال تکراری است");
+                        msgBox.setStandardButtons(QMessageBox::Ok);
+                        msgBox.exec();
+                    }
                     break;
                 }
                 case QMessageBox::No :{
@@ -117,10 +128,19 @@ void ProductRegister::regSubmit()
                 a[6] = ui->textEdit->toPlainText();
 
         //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
-                ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                if(registerProductInfo()&&registerProductSecInfo()){
+                    ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                    this->close();
+                }
                 // Call register functions here
-                registerProductInfo();
-                registerProductSecInfo();
+                else{
+                    QMessageBox msgBox;
+                    msgBox.setIcon(QMessageBox::Critical);
+                    msgBox.setWindowTitle("Error");
+                    msgBox.setText("شماره سریال تکراری است");
+                    msgBox.setStandardButtons(QMessageBox::Ok);
+                    msgBox.exec();
+                }
 
 
 
@@ -146,6 +166,8 @@ void ProductRegister::editSubmit()
 
     updateProductInfo();
     updateProductSecInfo();
+    this->close();
+
 }
 
 void ProductRegister::setup() {
@@ -262,7 +284,7 @@ void ProductRegister::updateProductSecInfo(){
 
 }
 
-void ProductRegister::registerProductInfo(){
+bool ProductRegister::registerProductInfo(){
 
 
     QSqlQuery q(db.getConnection());
@@ -276,9 +298,10 @@ void ProductRegister::registerProductInfo(){
     if (!er) {
         qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
     }
+    return er;
 }
 
-void ProductRegister::registerProductSecInfo(){
+bool ProductRegister::registerProductSecInfo(){
 
 
     QSqlQuery q(db.getConnection());
@@ -292,6 +315,7 @@ void ProductRegister::registerProductSecInfo(){
     if (!err) {
         qDebug() << "Error in ProductSecInfo insert:" << q.lastError().text();
     }
+    return err;
 }
 
 void ProductRegister::keybinds(){

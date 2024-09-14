@@ -358,10 +358,13 @@ QStringList ItemHandler::nameLetter() {
 
     for (const QJsonValue& deviceObj : deviceArr) {
         QString deviceName = deviceObj.toObject().keys().first();
-        QString firstLetter = deviceObj.toObject()[deviceName].toArray()[1].toString();
-
         res.append(deviceName);
+
+        for(int i=1;i<deviceObj.toObject()[deviceName].toArray().size();i++){
+        QString firstLetter = deviceObj.toObject()[deviceName].toArray()[i].toString();
+
         res.append(firstLetter);
+        }
     }
     qDebug () << res;
     return res;

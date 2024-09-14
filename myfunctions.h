@@ -18,8 +18,8 @@ public:
     static QString querySolver();
     static int snLetter(QString letter);
     static QString searchHandler(QString column,QString tableName, QString searchParam ,QString searchText);
-    static QString deviceFromSN(QString SN);
-    static QString deviceFromLetter(QString SN);
+    // static bool deviceFromSN(QString SN,QString device);
+    static bool deviceFromLetter(QString SN, QString device);
     static void setLetters();
     static QStringList getLetters();
 //    static void initializeData();

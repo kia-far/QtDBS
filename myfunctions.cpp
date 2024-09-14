@@ -8,61 +8,69 @@ MyFunctions::MyFunctions(QObject *parent)
     : QAbstractItemModel(parent)
 {
 }
-QString MyFunctions:: intToStr(int number) {
-    QString numberStr = QString::number(number);
+QString MyFunctions::intToStr(int number) {
+    QString numberStr = QString::number(number).rightJustified(10, '0'); // Ensure it's a 9-digit string
 
-    if (numberStr.length() != 9)
-        return QString();
+    if (numberStr.length() != 10)
+        return QString(); // Return empty string if format is incorrect
 
-    QChar firstDigit = numberStr.at(0);
-    QString temp = "";
-    temp.append(firstDigit);
-    if(deviceFromSN(temp)!=""){
-    numberStr[0] = deviceFromSN(temp).at(0);}
-//    if(deviceFromSN(temp).size()!=1){qDebug() << "something wrong with deviceFromSN";}
+    QString result;
 
-
-    int fourthDigit = numberStr.mid(3, 1).toInt();
-    int fifthDigit = numberStr.mid(4, 1).toInt();
-    int combined = fourthDigit * 10 + fifthDigit;
-
-    if (combined >= 1 && combined <= 26) {
-        QChar letter = QChar('A' + combined - 1);
-        numberStr.replace(3, 2, letter);
+    // First letter (from YY)
+    int firstLetterPos = numberStr.mid(0, 2).toInt();
+    if (firstLetterPos >= 1 && firstLetterPos <= 26) {
+        QChar firstLetter = QChar('A' + firstLetterPos - 1);
+        result.append(firstLetter);
+    } else {
+        return QString(); // Return empty string if position is invalid
     }
 
-    return numberStr;
-}
+    // Next two digits (xx)
+    result.append(numberStr.mid(2, 2));
 
-QString MyFunctions::reverseSN(const QString &input) {
-    QString result = input;
-
-    if (!result.isEmpty()) {
-        QChar firstLetter = result.at(0).toUpper();
-        result[0] = QString::number(snLetter(firstLetter)).at(0);
-//        if (firstLetter.toUpper() == 'B') {
-//            result[0] = '1';
-//        } else if (firstLetter.toUpper() == 'N') {
-//            result[0] = '2';
-//        } else if (firstLetter.toUpper() == 'S') {
-//            result[0] = '3';
-//        }
+    // Second letter (from YY)
+    int secondLetterPos = numberStr.mid(4, 2).toInt();
+    if (secondLetterPos >= 1 && secondLetterPos <= 26) {
+        QChar secondLetter = QChar('A' + secondLetterPos - 1);
+        result.append(secondLetter);
+    } else {
+        return QString(); // Return empty string if position is invalid
     }
 
-    if (result.length() > 3) {
-        QChar secondLetter = result.at(3).toUpper();
-        if (secondLetter.isLetter()) {
-            int positionInAlphabet = secondLetter.toLatin1() - 'A' + 1;
-            if (positionInAlphabet >= 1 && positionInAlphabet <= 26) {
-                QString positionString = QString::number(positionInAlphabet).rightJustified(2, '0');
-                result.replace(3, 1, positionString);
-            }
-        }
-    }
+    // Last four digits (xxxx)
+    result.append(numberStr.mid(6, 4));
 
-//    qDebug() << "reverseSN result:" << result;
     return result;
 }
+
+
+QString MyFunctions::reverseSN(const QString &input) {
+    if (input.length() != 8)
+        return QString(); // Return empty string if format is incorrect
+
+    QString result;
+
+    // First Letter (XX)
+    QChar firstLetter = input.at(0).toUpper();
+    int firstLetterPos = firstLetter.toLatin1() - 'A' + 1;
+    result.append(QString::number(firstLetterPos).rightJustified(2, '0')); // Append 2-digit position
+
+    // Next two digits (xx)
+    result.append(input.mid(1, 2)); // Append the next two digits as-is
+
+    // Second Letter (YY)
+    QChar secondLetter = input.at(3).toUpper();
+    int secondLetterPos = secondLetter.toLatin1() - 'A' + 1;
+    result.append(QString::number(secondLetterPos).rightJustified(2, '0')); // Append 2-digit position
+
+    // Remaining 4 digits (xxxx)
+    result.append(input.mid(4, 4)); // Append the remaining digits as-is
+    if(result.at(0) == '0'){
+        result.remove(0,1);
+    }
+    return result;
+}
+
 
 QString MyFunctions::smallSN(QString input) {
     QString result="";
@@ -70,19 +78,16 @@ QString MyFunctions::smallSN(QString input) {
     if(!input.isEmpty()){
         for(int i=0;i<input.length();i++){
             if(letter&&(input.at(i).isLetter())){
-//                qDebug()<<i <<"time";
                 input = input.toUpper();
                 int positionInAlphabet = input.at(i).toLatin1() - 'A' + 1;
                 if (positionInAlphabet >= 1 && positionInAlphabet <= 26) {
                     QString positionString = QString::number(positionInAlphabet).rightJustified(2, '0');
                     result.append(positionString);
-//                    qDebug() <<"positionstring isssss: "<<positionString;
                 }
                 poslet = i;
             }
             else{
                 result.append(input.at(i));
-//                qDebug()<< "what?!";
             }
         }
 
@@ -104,36 +109,37 @@ QString MyFunctions::querySolver(){
     return res;
 }
 
-int MyFunctions :: binaryToDecimal(const QString& binary) {
+// int MyFunctions :: binaryToDecimal(const QString& binary) {
 
-    int decimal = 0;
-    int power = 1;
-    for (int i = binary.length() - 1; i >= 0; --i) {
-        int bit = binary.at(i).digitValue();
+//     int decimal = 0;
+//     int power = 1;
+//     for (int i = binary.length() - 1; i >= 0; --i) {
+//         int bit = binary.at(i).digitValue();
 
-        decimal += bit * power;
+//         decimal += bit * power;
 
-        power *= 2;
-    }
+//         power *= 2;
+//     }
 
-    return decimal;
-}
+//     return decimal;
+// }
 
-QString MyFunctions :: decimalToBinary(int decimal) {
-    QString binary = "";
+// QString MyFunctions :: decimalToBinary(int decimal) {
+//     QString binary = "";
 
-    while (decimal > 0 || binary.length() < 14) {
-        binary.prepend(QString::number(decimal % 2));
+//     while (decimal > 0 || binary.length() < 14) {
+//         binary.prepend(QString::number(decimal % 2));
 
-        decimal /= 2;
-    }
+//         decimal /= 2;
+//     }
 
-    while (binary.length() < 14) {
-        binary.prepend('0');
-    }
+//     while (binary.length() < 14) {
+//         binary.prepend('0');
+//     }
 
-    return binary;
-}
+//     return binary;
+// }
+
 bool MyFunctions :: checkSN(QString sn){
     setLetters();
     bool result = true;
@@ -168,6 +174,7 @@ int MyFunctions::snLetter(QString letter){
     }
     return 0;
 }
+
 QString MyFunctions::searchHandler(QString column,QString tableName, QString searchParam ,QString searchText){
     QString res;
     QString context;
@@ -188,47 +195,63 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     }
     return res;
 }
-QString MyFunctions::deviceFromSN(QString SN) {
-    try {
-        if (letters.isEmpty()) {
-//            qDebug() << "letters is empty, setting letters...";
-            MyFunctions::setLetters();
-        }
+// QString MyFunctions::deviceFromSN(QString SN) {
+//     try {
+//         if (letters.isEmpty()) {
+// //            qDebug() << "letters is empty, setting letters...";
+//             MyFunctions::setLetters();
+//         }
 
-        // Validate SN here
-        bool ok;
-        int index = SN.toInt(&ok) - 1;
-//        qDebug() << "letters :" << letters;
+//         // Validate SN here
+//         bool ok;
+//         int index = SN.toInt(&ok) - 1;
+// //        qDebug() << "letters :" << letters;
 
-        if (!ok || index < 0 || letters.isEmpty()) {
-            // Handle invalid SN
-//            qDebug() << "invalid SN:" << SN;
-            return QString();
-        }
+//         if (!ok || index < 0 || letters.isEmpty()) {
+//             // Handle invalid SN
+// //            qDebug() << "invalid SN:" << SN;
+//             return QString();
+//         }
 
-        return letters[(index * 2) + 1];
-    } catch (const std::exception& e) {
-        qDebug() << "Exception caught:" << e.what();
+//         return letters[(index * 2) + 1];
+//     } catch (const std::exception& e) {
+//         qDebug() << "Exception caught:" << e.what();
+//     }
+
+//     return QString(); // Or return an appropriate value
+// }
+
+bool MyFunctions::deviceFromLetter(QString SN,QString device) {
+
+    if (letters.isEmpty()) {
+        //            qDebug() << "letters is empty, setting letters...";
+        setLetters();
     }
+    // for(int i=0;i<letters.size()/2;i++){
+    // if(SN.at(0).toUpper() == letters[2*i+1]){
+    //         return letters[2*i];
+    // }
+    // }
+    if(letters.contains(SN.at(0).toUpper())){
+        qDebug() << "letters does include SN.at(0)";
+    // bool check=true;
+        for(int i=0;i<letters.size();i++){
+            if(letters[i]==SN.at(0).toUpper()){
+                for(int j=i;j>-1;j--){
+                    if(letters[j].length()==1){qDebug()<<"jumped! also length of BN"<<letters[0].length();}
+                    else{
+                        if(letters[j]==device){return true;}
+                        else{j=0;}
+                    }
+                }
+            }
+        }
+    }
+    else{return false;}
 
-    return QString(); // Or return an appropriate value
+
+    return false;
 }
-
-QString MyFunctions::deviceFromLetter(QString SN) {
-
-        if (letters.isEmpty()) {
-            //            qDebug() << "letters is empty, setting letters...";
-            MyFunctions::setLetters();
-        }
-        for(int i=0;i<letters.size()/2;i++){
-        if(SN.at(0).toUpper() == letters[2*i+1]){
-                return letters[2*i];
-        }
-        }
-
-
-    return QString();
-        }
 
 void MyFunctions::setLetters() {
 //    qDebug() << "Setting letters from ItemHandler::nameLetter()...";
@@ -247,7 +270,7 @@ void MyFunctions::setLetters() {
 
 //    isDataReady = true;  // Mark data as ready
 //    emit dataReady();  // Notify that data is ready
-//    qDebug() << "Letters set: " << letters;
+   qDebug() << "Letters set: " << letters;
 }
 
 

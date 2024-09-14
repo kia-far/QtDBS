@@ -27,8 +27,8 @@ public:
     void loadProductSecInfo();
     void updateProductInfo();
     void updateProductSecInfo();
-    void registerProductInfo();
-    void registerProductSecInfo();
+    bool registerProductInfo();
+    bool registerProductSecInfo();
 
 private slots:
     void on_pushButton_clicked();
