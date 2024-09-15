@@ -12,6 +12,7 @@ QT+=sql
 SOURCES += \
     DatabaseConnection.cpp \
     MyTableProxy.cpp \
+    addabr.cpp \
     addoption.cpp \
     customerform.cpp \
     deviceform.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 HEADERS += \
     DatabaseConnection.h \
     MyTableProxy.h \
+    addabr.h \
     addoption.h \
     customerform.h \
     deviceform.h \
@@ -55,6 +57,7 @@ HEADERS += \
     tables.h
 
 FORMS += \
+    addabr.ui \
     addoption.ui \
     customerform.ui \
     deviceform.ui \

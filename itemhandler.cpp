@@ -370,4 +370,70 @@ QStringList ItemHandler::nameLetter() {
     return res;
 }
 
+void ItemHandler::addAbr(QString deviceName, QChar newAbr) {
+    loadDevices();
+    newAbr = newAbr.toUpper();
+
+    // Load the device array
+    QJsonArray deviceArr = loadedInfoObj["devices"].toArray();
+    bool deviceFound = false;
+    int deviceIndex = -1;
+    QJsonArray itemArr;
+
+    // Find the device in the array
+    for (int i = 0; i < deviceArr.size(); ++i) {
+        QJsonObject deviceObj = deviceArr[i].toObject();
+        if (deviceObj.contains(deviceName)) {
+            itemArr = deviceObj[deviceName].toArray();
+            deviceFound = true;
+            deviceIndex = i;
+            break;
+        }
+    }
+
+    if (!deviceFound) {
+        qDebug() << "Device not found!";
+        return;
+    }
+
+    // Check if the device has belongings and abbreviations
+    if (itemArr.size() < 2) {
+        qDebug() << "Invalid device structure!";
+        return;
+    }
+
+    // Get the existing abbreviations (starting from the second item in the array)
+    QStringList abrList;
+    for (int i = 1; i < itemArr.size(); ++i) {
+        abrList.append(itemArr[i].toString());
+    }
+
+    // If the new abbreviation is not already in the list, append it
+    if (!abrList.contains(newAbr)) {
+        abrList.append(newAbr);
+    }
+
+    // Update the array with the new abbreviations (keeping the belongings as the first item)
+    QJsonArray newArr;
+    newArr.append(itemArr[0]);  // Keep belongings object as the first element
+    for (const QString& abr : abrList) {
+        newArr.append(abr);
+    }
+
+    // Update the device object with the new array
+    QJsonObject updatedDeviceObj = deviceArr[deviceIndex].toObject();
+    updatedDeviceObj[deviceName] = newArr;
+    deviceArr[deviceIndex] = updatedDeviceObj;
+
+    // Save the updated array back to the loaded JSON object
+    loadedInfoObj["devices"] = deviceArr;
+
+    // Save the changes to the JSON file
+    QJsonDocument updatedDoc(loadedInfoObj);
+    JsonHandler::saveInfoJson(updatedDoc);
+
+    changemade = true;
+    qDebug() << "Abbreviation added successfully!";
+}
+
 

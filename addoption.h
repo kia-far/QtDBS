@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QLineEdit>
+#include <QPushButton>
 
 namespace Ui {
 class AddOption;
@@ -23,9 +24,12 @@ public:
 
 signals:
     void updatePage();
+    void addAbr();
 
 private slots:
 void on_pushButton_clicked();
+
+    void on_AddOption_destroyed();
 
 private:
     Ui::AddOption *ui;
@@ -33,6 +37,7 @@ private:
     QString item;
     QString func;
     QLineEdit *lineEdit_2; // Member variable for QLineEdit
+    QPushButton *editButton = nullptr;
     void cleanupDevice();
     bool devCalled;
 };

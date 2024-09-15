@@ -1,5 +1,6 @@
 debug/DatabaseConnection.o
 debug/MyTableProxy.o
+debug/addabr.o
 debug/addoption.o
 debug/customerform.o
 debug/deviceform.o
@@ -21,6 +22,7 @@ debug/singleton.o
 debug/tables.o
 debug/moc_DatabaseConnection.o
 debug/moc_MyTableProxy.o
+debug/moc_addabr.o
 debug/moc_addoption.o
 debug/moc_customerform.o
 debug/moc_deviceform.o

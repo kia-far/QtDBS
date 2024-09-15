@@ -3,6 +3,7 @@
 #include "itemhandler.h"
 #include <QDebug>
 #include <QMessageBox>
+
 AddOption::AddOption(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddOption),
@@ -38,16 +39,30 @@ void AddOption::showError(QString errorMessage) {
     msgBox.exec();  // Show the message box
 }
 
-void AddOption::setupDevice(){
+void AddOption::setupDevice() {
     func = "device";
     this->setWindowTitle("افزودن دستگاه");
     ui->label->setText("افزودن دستگاه");
-    if(lineEdit_2->isHidden()){lineEdit_2->show();}
+
+    if (lineEdit_2->isHidden()) {
+        lineEdit_2->show();
+    }
+
     lineEdit_2->setText("");
     lineEdit_2->setPlaceholderText("مخفف نام دستگاه");
+
+    // Create button only if it doesn't exist
+    if (!editButton) {
+        editButton = new QPushButton;
+        editButton->setText("افزودن حرف به دستگاه");
+        connect(editButton, &QPushButton::clicked, this, [this]() { emit addAbr(); });
+        ui->verticalLayout->addWidget(editButton);
+    }
+
     this->show();
-    devCalled =true;
+    devCalled = true;
 }
+
 void AddOption::setupItem(QString deviceName){
     cleanupDevice();
     device = deviceName;
@@ -115,3 +130,8 @@ void AddOption::cleanupDevice() {
     }
     devCalled =false;
 }
+
+void AddOption::on_AddOption_destroyed()
+{
+}
+

@@ -72,6 +72,7 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
     if(arg1=="دستگاه جدید"){
         addDevice();
+        ui->comboBox->setCurrentIndex(0);
     }
     else{
     clearLayout(ui->vb);

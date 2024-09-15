@@ -33,6 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::belongingPage,&a,&AddOption::setupBelonging);
     QObject::connect(&a, &AddOption::updatePage,&d , &DeviceForm::refresh);
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
+    QObject::connect(&a, &AddOption::addAbr,&aa, &AddAbr::setup);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

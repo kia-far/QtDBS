@@ -22,9 +22,9 @@ public:
     static void addBelonging(QString deviceName, QString itemName);
     static void insertDataIntoTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues);
     static void updateTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues);
-
     static QStringList readLetters();
     static QStringList nameLetter();
+    static void addAbr(QString device,QChar newAbr);
 
 private:
     DatabaseConnection &db;

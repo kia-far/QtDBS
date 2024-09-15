@@ -14,6 +14,8 @@
 #include "jsonhandler.h"
 #include "addoption.h"
 #include "myfunctions.h"
+#include "addabr.h"
+
 class Tables;
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -52,6 +54,7 @@ private:
     serviceEdit s;
     CustomerForm c;
     AddOption a;
+    AddAbr aa;
     DatabaseConnection &db;
 };
 #endif // MAINWINDOW_H
