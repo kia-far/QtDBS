@@ -27,6 +27,7 @@ ProductRegister::ProductRegister(QWidget *parent) :
 QString Mode;
 int Serialnum;
 QString a[7];
+QString currentComboText;
 
 ProductRegister::~ProductRegister()
 {
@@ -208,6 +209,7 @@ void ProductRegister::loadProductInfo(){
     } else {
         if (query.next()) {
             ui->comboBox->setCurrentText(query.value("ProductName").toString());
+            currentComboText = ui->comboBox->currentText();
             ui->lineEdit_10->setText(query.value("Invoice").toString());
             ui->lineEdit_11->setText(query.value("AnyDeskNO").toString());
         } else {
@@ -330,3 +332,9 @@ void ProductRegister::keybinds(){
     connect(f1, SIGNAL(triggered()), this, SLOT(on_pushButton_clicked()));
     this->addAction(f1);
 }
+
+void ProductRegister::on_comboBox_currentIndexChanged(int index)
+{
+    ui->comboBox->setCurrentText(currentComboText);
+}
+
