@@ -25,47 +25,67 @@ class Ui_Tables
 {
 public:
     QGridLayout *gridLayout;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *EditBtn;
-    QPushButton *AddBtn;
-    QPushButton *RefreshBtn;
     QSpacerItem *horizontalSpacer_2;
-    QComboBox *comboBox;
+    QPushButton *RefreshBtn;
     QTableView *tableView;
-    QPushButton *mainWindowBtn;
-    QPushButton *SearchBtn;
     QComboBox *comboBox_2;
+    QPushButton *AddBtn;
+    QPushButton *deleteBtn;
+    QPushButton *SearchBtn;
+    QComboBox *comboBox;
+    QSpacerItem *horizontalSpacer;
+    QPushButton *mainWindowBtn;
+    QPushButton *EditBtn;
 
     void setupUi(QWidget *Tables)
     {
         if (Tables->objectName().isEmpty())
             Tables->setObjectName(QString::fromUtf8("Tables"));
-        Tables->resize(802, 525);
+        Tables->resize(1010, 525);
         Tables->setStyleSheet(QString::fromUtf8("font: 12pt \"Segoe UI\";"));
         gridLayout = new QGridLayout(Tables);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
-
-        EditBtn = new QPushButton(Tables);
-        EditBtn->setObjectName(QString::fromUtf8("EditBtn"));
-
-        gridLayout->addWidget(EditBtn, 0, 8, 1, 1);
-
-        AddBtn = new QPushButton(Tables);
-        AddBtn->setObjectName(QString::fromUtf8("AddBtn"));
-
-        gridLayout->addWidget(AddBtn, 0, 6, 1, 1);
+        gridLayout->addItem(horizontalSpacer_2, 0, 4, 1, 1);
 
         RefreshBtn = new QPushButton(Tables);
         RefreshBtn->setObjectName(QString::fromUtf8("RefreshBtn"));
 
-        gridLayout->addWidget(RefreshBtn, 0, 5, 1, 1);
+        gridLayout->addWidget(RefreshBtn, 0, 6, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        tableView = new QTableView(Tables);
+        tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
+        tableView->setEditTriggers(QAbstractItemView::EditTrigger::EditKeyPressed);
+        tableView->setSortingEnabled(true);
+        tableView->setWordWrap(true);
+        tableView->horizontalHeader()->setCascadingSectionResizes(false);
+        tableView->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
+        tableView->horizontalHeader()->setStretchLastSection(false);
+        tableView->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
 
-        gridLayout->addItem(horizontalSpacer_2, 0, 4, 1, 1);
+        gridLayout->addWidget(tableView, 2, 0, 1, 12);
+
+        comboBox_2 = new QComboBox(Tables);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+
+        gridLayout->addWidget(comboBox_2, 0, 1, 1, 1);
+
+        AddBtn = new QPushButton(Tables);
+        AddBtn->setObjectName(QString::fromUtf8("AddBtn"));
+
+        gridLayout->addWidget(AddBtn, 0, 7, 1, 1);
+
+        deleteBtn = new QPushButton(Tables);
+        deleteBtn->setObjectName(QString::fromUtf8("deleteBtn"));
+
+        gridLayout->addWidget(deleteBtn, 0, 10, 1, 1);
+
+        SearchBtn = new QPushButton(Tables);
+        SearchBtn->setObjectName(QString::fromUtf8("SearchBtn"));
+
+        gridLayout->addWidget(SearchBtn, 0, 8, 1, 1);
 
         comboBox = new QComboBox(Tables);
         comboBox->addItem(QString());
@@ -82,33 +102,19 @@ public:
 
         gridLayout->addWidget(comboBox, 0, 0, 1, 1);
 
-        tableView = new QTableView(Tables);
-        tableView->setObjectName(QString::fromUtf8("tableView"));
-        tableView->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
-        tableView->setEditTriggers(QAbstractItemView::EditTrigger::EditKeyPressed);
-        tableView->setSortingEnabled(true);
-        tableView->setWordWrap(true);
-        tableView->horizontalHeader()->setCascadingSectionResizes(false);
-        tableView->horizontalHeader()->setProperty("showSortIndicator", QVariant(false));
-        tableView->horizontalHeader()->setStretchLastSection(false);
-        tableView->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(tableView, 2, 0, 1, 9);
+        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
 
         mainWindowBtn = new QPushButton(Tables);
         mainWindowBtn->setObjectName(QString::fromUtf8("mainWindowBtn"));
 
         gridLayout->addWidget(mainWindowBtn, 0, 3, 1, 1);
 
-        SearchBtn = new QPushButton(Tables);
-        SearchBtn->setObjectName(QString::fromUtf8("SearchBtn"));
+        EditBtn = new QPushButton(Tables);
+        EditBtn->setObjectName(QString::fromUtf8("EditBtn"));
 
-        gridLayout->addWidget(SearchBtn, 0, 7, 1, 1);
-
-        comboBox_2 = new QComboBox(Tables);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-
-        gridLayout->addWidget(comboBox_2, 0, 1, 1, 1);
+        gridLayout->addWidget(EditBtn, 0, 9, 1, 1);
 
 
         retranslateUi(Tables);
@@ -119,16 +125,17 @@ public:
     void retranslateUi(QWidget *Tables)
     {
         Tables->setWindowTitle(QCoreApplication::translate("Tables", "Form", nullptr));
-        EditBtn->setText(QCoreApplication::translate("Tables", "\331\210\333\214\330\261\330\247\333\214\330\264", nullptr));
-        AddBtn->setText(QCoreApplication::translate("Tables", "\330\247\331\201\330\262\331\210\330\257\331\206", nullptr));
         RefreshBtn->setText(QCoreApplication::translate("Tables", "\330\250\330\247\330\262\330\256\331\210\330\247\331\206\333\214", nullptr));
+        AddBtn->setText(QCoreApplication::translate("Tables", "\330\247\331\201\330\262\331\210\330\257\331\206", nullptr));
+        deleteBtn->setText(QCoreApplication::translate("Tables", "\330\255\330\260\331\201", nullptr));
+        SearchBtn->setText(QCoreApplication::translate("Tables", "\330\254\330\263\330\252\330\254\331\210", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("Tables", "\331\205\330\264\330\252\330\261\333\214\330\247\331\206", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("Tables", "\330\256\330\257\331\205\330\247\330\252", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("Tables", "\330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247", nullptr));
         comboBox->setItemText(3, QCoreApplication::translate("Tables", "\331\205\330\255\330\265\331\210\331\204\330\247\330\252", nullptr));
 
         mainWindowBtn->setText(QCoreApplication::translate("Tables", "\330\265\331\201\330\255\331\207 \330\247\330\265\331\204\333\214", nullptr));
-        SearchBtn->setText(QCoreApplication::translate("Tables", "\330\254\330\263\330\252\330\254\331\210", nullptr));
+        EditBtn->setText(QCoreApplication::translate("Tables", "\331\210\333\214\330\261\330\247\333\214\330\264", nullptr));
     } // retranslateUi
 
 };

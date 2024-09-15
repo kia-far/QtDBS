@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
+    <width>1010</width>
     <height>525</height>
    </rect>
   </property>
@@ -17,40 +17,6 @@
    <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="2">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="8">
-    <widget class="QPushButton" name="EditBtn">
-     <property name="text">
-      <string>ویرایش</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="6">
-    <widget class="QPushButton" name="AddBtn">
-     <property name="text">
-      <string>افزودن</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="5">
-    <widget class="QPushButton" name="RefreshBtn">
-     <property name="text">
-      <string>بازخوانی</string>
-     </property>
-    </widget>
-   </item>
    <item row="0" column="4">
     <spacer name="horizontalSpacer_2">
      <property name="orientation">
@@ -63,6 +29,65 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="0" column="6">
+    <widget class="QPushButton" name="RefreshBtn">
+     <property name="text">
+      <string>بازخوانی</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" colspan="12">
+    <widget class="QTableView" name="tableView">
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+     </property>
+     <property name="editTriggers">
+      <set>QAbstractItemView::EditTrigger::EditKeyPressed</set>
+     </property>
+     <property name="sortingEnabled">
+      <bool>true</bool>
+     </property>
+     <property name="wordWrap">
+      <bool>true</bool>
+     </property>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>true</bool>
+     </attribute>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboBox_2"/>
+   </item>
+   <item row="0" column="7">
+    <widget class="QPushButton" name="AddBtn">
+     <property name="text">
+      <string>افزودن</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="10">
+    <widget class="QPushButton" name="deleteBtn">
+     <property name="text">
+      <string>حذف</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
+    <widget class="QPushButton" name="SearchBtn">
+     <property name="text">
+      <string>جستجو</string>
+     </property>
+    </widget>
    </item>
    <item row="0" column="0">
     <widget class="QComboBox" name="comboBox">
@@ -100,33 +125,18 @@
      </item>
     </widget>
    </item>
-   <item row="2" column="0" colspan="9">
-    <widget class="QTableView" name="tableView">
-     <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
+   <item row="0" column="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
-     <property name="editTriggers">
-      <set>QAbstractItemView::EditTrigger::EditKeyPressed</set>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
      </property>
-     <property name="sortingEnabled">
-      <bool>true</bool>
-     </property>
-     <property name="wordWrap">
-      <bool>true</bool>
-     </property>
-     <attribute name="horizontalHeaderCascadingSectionResizes">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="horizontalHeaderShowSortIndicator" stdset="0">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="horizontalHeaderStretchLastSection">
-      <bool>false</bool>
-     </attribute>
-     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
-      <bool>true</bool>
-     </attribute>
-    </widget>
+    </spacer>
    </item>
    <item row="0" column="3">
     <widget class="QPushButton" name="mainWindowBtn">
@@ -135,15 +145,12 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="7">
-    <widget class="QPushButton" name="SearchBtn">
+   <item row="0" column="9">
+    <widget class="QPushButton" name="EditBtn">
      <property name="text">
-      <string>جستجو</string>
+      <string>ویرایش</string>
      </property>
     </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="comboBox_2"/>
    </item>
   </layout>
  </widget>

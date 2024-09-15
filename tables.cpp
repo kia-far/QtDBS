@@ -12,11 +12,12 @@
 #include <QFile>
 #include <QTextStream>
 #include <QAction>
+#include <QMessageBox>
 
-int lastClicked =0;
+int lastClicked =-1;
 int currentTable =0;
 int editSelect =0;
-int clickedID =0;
+int clickedID =-1;
 //bool inSearch=false;
 QString searchParam;
 
@@ -166,6 +167,9 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 {
+    clickedID = -1;
+    lastClicked =-1;
+    currentDevice = "";
     ui->comboBox_2->hide();
     if(arg1 == "محصولات"){
         ui->tableView->setModel(Product);
@@ -211,10 +215,21 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
 void Tables::on_EditBtn_clicked()
 {
-    if (currentTable == 0){emit editCustomer(clickedID);}
-    else if (currentTable == 1){emit editService(clickedID);}
-    else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
-    else {emit editProduct(lastClicked );}
+    if(clickedID!=-1&&lastClicked!=-1){
+        // qDebug() << "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
+        if (currentTable == 0){emit editCustomer(clickedID);}
+        else if (currentTable == 1){emit editService(clickedID);}
+        else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
+        else {emit editProduct(lastClicked );}
+    }
+    else{
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("خانه ای انتخاب نشده است");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+    }
 }
 
 
@@ -226,6 +241,11 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
 //    qDebug() << "Data in the first column of the selected row:" << data.toString();
     lastClicked = (MyFunctions ::reverseSN(data.toString())).toInt();
     clickedID = data.toInt();
+    if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();}
+    else if(currentTable == 3){
+        currentDevice = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow,1)).toString();
+        qDebug() << "currentDevice : "  << currentDevice;
+    }
 }
 
 
@@ -263,6 +283,8 @@ void Tables::on_mainWindowBtn_clicked()
 void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 {
 
+    clickedID = -1;
+    lastClicked =-1;
     currentDevice = arg1;
     QString searchParam = "SerialNumber";
     QString searchText = "";
@@ -275,7 +297,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 
 void Tables::on_tableView_doubleClicked(const QModelIndex &index)
 {
-
+    qDebug() << "index :" << index<< "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
     if (currentTable == 0){emit editCustomer(clickedID);}
     else if (currentTable == 1){emit editService(clickedID);}
     else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
@@ -319,3 +341,104 @@ void Tables::keybinds(){
 //    connect(f6, SIGNAL(triggered()), this, SLOT(on_comboBox_currentIndexChanged("Services")));
 //    this->addAction(f6);
 }
+
+void Tables::on_deleteBtn_clicked()
+{
+
+    if(clickedID!=-1&&lastClicked!=-1){
+        // qDebug() << "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
+
+        if (currentTable == 2){/*emit editDevice(currentDevice,lastClicked);*/
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Warning);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("آیا از پاک کردن این دستگاه مطمئنید؟");
+            msgBox.setStandardButtons(QMessageBox::Yes| QMessageBox::No);
+            msgBox.setDefaultButton(QMessageBox::No);
+            int res = msgBox.exec();
+            switch(res) {
+            case QMessageBox::Yes :{
+                qDebug() << "delete device";
+                deleteRow(lastClicked,currentDevice);
+                // submit();
+                break;
+            }
+            case QMessageBox::No :{
+                break;
+            }
+            default :
+                break;
+
+            }
+        }
+        else if(currentTable == 3){/*emit editProduct(lastClicked );*/
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Warning);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("آیا از پاک کردن این محصول مطمئنید؟");
+            msgBox.setStandardButtons(QMessageBox::Yes| QMessageBox::No);
+            msgBox.setDefaultButton(QMessageBox::No);
+            int res = msgBox.exec();
+            switch(res) {
+            case QMessageBox::Yes :{
+                qDebug() << "delete product" ;
+                deleteRow(lastClicked,currentDevice);
+                // submit();
+                break;
+            }
+            case QMessageBox::No :{
+                break;
+            }
+            default :
+                break;
+
+            }
+        }
+        else{}
+    }
+    else{
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("خانه ای انتخاب نشده است");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+    }
+
+}
+
+void Tables::deleteRow(int ID, QString device) {
+    QSqlDatabase db = QSqlDatabase::database();  // Assuming db connection is already established
+    QSqlQuery query(db);
+
+    // Begin transaction
+    if (!db.transaction()) {
+        qDebug() << "Failed to start transaction:" << db.lastError().text();
+        return;
+    }
+
+    // Prepare the queries for each table
+    QStringList tables = { "ProductSecInfo", "ProductInfo", device };
+    QStringList columns = { "SerialNO", "SerialNO", "SerialNumber" };  // Assuming columns differ for "Device" table
+
+    for (int i = 0; i < tables.size(); ++i) {
+        query.prepare(QString("DELETE FROM %1 WHERE %2 = ?").arg(tables[i], columns[i]));
+        query.addBindValue(ID);
+
+        if (!query.exec()) {
+            qDebug() << "Error in deleting from" << tables[i] << ":" << query.lastError().text();
+            // Rollback transaction on failure
+            db.rollback();
+            return;
+        }
+    }
+
+    // Commit transaction if all deletes succeed
+    if (!db.commit()) {
+        qDebug() << "Failed to commit transaction:" << db.lastError().text();
+        db.rollback();
+    } else {
+        qDebug() << "Rows successfully deleted from all tables";
+    }
+}
+

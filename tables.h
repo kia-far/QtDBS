@@ -56,7 +56,10 @@ private slots:
 
     void on_tableView_doubleClicked(const QModelIndex &index);
 
+    void on_deleteBtn_clicked();
+
 private:
+    void deleteRow(int ID, QString device);
     Ui::Tables *ui;
     void keybinds();
     ProxyView *View;

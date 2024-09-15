@@ -186,6 +186,7 @@ void ProductRegister::setup() {
         ui->lineEdit_13->setText("");
         ui->textEdit->setText("");
     } else if (Mode == "EDIT") {
+        ui->comboBox->clear();
         ui->lineEdit_8->setReadOnly(false);
         ui->lineEdit_8->setText(MyFunctions::intToStr(Serialnum));
         ui->lineEdit_8->setReadOnly(true);
@@ -208,6 +209,7 @@ void ProductRegister::loadProductInfo(){
         qDebug() << "Database query error:" << query.lastError().text();
     } else {
         if (query.next()) {
+            ui->comboBox->addItem(query.value("ProductName").toString());
             ui->comboBox->setCurrentText(query.value("ProductName").toString());
             currentComboText = ui->comboBox->currentText();
             ui->lineEdit_10->setText(query.value("Invoice").toString());
@@ -254,8 +256,7 @@ void ProductRegister::updateProductInfo(){
 
 
     QSqlQuery q(db.getConnection());
-    q.prepare("UPDATE ProductInfo SET ProductName = ?, Invoice = ?, AnyDeskNO = ? WHERE SerialNO = ?");
-    q.addBindValue(a[1]);
+    q.prepare("UPDATE ProductInfo SET  Invoice = ?, AnyDeskNO = ? WHERE SerialNO = ?");
     q.addBindValue(a[2]);
     q.addBindValue(a[3]);
     q.addBindValue(a[0]);
@@ -335,6 +336,7 @@ void ProductRegister::keybinds(){
 
 void ProductRegister::on_comboBox_currentIndexChanged(int index)
 {
-    ui->comboBox->setCurrentText(currentComboText);
+    if(Mode=="EDIT"){
+        ui->comboBox->setCurrentText(currentComboText);}
 }
 
