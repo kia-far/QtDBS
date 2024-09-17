@@ -71,6 +71,31 @@ QString MyFunctions::reverseSN(const QString &input) {
     return result;
 }
 
+QString MyFunctions::newReverseSN(const QString &input) {
+    QString result;
+
+    for (int i = 0; i < input.length(); ++i) {
+        QChar currentChar = input.at(i);
+
+        // Check if the character is a letter
+        if (currentChar.isLetter()) {
+            // Convert letter to its position in the alphabet (A = 1, B = 2, ..., Z = 26)
+            int letterPos = currentChar.toUpper().toLatin1() - 'A' + 1;
+            result.append(QString::number(letterPos).rightJustified(2, '0')); // Append 2-digit position
+        }
+        // Check if the character is a digit
+        else if (currentChar.isDigit()) {
+            result.append(currentChar); // Append digit as-is
+        }
+    }
+
+    // Remove leading zero if it exists
+    if (!result.isEmpty() && result.at(0) == '0') {
+        result.remove(0, 1);
+    }
+
+    return result;
+}
 
 QString MyFunctions::smallSN(QString input) {
     QString result="";
@@ -238,7 +263,7 @@ bool MyFunctions::deviceFromLetter(QString SN,QString device) {
         for(int i=0;i<letters.size();i++){
             if(letters[i]==SN.at(0).toUpper()){
                 for(int j=i;j>-1;j--){
-                    if(letters[j].length()==1){qDebug()<<"jumped! also length of BN"<<letters[0].length();}
+                    if(letters[j].length()==1){/*qDebug()<<"jumped! also length of BN"<<letters[0].length();*/}
                     else{
                         if(letters[j]==device){return true;}
                         else{j=0;}
@@ -270,7 +295,7 @@ void MyFunctions::setLetters() {
 
 //    isDataReady = true;  // Mark data as ready
 //    emit dataReady();  // Notify that data is ready
-   qDebug() << "Letters set: " << letters;
+   // qDebug() << "Letters set: " << letters;
 }
 
 

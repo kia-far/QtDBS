@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    qDebug() << ItemHandler::loadDevices();
-    qDebug() << "reverseSN" << MyFunctions::reverseSN("B00n8892");
+    // qDebug() << ItemHandler::loadDevices();
+    // qDebug() << "reverseSN" << MyFunctions::reverseSN("B00n8892");
     this->show();
     QObject::connect(x, &Tables::edit, &e, &EditTable::receiveTableIndex);
     QObject::connect(x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);
@@ -50,7 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
 //lblImage->setSizePolicy( QSizePolicy::Ignored, QSizePolicy::Ignored );
 
 void MainWindow::onDataReady() {
-    qDebug() << "Data is ready, now we can safely use deviceFromSN()";
+    // qDebug() << "Data is ready, now we can safely use deviceFromSN()";
 }
 
 void MainWindow::setBtnIcon(){

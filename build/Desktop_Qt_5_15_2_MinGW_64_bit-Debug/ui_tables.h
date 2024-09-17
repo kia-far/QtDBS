@@ -58,6 +58,7 @@ public:
         tableView->setObjectName(QString::fromUtf8("tableView"));
         tableView->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
         tableView->setEditTriggers(QAbstractItemView::EditTrigger::EditKeyPressed);
+        tableView->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
         tableView->setSortingEnabled(true);
         tableView->setWordWrap(true);
         tableView->horizontalHeader()->setCascadingSectionResizes(false);

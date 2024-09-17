@@ -48,6 +48,7 @@ void DeviceForm::setup(){
     ui->comboBox->setCurrentText(curDev);
     if(admiMode){
     ui->comboBox->addItem("دستگاه جدید");}
+    ui->comboBox->setFixedWidth(120);
     ui->pushButton->setFixedWidth(25);
 }
 void DeviceForm::editDevice(QString device , int id){
@@ -313,7 +314,7 @@ void DeviceForm::submit(){
 
         bool err = q.exec();
         if (!err) {
-            qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
+            qDebug() << "Error in ProductSecInfo insert:" << q.lastError().text();
         }
         if(er&&err){
             ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
@@ -350,11 +351,6 @@ void DeviceForm::on_AddItemBtn_clicked()
     addItem(currentDevice);
 }
 
-
-void DeviceForm::on_addDeviceBtn_clicked()
-{
-//    addDevice();
-}
 
 QStringList DeviceForm::getCustomers(QString halfText) {
     QSqlQuery query(db.getConnection());
@@ -395,10 +391,6 @@ void DeviceForm::on_pushButton_clicked()
 
 
 
-void DeviceForm::on_AddDevBtn_clicked()
-{
-    addDevice();
-}
 void DeviceForm::adminMode(){
     admiMode= !admiMode;
     if(!admiMode){ui->AddItemBtn->hide();}

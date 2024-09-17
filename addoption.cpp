@@ -48,6 +48,7 @@ void AddOption::setupDevice() {
         lineEdit_2->show();
     }
 
+
     lineEdit_2->setText("");
     lineEdit_2->setPlaceholderText("مخفف نام دستگاه");
 
@@ -59,6 +60,9 @@ void AddOption::setupDevice() {
         ui->verticalLayout->addWidget(editButton);
     }
 
+    if (editButton->isHidden()) {
+        editButton->show();
+    }
     this->show();
     devCalled = true;
 }
@@ -93,7 +97,7 @@ void AddOption::on_pushButton_clicked()
             showError("هر دو خانه را پر کنید");
         }
         else{
-            ItemHandler::addDevices(text,lineEdit_2->text());}
+            ItemHandler::addDevices(text,lineEdit_2->text().toUpper());}
     }
     else if (func == "belonging"){
 
@@ -127,6 +131,7 @@ void AddOption::on_pushButton_clicked()
 void AddOption::cleanupDevice() {
     if (devCalled) {
         lineEdit_2->hide();
+        editButton->setHidden(true);
     }
     devCalled =false;
 }

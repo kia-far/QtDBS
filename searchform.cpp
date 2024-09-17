@@ -42,9 +42,13 @@ void SearchForm::createCombo(){
         ui->comboBox->addItem("Product");
         ui->comboBox->addItem("ID");
     } else if (currentSearch == 1) {
-        ui->comboBox->addItem("Date");
-        ui->comboBox->addItem("Description");
-        ui->comboBox->addItem("ID");
+        ui->comboBox->addItem("محصول");
+        ui->comboBox->addItem("مشتری");
+        ui->comboBox->addItem("تاریخ");
+        ui->comboBox->addItem("مسئول");
+        ui->comboBox->addItem("نوع خدمات");
+        ui->comboBox->addItem("قطعه خراب");
+        ui->comboBox->addItem("توضیحات");
     } else if(currentSearch == 2) {
         ui->comboBox->addItem("Serial Number");
         ui->comboBox->addItem("Customer name");
@@ -67,10 +71,22 @@ void SearchForm::on_buttonBox_accepted()
         else if (ui->comboBox->currentText()=="ID"){emit searchWorking("ID",searchText);}
         else{}
     }
-    else if (currentSearch == 1){/*Services*/
-        if (ui->comboBox->currentText()=="Date"){emit searchWorking("Date",searchText);}
-        else if (ui->comboBox->currentText()=="Description"){emit searchWorking("Description",searchText);}
-        else if (ui->comboBox->currentText()=="ID"){emit searchWorking("ID",searchText);}
+    else if (currentSearch == 1){/*Services
+
+        ui->comboBox->addItem("محصول");
+        ui->comboBox->addItem("مشتری");
+        ui->comboBox->addItem("تاریخ");
+        ui->comboBox->addItem("مسئول");
+        ui->comboBox->addItem("نوع خدمات");
+        ui->comboBox->addItem("قطعه خراب");
+        ui->comboBox->addItem("توضیحات");*/
+        if (ui->comboBox->currentText()=="محصول"){emit searchWorking("Product",searchText);}
+        else if (ui->comboBox->currentText()=="مشتری"){emit searchWorking("Customer",searchText);}
+        else if (ui->comboBox->currentText()=="تاریخ"){emit searchWorking("Date",searchText);}
+        else if (ui->comboBox->currentText()=="مسئول"){emit searchWorking("Authority",searchText);}
+        else if (ui->comboBox->currentText()=="نوع خدمات"){emit searchWorking("ServiceType",searchText);}        else if (ui->comboBox->currentText()=="Description"){emit searchWorking("Description",searchText);}
+        else if (ui->comboBox->currentText()=="قطعه خراب"){emit searchWorking("ImpairedPart",searchText);}
+        else if (ui->comboBox->currentText()=="توضیحات"){emit searchWorking("Description",searchText);}
         else {}
     }
     else if (currentSearch == 2){/*Devices*/

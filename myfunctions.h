@@ -11,6 +11,7 @@ public:
     explicit MyFunctions(QObject *parent = nullptr);
     static QString intToStr(int number);
     static QString reverseSN(const QString &input);
+    static QString newReverseSN(const QString &input);
     static int binaryToDecimal(const QString& binary);
     static QString decimalToBinary(int decimal);
     static QString smallSN(QString a);

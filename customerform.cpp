@@ -87,7 +87,8 @@ void CustomerForm::editSubmit(){
     if (!er) {
         qDebug() << "Error in CustomerInfo update:" << q.lastError().text();
     } else {
-//        qDebug() << "success 1 " + b[0];
+        this->close();
+        //        qDebug() << "success 1 " + b[0];
     }
     }
 

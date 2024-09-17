@@ -39,7 +39,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
     ui->comboBox_2->addItems(ItemHandler::loadDevices());
-    qDebug() << "loadDevice result :"<<ItemHandler::loadDevices();
+    // qDebug() << "loadDevice result :"<<ItemHandler::loadDevices();
     QFile file("C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/style/Style.qss"); // Use resource system or provide a direct path
     if (file.open(QFile::ReadOnly)) {
         QTextStream stream(&file);
@@ -62,6 +62,7 @@ Tables::~Tables()
 void Tables::setupTable(QString table){
     ui->comboBox_2->hide();
     if (table == "محصولات"){
+        ui->deleteBtn->setHidden(false);
 //        qDebug () << "product opened -------------------------------";
         currentTable = 3;
         ui->comboBox->setCurrentIndex(currentTable);
@@ -70,6 +71,7 @@ void Tables::setupTable(QString table){
 
     }
     else if(table == "دستگاه ها") {
+        ui->deleteBtn->setHidden(false);
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
 //        qDebug () << "device opened -------------------------------";
@@ -83,8 +85,9 @@ void Tables::setupTable(QString table){
 
     }
     else if(table == "خدمات") {
+        ui->deleteBtn->setHidden(true);
 //        qDebug () << "service opened -------------------------------";
-        QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
+        QStringList columnNames = {"شناسه","محصول","مشتری","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
         Services->loadData("SELECT * FROM ServiceInfo");
@@ -95,6 +98,7 @@ void Tables::setupTable(QString table){
 
     }
     else if(table == "مشتریان") {
+        ui->deleteBtn->setHidden(true);
 //        qDebug () << "customer opened -------------------------------";
 //        QSqlQuery q(db.getConnection());
 //        q.exec("SELECT * FROM CustomerInfo");
@@ -143,7 +147,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         QString res;
         if(searchText==""){res = "SELECT * FROM ServiceInfo";}
         else{res = "SELECT * FROM ServiceInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-        QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
+        QStringList columnNames = {"شناسه","محصول","مشتری","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
         Services->loadData(res);
@@ -172,6 +176,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
     currentDevice = "";
     ui->comboBox_2->hide();
     if(arg1 == "محصولات"){
+        ui->deleteBtn->setHidden(false);
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
 
@@ -179,6 +184,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable =3;
     }
     else if(arg1 == "مشتریان"){
+        ui->deleteBtn->setHidden(true);
         QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
@@ -189,7 +195,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
     }
     else if (arg1 == "خدمات"){
-        QStringList columnNames = {"شناسه","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
+        ui->deleteBtn->setHidden(true);
+        QStringList columnNames = {"شناسه","محصول","مشتری","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
         Services->loadData("SELECT * FROM ServiceInfo");
@@ -199,6 +206,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
     }
     else if (arg1 == "دستگاه ها") {
+        ui->deleteBtn->setHidden(false);
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
         QString searchParam = "SerialNumber";
@@ -244,7 +252,7 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
     if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();}
     else if(currentTable == 3){
         currentDevice = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow,1)).toString();
-        qDebug() << "currentDevice : "  << currentDevice;
+        // qDebug() << "currentDevice : "  << currentDevice;
     }
 }
 
@@ -297,7 +305,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 
 void Tables::on_tableView_doubleClicked(const QModelIndex &index)
 {
-    qDebug() << "index :" << index<< "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
+    // qDebug() << "index :" << index<< "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
     if (currentTable == 0){emit editCustomer(clickedID);}
     else if (currentTable == 1){emit editService(clickedID);}
     else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
@@ -358,7 +366,7 @@ void Tables::on_deleteBtn_clicked()
             int res = msgBox.exec();
             switch(res) {
             case QMessageBox::Yes :{
-                qDebug() << "delete device";
+                // qDebug() << "delete device";
                 deleteRow(lastClicked,currentDevice);
                 // submit();
                 break;
@@ -381,7 +389,7 @@ void Tables::on_deleteBtn_clicked()
             int res = msgBox.exec();
             switch(res) {
             case QMessageBox::Yes :{
-                qDebug() << "delete product" ;
+                // qDebug() << "delete product" ;
                 deleteRow(lastClicked,currentDevice);
                 // submit();
                 break;
@@ -411,26 +419,43 @@ void Tables::deleteRow(int ID, QString device) {
     QSqlDatabase db = QSqlDatabase::database();  // Assuming db connection is already established
     QSqlQuery query(db);
 
+    // Enable foreign key constraints (especially important for SQLite)
+    query.exec("PRAGMA foreign_keys = ON;");
+
     // Begin transaction
     if (!db.transaction()) {
         qDebug() << "Failed to start transaction:" << db.lastError().text();
         return;
     }
 
-    // Prepare the queries for each table
-    QStringList tables = { "ProductSecInfo", "ProductInfo", device };
-    QStringList columns = { "SerialNO", "SerialNO", "SerialNumber" };  // Assuming columns differ for "Device" table
+    // Delete from ProductSecInfo first (child table)
+    query.prepare("DELETE FROM ProductSecInfo WHERE SerialNO = ?");
+    query.addBindValue(ID);
 
-    for (int i = 0; i < tables.size(); ++i) {
-        query.prepare(QString("DELETE FROM %1 WHERE %2 = ?").arg(tables[i], columns[i]));
-        query.addBindValue(ID);
+    if (!query.exec()) {
+        qDebug() << "Error in deleting from ProductSecInfo:" << query.lastError().text();
+        db.rollback();
+        return;
+    }
 
-        if (!query.exec()) {
-            qDebug() << "Error in deleting from" << tables[i] << ":" << query.lastError().text();
-            // Rollback transaction on failure
-            db.rollback();
-            return;
-        }
+    // Now delete from ProductInfo (parent table)
+    query.prepare("DELETE FROM ProductInfo WHERE SerialNO = ?");
+    query.addBindValue(ID);
+
+    if (!query.exec()) {
+        qDebug() << "Error in deleting from ProductInfo:" << query.lastError().text();
+        db.rollback();
+        return;
+    }
+
+    // Finally, delete from the device-specific table
+    query.prepare(QString("DELETE FROM %1 WHERE SerialNumber = ?").arg(device));
+    query.addBindValue(ID);
+
+    if (!query.exec()) {
+        qDebug() << "Error in deleting from" << device << ":" << query.lastError().text();
+        db.rollback();
+        return;
     }
 
     // Commit transaction if all deletes succeed
@@ -438,7 +463,9 @@ void Tables::deleteRow(int ID, QString device) {
         qDebug() << "Failed to commit transaction:" << db.lastError().text();
         db.rollback();
     } else {
-        qDebug() << "Rows successfully deleted from all tables";
+        // qDebug() << "Rows successfully deleted from all tables";
     }
 }
+
+
 

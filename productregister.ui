@@ -19,15 +19,8 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="6" column="1">
-      <widget class="QLabel" name="label_6">
-       <property name="text">
-        <string>تاریخ خرید :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLineEdit" name="lineEdit_13"/>
+     <item row="9" column="0">
+      <widget class="QTextEdit" name="textEdit"/>
      </item>
      <item row="0" column="1">
       <widget class="QLabel" name="label">
@@ -36,22 +29,8 @@
        </property>
       </widget>
      </item>
-     <item row="5" column="1">
-      <widget class="QLabel" name="label_5">
-       <property name="text">
-        <string>انقضای گارانتی :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="7" column="1">
-      <widget class="QLabel" name="label_7">
-       <property name="text">
-        <string>توضیحات :</string>
-       </property>
-      </widget>
-     </item>
-     <item row="5" column="0">
-      <widget class="QLineEdit" name="lineEdit_12"/>
+     <item row="1" column="0">
+      <widget class="QComboBox" name="comboBox"/>
      </item>
      <item row="4" column="1">
       <widget class="QLabel" name="label_4">
@@ -60,8 +39,25 @@
        </property>
       </widget>
      </item>
-     <item row="7" column="0">
-      <widget class="QTextEdit" name="textEdit"/>
+     <item row="6" column="0">
+      <widget class="QDateEdit" name="dateEdit_2">
+       <property name="displayFormat">
+        <string>yyyy/M/d</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLineEdit" name="lineEdit_11"/>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLineEdit" name="lineEdit_8"/>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>نام دستگاه :</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="1">
       <widget class="QLabel" name="label_3">
@@ -70,22 +66,34 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QLineEdit" name="lineEdit_8"/>
+     <item row="7" column="0">
+      <widget class="QDateEdit" name="dateEdit">
+       <property name="displayFormat">
+        <string>yyyy/M/d</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>توضیحات :</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>انقضای گارانتی :</string>
+       </property>
+      </widget>
      </item>
      <item row="3" column="0">
       <widget class="QLineEdit" name="lineEdit_10"/>
      </item>
-     <item row="4" column="0">
-      <widget class="QLineEdit" name="lineEdit_11"/>
-     </item>
-     <item row="1" column="0">
-      <widget class="QComboBox" name="comboBox"/>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="label_2">
+     <item row="6" column="1">
+      <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>نام دستگاه :</string>
+        <string>تاریخ خرید :</string>
        </property>
       </widget>
      </item>
@@ -140,8 +148,6 @@
   <tabstop>lineEdit_8</tabstop>
   <tabstop>lineEdit_10</tabstop>
   <tabstop>lineEdit_11</tabstop>
-  <tabstop>lineEdit_12</tabstop>
-  <tabstop>lineEdit_13</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>pushButton</tabstop>
  </tabstops>

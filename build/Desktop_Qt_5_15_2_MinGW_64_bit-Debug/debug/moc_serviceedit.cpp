@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_serviceEdit_t {
-    QByteArrayData data[3];
-    char stringdata0[35];
+    QByteArrayData data[6];
+    char stringdata0[105];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -34,10 +34,15 @@ static const qt_meta_stringdata_serviceEdit_t qt_meta_stringdata_serviceEdit = {
     {
 QT_MOC_LITERAL(0, 0, 11), // "serviceEdit"
 QT_MOC_LITERAL(1, 12, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(2, 34, 0) // ""
+QT_MOC_LITERAL(2, 34, 0), // ""
+QT_MOC_LITERAL(3, 35, 32), // "on_CustomerCombo_editTextChanged"
+QT_MOC_LITERAL(4, 68, 4), // "arg1"
+QT_MOC_LITERAL(5, 73, 31) // "on_ProductCombo_editTextChanged"
 
     },
-    "serviceEdit\0on_pushButton_clicked\0"
+    "serviceEdit\0on_pushButton_clicked\0\0"
+    "on_CustomerCombo_editTextChanged\0arg1\0"
+    "on_ProductCombo_editTextChanged"
 };
 #undef QT_MOC_LITERAL
 
@@ -47,7 +52,7 @@ static const uint qt_meta_data_serviceEdit[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       3,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -55,10 +60,14 @@ static const uint qt_meta_data_serviceEdit[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   19,    2, 0x08 /* Private */,
+       1,    0,   29,    2, 0x08 /* Private */,
+       3,    1,   30,    2, 0x08 /* Private */,
+       5,    1,   33,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    4,
+    QMetaType::Void, QMetaType::QString,    4,
 
        0        // eod
 };
@@ -70,10 +79,11 @@ void serviceEdit::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_pushButton_clicked(); break;
+        case 1: _t->on_CustomerCombo_editTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 2: _t->on_ProductCombo_editTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject serviceEdit::staticMetaObject = { {
@@ -105,13 +115,13 @@ int serviceEdit::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 3;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 3)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 1;
+        _id -= 3;
     }
     return _id;
 }

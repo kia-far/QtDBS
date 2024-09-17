@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_DeviceForm_t {
-    QByteArrayData data[21];
-    char stringdata0[302];
+    QByteArrayData data[19];
+    char stringdata0[257];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -45,24 +45,22 @@ QT_MOC_LITERAL(9, 89, 31), // "on_comboBox_currentIndexChanged"
 QT_MOC_LITERAL(10, 121, 4), // "arg1"
 QT_MOC_LITERAL(11, 126, 20), // "on_SubmitBtn_clicked"
 QT_MOC_LITERAL(12, 147, 21), // "on_AddItemBtn_clicked"
-QT_MOC_LITERAL(13, 169, 23), // "on_addDeviceBtn_clicked"
-QT_MOC_LITERAL(14, 193, 32), // "on_CustomerCombo_editTextChanged"
-QT_MOC_LITERAL(15, 226, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(16, 248, 12), // "populateEdit"
-QT_MOC_LITERAL(17, 261, 6), // "device"
-QT_MOC_LITERAL(18, 268, 2), // "id"
-QT_MOC_LITERAL(19, 271, 20), // "on_AddDevBtn_clicked"
-QT_MOC_LITERAL(20, 292, 9) // "adminMode"
+QT_MOC_LITERAL(13, 169, 32), // "on_CustomerCombo_editTextChanged"
+QT_MOC_LITERAL(14, 202, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(15, 224, 12), // "populateEdit"
+QT_MOC_LITERAL(16, 237, 6), // "device"
+QT_MOC_LITERAL(17, 244, 2), // "id"
+QT_MOC_LITERAL(18, 247, 9) // "adminMode"
 
     },
     "DeviceForm\0optionPage\0\0deviceName\0"
     "itemName\0itemPage\0devicePage\0addCustomer\0"
     "belongingPage\0on_comboBox_currentIndexChanged\0"
     "arg1\0on_SubmitBtn_clicked\0"
-    "on_AddItemBtn_clicked\0on_addDeviceBtn_clicked\0"
+    "on_AddItemBtn_clicked\0"
     "on_CustomerCombo_editTextChanged\0"
     "on_pushButton_clicked\0populateEdit\0"
-    "device\0id\0on_AddDevBtn_clicked\0adminMode"
+    "device\0id\0adminMode"
 };
 #undef QT_MOC_LITERAL
 
@@ -72,7 +70,7 @@ static const uint qt_meta_data_DeviceForm[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      14,   14, // methods
+      12,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -80,22 +78,20 @@ static const uint qt_meta_data_DeviceForm[] = {
        5,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,   84,    2, 0x06 /* Public */,
-       5,    1,   89,    2, 0x06 /* Public */,
-       6,    0,   92,    2, 0x06 /* Public */,
-       7,    0,   93,    2, 0x06 /* Public */,
-       8,    1,   94,    2, 0x06 /* Public */,
+       1,    2,   74,    2, 0x06 /* Public */,
+       5,    1,   79,    2, 0x06 /* Public */,
+       6,    0,   82,    2, 0x06 /* Public */,
+       7,    0,   83,    2, 0x06 /* Public */,
+       8,    1,   84,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       9,    1,   97,    2, 0x08 /* Private */,
-      11,    0,  100,    2, 0x08 /* Private */,
-      12,    0,  101,    2, 0x08 /* Private */,
-      13,    0,  102,    2, 0x08 /* Private */,
-      14,    1,  103,    2, 0x08 /* Private */,
-      15,    0,  106,    2, 0x08 /* Private */,
-      16,    2,  107,    2, 0x08 /* Private */,
-      19,    0,  112,    2, 0x08 /* Private */,
-      20,    0,  113,    2, 0x08 /* Private */,
+       9,    1,   87,    2, 0x08 /* Private */,
+      11,    0,   90,    2, 0x08 /* Private */,
+      12,    0,   91,    2, 0x08 /* Private */,
+      13,    1,   92,    2, 0x08 /* Private */,
+      14,    0,   95,    2, 0x08 /* Private */,
+      15,    2,   96,    2, 0x08 /* Private */,
+      18,    0,  101,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::QString,    3,    4,
@@ -108,11 +104,9 @@ static const uint qt_meta_data_DeviceForm[] = {
     QMetaType::Void, QMetaType::QString,   10,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   10,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::Int,   17,   18,
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString, QMetaType::Int,   16,   17,
     QMetaType::Void,
 
        0        // eod
@@ -132,12 +126,10 @@ void DeviceForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 6: _t->on_SubmitBtn_clicked(); break;
         case 7: _t->on_AddItemBtn_clicked(); break;
-        case 8: _t->on_addDeviceBtn_clicked(); break;
-        case 9: _t->on_CustomerCombo_editTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 10: _t->on_pushButton_clicked(); break;
-        case 11: _t->populateEdit((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 12: _t->on_AddDevBtn_clicked(); break;
-        case 13: _t->adminMode(); break;
+        case 8: _t->on_CustomerCombo_editTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 9: _t->on_pushButton_clicked(); break;
+        case 10: _t->populateEdit((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 11: _t->adminMode(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -209,13 +201,13 @@ int DeviceForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 12)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 12;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 12)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 14;
+        _id -= 12;
     }
     return _id;
 }

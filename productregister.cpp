@@ -8,6 +8,7 @@
 #include <QAction>
 #include <itemhandler.h>
 #include <QMessageBox>
+#include <QCalendar>
 
 // Function to get or create the database connection
 
@@ -86,8 +87,8 @@ void ProductRegister::regSubmit()
                     a[1] = ui->comboBox->currentText();
                     a[2] = ui->lineEdit_10->text();
                     a[3] = ui->lineEdit_11->text();
-                    a[4] = ui->lineEdit_12->text();
-                    a[5] = ui->lineEdit_13->text();
+                    a[4] = ui->dateEdit_2->text();
+                    a[5] = ui->dateEdit->text();
                     a[6] = ui->textEdit->toPlainText();
 
                     //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
@@ -124,8 +125,8 @@ void ProductRegister::regSubmit()
                 a[1] = ui->comboBox->currentText();
                 a[2] = ui->lineEdit_10->text();
                 a[3] = ui->lineEdit_11->text();
-                a[4] = ui->lineEdit_12->text();
-                a[5] = ui->lineEdit_13->text();
+                a[4] = ui->dateEdit_2->text();
+                a[5] = ui->dateEdit->text();
                 a[6] = ui->textEdit->toPlainText();
 
         //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
@@ -159,8 +160,8 @@ void ProductRegister::editSubmit()
     a[1] = ui->comboBox->currentText();
     a[2] = ui->lineEdit_10->text();
     a[3] = ui->lineEdit_11->text();
-    a[4] = ui->lineEdit_12->text();
-    a[5] = ui->lineEdit_13->text();
+    a[4] = ui->dateEdit_2->text();
+    a[5] = ui->dateEdit->text();
     a[6] = ui->textEdit->toPlainText();
 
 //    qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5];
@@ -182,8 +183,12 @@ void ProductRegister::setup() {
         ui->comboBox->setCurrentIndex(0);
         ui->lineEdit_10->setText("");
         ui->lineEdit_11->setText("");
-        ui->lineEdit_12->setText("");
-        ui->lineEdit_13->setText("");
+        QCalendar calendar( QCalendar::System::Jalali);
+        ui->dateEdit_2->setCalendar(calendar);
+        ui->dateEdit_2->setDate(QDate::currentDate());
+        // QCalendar calendar( QCalendar::System::Jalali);
+        ui->dateEdit->setCalendar(calendar);
+        ui->dateEdit->setDate(QDate::currentDate().addYears(1));
         ui->textEdit->setText("");
     } else if (Mode == "EDIT") {
         ui->comboBox->clear();
@@ -232,8 +237,58 @@ void ProductRegister::loadProductSecInfo(){
         qDebug() << "Database query error:" << query.lastError().text();
     } else {
         if (query.next()) {
-            ui->lineEdit_12->setText(query.value("GuarantyExp").toString());
-            ui->lineEdit_13->setText(query.value("PurchaseDate").toString());
+/*
+                QCalendar calendar(QCalendar::System::Jalali);
+                ui->dateEdit->setCalendar(calendar);
+                QString rt = query.value("Date").toString();
+                QStringList parts = rt.split('/');
+                if (parts.size() == 3) {
+                    int year = parts[0].toInt();
+                    int month = parts[1].toInt();
+                    int day = parts[2].toInt();
+                    QDate jalaliDate = QDate(year, month, day, calendar);
+                    if (jalaliDate.isValid()) {
+                        ui->dateEdit->setDate(jalaliDate);
+                    } else {
+                        qWarning() << "Invalid Jalali date!";
+                    }
+                } else {
+                    qWarning() << "Invalid date format!";
+                }
+*/
+            QCalendar calendar(QCalendar::System::Jalali);
+            ui->dateEdit_2->setCalendar(calendar);
+            QString rt = query.value("PurchaseDate").toString();
+            QStringList parts = rt.split('/');
+            if (parts.size() == 3) {
+                int year = parts[0].toInt();
+                int month = parts[1].toInt();
+                int day = parts[2].toInt();
+                QDate jalaliDate = QDate(year, month, day, calendar);
+                if (jalaliDate.isValid()) {
+                    ui->dateEdit_2->setDate(jalaliDate);
+                } else {
+                    ui->dateEdit_2->setDate(QDate::currentDate());
+                }
+            } else {
+                ui->dateEdit_2->setDate(QDate::currentDate());
+            }
+            // QCalendar calendar(QCalendar::System::Jalali);
+            ui->dateEdit->setCalendar(calendar);
+            rt = query.value("GuarantyExp").toString();
+            parts = rt.split('/');
+            if (parts.size() == 3) {
+                int year = parts[0].toInt();
+                int month = parts[1].toInt();
+                int day = parts[2].toInt();
+                QDate jalaliDate = QDate(year, month, day, calendar);
+                if (jalaliDate.isValid()) {
+                    ui->dateEdit->setDate(jalaliDate);
+                } else {
+                    ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+                }
+            } else {
+                    ui->dateEdit->setDate(QDate::currentDate().addYears(1));}
             ui->textEdit->setText(query.value("Description").toString());
         } else {
             qDebug() << "No data found for serial number:" << Serialnum;

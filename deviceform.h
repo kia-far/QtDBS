@@ -42,7 +42,7 @@ private slots:
 
     void on_AddItemBtn_clicked();
 
-    void on_addDeviceBtn_clicked();
+
 
     void on_CustomerCombo_editTextChanged(const QString &arg1);
 
@@ -50,13 +50,7 @@ private slots:
 
     void populateEdit(QString device, int id);
 
-    void on_AddDevBtn_clicked();
-
     void adminMode();
-
-//    void on_AddOptBtn_clicked();
-
-//    void on_AddBelBtn_clicked();
 
 private:
     void createBelonging(QString itemName,int index);

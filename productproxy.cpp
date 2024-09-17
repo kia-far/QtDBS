@@ -80,7 +80,7 @@ void ProductProxy::loadData(QString searchParam,QString searchText) {
         // Add custom column headers
         // Replace these names with your desired names
         QStringList columnNames = {
-            "شماره سریال", "نام محصول", "فاکتور", "شماره anydesk", "انقضای گارانتی", "تاریخ خرید", "توضیحات"
+            "شماره سریال", "نام محصول", "فاکتور", "شماره anydesk", "تاریخ خرید", "انقضای گارانتی", "توضیحات"
         };
 
         // Add column names

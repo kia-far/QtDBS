@@ -91,41 +91,6 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 //        }
     }
 
-    int descriptionIndex = columns.indexOf("description");
-        if (descriptionIndex != -1) {
-            // Move the "description" column to the end of the columns list
-            QString descriptionColumn = columns.takeAt(descriptionIndex);
-            columns.append(descriptionColumn);
-            for (auto &row : rows) {
-                QVariant descriptionData = row.takeAt(descriptionIndex);
-                row.append(descriptionData);
-            }
-        }
-/*
-  int descriptionIndex = columns.indexOf("description");  // Assuming the column name is "description"
-    if (descriptionIndex != -1) {
-        // Move the "description" column to the end of the columns list
-        QString descriptionColumn = columns.takeAt(descriptionIndex);
-        columns.append(descriptionColumn);
-
-        // Move the corresponding data in each row to the end
-        for (auto &row : rows) {
-            QVariant descriptionData = row.takeAt(descriptionIndex);
-            row.append(descriptionData);
-        }
-    }
-*/
-//    while (query.next()) {
-//        QVector<QVariant> row;
-//        for (int i = 0; i < numCols; ++i) {
-//            QString columnName = record.fieldName(i);
-//            if (!columnsToExclude.contains(columnName)) {
-//                row.append(query.value(i));
-//            }
-//        }
-//        rows.append(row);
-//    }
-//_____________________________________________________________________________________________________________
     while (query.next()) {
         QVector<QVariant> row;
         for (int i = 0; i < numCols; ++i) {
@@ -140,8 +105,17 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
         }
     }
 
-//    qDebug() << "Rows loaded:" << rows.size();
-//    qDebug() << "Columns loaded:" << columns.size();
+    int descriptionIndex = columns.indexOf("description");
+        if (descriptionIndex != -1) {
+            // Move the "description" column to the end of the columns list
+            QString descriptionColumn = columns.takeAt(descriptionIndex);
+            columns.append(descriptionColumn);
+            for (auto &row : rows) {
+                QVariant descriptionData = row.takeAt(descriptionIndex);
+                row.append(descriptionData);
+            }
+        }
+
 
     emit layoutChanged();
 }
@@ -151,31 +125,39 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 
 
 QVariant ProxyView::headerData(int section, Qt::Orientation orientation, int role) const {
-    // Define a QStringList with the first 4 column names
-    QStringList customColumnNames = QStringList({"شماره سریال", "نام مشتری", "توضیحات", "متعلقات"});  // Replace with your QStringList
+    QStringList customColumnNames = QStringList({"شماره سریال", "نام مشتری", "متعلقات"});
 
+    // Check if role is for display
     if (role != Qt::DisplayRole) {
         return QVariant();
     }
 
+    // Handle horizontal headers
     if (orientation == Qt::Horizontal) {
+        // For the first few columns, use custom names
         if (section < customColumnNames.size()) {
-            // Return the name from the custom QStringList for the first 4 columns
             return customColumnNames.at(section);
+        }
+
+        // If the column is "description", return a custom header label
+        int descriptionIndex = columns.indexOf("description");
+        if (descriptionIndex != -1 && section == descriptionIndex) {
+            return "توضیحات";  // Your custom label for "description"
+        }
+
+        // For all other columns, use the column names from the database
+        int adjustedIndex = section - customColumnNames.size();
+        if (adjustedIndex >= 0 && adjustedIndex < columns.size()) {
+            return columns.at(adjustedIndex + customColumnNames.size());
         } else {
-            // Return the remaining column names from the database for other sections
-            int adjustedIndex = section - customColumnNames.size();
-            if (adjustedIndex >= 0 && adjustedIndex < columns.size()) {
-                return columns.at(adjustedIndex+customColumnNames.size());
-            } else {
-                return QVariant(); // Invalid section or out of bounds
-            }
+            return QVariant();  // Invalid section or out of bounds
         }
     } else {
-        // For vertical orientation, return the section number
+        // For vertical headers (row numbers), return the section number
         return QString::number(section + 1);
     }
 }
+
 
 
 bool ProxyView::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role) {

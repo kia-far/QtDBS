@@ -29,12 +29,20 @@ private slots:
     void on_pushButton_clicked();
 
 
+    void on_CustomerCombo_editTextChanged(const QString &arg1);
+    // void on_ProductCombo_editTextChanged(const QString &arg1);
+
+    void on_ProductCombo_editTextChanged(const QString &arg1);
+
 private:
     Ui::serviceEdit *ui;
     void keyBinds();
+    void populateCombo();
+    QStringList getCustomers(QString halfText);
+    QStringList getProducts(QString halfText);
 //    QSqlDatabase db;
     QString Modee;
-    QString b[6];
+    QString b[8];
     int ID;
     DatabaseConnection &db;
 
