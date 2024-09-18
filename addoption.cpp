@@ -12,7 +12,7 @@ AddOption::AddOption(QWidget *parent) :
 {
     ui->setupUi(this);
 //    devCalled=false;
-    ui->verticalLayout->addWidget(lineEdit_2,1);
+    ui->verticalLayout_3->addWidget(lineEdit_2);
     lineEdit_2->hide();
 }
 
@@ -50,12 +50,13 @@ void AddOption::setupDevice() {
 
 
     lineEdit_2->setText("");
+    ui->lineEdit->setPlaceholderText("نام دستگاه");
     lineEdit_2->setPlaceholderText("مخفف نام دستگاه");
 
     // Create button only if it doesn't exist
     if (!editButton) {
         editButton = new QPushButton;
-        editButton->setText("افزودن حرف به دستگاه");
+        editButton->setText("افزودن حرف به دستگاه موجود");
         connect(editButton, &QPushButton::clicked, this, [this]() { emit addAbr(); });
         ui->verticalLayout->addWidget(editButton);
     }

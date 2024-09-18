@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+  </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -32,7 +35,18 @@
         </spacer>
        </item>
        <item>
-        <widget class="QComboBox" name="comboBox"/>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <item>
+          <widget class="QComboBox" name="comboBox"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>نام دستگاه :</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <spacer name="horizontalSpacer_2">
@@ -65,7 +79,18 @@
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="lineEdit"/>
+        <layout class="QHBoxLayout" name="horizontalLayout_5">
+         <item>
+          <widget class="QLineEdit" name="lineEdit"/>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>حرف جدید :</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <spacer name="horizontalSpacer_4">
@@ -100,7 +125,7 @@
        <item>
         <widget class="QPushButton" name="submitButton">
          <property name="text">
-          <string>Submit</string>
+          <string>ثبت</string>
          </property>
         </widget>
        </item>

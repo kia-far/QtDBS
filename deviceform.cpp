@@ -16,8 +16,8 @@ DeviceForm::DeviceForm(QWidget *parent) :
     db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
-    setup();
     admiMode=false;
+    setup();
     if(!admiMode){ui->AddItemBtn->hide();}
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
@@ -33,13 +33,17 @@ DeviceForm::~DeviceForm()
 
 void DeviceForm::trigger(QString device){
     clearPage();
+    admiMode = false;
     currentDevice = device;
     this->show();
     setup();
 }
 
 void DeviceForm::setup(){
+    if(!admiMode){ui->AddItemBtn->hide();}
+    else {ui->AddItemBtn->show();}
     edit = false;
+    // admiMode = false;
     QString curDev = currentDevice;
     QStringList devices = ItemHandler::loadDevices();
     ui->comboBox->clear();
@@ -54,6 +58,7 @@ void DeviceForm::setup(){
 void DeviceForm::editDevice(QString device , int id){
     this->show();
     currentDevice = device;
+    admiMode = false;
     setup();
     ui->comboBox->setCurrentText(device);
     ui->lineEdit->setText(MyFunctions::intToStr(id));
@@ -393,8 +398,8 @@ void DeviceForm::on_pushButton_clicked()
 
 void DeviceForm::adminMode(){
     admiMode= !admiMode;
-    if(!admiMode){ui->AddItemBtn->hide();}
-    else {ui->AddItemBtn->show();}
+    // if(!admiMode){ui->AddItemBtn->hide();}
+    // else {ui->AddItemBtn->show();}
     setup();
 }
 

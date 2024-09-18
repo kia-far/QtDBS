@@ -13,7 +13,9 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QVBoxLayout>
@@ -26,11 +28,11 @@ class Ui_SearchForm
 public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
-    QSpacerItem *horizontalSpacer_3;
-    QComboBox *comboBox;
-    QSpacerItem *horizontalSpacer;
+    QGridLayout *gridLayout;
+    QLabel *label_2;
+    QLabel *label;
     QLineEdit *lineEdit;
-    QSpacerItem *horizontalSpacer_2;
+    QComboBox *comboBox;
     QHBoxLayout *horizontalLayout_2;
     QSpacerItem *horizontalSpacer_5;
     QDialogButtonBox *buttonBox;
@@ -46,18 +48,19 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
+        label_2 = new QLabel(SearchForm);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        horizontalLayout->addItem(horizontalSpacer_3);
+        gridLayout->addWidget(label_2, 2, 1, 1, 1);
 
-        comboBox = new QComboBox(SearchForm);
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        label = new QLabel(SearchForm);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
-        horizontalLayout->addWidget(comboBox);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
-
-        horizontalLayout->addItem(horizontalSpacer);
+        gridLayout->addWidget(label, 1, 1, 1, 1);
 
         lineEdit = new QLineEdit(SearchForm);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
@@ -67,11 +70,15 @@ public:
         sizePolicy.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
         lineEdit->setSizePolicy(sizePolicy);
 
-        horizontalLayout->addWidget(lineEdit);
+        gridLayout->addWidget(lineEdit, 2, 0, 1, 1);
 
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
+        comboBox = new QComboBox(SearchForm);
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
-        horizontalLayout->addItem(horizontalSpacer_2);
+        gridLayout->addWidget(comboBox, 1, 0, 1, 1);
+
+
+        horizontalLayout->addLayout(gridLayout);
 
 
         verticalLayout->addLayout(horizontalLayout);
@@ -104,6 +111,8 @@ public:
     void retranslateUi(QWidget *SearchForm)
     {
         SearchForm->setWindowTitle(QCoreApplication::translate("SearchForm", "Form", nullptr));
+        label_2->setText(QCoreApplication::translate("SearchForm", "\331\205\330\252\331\206 \330\254\330\263\330\252\330\254\331\210 :", nullptr));
+        label->setText(QCoreApplication::translate("SearchForm", "\330\254\330\263\330\252\331\210\330\254\331\210 \330\257\330\261 :", nullptr));
     } // retranslateUi
 
 };

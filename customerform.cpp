@@ -60,6 +60,7 @@ void CustomerForm::regSubmit(){
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
     }}
+    this->close();
 }
 void CustomerForm::editSubmit(){
     b[0] = QString::number(ID);
@@ -91,6 +92,7 @@ void CustomerForm::editSubmit(){
         //        qDebug() << "success 1 " + b[0];
     }
     }
+    this->close();
 
 }
 void CustomerForm::trigger(int serialnum){

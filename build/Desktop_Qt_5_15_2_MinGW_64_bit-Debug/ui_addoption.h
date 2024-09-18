@@ -25,6 +25,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
     QLabel *label;
+    QVBoxLayout *verticalLayout_3;
     QLineEdit *lineEdit;
     QPushButton *pushButton;
 
@@ -50,10 +51,15 @@ public:
 
         verticalLayout->addWidget(label);
 
+        verticalLayout_3 = new QVBoxLayout();
+        verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         lineEdit = new QLineEdit(AddOption);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
 
-        verticalLayout->addWidget(lineEdit);
+        verticalLayout_3->addWidget(lineEdit);
+
+
+        verticalLayout->addLayout(verticalLayout_3);
 
         pushButton = new QPushButton(AddOption);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
