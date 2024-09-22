@@ -21,6 +21,8 @@ ProductRegister::ProductRegister(QWidget *parent) :
     ui->setupUi(this);
     keybinds();
     ui->textEdit->setTabChangesFocus(true);
+    admiMode = false;
+    ui->devBtn->setHidden(true);
 //    db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
@@ -40,8 +42,8 @@ void ProductRegister::on_pushButton_clicked()
 {
 
 
-    if (Mode == "REGISTER") { regSubmit(); }
-    else if (Mode == "EDIT") { editSubmit(); }
+    if (Mode == "REGISTER") { regSubmit(); admiMode = false; }
+    else if (Mode == "EDIT") { editSubmit(); admiMode = false;}
     else { qDebug() << "what is the mode?"; }
 }
 
@@ -376,6 +378,12 @@ bool ProductRegister::registerProductSecInfo(){
     return err;
 }
 
+void ProductRegister::adminMode(){
+    admiMode = !admiMode;
+    // ui->verticalSpacer->invalidate();
+    ui->devBtn->setHidden(!admiMode);
+}
+
 void ProductRegister::keybinds(){
     QAction *f0 = new QAction(this);
     f0->setShortcut(Qt::Key_Q | Qt::CTRL);
@@ -387,11 +395,22 @@ void ProductRegister::keybinds(){
 
     connect(f1, SIGNAL(triggered()), this, SLOT(on_pushButton_clicked()));
     this->addAction(f1);
+    QAction *f2 = new QAction(this);
+    f2->setShortcut(Qt::Key_M | Qt::CTRL);
+
+    connect(f2, SIGNAL(triggered()), this, SLOT(adminMode()));
+    this->addAction(f2);
 }
 
 void ProductRegister::on_comboBox_currentIndexChanged(int index)
 {
     if(Mode=="EDIT"){
         ui->comboBox->setCurrentText(currentComboText);}
+}
+
+
+void ProductRegister::on_devBtn_clicked()
+{
+    emit devicePage();
 }
 

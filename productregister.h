@@ -30,10 +30,17 @@ public:
     bool registerProductInfo();
     bool registerProductSecInfo();
 
+signals :
+    void devicePage();
 private slots:
     void on_pushButton_clicked();
 
     void on_comboBox_currentIndexChanged(int index);
+
+    void on_devBtn_clicked();
+
+    void adminMode();
+
 
 private:
     Ui::ProductRegister *ui;
@@ -42,6 +49,7 @@ private:
     QString Mode;
     int Serialnum;
     DatabaseConnection &db;
+    bool admiMode;
 
 };
 
