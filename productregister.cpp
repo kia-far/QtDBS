@@ -180,13 +180,13 @@ void ProductRegister::setup() {
         ui->comboBox->addItem("انتخاب نشده");
         for(int i=0;i<devices.length();i++){
             ui->comboBox->addItem(devices[i]);}
+        ui->lineEdit_8->setText("");
         ui->comboBox->setCurrentIndex(0);
         ui->lineEdit_10->setText("");
         ui->lineEdit_11->setText("");
         QCalendar calendar( QCalendar::System::Jalali);
         ui->dateEdit_2->setCalendar(calendar);
         ui->dateEdit_2->setDate(QDate::currentDate());
-        // QCalendar calendar( QCalendar::System::Jalali);
         ui->dateEdit->setCalendar(calendar);
         ui->dateEdit->setDate(QDate::currentDate().addYears(1));
         ui->textEdit->setText("");

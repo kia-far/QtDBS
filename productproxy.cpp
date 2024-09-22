@@ -6,7 +6,7 @@
 #include <QSqlError>
 #include <QSqlRecord>
 #include <QDebug>
-
+#include "itemhandler.h"
 
 
 
@@ -41,59 +41,94 @@ void ProductProxy::sort(int column, Qt::SortOrder order) {
     emit layoutChanged();  // Notify view about the sorted data
 }
 
-void ProductProxy::loadData(QString searchParam,QString searchText) {
-
-
+void ProductProxy::loadData(QString searchParam, QString searchText) {
     QSqlQuery query(db.getConnection());
     QString res;
-    QString context;
-    QString space;
-    if (searchParam=="ProductInfo.SerialNO"){
+    QStringList productNames = ItemHandler::loadDevices();  // Get the list of all device names
 
-        res = MyFunctions::searchHandler("ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description", "ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO", searchParam,searchText);
-    }
-    else {res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description FROM ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
+    // Debug output to check the product names
+    qDebug() << "List of device names:" << productNames;
 
-
-    query.exec(res);
-//    qDebug() << res;
-    QSqlRecord record = query.record();
-    int numCols = record.count();
-
+    // Step 1: Clear existing rows and columns
     rows.clear();
     columns.clear();
 
-    while (query.next()) {
-        QVector<QVariant> row;
-        for (int i = 0; i < numCols; ++i) {
-            row.append(query.value(i));
+    // Step 2: Loop through each product/device name to build and execute a query
+    foreach (const QString &productName, productNames) {
+        // Dynamically construct the main query for each product
+        if (searchParam == "ProductInfo.SerialNO") {
+            res = MyFunctions::searchHandler(
+                "ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, ProductSecInfo.Description, "
+                    + productName + ".CustomerName",
+                "ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO "
+                "INNER JOIN " + productName + " ON " + productName + ".SerialNumber = ProductInfo.SerialNO",
+                searchParam, searchText);
+        } else {
+            res = "SELECT ProductInfo.*, ProductSecInfo.GuarantyExp, ProductSecInfo.PurchaseDate, "
+                  "ProductSecInfo.Description, " + productName + ".CustomerName "
+                                  "FROM ProductInfo "
+                                  "INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO "
+                                  "INNER JOIN " + productName + " ON " + productName + ".SerialNumber = ProductInfo.SerialNO "
+                                                         "WHERE " + searchParam + " LIKE '%" + searchText + "%'";
         }
-        rows.append(row);
+
+        // Step 3: Execute the dynamically constructed query
+        if (!query.exec(res)) {
+            qWarning() << "Failed to execute query for product: " << productName << query.lastError();
+            continue;  // Skip to the next product if this query fails
+        }
+
+        // Step 4: Process the result and load data into the rows and columns
+        QSqlRecord record = query.record();
+        int numCols = record.count(); // Get the number of columns in the result
+
+        while (query.next()) {
+            QVector<QVariant> row;
+
+            // Populate the row with the query results in the original order
+            for (int i = 0; i < numCols; ++i) {
+                row.append(query.value(i)); // Append each value
+            }
+
+            // Rearrange the columns to place "Customer Name" at the third position
+            if (numCols > 3) {
+                QVariant customerName = row.takeLast(); // Assuming CustomerName is the last column
+                row.insert(2, customerName); // Insert Customer Name as the third column
+            }
+
+            rows.append(row); // Add the rearranged row to the list
+        }
     }
 
+    // Step 5: If there is data, convert the first column and set up column headers
     if (!rows.isEmpty()) {
-        // Convert the first column using intToStr()
+        // Convert the first column (Serial Number) using intToStr()
         for (int i = 0; i < rows.size(); ++i) {
             rows[i][0] = MyFunctions::intToStr(rows[i][0].toInt());
         }
 
-        // Add custom column headers
-        // Replace these names with your desired names
+        // Add custom column headers (adjust based on the shared and dynamically added columns)
         QStringList columnNames = {
-            "شماره سریال", "نام محصول", "فاکتور", "شماره anydesk", "تاریخ خرید", "انقضای گارانتی", "توضیحات"
+            "شماره سریال",  // Serial Number
+            "نام محصول",    // Product Name
+            "نام مشتری",      // Customer Name (Dynamically added from the product-specific table)
+            "فاکتور",       // Invoice
+            "شماره anydesk", // Anydesk Number
+            "تاریخ خرید",    // Purchase Date
+            "انقضای گارانتی", // Warranty Expiration
+            "توضیحات"      // Description
         };
 
-        // Add column names
         for (const QString &name : columnNames) {
-            columns.append(name);
+            columns.append(name); // Append each column name to the columns list
         }
     }
 
-//    qDebug() << "Rows loaded:" << rows.size();
-//    qDebug() << "Columns loaded:" << columns.size();
-
+    // Notify the view that the layout has changed (data and columns have been updated)
     emit layoutChanged();
 }
+
+
 
 QVariant ProductProxy::headerData(int section, Qt::Orientation orientation, int role) const {
     if (role != Qt::DisplayRole) {
