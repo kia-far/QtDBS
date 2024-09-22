@@ -37,7 +37,6 @@ public:
     QLineEdit *lineEdit_10;
     QLabel *label_7;
     QComboBox *comboBox;
-    QSpacerItem *verticalSpacer;
     QLineEdit *lineEdit_11;
     QTextEdit *textEdit;
     QDateEdit *dateEdit;
@@ -64,76 +63,72 @@ public:
         lineEdit_8 = new QLineEdit(ProductRegister);
         lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
 
-        gridLayout->addWidget(lineEdit_8, 3, 0, 1, 1);
+        gridLayout->addWidget(lineEdit_8, 2, 0, 1, 1);
 
         label_3 = new QLabel(ProductRegister);
         label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        gridLayout->addWidget(label_3, 6, 1, 1, 1);
+        gridLayout->addWidget(label_3, 5, 1, 1, 1);
 
         label_5 = new QLabel(ProductRegister);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
-        gridLayout->addWidget(label_5, 10, 1, 1, 1);
+        gridLayout->addWidget(label_5, 9, 1, 1, 1);
 
         label_2 = new QLabel(ProductRegister);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
-        gridLayout->addWidget(label_2, 2, 1, 1, 1);
+        gridLayout->addWidget(label_2, 1, 1, 1, 1);
 
         lineEdit_10 = new QLineEdit(ProductRegister);
         lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
 
-        gridLayout->addWidget(lineEdit_10, 6, 0, 1, 1);
+        gridLayout->addWidget(lineEdit_10, 5, 0, 1, 1);
 
         label_7 = new QLabel(ProductRegister);
         label_7->setObjectName(QString::fromUtf8("label_7"));
 
-        gridLayout->addWidget(label_7, 12, 1, 1, 1);
+        gridLayout->addWidget(label_7, 11, 1, 1, 1);
 
         comboBox = new QComboBox(ProductRegister);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
 
-        gridLayout->addWidget(comboBox, 2, 0, 1, 1);
-
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Fixed, QSizePolicy::Minimum);
-
-        gridLayout->addItem(verticalSpacer, 1, 1, 1, 1);
+        gridLayout->addWidget(comboBox, 1, 0, 1, 1);
 
         lineEdit_11 = new QLineEdit(ProductRegister);
         lineEdit_11->setObjectName(QString::fromUtf8("lineEdit_11"));
 
-        gridLayout->addWidget(lineEdit_11, 7, 0, 1, 1);
+        gridLayout->addWidget(lineEdit_11, 6, 0, 1, 1);
 
         textEdit = new QTextEdit(ProductRegister);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
 
-        gridLayout->addWidget(textEdit, 12, 0, 1, 1);
+        gridLayout->addWidget(textEdit, 11, 0, 1, 1);
 
         dateEdit = new QDateEdit(ProductRegister);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
 
-        gridLayout->addWidget(dateEdit, 10, 0, 1, 1);
+        gridLayout->addWidget(dateEdit, 9, 0, 1, 1);
 
         dateEdit_2 = new QDateEdit(ProductRegister);
         dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
 
-        gridLayout->addWidget(dateEdit_2, 9, 0, 1, 1);
+        gridLayout->addWidget(dateEdit_2, 8, 0, 1, 1);
 
         label = new QLabel(ProductRegister);
         label->setObjectName(QString::fromUtf8("label"));
 
-        gridLayout->addWidget(label, 3, 1, 1, 1);
+        gridLayout->addWidget(label, 2, 1, 1, 1);
 
         label_4 = new QLabel(ProductRegister);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
-        gridLayout->addWidget(label_4, 7, 1, 1, 1);
+        gridLayout->addWidget(label_4, 6, 1, 1, 1);
 
         label_6 = new QLabel(ProductRegister);
         label_6->setObjectName(QString::fromUtf8("label_6"));
 
-        gridLayout->addWidget(label_6, 9, 1, 1, 1);
+        gridLayout->addWidget(label_6, 8, 1, 1, 1);
 
         devBtn = new QPushButton(ProductRegister);
         devBtn->setObjectName(QString::fromUtf8("devBtn"));

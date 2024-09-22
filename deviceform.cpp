@@ -128,6 +128,7 @@ void DeviceForm::createNewItem(QString itemName, int index) {
 
     // Set size policy to adjust based on content
     label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    label->setAlignment(Qt::AlignCenter);
     label->adjustSize();
 
     labels.append(label);
@@ -156,7 +157,7 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     QHBoxLayout *hb = new QHBoxLayout;
 
     // Set alignment and add widgets to layout
-    label->setAlignment(Qt::AlignRight);
+    label->setAlignment(Qt::AlignCenter);
     hb->addWidget(comboBox);
     hb->addWidget(label);
 
