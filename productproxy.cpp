@@ -258,3 +258,9 @@ bool ProductProxy::removeColumns(int column, int count, const QModelIndex &paren
     endRemoveColumns();
     return true;
 }
+
+void ProductProxy::searchSN(QString ST){
+    if(ST.at(0).isLetter()){
+
+    }
+}

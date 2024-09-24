@@ -202,21 +202,47 @@ int MyFunctions::snLetter(QString letter){
 
 QString MyFunctions::searchHandler(QString column,QString tableName, QString searchParam ,QString searchText){
     QString res;
+    int letterCount = 0;
+    int STL = 0;
     QString context;
-    QString space;
+    QString space = "";
+    if(!searchText.isEmpty()){
+    for(int i =0;i<searchText.length();i++){
+            STL++;
+        if(searchText.at(i).isLetter()){letterCount++;}
+    }}
     if (searchText==""){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
     else{
-        if(letters.contains(searchText.at(0))){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
-        else{
-            context = MyFunctions::smallSN(searchText);
-            space = MyFunctions::querySolver();
-            if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
-            /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
-            else{
-                res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
-//                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
-            }
+        if(letterCount==0){
+            if(STL > 2){
+                for(int i=0;i<STL;i++){
+
+                }
+                res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"' ";
+}
+            else{}
         }
+        else if(letterCount==1){
+            if(searchText.at(0).isLetter()){
+                if(searchText.at(0) == 'A'||searchText.at(0) == 'B'){}
+                else{}
+            }
+            else{}
+        }
+        else if(letterCount==2){}
+        else{}
+
+        //         if(letters.contains(searchText.at(0))){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
+//         else{
+// //             context = MyFunctions::smallSN(searchText);
+// //             space = MyFunctions::querySolver();
+// //             if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
+// //             /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
+// //             else{
+// //                 res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
+// // //                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
+// //             }
+//         }
     }
     return res;
 }

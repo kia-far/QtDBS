@@ -49,6 +49,7 @@ public:
     // Remove data:
     bool removeRows(int row, int count, const QModelIndex &parent = QModelIndex()) override;
     bool removeColumns(int column, int count, const QModelIndex &parent = QModelIndex()) override;
+    void searchSN(QString SearchText);
 //    bool colorRows(int column, int count, const QModelIndex &parent = QModelIndex());
 
 private:
