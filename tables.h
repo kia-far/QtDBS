@@ -23,17 +23,17 @@ public:
 
 
 signals:
-    void editDevice(QString device,int id);
-    void edit(int serialNum,int index);
+    void editDevice(QString device,unsigned int id);
+    void edit(unsigned int serialNum,int index);
     void searchActive(int current);
-    void editProduct(int serialNum);
+    void editProduct(unsigned int serialNum);
     void refreshActive(int current);
     void addProduct();
     void addDevice(QString device);
     void addService();
-    void editService(int serialNum);
+    void editService(unsigned int serialNum);
     void addCustomer();
-    void editCustomer(int serialNum);
+    void editCustomer(unsigned int serialNum);
 
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
@@ -59,7 +59,7 @@ private slots:
     void on_deleteBtn_clicked();
 
 private:
-    void deleteRow(int ID, QString device);
+    void deleteRow(unsigned int ID, QString device);
     Ui::Tables *ui;
     void keybinds();
     ProxyView *View;

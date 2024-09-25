@@ -14,10 +14,10 @@
 #include <QAction>
 #include <QMessageBox>
 
-int lastClicked =-1;
+unsigned int lastClicked =4294967294;
 int currentTable =0;
 int editSelect =0;
-int clickedID =-1;
+unsigned int clickedID =4294967294;
 //bool inSearch=false;
 QString searchParam;
 
@@ -171,8 +171,8 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 {
-    clickedID = -1;
-    lastClicked =-1;
+    clickedID = 4294967294;
+    lastClicked = 4294967294;
     currentDevice = "";
     ui->comboBox_2->hide();
     if(arg1 == "محصولات"){
@@ -223,7 +223,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
 void Tables::on_EditBtn_clicked()
 {
-    if(clickedID!=-1&&lastClicked!=-1){
+    if(clickedID!=4294967294&&lastClicked!=4294967294){
         // qDebug() << "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
         if (currentTable == 0){emit editCustomer(clickedID);}
         else if (currentTable == 1){emit editService(clickedID);}
@@ -247,8 +247,8 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
 //    qDebug() << "Selected row:" << selectedRow;
     QVariant data = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow, 0));
 //    qDebug() << "Data in the first column of the selected row:" << data.toString();
-    lastClicked = (MyFunctions ::reverseSN(data.toString())).toInt();
-    clickedID = data.toInt();
+    lastClicked = (MyFunctions ::reverseSN(data.toString())).toUInt();
+    clickedID = data.toUInt();
     if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();}
     else if(currentTable == 3){
         currentDevice = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow,1)).toString();
@@ -291,8 +291,8 @@ void Tables::on_mainWindowBtn_clicked()
 void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
 {
 
-    clickedID = -1;
-    lastClicked =-1;
+    clickedID = 4294967294;
+    lastClicked =4294967294;
     currentDevice = arg1;
     QString searchParam = "SerialNumber";
     QString searchText = "";
@@ -353,7 +353,7 @@ void Tables::keybinds(){
 void Tables::on_deleteBtn_clicked()
 {
 
-    if(clickedID!=-1&&lastClicked!=-1){
+    if(clickedID!=4294967294&&lastClicked!=4294967294){
         // qDebug() << "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
 
         if (currentTable == 2){/*emit editDevice(currentDevice,lastClicked);*/
@@ -415,7 +415,7 @@ void Tables::on_deleteBtn_clicked()
 
 }
 
-void Tables::deleteRow(int ID, QString device) {
+void Tables::deleteRow(unsigned int ID, QString device) {
     QSqlDatabase db = QSqlDatabase::database();  // Assuming db connection is already established
     QSqlQuery query(db);
 

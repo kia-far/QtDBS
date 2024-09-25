@@ -19,8 +19,8 @@ public:
     explicit EditTable(QWidget *parent = nullptr);
     ~EditTable();
 
-    void loadSerialNumber(int serialNum);
-    void receiveTableIndex(int serialNum, int index);
+    void loadSerialNumber(unsigned int serialNum);
+    void receiveTableIndex(unsigned int serialNum, int index);
 
 private slots:
     void on_pushButton_clicked();

@@ -28,7 +28,7 @@ ProductRegister::ProductRegister(QWidget *parent) :
 //    db.open();
 }
 QString Mode;
-int Serialnum;
+unsigned int Serialnum;
 QString a[7];
 QString currentComboText;
 
@@ -49,7 +49,7 @@ void ProductRegister::on_pushButton_clicked()
 
 void ProductRegister::regOn() { Mode = "REGISTER"; }
 
-void ProductRegister::editOn(int Serial) {
+void ProductRegister::editOn(unsigned int Serial) {
     Mode = "EDIT";
     Serialnum = Serial;
 }
@@ -97,7 +97,7 @@ void ProductRegister::regSubmit()
                     // registerProductInfo();
                     // registerProductSecInfo();
                     if(registerProductInfo()&&registerProductSecInfo()){
-                        ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                        ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toUInt()});
                         this->close();
                     }
                     // Call register functions here
@@ -133,7 +133,7 @@ void ProductRegister::regSubmit()
 
         //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
                 if(registerProductInfo()&&registerProductSecInfo()){
-                    ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toInt()});
+                    ItemHandler::insertDataIntoTable(ui->comboBox->currentText(),{"SerialNumber"},{MyFunctions::reverseSN( ui->lineEdit_8->text()).toUInt()});
                     this->close();
                 }
                 // Call register functions here
@@ -298,7 +298,7 @@ void ProductRegister::loadProductSecInfo(){
     }
 }
 
-void ProductRegister::trigger(int serialnum) {
+void ProductRegister::trigger(unsigned int serialnum) {
 //  edit
     editOn(serialnum);
     setup();

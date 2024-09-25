@@ -31,7 +31,7 @@ void CustomerForm::on_pushButton_clicked()
     else { qDebug() << "what is the mode?"; }
 }
 void CustomerForm::regOn(){Modee = "REGISTER";setup();}
-void CustomerForm::editOn(int serial){
+void CustomerForm::editOn(unsigned int serial){
     Modee="EDIT";
     ID = serial;
 }
@@ -95,7 +95,7 @@ void CustomerForm::editSubmit(){
     this->close();
 
 }
-void CustomerForm::trigger(int serialnum){
+void CustomerForm::trigger(unsigned int serialnum){
     editOn(serialnum);
     ID  = serialnum;
     setup();

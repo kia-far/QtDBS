@@ -18,10 +18,10 @@ public:
     ~serviceEdit();
     void regOn();
     void regSubmit();
-    void editOn(int serial);
+    void editOn(unsigned int serial);
     void editSubmit();
     void setup();
-    void trigger(int serialnum);
+    void trigger(unsigned int serialnum);
     void addTrigger();
 
 
@@ -43,7 +43,7 @@ private:
 //    QSqlDatabase db;
     QString Modee;
     QString b[8];
-    int ID;
+    unsigned int ID;
     DatabaseConnection &db;
 
 

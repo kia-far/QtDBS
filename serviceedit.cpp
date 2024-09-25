@@ -42,7 +42,7 @@ void serviceEdit::on_pushButton_clicked()
     else { qDebug() << "what is the mode?"; }
 }
 void serviceEdit::regOn(){Modee = "REGISTER";setup(); }
-void serviceEdit::editOn(int serial){
+void serviceEdit::editOn(unsigned int serial){
     Modee="EDIT";
     ID = serial;
 }
@@ -101,7 +101,7 @@ void serviceEdit::editSubmit(){
 
 
 }
-void serviceEdit::trigger(int serialnum){
+void serviceEdit::trigger(unsigned int serialnum){
     editOn(serialnum);
     ID  = serialnum;
     setup();
@@ -238,7 +238,7 @@ QStringList serviceEdit::getProducts(QString halfText){
     if (query.exec()) {
         //        qDebug() << "Fetch the results";
         while (query.next()) {
-            res << MyFunctions::intToStr(query.value(0).toInt());  // Assuming 'name' is the first column
+            res << MyFunctions::intToStr(query.value(0).toUInt());  // Assuming 'name' is the first column
         }
     } else {
         qDebug() << "Query execution failed:" << query.lastError().text();

@@ -9,7 +9,7 @@ class MyFunctions : public QAbstractItemModel
 
 public:
     explicit MyFunctions(QObject *parent = nullptr);
-    static QString intToStr(int number);
+    static QString intToStr(unsigned int number);
     static QString reverseSN(const QString &input);
     static QString newReverseSN(const QString &input);
     static int binaryToDecimal(const QString& binary);

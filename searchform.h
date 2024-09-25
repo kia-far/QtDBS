@@ -27,6 +27,8 @@ private slots:
 
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
+    void on_lineEdit_returnPressed();
+
 private:
     Ui::SearchForm *ui;
 };

@@ -14,7 +14,7 @@ ProductEdit::ProductEdit(QObject *parent)
 {
 }
 
-void ProductEdit::loadData(int serialNum) {
+void ProductEdit::loadData(unsigned int serialNum) {
 //    QSqlDatabase dbpe = QSqlDatabase::addDatabase("QSQLITE");
 //    dbpe.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    if (!dbpe.open()) {
@@ -51,7 +51,7 @@ void ProductEdit::loadData(int serialNum) {
     if (!rows.isEmpty()) {
         // Convert the first column using intToStr()
         for (int i = 0; i < rows.size(); ++i) {
-            rows[i][0] = MyFunctions::intToStr(rows[i][0].toInt());
+            rows[i][0] = MyFunctions::intToStr(rows[i][0].toUInt());
         }
 
         // Add custom column headers

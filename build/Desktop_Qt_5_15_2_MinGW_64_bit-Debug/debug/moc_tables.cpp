@@ -119,17 +119,17 @@ static const uint qt_meta_data_Tables[] = {
       29,    0,  167,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void, QMetaType::QString, QMetaType::Int,    3,    4,
-    QMetaType::Void, QMetaType::Int, QMetaType::Int,    6,    7,
+    QMetaType::Void, QMetaType::QString, QMetaType::UInt,    3,    4,
+    QMetaType::Void, QMetaType::UInt, QMetaType::Int,    6,    7,
     QMetaType::Void, QMetaType::Int,    9,
-    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::UInt,    6,
     QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::UInt,    6,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    6,
+    QMetaType::Void, QMetaType::UInt,    6,
 
  // slots: parameters
     QMetaType::Void, QMetaType::QString,   19,
@@ -152,17 +152,17 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         auto *_t = static_cast<Tables *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->editDevice((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 1: _t->edit((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 0: _t->editDevice((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
+        case 1: _t->edit((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         case 2: _t->searchActive((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 3: _t->editProduct((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->editProduct((*reinterpret_cast< uint(*)>(_a[1]))); break;
         case 4: _t->refreshActive((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->addProduct(); break;
         case 6: _t->addDevice((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 7: _t->addService(); break;
-        case 8: _t->editService((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 8: _t->editService((*reinterpret_cast< uint(*)>(_a[1]))); break;
         case 9: _t->addCustomer(); break;
-        case 10: _t->editCustomer((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 10: _t->editCustomer((*reinterpret_cast< uint(*)>(_a[1]))); break;
         case 11: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 12: _t->on_EditBtn_clicked(); break;
         case 13: _t->on_tableView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
@@ -178,14 +178,14 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (Tables::*)(QString , int );
+            using _t = void (Tables::*)(QString , unsigned int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::editDevice)) {
                 *result = 0;
                 return;
             }
         }
         {
-            using _t = void (Tables::*)(int , int );
+            using _t = void (Tables::*)(unsigned int , int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::edit)) {
                 *result = 1;
                 return;
@@ -199,7 +199,7 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             }
         }
         {
-            using _t = void (Tables::*)(int );
+            using _t = void (Tables::*)(unsigned int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::editProduct)) {
                 *result = 3;
                 return;
@@ -234,7 +234,7 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             }
         }
         {
-            using _t = void (Tables::*)(int );
+            using _t = void (Tables::*)(unsigned int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::editService)) {
                 *result = 8;
                 return;
@@ -248,7 +248,7 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             }
         }
         {
-            using _t = void (Tables::*)(int );
+            using _t = void (Tables::*)(unsigned int );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::editCustomer)) {
                 *result = 10;
                 return;
@@ -298,14 +298,14 @@ int Tables::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void Tables::editDevice(QString _t1, int _t2)
+void Tables::editDevice(QString _t1, unsigned int _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1
-void Tables::edit(int _t1, int _t2)
+void Tables::edit(unsigned int _t1, int _t2)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
@@ -319,7 +319,7 @@ void Tables::searchActive(int _t1)
 }
 
 // SIGNAL 3
-void Tables::editProduct(int _t1)
+void Tables::editProduct(unsigned int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 3, _a);
@@ -352,7 +352,7 @@ void Tables::addService()
 }
 
 // SIGNAL 8
-void Tables::editService(int _t1)
+void Tables::editService(unsigned int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 8, _a);
@@ -365,7 +365,7 @@ void Tables::addCustomer()
 }
 
 // SIGNAL 10
-void Tables::editCustomer(int _t1)
+void Tables::editCustomer(unsigned int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 10, _a);

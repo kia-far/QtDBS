@@ -106,7 +106,7 @@ static const uint qt_meta_data_DeviceForm[] = {
     QMetaType::Void,
     QMetaType::Void, QMetaType::QString,   10,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString, QMetaType::Int,   16,   17,
+    QMetaType::Void, QMetaType::QString, QMetaType::UInt,   16,   17,
     QMetaType::Void,
 
        0        // eod
@@ -128,7 +128,7 @@ void DeviceForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 7: _t->on_AddItemBtn_clicked(); break;
         case 8: _t->on_CustomerCombo_editTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 9: _t->on_pushButton_clicked(); break;
-        case 10: _t->populateEdit((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
+        case 10: _t->populateEdit((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
         case 11: _t->adminMode(); break;
         default: ;
         }

@@ -83,7 +83,7 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 
     if (!rows.isEmpty()) {
         for (int i = 0; i < rows.size(); ++i) {
-            rows[i][0] = MyFunctions::intToStr(rows[i][0].toInt());
+            rows[i][0] = MyFunctions::intToStr(rows[i][0].toUInt());
         }
     }
 

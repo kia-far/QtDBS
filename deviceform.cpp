@@ -55,7 +55,7 @@ void DeviceForm::setup(){
     ui->comboBox->setFixedWidth(120);
     ui->pushButton->setFixedWidth(25);
 }
-void DeviceForm::editDevice(QString device , int id){
+void DeviceForm::editDevice(QString device , unsigned int id){
     this->show();
     currentDevice = device;
     admiMode = false;
@@ -186,7 +186,7 @@ void DeviceForm::clearLayout(QLayout *layout) {
         //delete item;
     }
 }
-void DeviceForm::populateEdit(QString device,int id){
+void DeviceForm::populateEdit(QString device,unsigned int id){
     edit = true;
     QString newText="";
     QSqlQuery query(db.getConnection());
@@ -299,7 +299,7 @@ void DeviceForm::submit(){
         if(checkBox->isChecked()){
             checks.append(checkBox->text()+" ");}
     }
-    QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
+    QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
     for (QComboBox *comboBox : comboBoxes) {
         QString text = comboBox->currentText();
         //        qDebug() << "Data" << comboBox->objectName() << ":" << text;

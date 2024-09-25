@@ -24,7 +24,7 @@ public:
     explicit DeviceForm(QWidget *parent = nullptr);
     ~DeviceForm();
     void setup ();
-    void editDevice(QString device, int id);
+    void editDevice(QString device, unsigned int id);
     void trigger(QString device);
     void refresh();
     void clearPage();
@@ -48,7 +48,7 @@ private slots:
 
     void on_pushButton_clicked();
 
-    void populateEdit(QString device, int id);
+    void populateEdit(QString device, unsigned int id);
 
     void adminMode();
 

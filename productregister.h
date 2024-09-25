@@ -18,10 +18,10 @@ public:
     ~ProductRegister();
     void regOn();
     void regSubmit();
-    void editOn(int serial);
+    void editOn(unsigned int serial);
     void editSubmit();
     void setup();
-    void trigger(int serialnum);
+    void trigger(unsigned int serialnum);
     void addTrigger();
     void loadProductInfo();
     void loadProductSecInfo();
@@ -47,7 +47,7 @@ private:
     void keybinds();
 //    QSqlDatabase db;
     QString Mode;
-    int Serialnum;
+    unsigned int Serialnum;
     DatabaseConnection &db;
     bool admiMode;
 

@@ -8,8 +8,8 @@ MyFunctions::MyFunctions(QObject *parent)
     : QAbstractItemModel(parent)
 {
 }
-QString MyFunctions::intToStr(int number) {
-    QString numberStr = QString::number(number).rightJustified(10, '0'); // Ensure it's a 9-digit string
+QString MyFunctions::intToStr(unsigned int number) {
+    QString numberStr = QString::number(number).rightJustified(10, '0'); // Ensure it's a 10-digit string
 
     if (numberStr.length() != 10)
         return QString(); // Return empty string if format is incorrect
@@ -18,27 +18,27 @@ QString MyFunctions::intToStr(int number) {
 
     // First letter (from YY)
     int firstLetterPos = numberStr.mid(0, 2).toInt();
-    if (firstLetterPos >= 1 && firstLetterPos <= 26) {
-        QChar firstLetter = QChar('A' + firstLetterPos - 1);
+    if (firstLetterPos >= 11 && firstLetterPos <= 36) {  // Change range to 11-36
+        QChar firstLetter = QChar('A' + firstLetterPos - 11);  // Adjust position by 11
         result.append(firstLetter);
     } else {
         return QString(); // Return empty string if position is invalid
     }
 
     // Next two digits (xx)
-    result.append(numberStr.mid(2, 2));
+    result.append(numberStr.mid(2, 2)); // Digits remain unchanged
 
     // Second letter (from YY)
     int secondLetterPos = numberStr.mid(4, 2).toInt();
-    if (secondLetterPos >= 1 && secondLetterPos <= 26) {
-        QChar secondLetter = QChar('A' + secondLetterPos - 1);
+    if (secondLetterPos >= 11 && secondLetterPos <= 36) {  // Change range to 11-36
+        QChar secondLetter = QChar('A' + secondLetterPos - 11);  // Adjust position by 11
         result.append(secondLetter);
     } else {
         return QString(); // Return empty string if position is invalid
     }
 
     // Last four digits (xxxx)
-    result.append(numberStr.mid(6, 4));
+    result.append(numberStr.mid(6, 4)); // Digits remain unchanged
 
     return result;
 }
@@ -52,7 +52,7 @@ QString MyFunctions::reverseSN(const QString &input) {
 
     // First Letter (XX)
     QChar firstLetter = input.at(0).toUpper();
-    int firstLetterPos = firstLetter.toLatin1() - 'A' + 1;
+    int firstLetterPos = firstLetter.toLatin1() - 'A' + 11;  // Adjust position by 11
     result.append(QString::number(firstLetterPos).rightJustified(2, '0')); // Append 2-digit position
 
     // Next two digits (xx)
@@ -60,16 +60,20 @@ QString MyFunctions::reverseSN(const QString &input) {
 
     // Second Letter (YY)
     QChar secondLetter = input.at(3).toUpper();
-    int secondLetterPos = secondLetter.toLatin1() - 'A' + 1;
+    int secondLetterPos = secondLetter.toLatin1() - 'A' + 11;  // Adjust position by 11
     result.append(QString::number(secondLetterPos).rightJustified(2, '0')); // Append 2-digit position
 
     // Remaining 4 digits (xxxx)
     result.append(input.mid(4, 4)); // Append the remaining digits as-is
-    if(result.at(0) == '0'){
-        result.remove(0,1);
+
+    // Remove leading zero if necessary
+    if (result.at(0) == '0') {
+        result.remove(0, 1);
     }
+
     return result;
 }
+
 
 QString MyFunctions::newReverseSN(const QString &input) {
     QString result;
@@ -79,8 +83,8 @@ QString MyFunctions::newReverseSN(const QString &input) {
 
         // Check if the character is a letter
         if (currentChar.isLetter()) {
-            // Convert letter to its position in the alphabet (A = 1, B = 2, ..., Z = 26)
-            int letterPos = currentChar.toUpper().toLatin1() - 'A' + 1;
+            // Convert letter to its position in the alphabet (A = 11, B = 12, ..., Z = 36)
+            int letterPos = currentChar.toUpper().toLatin1() - 'A' + 11;  // Adjust position by 11
             result.append(QString::number(letterPos).rightJustified(2, '0')); // Append 2-digit position
         }
         // Check if the character is a digit
@@ -99,27 +103,27 @@ QString MyFunctions::newReverseSN(const QString &input) {
 
 QString MyFunctions::smallSN(QString input) {
     QString result="";
-    bool letter=1;
-    if(!input.isEmpty()){
-        for(int i=0;i<input.length();i++){
-            if(letter&&(input.at(i).isLetter())){
+    bool letter = true;
+
+    if (!input.isEmpty()) {
+        for (int i = 0; i < input.length(); i++) {
+            if (letter && input.at(i).isLetter()) {
                 input = input.toUpper();
-                int positionInAlphabet = input.at(i).toLatin1() - 'A' + 1;
-                if (positionInAlphabet >= 1 && positionInAlphabet <= 26) {
+                int positionInAlphabet = input.at(i).toLatin1() - 'A' + 11;  // Adjust position by 11
+                if (positionInAlphabet >= 11 && positionInAlphabet <= 36) {  // Ensure the range is 11-36
                     QString positionString = QString::number(positionInAlphabet).rightJustified(2, '0');
                     result.append(positionString);
                 }
                 poslet = i;
-            }
-            else{
-                result.append(input.at(i));
+            } else {
+                result.append(input.at(i));  // Append digits unchanged
             }
         }
-
     }
-//    qDebug()<<"this is inside smallsn func"<<result;
-            return result;
+
+    return result;
 }
+
 QString MyFunctions::querySolver(){
     QString res="";
     if(!(poslet==-1)){
@@ -215,8 +219,8 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     else{
         if(letterCount==0){
             if(STL > 2){
-                for(int i=0;i<STL;i++){
-
+                for(int i=4;i>=STL;i--){
+                
                 }
                 res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"' ";
 }

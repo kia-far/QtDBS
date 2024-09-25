@@ -25,7 +25,7 @@ public:
     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
 
     // Fetch data dynamically:
-    void loadData(int serialNum);
+    void loadData(unsigned int serialNum);
     bool hasChildren(const QModelIndex &parent = QModelIndex()) const override;
 
     bool canFetchMore(const QModelIndex &parent) const override;

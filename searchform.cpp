@@ -38,9 +38,9 @@ void SearchForm::createCombo(){
     ui->comboBox->clear(); // Clear existing items
 
     if (currentSearch == 0) {
-        ui->comboBox->addItem("Name");
-        ui->comboBox->addItem("Product");
-        ui->comboBox->addItem("ID");
+        ui->comboBox->addItem("نام");
+        // ui->comboBox->addItem("Product");
+        ui->comboBox->addItem("شناسه");
     } else if (currentSearch == 1) {
         ui->comboBox->addItem("محصول");
         ui->comboBox->addItem("مشتری");
@@ -50,14 +50,14 @@ void SearchForm::createCombo(){
         ui->comboBox->addItem("قطعه خراب");
         ui->comboBox->addItem("توضیحات");
     } else if(currentSearch == 2) {
-        ui->comboBox->addItem("Serial Number");
-        ui->comboBox->addItem("Customer name");
-        ui->comboBox->addItem("Belongings");
+        ui->comboBox->addItem("شماره سریال");
+        ui->comboBox->addItem("نام مشتری");
+        ui->comboBox->addItem("متعلقات");
 
     } else{
-        ui->comboBox->addItem("Serial Number");
-        ui->comboBox->addItem("Product Name");
-        ui->comboBox->addItem("Anydesk Number");
+        ui->comboBox->addItem("شماره سریال");
+        ui->comboBox->addItem("نام محصول");
+        ui->comboBox->addItem("شماره anydesk");
     }
 }
 
@@ -66,9 +66,9 @@ void SearchForm::on_buttonBox_accepted()
     QString searchText = ui->lineEdit->text();
 //    qDebug() << "accepted";
     if (currentSearch == 0){/*Customers*/
-        if (ui->comboBox->currentText()=="Name"){emit searchWorking("Name",searchText);}
-        else if (ui->comboBox->currentText()=="Product"){emit searchWorking("Product",searchText);}
-        else if (ui->comboBox->currentText()=="ID"){emit searchWorking("ID",searchText);}
+        if (ui->comboBox->currentText()=="نام"){emit searchWorking("Name",searchText);}
+        // else if (ui->comboBox->currentText()=="Product"){emit searchWorking("Product",searchText);}
+        else if (ui->comboBox->currentText()=="شناسه"){emit searchWorking("ID",searchText);}
         else{}
     }
     else if (currentSearch == 1){/*Services
@@ -90,17 +90,18 @@ void SearchForm::on_buttonBox_accepted()
         else {}
     }
     else if (currentSearch == 2){/*Devices*/
-        if (ui->comboBox->currentText()=="Serial Number"){emit searchWorking("SerialNumber",searchText);}
-        else if (ui->comboBox->currentText()=="Customer name"){emit searchWorking("CustomerName",searchText);}
-        else if (ui->comboBox->currentText()=="Belongings"){emit searchWorking("belongings",searchText);}
+        if (ui->comboBox->currentText()=="شماره سریال"){emit searchWorking("SerialNumber",searchText);}
+        else if (ui->comboBox->currentText()=="نام مشتری"){emit searchWorking("CustomerName",searchText);}
+        else if (ui->comboBox->currentText()=="متعلقات"){emit searchWorking("belongings",searchText);}
         else {}
     }
     else {/*Product*/
-        if (ui->comboBox->currentText()=="Serial Number"){emit searchWorking("ProductInfo.SerialNO",searchText);}
-        else if (ui->comboBox->currentText()=="Product Name"){emit searchWorking("ProductInfo.ProductName",searchText);}
-        else if (ui->comboBox->currentText()=="Anydesk Number"){emit searchWorking("ProductInfo.AnyDeskNO",searchText);}
+        if (ui->comboBox->currentText()=="شماره سریال"){emit searchWorking("ProductInfo.SerialNO",searchText);}
+        else if (ui->comboBox->currentText()=="نام محصول"){emit searchWorking("ProductInfo.ProductName",searchText);}
+        else if (ui->comboBox->currentText()=="شماره anydesk"){emit searchWorking("ProductInfo.AnyDeskNO",searchText);}
         else {}
     }
+    ui->lineEdit->setText("");
     this->close();
 }
 
@@ -115,5 +116,11 @@ void SearchForm::on_buttonBox_rejected()
 void SearchForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
 //    qDebug() << arg1 + "hello";
+}
+
+
+void SearchForm::on_lineEdit_returnPressed()
+{
+    on_buttonBox_accepted();
 }
 

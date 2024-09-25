@@ -37,7 +37,7 @@ EditTable::~EditTable()
 
 
 
-void EditTable::receiveTableIndex(int serialNum, int index)
+void EditTable::receiveTableIndex(unsigned int serialNum, int index)
 {
     currentIndex = index;
     currentSerialNum = serialNum;

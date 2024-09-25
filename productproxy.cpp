@@ -104,7 +104,7 @@ void ProductProxy::loadData(QString searchParam, QString searchText) {
     if (!rows.isEmpty()) {
         // Convert the first column (Serial Number) using intToStr()
         for (int i = 0; i < rows.size(); ++i) {
-            rows[i][0] = MyFunctions::intToStr(rows[i][0].toInt());
+            rows[i][0] = MyFunctions::intToStr(rows[i][0].toUInt());
         }
 
         // Add custom column headers (adjust based on the shared and dynamically added columns)
