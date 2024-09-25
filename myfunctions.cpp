@@ -104,7 +104,7 @@ QString MyFunctions::newReverseSN(const QString &input) {
 QString MyFunctions::smallSN(QString input) {
     QString result="";
     bool letter = true;
-
+    poslet = -1;
     if (!input.isEmpty()) {
         for (int i = 0; i < input.length(); i++) {
             if (letter && input.at(i).isLetter()) {
@@ -127,7 +127,7 @@ QString MyFunctions::smallSN(QString input) {
 QString MyFunctions::querySolver(){
     QString res="";
     if(!(poslet==-1)){
-        for (int i=0;i<3-poslet;i++){
+        for (int i=0;i<4-poslet;i++){
             res.append("_");
 
         }
@@ -210,44 +210,64 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     int STL = 0;
     QString context;
     QString space = "";
-    if(!searchText.isEmpty()){
-    for(int i =0;i<searchText.length();i++){
-            STL++;
-        if(searchText.at(i).isLetter()){letterCount++;}
-    }}
+    setLetters();
+    searchText = searchText.toUpper();
     if (searchText==""){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
     else{
-        if(letterCount==0){
-            if(STL > 2){
-                for(int i=4;i>=STL;i--){
-                
-                }
-                res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"' ";
-}
-            else{}
-        }
-        else if(letterCount==1){
-            if(searchText.at(0).isLetter()){
-                if(searchText.at(0) == 'A'||searchText.at(0) == 'B'){}
-                else{}
+        if(searchText.at(0).isLetter()){
+            if( letters.contains( searchText.at(0))){
+                res = "SELECT "+ column +" FROM "+tableName+" WHERE ("+searchParam + " LIKE '"+MyFunctions::newReverseSN( searchText)+"%') OR ("+searchParam + " LIKE '____" +MyFunctions::newReverseSN(searchText)+"%')";
             }
-            else{}
-        }
-        else if(letterCount==2){}
-        else{}
+            else{
+                res = "SELECT "+ column +" FROM "+tableName+" WHERE ("+searchParam + " LIKE '____" +MyFunctions::newReverseSN(searchText)+"%')";
 
-        //         if(letters.contains(searchText.at(0))){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%' OR "+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'";}
-//         else{
-// //             context = MyFunctions::smallSN(searchText);
-// //             space = MyFunctions::querySolver();
-// //             if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
-// //             /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
-// //             else{
-// //                 res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
-// // //                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
-// //             }
-//         }
+            }
+        }
+        else{
+            context = MyFunctions::smallSN(searchText);
+            space = MyFunctions::querySolver();
+            if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
+            /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
+            else{
+                res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '__%"+context+"%______') OR ("+searchParam+" LIKE '______%"+context+"%'))";
+//                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
+            }
+        }
+
+
     }
+//         if(letterCount==0){
+//             if(STL > 2){
+//                 for(int i=4;i>=STL;i--){
+                
+//                 }
+//                 res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"' ";
+// }
+//             else{}
+//         }
+//         else if(letterCount==1){
+//             if(searchText.at(0).isLetter()){
+//                 if(searchText.at(0) == 'A'||searchText.at(0) == 'B'){}
+//                 else{}
+//             }
+//             else{}
+//         }
+//         else if(letterCount==2){}
+//         else{}
+
+//                 if(letters.contains(searchText.at(0))){res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%') OR ("+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'))";}
+//         else{
+//             context = MyFunctions::smallSN(searchText);
+//             space = MyFunctions::querySolver();
+//             if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
+//             /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
+//             else{
+//                 res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
+// //                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
+//             }
+//         }
+//     }
+        qDebug () << res;
     return res;
 }
 // QString MyFunctions::deviceFromSN(QString SN) {
