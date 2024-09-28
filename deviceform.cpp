@@ -53,7 +53,7 @@ void DeviceForm::setup(){
     if(admiMode){
     ui->comboBox->addItem("دستگاه جدید");}
     ui->comboBox->setFixedWidth(120);
-    ui->pushButton->setFixedWidth(25);
+    ui->pushButton->setFixedWidth(35);
 }
 void DeviceForm::editDevice(QString device , unsigned int id){
     this->show();

@@ -14,7 +14,30 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+   <string notr="true">QPushButton {
+    background-color: rgb(228, 229, 244); /* Light gray background */
+    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */
+    border-radius: 6px; /* Rounded corners */
+    padding: 5px 10px; /* Padding for a button-like appearance */
+    color: black; /* Text color */
+    
+    /* Subtle gradient for a shiny effect */
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, 
+                                stop:0 #f0f0f0, stop:1 #d3d3d3);
+}
+
+QPushButton:hover {
+    background-color: #e6e6e6; /* Change to a lighter shade on hover */
+    border-color: #b0b0b0; /* Change border color on hover */
+}
+
+QPushButton:pressed {
+    background-color: #bfbfbf; /* Darker gray when pressed */
+    border-color: #808080; /* Slightly darker border when pressed */
+}
+
+
+QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
