@@ -11,7 +11,6 @@ ItemHandler::ItemHandler(QObject *parent)
     : QAbstractItemModel(parent),
       db(DatabaseConnection::getInstance())
 {
-//    changemade = true;
     loadDevices();
 }
 QJsonObject loadedObj;
@@ -23,34 +22,26 @@ void recieveData(){
 
 }
 QStringList ItemHandler::loadDevices(){
-    if(/*changemade==*/true){
-        //this has to change in the future !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //this has to change in the future !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //this has to change in the future !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
     QJsonObject objs = JsonHandler::loadJson();
     QJsonObject iObjs = JsonHandler::loadInfoJson();
     QStringList tempstr = objs.keys();
-//    for( int i=0;i<tempstr.length();i++){
-//        qDebug() << "device" << i << " is :" << tempstr[i];
-//    }
+
     loadedObj = objs;
     qDebug() << "i ran";
     loadedInfoObj = iObjs;
-    // changemade = false;
     return tempstr;
-}
-else return loadedObj.keys();
+
 }
 QStringList ItemHandler::loadItems(QString device){
-    // loadDevices();
-    //    qDebug() << "loadItems start";
+
     QJsonArray itemArr = loadedObj[device].toArray();
     QStringList tempstr;
     for (int i=0;i<itemArr.size();i++){
         tempstr.append(itemArr[i].toObject().begin().key());
     }
-//    qDebug() <<"item loaded: "<< tempstr;
-//    qDebug() << "loadItems end";
+
     return tempstr;
 }
 QStringList ItemHandler::loadOptions(QString device, QString item){
@@ -163,7 +154,7 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
     loadedInfoObj["devices"] = devicesArray;
     QJsonDocument someDoc(loadedInfoObj);
     JsonHandler::saveInfoJson(someDoc);
-    ;
+    loadDevices();
 
 //    qDebug() << "Added item:" << itemName << "to device:" << device;
 }

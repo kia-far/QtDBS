@@ -71,6 +71,7 @@ void serviceEdit::regSubmit(){
         qDebug() << "Database query error:" << query.lastError().text();
     }
     emit callPageRefresh();
+    this->close();
 }
 void serviceEdit::editSubmit(){
     b[0] = QString::number(ID);
@@ -100,6 +101,7 @@ void serviceEdit::editSubmit(){
 //        qDebug() << "success 1 " + b[0];
     }
     emit callPageRefresh();
+    this->close();
 
 }
 void serviceEdit::trigger(unsigned int serialnum){

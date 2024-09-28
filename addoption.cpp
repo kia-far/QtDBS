@@ -26,6 +26,7 @@ void AddOption::setupBelonging(QString deviceName){
     device = deviceName;
     func = "belonging";
     this->setWindowTitle("افزودن متعلقات");
+    ui->lineEdit->setPlaceholderText("نام متعلقات جدید");
     ui->label->setText("افزودن متعلقات");
     this->show();
 }
@@ -73,6 +74,7 @@ void AddOption::setupItem(QString deviceName){
     device = deviceName;
     func = "item";
     this->setWindowTitle("افزودن قطعه");
+    ui->lineEdit->setPlaceholderText("نام قطعه جدید");
     ui->label->setText("افزودن قطعه");
     this->show();
 }
@@ -82,6 +84,7 @@ void AddOption::setupOption(QString deviceName,QString itemName){
     item = itemName;
     func = "option";
     this->setWindowTitle("افزودن گزینه");
+    ui->lineEdit->setPlaceholderText("نام گزینه جدید");
     ui->label->setText("افزودن گزینه");
     this->show();
 }

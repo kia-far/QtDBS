@@ -138,7 +138,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         Customer->loadData(res);
         ui->tableView->setModel(Customer);
         ui->tableView->resizeColumnsToContents();
-        qDebug() << "hiiiiiii 1";
+        // qDebug() << "hiiiiiii 1";
 
 
 
@@ -153,7 +153,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         Services->loadData(res);
         ui->tableView->setModel(Services);
         ui->tableView->resizeColumnsToContents();
-        qDebug() << "hiiiiiii 2";
+        // qDebug() << "hiiiiiii 2";
 
     }
     else if(currentTable==2){
@@ -161,14 +161,14 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         View->setSearchParameters(currentDevice,searchParam, searchText);
         ui->tableView->setModel(View);
         ui->tableView->resizeColumnsToContents();
-        qDebug() << "hiiiiiii 3";
+        // qDebug() << "hiiiiiii 3";
 
     }
     else {
         Product->setSearchParameters(searchParam,searchText);
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
-        qDebug() << "hiiiiiii 4";
+        // qDebug() << "hiiiiiii 4";
 
     }
 }
@@ -278,7 +278,6 @@ void Tables::on_AddBtn_clicked()
 
 void Tables::on_RefreshBtn_clicked()
 {
-    qDebug () << "looool";
     emit refreshActive(currentTable);
 }
 
@@ -401,6 +400,7 @@ void Tables::on_deleteBtn_clicked()
             case QMessageBox::Yes :{
                 // qDebug() << "delete product" ;
                 deleteRow(lastClicked,currentDevice);
+                pageRefresh();
                 // submit();
                 break;
             }

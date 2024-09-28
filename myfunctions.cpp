@@ -208,8 +208,8 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     QString res;
     QString context;
     QString space = "";
-    qDebug() << searchText<<"this is searchText";
-    qDebug () << newReverseSN(searchText)<<"this is the NRS";
+    // qDebug() << searchText<<"this is searchText";
+    // qDebug () << newReverseSN(searchText)<<"this is the NRS";
     setLetters();
     searchText = searchText.toUpper();
     if (searchText==""){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
@@ -267,7 +267,7 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
 //             }
 //         }
 //     }
-        qDebug () << res;
+        // qDebug () << res;
     return res;
 }
 // QString MyFunctions::deviceFromSN(QString SN) {
@@ -308,7 +308,7 @@ bool MyFunctions::deviceFromLetter(QString SN,QString device) {
     // }
     // }
     if(letters.contains(SN.at(0).toUpper())){
-        qDebug() << "letters does include SN.at(0)";
+        // qDebug() << "letters does include SN.at(0)";
     // bool check=true;
         for(int i=0;i<letters.size();i++){
             if(letters[i]==SN.at(0).toUpper()){
