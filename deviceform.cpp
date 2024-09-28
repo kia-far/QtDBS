@@ -324,6 +324,7 @@ void DeviceForm::submit(){
         }
         if(er&&err){
             ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+            pageUpdate();
             this->close();
         }
         else{
@@ -338,6 +339,7 @@ void DeviceForm::submit(){
     }
     else {
         ItemHandler::updateTable(currentDevice,columns,givenData);
+        emit pageUpdate();
         this->close();
     }
 }

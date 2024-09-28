@@ -32,6 +32,7 @@ public:
 
 signals :
     void devicePage();
+    void pageUpdate();
 private slots:
     void on_pushButton_clicked();
 
@@ -40,6 +41,8 @@ private slots:
     void on_devBtn_clicked();
 
     void adminMode();
+
+
 
 
 private:

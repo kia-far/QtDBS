@@ -60,6 +60,7 @@ void CustomerForm::regSubmit(){
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
     }}
+    emit callPageRefresh();
     this->close();
 }
 void CustomerForm::editSubmit(){
@@ -92,6 +93,7 @@ void CustomerForm::editSubmit(){
         //        qDebug() << "success 1 " + b[0];
     }
     }
+    emit callPageRefresh();
     this->close();
 
 }

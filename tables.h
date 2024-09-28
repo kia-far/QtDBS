@@ -20,7 +20,7 @@ public:
     ~Tables();
     void searchInfo(QString searchParam,QString searchText);
     void setupTable(QString table);
-
+    void pageRefresh();
 
 signals:
     void editDevice(QString device,unsigned int id);
@@ -47,7 +47,6 @@ private slots:
     void on_AddBtn_clicked();
 
     void on_RefreshBtn_clicked();
-
 
     void on_mainWindowBtn_clicked();
 

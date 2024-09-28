@@ -70,6 +70,7 @@ void serviceEdit::regSubmit(){
     if (!query.exec()) {
         qDebug() << "Database query error:" << query.lastError().text();
     }
+    emit callPageRefresh();
 }
 void serviceEdit::editSubmit(){
     b[0] = QString::number(ID);
@@ -98,7 +99,7 @@ void serviceEdit::editSubmit(){
     } else {
 //        qDebug() << "success 1 " + b[0];
     }
-
+    emit callPageRefresh();
 
 }
 void serviceEdit::trigger(unsigned int serialnum){
@@ -209,32 +210,35 @@ void serviceEdit::on_CustomerCombo_editTextChanged(const QString &arg1)
     ui->CustomerCombo->blockSignals(false);
 
 }
-
+//"SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5"
 QStringList serviceEdit::getProducts(QString halfText){
     QSqlQuery query(db.getConnection());
 
     QStringList res;
     if(!halfText.isEmpty()){
-    if(halfText.at(0).toUpper() == "B"||halfText.at(0).toUpper() == "A"){
-        QString devName = "";
-        for(int i=9;i>halfText.length();i--){
-            devName.append("_");
-        }
-        // qDebug () << MyFunctions::newReverseSN(halfText.toUpper()) + devName;
+        QString exeQ = MyFunctions::searchHandler("SerialNO", "ProductInfo", "SerialNO", halfText);
+    // if(halfText.at(0).toUpper() == "B"||halfText.at(0).toUpper() == "A"){
+    //     QString devName = "";
+    //     for(int i=9;i>halfText.length();i--){
+    //         devName.append("_");
+    //     }
+    //     // qDebug () << MyFunctions::newReverseSN(halfText.toUpper()) + devName;
 
-        if((MyFunctions::newReverseSN(halfText.toUpper()) + devName).length() == 10){
-            devName = devName.remove(0,1);
-        }
-        qDebug () << MyFunctions::newReverseSN(halfText.toUpper()) + devName;
+    //     if((MyFunctions::newReverseSN(halfText.toUpper()) + devName).length() == 10){
+    //         devName = devName.remove(0,1);
+    //     }
+    //     qDebug () << MyFunctions::newReverseSN(halfText.toUpper()) + devName;
+        exeQ.append(" LIMIT 5;");
+        query.prepare(exeQ);
 
-        query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5");
-        query.bindValue(":halfText", MyFunctions::newReverseSN(halfText.toUpper()) + devName);}  // Use wildcards for partial match    }
-    else{
-        query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5");
-        query.bindValue(":halfText", MyFunctions::newReverseSN(halfText.toUpper()) + "%");  // Use wildcards for partial match
-        // qDebug() << (MyFunctions::newReverseSN(halfText));
-        // Execute the query
-        }
+    //     query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5");
+    //     query.bindValue(":halfText", MyFunctions::newReverseSN(halfText.toUpper()) + devName);}  // Use wildcards for partial match    }
+    // else{
+    //     query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5");
+    //     query.bindValue(":halfText", MyFunctions::newReverseSN(halfText.toUpper()) + "%");  // Use wildcards for partial match
+    //     // qDebug() << (MyFunctions::newReverseSN(halfText));
+    //     // Execute the query
+    //     }
     if (query.exec()) {
         //        qDebug() << "Fetch the results";
         while (query.next()) {

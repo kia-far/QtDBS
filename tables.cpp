@@ -128,7 +128,6 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 
 
 
-
 //        QSqlQuery query;
         QString res;
         if (searchText==""){res = "SELECT * FROM CustomerInfo";}
@@ -139,6 +138,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         Customer->loadData(res);
         ui->tableView->setModel(Customer);
         ui->tableView->resizeColumnsToContents();
+        qDebug() << "hiiiiiii 1";
 
 
 
@@ -153,6 +153,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         Services->loadData(res);
         ui->tableView->setModel(Services);
         ui->tableView->resizeColumnsToContents();
+        qDebug() << "hiiiiiii 2";
 
     }
     else if(currentTable==2){
@@ -160,12 +161,14 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         View->setSearchParameters(currentDevice,searchParam, searchText);
         ui->tableView->setModel(View);
         ui->tableView->resizeColumnsToContents();
+        qDebug() << "hiiiiiii 3";
 
     }
     else {
         Product->setSearchParameters(searchParam,searchText);
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
+        qDebug() << "hiiiiiii 4";
 
     }
 }
@@ -218,6 +221,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->resizeColumnsToContents();
 
     }
+    Tables::on_RefreshBtn_clicked();
 }
 
 
@@ -274,9 +278,14 @@ void Tables::on_AddBtn_clicked()
 
 void Tables::on_RefreshBtn_clicked()
 {
+    qDebug () << "looool";
     emit refreshActive(currentTable);
 }
 
+void Tables::pageRefresh(){
+    emit refreshActive(currentTable);
+
+}
 
 void Tables::on_mainWindowBtn_clicked()
 {
@@ -299,6 +308,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);
     ui->tableView->resizeColumnsToContents();
+    Tables::on_RefreshBtn_clicked();
 
 }
 

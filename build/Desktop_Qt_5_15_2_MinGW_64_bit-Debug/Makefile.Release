@@ -4032,7 +4032,8 @@ release/productproxy.o: ../../productproxy.cpp ../../productproxy.h \
 		C:/newQt/5.15.2/mingw81_64/include/QtSql/QSqlQueryModel \
 		C:/newQt/5.15.2/mingw81_64/include/QtSql/qsqlquerymodel.h \
 		C:/newQt/5.15.2/mingw81_64/include/QtSql/QSqlRecord \
-		C:/newQt/5.15.2/mingw81_64/include/QtSql/qsqlrecord.h
+		C:/newQt/5.15.2/mingw81_64/include/QtSql/qsqlrecord.h \
+		../../itemhandler.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\productproxy.o ..\..\productproxy.cpp
 
 release/productregister.o: ../../productregister.cpp ../../productregister.h \

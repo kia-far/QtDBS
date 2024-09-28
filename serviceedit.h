@@ -24,7 +24,8 @@ public:
     void trigger(unsigned int serialnum);
     void addTrigger();
 
-
+signals:
+    void callPageRefresh();
 private slots:
     void on_pushButton_clicked();
 

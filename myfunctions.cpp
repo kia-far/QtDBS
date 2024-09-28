@@ -206,10 +206,10 @@ int MyFunctions::snLetter(QString letter){
 
 QString MyFunctions::searchHandler(QString column,QString tableName, QString searchParam ,QString searchText){
     QString res;
-    int letterCount = 0;
-    int STL = 0;
     QString context;
     QString space = "";
+    qDebug() << searchText<<"this is searchText";
+    qDebug () << newReverseSN(searchText)<<"this is the NRS";
     setLetters();
     searchText = searchText.toUpper();
     if (searchText==""){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
