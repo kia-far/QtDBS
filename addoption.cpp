@@ -55,16 +55,16 @@ void AddOption::setupDevice() {
     lineEdit_2->setPlaceholderText("مخفف نام دستگاه");
 
     // Create button only if it doesn't exist
-    if (!editButton) {
-        editButton = new QPushButton;
-        editButton->setText("افزودن حرف به دستگاه موجود");
-        connect(editButton, &QPushButton::clicked, this, [this]() { emit addAbr(); });
-        ui->verticalLayout->addWidget(editButton);
-    }
+    // if (!editButton) {
+    //     editButton = new QPushButton;
+    //     editButton->setText("افزودن حرف به دستگاه موجود");
+    //     connect(editButton, &QPushButton::clicked, this, [this]() { emit addAbr(); });
+    //     ui->verticalLayout->addWidget(editButton);
+    // }
 
-    if (editButton->isHidden()) {
-        editButton->show();
-    }
+    // if (editButton->isHidden()) {
+    //     editButton->show();
+    // }
     this->show();
     devCalled = true;
 }
@@ -129,7 +129,7 @@ void AddOption::on_pushButton_clicked()
         }}
     else;
 //    ItemHandler::addBelonging(device,ui->lineEdit->text());
-    emit updatePage();
+    emit updatePage(device);
     this->close();
 }
 void AddOption::cleanupDevice() {

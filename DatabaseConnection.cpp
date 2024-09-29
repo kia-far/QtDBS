@@ -1,8 +1,10 @@
 #include "DatabaseConnection.h"
-
+#include <QApplication>
 // Singleton instance function
 DatabaseConnection::DatabaseConnection() {
-    openDatabase("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
+    QString addr = qApp->applicationDirPath();
+
+    openDatabase(addr+"/DB/InfoDB");
 }
 
 DatabaseConnection::~DatabaseConnection() {

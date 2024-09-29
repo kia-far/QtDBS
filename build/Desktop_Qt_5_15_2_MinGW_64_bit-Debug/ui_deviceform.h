@@ -41,6 +41,7 @@ public:
     QLabel *label_5;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
+    QPushButton *pushButton_2;
     QLineEdit *lineEdit;
     QLabel *label;
     QVBoxLayout *verticalLayout_4;
@@ -160,20 +161,31 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
-        lineEdit = new QLineEdit(DeviceForm);
-        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        pushButton_2 = new QPushButton(DeviceForm);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
-        lineEdit->setSizePolicy(sizePolicy1);
+        sizePolicy1.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy1);
+        pushButton_2->setMaximumSize(QSize(40, 16777215));
+
+        horizontalLayout->addWidget(pushButton_2);
+
+        lineEdit = new QLineEdit(DeviceForm);
+        lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
+        lineEdit->setSizePolicy(sizePolicy2);
 
         horizontalLayout->addWidget(lineEdit);
 
         label = new QLabel(DeviceForm);
         label->setObjectName(QString::fromUtf8("label"));
-        sizePolicy1.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy2);
         label->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout->addWidget(label);
@@ -189,11 +201,8 @@ public:
         horizontalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         pushButton = new QPushButton(DeviceForm);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QSizePolicy sizePolicy2(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
-        pushButton->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
+        pushButton->setSizePolicy(sizePolicy1);
         pushButton->setMaximumSize(QSize(40, 16777215));
         pushButton->setSizeIncrement(QSize(0, 0));
 
@@ -201,16 +210,16 @@ public:
 
         CustomerCombo = new QComboBox(DeviceForm);
         CustomerCombo->setObjectName(QString::fromUtf8("CustomerCombo"));
-        sizePolicy1.setHeightForWidth(CustomerCombo->sizePolicy().hasHeightForWidth());
-        CustomerCombo->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(CustomerCombo->sizePolicy().hasHeightForWidth());
+        CustomerCombo->setSizePolicy(sizePolicy2);
         CustomerCombo->setEditable(true);
 
         horizontalLayout_3->addWidget(CustomerCombo);
 
         label_3 = new QLabel(DeviceForm);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy2);
         label_3->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_3->addWidget(label_3);
@@ -236,8 +245,8 @@ public:
 
         label_6 = new QLabel(DeviceForm);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy1.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy2);
 
         horizontalLayout_14->addWidget(label_6);
 
@@ -272,8 +281,8 @@ public:
 
         AddItemBtn = new QPushButton(DeviceForm);
         AddItemBtn->setObjectName(QString::fromUtf8("AddItemBtn"));
-        sizePolicy2.setHeightForWidth(AddItemBtn->sizePolicy().hasHeightForWidth());
-        AddItemBtn->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(AddItemBtn->sizePolicy().hasHeightForWidth());
+        AddItemBtn->setSizePolicy(sizePolicy1);
 
         horizontalLayout_11->addWidget(AddItemBtn);
 
@@ -298,16 +307,16 @@ public:
         horizontalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         textEdit = new QTextEdit(DeviceForm);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        sizePolicy1.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
+        textEdit->setSizePolicy(sizePolicy2);
         textEdit->setTabChangesFocus(true);
 
         horizontalLayout_2->addWidget(textEdit);
 
         label_2 = new QLabel(DeviceForm);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy1);
+        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy2);
 
         horizontalLayout_2->addWidget(label_2);
 
@@ -370,6 +379,7 @@ public:
     {
         DeviceForm->setWindowTitle(QCoreApplication::translate("DeviceForm", "Form", nullptr));
         label_5->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("DeviceForm", "...", nullptr));
         label->setText(QCoreApplication::translate("DeviceForm", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));
         pushButton->setText(QCoreApplication::translate("DeviceForm", "+", nullptr));
         label_3->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\256\330\261\333\214\330\257\330\247\330\261 :", nullptr));

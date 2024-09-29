@@ -8,6 +8,7 @@ class JsonHandler : public QAbstractItemModel
     Q_OBJECT
 
 public:
+    QString addr;
     explicit JsonHandler(QObject *parent = nullptr);
     static QJsonObject loadJson();
     static void saveJson(QJsonDocument document);

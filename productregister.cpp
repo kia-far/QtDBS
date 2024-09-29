@@ -23,6 +23,7 @@ ProductRegister::ProductRegister(QWidget *parent) :
     ui->textEdit->setTabChangesFocus(true);
     admiMode = false;
     ui->devBtn->setHidden(true);
+    ui->pushButton_2->setHidden(true);
 //    db = QSqlDatabase::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
@@ -386,6 +387,7 @@ void ProductRegister::adminMode(){
     admiMode = !admiMode;
     // ui->verticalSpacer->invalidate();
     ui->devBtn->setHidden(!admiMode);
+    ui->pushButton_2->setHidden(!admiMode);
 }
 
 void ProductRegister::keybinds(){
@@ -416,5 +418,11 @@ void ProductRegister::on_comboBox_currentIndexChanged(int index)
 void ProductRegister::on_devBtn_clicked()
 {
     emit devicePage();
+}
+
+
+void ProductRegister::on_pushButton_2_clicked()
+{
+    emit addAbr();
 }
 

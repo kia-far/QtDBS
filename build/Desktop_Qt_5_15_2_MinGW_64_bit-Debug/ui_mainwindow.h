@@ -10,7 +10,6 @@
 #define UI_MAINWINDOW_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QIcon>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QMainWindow>
@@ -78,9 +77,6 @@ public:
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(deviceBtn->sizePolicy().hasHeightForWidth());
         deviceBtn->setSizePolicy(sizePolicy);
-        QIcon icon;
-        icon.addFile(QString::fromUtf8("images/Hardware.png"), QSize(), QIcon::Normal, QIcon::Off);
-        deviceBtn->setIcon(icon);
         deviceBtn->setIconSize(QSize(200, 200));
 
         gridLayout->addWidget(deviceBtn, 0, 0, 1, 1);
@@ -89,9 +85,6 @@ public:
         productBtn->setObjectName(QString::fromUtf8("productBtn"));
         sizePolicy.setHeightForWidth(productBtn->sizePolicy().hasHeightForWidth());
         productBtn->setSizePolicy(sizePolicy);
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8("images/Products.png"), QSize(), QIcon::Normal, QIcon::Off);
-        productBtn->setIcon(icon1);
         productBtn->setIconSize(QSize(200, 200));
 
         gridLayout->addWidget(productBtn, 0, 1, 1, 1);

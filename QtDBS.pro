@@ -75,6 +75,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    ../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/history/info.json \
-    ../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/history/items.json \
-    ../build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/style/Style.qss
+    build/Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/JSON/info.json \
+    build/Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/JSON/items.json \
+    build/Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/style/Style.qss

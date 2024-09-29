@@ -30,21 +30,23 @@ class Ui_ProductRegister
 public:
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
-    QLineEdit *lineEdit_8;
-    QLabel *label_3;
+    QLabel *label_6;
+    QDateEdit *dateEdit;
+    QTextEdit *textEdit;
     QLabel *label_5;
+    QDateEdit *dateEdit_2;
     QLabel *label_2;
+    QLabel *label;
     QLineEdit *lineEdit_10;
-    QLabel *label_7;
+    QLabel *label_3;
+    QPushButton *devBtn;
     QComboBox *comboBox;
     QLineEdit *lineEdit_11;
-    QTextEdit *textEdit;
-    QDateEdit *dateEdit;
-    QDateEdit *dateEdit_2;
-    QLabel *label;
     QLabel *label_4;
-    QLabel *label_6;
-    QPushButton *devBtn;
+    QLabel *label_7;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *pushButton_2;
+    QLineEdit *lineEdit_8;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton;
@@ -83,35 +85,55 @@ public:
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         gridLayout = new QGridLayout();
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        lineEdit_8 = new QLineEdit(ProductRegister);
-        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
+        label_6 = new QLabel(ProductRegister);
+        label_6->setObjectName(QString::fromUtf8("label_6"));
 
-        gridLayout->addWidget(lineEdit_8, 2, 0, 1, 1);
+        gridLayout->addWidget(label_6, 8, 1, 1, 1);
 
-        label_3 = new QLabel(ProductRegister);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        dateEdit = new QDateEdit(ProductRegister);
+        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
 
-        gridLayout->addWidget(label_3, 5, 1, 1, 1);
+        gridLayout->addWidget(dateEdit, 9, 0, 1, 1);
+
+        textEdit = new QTextEdit(ProductRegister);
+        textEdit->setObjectName(QString::fromUtf8("textEdit"));
+
+        gridLayout->addWidget(textEdit, 11, 0, 1, 1);
 
         label_5 = new QLabel(ProductRegister);
         label_5->setObjectName(QString::fromUtf8("label_5"));
 
         gridLayout->addWidget(label_5, 9, 1, 1, 1);
 
+        dateEdit_2 = new QDateEdit(ProductRegister);
+        dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
+
+        gridLayout->addWidget(dateEdit_2, 8, 0, 1, 1);
+
         label_2 = new QLabel(ProductRegister);
         label_2->setObjectName(QString::fromUtf8("label_2"));
 
         gridLayout->addWidget(label_2, 1, 1, 1, 1);
+
+        label = new QLabel(ProductRegister);
+        label->setObjectName(QString::fromUtf8("label"));
+
+        gridLayout->addWidget(label, 2, 1, 1, 1);
 
         lineEdit_10 = new QLineEdit(ProductRegister);
         lineEdit_10->setObjectName(QString::fromUtf8("lineEdit_10"));
 
         gridLayout->addWidget(lineEdit_10, 5, 0, 1, 1);
 
-        label_7 = new QLabel(ProductRegister);
-        label_7->setObjectName(QString::fromUtf8("label_7"));
+        label_3 = new QLabel(ProductRegister);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
 
-        gridLayout->addWidget(label_7, 11, 1, 1, 1);
+        gridLayout->addWidget(label_3, 5, 1, 1, 1);
+
+        devBtn = new QPushButton(ProductRegister);
+        devBtn->setObjectName(QString::fromUtf8("devBtn"));
+
+        gridLayout->addWidget(devBtn, 0, 1, 1, 1);
 
         comboBox = new QComboBox(ProductRegister);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
@@ -123,40 +145,36 @@ public:
 
         gridLayout->addWidget(lineEdit_11, 6, 0, 1, 1);
 
-        textEdit = new QTextEdit(ProductRegister);
-        textEdit->setObjectName(QString::fromUtf8("textEdit"));
-
-        gridLayout->addWidget(textEdit, 11, 0, 1, 1);
-
-        dateEdit = new QDateEdit(ProductRegister);
-        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
-
-        gridLayout->addWidget(dateEdit, 9, 0, 1, 1);
-
-        dateEdit_2 = new QDateEdit(ProductRegister);
-        dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
-
-        gridLayout->addWidget(dateEdit_2, 8, 0, 1, 1);
-
-        label = new QLabel(ProductRegister);
-        label->setObjectName(QString::fromUtf8("label"));
-
-        gridLayout->addWidget(label, 2, 1, 1, 1);
-
         label_4 = new QLabel(ProductRegister);
         label_4->setObjectName(QString::fromUtf8("label_4"));
 
         gridLayout->addWidget(label_4, 6, 1, 1, 1);
 
-        label_6 = new QLabel(ProductRegister);
-        label_6->setObjectName(QString::fromUtf8("label_6"));
+        label_7 = new QLabel(ProductRegister);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
 
-        gridLayout->addWidget(label_6, 8, 1, 1, 1);
+        gridLayout->addWidget(label_7, 11, 1, 1, 1);
 
-        devBtn = new QPushButton(ProductRegister);
-        devBtn->setObjectName(QString::fromUtf8("devBtn"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        pushButton_2 = new QPushButton(ProductRegister);
+        pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(pushButton_2->sizePolicy().hasHeightForWidth());
+        pushButton_2->setSizePolicy(sizePolicy);
+        pushButton_2->setMaximumSize(QSize(40, 16777215));
 
-        gridLayout->addWidget(devBtn, 0, 1, 1, 1);
+        horizontalLayout_2->addWidget(pushButton_2);
+
+        lineEdit_8 = new QLineEdit(ProductRegister);
+        lineEdit_8->setObjectName(QString::fromUtf8("lineEdit_8"));
+
+        horizontalLayout_2->addWidget(lineEdit_8);
+
+
+        gridLayout->addLayout(horizontalLayout_2, 2, 0, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -169,9 +187,6 @@ public:
 
         pushButton = new QPushButton(ProductRegister);
         pushButton->setObjectName(QString::fromUtf8("pushButton"));
-        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(pushButton->sizePolicy().hasHeightForWidth());
         pushButton->setSizePolicy(sizePolicy);
 
@@ -184,7 +199,6 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
-        QWidget::setTabOrder(lineEdit_8, lineEdit_10);
         QWidget::setTabOrder(lineEdit_10, lineEdit_11);
         QWidget::setTabOrder(lineEdit_11, textEdit);
         QWidget::setTabOrder(textEdit, pushButton);
@@ -197,16 +211,17 @@ public:
     void retranslateUi(QWidget *ProductRegister)
     {
         ProductRegister->setWindowTitle(QCoreApplication::translate("ProductRegister", "Form", nullptr));
-        label_3->setText(QCoreApplication::translate("ProductRegister", "\331\201\330\247\332\251\330\252\331\210\330\261 :", nullptr));
-        label_5->setText(QCoreApplication::translate("ProductRegister", "\330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));
-        label_2->setText(QCoreApplication::translate("ProductRegister", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
-        label_7->setText(QCoreApplication::translate("ProductRegister", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));
-        dateEdit->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));
-        dateEdit_2->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));
-        label->setText(QCoreApplication::translate("ProductRegister", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));
-        label_4->setText(QCoreApplication::translate("ProductRegister", "\330\264\331\205\330\247\330\261\331\207 anydesk :", nullptr));
         label_6->setText(QCoreApplication::translate("ProductRegister", "\330\252\330\247\330\261\333\214\330\256 \330\256\330\261\333\214\330\257 :", nullptr));
+        dateEdit->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));
+        label_5->setText(QCoreApplication::translate("ProductRegister", "\330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));
+        dateEdit_2->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));
+        label_2->setText(QCoreApplication::translate("ProductRegister", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
+        label->setText(QCoreApplication::translate("ProductRegister", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));
+        label_3->setText(QCoreApplication::translate("ProductRegister", "\331\201\330\247\332\251\330\252\331\210\330\261 :", nullptr));
         devBtn->setText(QCoreApplication::translate("ProductRegister", "\330\252\331\206\330\270\333\214\331\205\330\247\330\252 \330\257\330\263\330\252\332\257\330\247\331\207", nullptr));
+        label_4->setText(QCoreApplication::translate("ProductRegister", "\330\264\331\205\330\247\330\261\331\207 anydesk :", nullptr));
+        label_7->setText(QCoreApplication::translate("ProductRegister", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));
+        pushButton_2->setText(QCoreApplication::translate("ProductRegister", "...", nullptr));
         pushButton->setText(QCoreApplication::translate("ProductRegister", "\330\253\330\250\330\252", nullptr));
     } // retranslateUi
 

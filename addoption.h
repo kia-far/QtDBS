@@ -23,7 +23,7 @@ public:
     void setupOption(QString deviceName , QString itemName);
 
 signals:
-    void updatePage();
+    void updatePage(QString device);
     void addAbr();
 
 private slots:

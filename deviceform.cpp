@@ -18,7 +18,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui->setupUi(this);
     admiMode=false;
     setup();
-    if(!admiMode){ui->AddItemBtn->hide();}
+    if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
 
@@ -40,8 +40,8 @@ void DeviceForm::trigger(QString device){
 }
 
 void DeviceForm::setup(){
-    if(!admiMode){ui->AddItemBtn->hide();}
-    else {ui->AddItemBtn->show();}
+    if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
+    else {ui->AddItemBtn->show();ui->pushButton_2->show(); }
     edit = false;
     // admiMode = false;
     QString curDev = currentDevice;
@@ -51,6 +51,7 @@ void DeviceForm::setup(){
     ui->comboBox->addItem(devices[i]);}
     ui->comboBox->setCurrentText(curDev);
     if(admiMode){
+
     ui->comboBox->addItem("دستگاه جدید");}
     ui->comboBox->setFixedWidth(120);
     ui->pushButton->setFixedWidth(35);
@@ -64,15 +65,32 @@ void DeviceForm::editDevice(QString device , unsigned int id){
     ui->lineEdit->setText(MyFunctions::intToStr(id));
     populateEdit(device,id);
 }
-void DeviceForm::refresh(){
+void DeviceForm::refresh(QString arg1){
     clearLayout(ui->vb);
+    clearLayout(ui->cbg);
     labels.clear();
     comboBoxes.clear();
     addBtns.clear();
-    QStringList currentItems = ItemHandler::loadItems(currentDevice);
+    checkBoxes.clear();
+    QStringList currentItems = ItemHandler::loadItems(arg1);
     for (int i=0;i<currentItems.size() ;i++ ) {
         createNewItem(currentItems[i] , i);
     }
+
+    QStringList belongings = ItemHandler::loadbelongings(arg1);
+    for (int i=0;i<belongings.size();i++){
+        createBelonging(belongings[i],i);
+    }
+    if(admiMode){
+        // QCheckBox *new
+        QPushButton *newBelBtn = new QPushButton();
+        QString buttonName = QString("افزودن متعلقات");
+        newBelBtn->setObjectName("newBelBtn");
+        newBelBtn->setText("افزودن متعلقات");
+        //    newBelBtn->setFixedWidth(25);
+        connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
+        indexx++;
+        ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);}
 }
 void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
@@ -81,32 +99,12 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->comboBox->setCurrentIndex(0);
     }
     else{
-    clearLayout(ui->vb);
-    clearLayout(ui->cbg);
-    labels.clear();
-    comboBoxes.clear();
-    addBtns.clear();
-    checkBoxes.clear();
     currentDevice = arg1;
-    QStringList currentItems = ItemHandler::loadItems(arg1);
-    for (int i=0;i<currentItems.size() ;i++ ) {
-        createNewItem(currentItems[i] , i);
-    }
-    QStringList belongings = ItemHandler::loadbelongings(arg1);
-    for (int i=0;i<belongings.size();i++){
-        createBelonging(belongings[i],i);
-    }
-    if(admiMode){
-    QPushButton *newBelBtn = new QPushButton();
-    QString buttonName = QString("افزودن متعلقات");
-    newBelBtn->setObjectName("newBelBtn");
-    newBelBtn->setText("افزودن متعلقات");
-//    newBelBtn->setFixedWidth(25);
-    connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
-    indexx++;
-    ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);}
+        refresh(arg1);
+
 }}
 void DeviceForm::createBelonging(QString itemName,int index){
+
     QCheckBox *checkBox = new QCheckBox(itemName);
     QString checkBoxName = QString("check_%1").arg(index);
     checkBox->setObjectName(checkBoxName);
@@ -426,5 +424,11 @@ void DeviceForm::keyBinds(){
     connect(f2, SIGNAL(triggered()), this, SLOT(adminMode()));
     this->addAction(f2);
 
+}
+
+
+void DeviceForm::on_pushButton_2_clicked()
+{
+    emit addAbr();
 }
 

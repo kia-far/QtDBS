@@ -33,6 +33,7 @@ public:
 signals :
     void devicePage();
     void pageUpdate();
+    void addAbr();
 private slots:
     void on_pushButton_clicked();
 
@@ -44,6 +45,8 @@ private slots:
 
 
 
+
+    void on_pushButton_2_clicked();
 
 private:
     Ui::ProductRegister *ui;

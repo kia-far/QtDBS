@@ -3,7 +3,7 @@
 #include <QIcon>
 #include <QDebug>
 #include <QSqlQuery>
-
+#include <QApplication>
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     , db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
-
+    // qDebug() << qApp->applicationDirPath();
     // qDebug() << ItemHandler::loadDevices();
     // qDebug() << "reverseSN" << MyFunctions::reverseSN("B00n8892");
     this->show();
@@ -34,7 +34,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::belongingPage,&a,&AddOption::setupBelonging);
     QObject::connect(&a, &AddOption::updatePage,&d , &DeviceForm::refresh);
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
-    QObject::connect(&a, &AddOption::addAbr,&aa, &AddAbr::setup);
+    QObject::connect(&d, &DeviceForm::addAbr,&aa, &AddAbr::setup);
+    QObject::connect(&b, &ProductRegister::addAbr,&aa, &AddAbr::setup);
     QObject::connect(&d, &DeviceForm::pageUpdate, x,&Tables::pageRefresh);
     QObject::connect(&b, &ProductRegister::pageUpdate, x,&Tables::pageRefresh);
     QObject::connect(&c, &CustomerForm::callPageRefresh, x,&Tables::pageRefresh);
@@ -60,11 +61,11 @@ void MainWindow::onDataReady() {
 
 void MainWindow::setBtnIcon(){
 
-
-    ui->productBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/products.png"));
-    ui->deviceBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/Hardware.png"));
-    ui->customerBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/customers.png"));
-    ui->serviceBtn->setIcon(QIcon("C:/Users/kiafa/Documents/QtDBS/images/services.png"));
+    QString addr = qApp->applicationDirPath();
+    ui->productBtn->setIcon(QIcon(addr+"/images/products.png"));
+    ui->deviceBtn->setIcon(QIcon(addr+"/images/Hardware.png"));
+    ui->customerBtn->setIcon(QIcon(addr+"/images/customers.png"));
+    ui->serviceBtn->setIcon(QIcon(addr+"/images/services.png"));
 
 
 

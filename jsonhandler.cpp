@@ -1,5 +1,6 @@
 #include "jsonhandler.h"
 #include "itemhandler.h"
+#include <QApplication>
 #include <QFile>
 #include <QDebug>
 #include <QJsonDocument>
@@ -10,10 +11,13 @@ JsonHandler::JsonHandler(QObject *parent)
 {
 }
 
-QString fileName = "C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/history/items.json";
-QString infoFileName = "C:/Users/kiafa/Documents/build-QtDBS-Desktop_Qt_5_12_12_MinGW_64_bit-Debug/history/info.json";
+QString fileName = "";
+QString infoFileName = "";
 
 QJsonObject JsonHandler::loadJson() {
+    QString addr = qApp->applicationDirPath();
+    fileName = addr+"/JSON/items.json";
+    infoFileName = addr + "/JSON/info.json";
     QJsonObject obj;
     QFile jsonFile(fileName);
     if (jsonFile.open(QFile::ReadOnly)) {
@@ -41,13 +45,18 @@ QJsonObject JsonHandler::loadJson() {
 }
 
 void JsonHandler::saveJson(QJsonDocument document) {
+    QString addr = qApp->applicationDirPath();
+    fileName = addr+"/JSON/items.json";
+    infoFileName = addr + "/JSON/info.json";
     QFile jsonFile(fileName);
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
 }
 
 QJsonObject JsonHandler::loadInfoJson() {
-
+    QString addr = qApp->applicationDirPath();
+    fileName = addr+"/JSON/items.json";
+    infoFileName = addr + "/JSON/info.json";
     QJsonObject obj;
     QFile jsonFile(infoFileName);
     if(jsonFile.open(QFile::ReadOnly)){
@@ -72,6 +81,9 @@ QJsonObject JsonHandler::loadInfoJson() {
     return obj;
 }
 void JsonHandler::saveInfoJson(QJsonDocument document) {
+    QString addr = qApp->applicationDirPath();
+    fileName = addr+"/JSON/items.json";
+    infoFileName = addr + "/JSON/info.json";
     QFile jsonFile(infoFileName);
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());

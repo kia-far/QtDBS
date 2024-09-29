@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_AddOption_t {
-    QByteArrayData data[6];
-    char stringdata0[74];
+    QByteArrayData data[7];
+    char stringdata0[81];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,12 +35,13 @@ static const qt_meta_stringdata_AddOption_t qt_meta_stringdata_AddOption = {
 QT_MOC_LITERAL(0, 0, 9), // "AddOption"
 QT_MOC_LITERAL(1, 10, 10), // "updatePage"
 QT_MOC_LITERAL(2, 21, 0), // ""
-QT_MOC_LITERAL(3, 22, 6), // "addAbr"
-QT_MOC_LITERAL(4, 29, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(5, 51, 22) // "on_AddOption_destroyed"
+QT_MOC_LITERAL(3, 22, 6), // "device"
+QT_MOC_LITERAL(4, 29, 6), // "addAbr"
+QT_MOC_LITERAL(5, 36, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(6, 58, 22) // "on_AddOption_destroyed"
 
     },
-    "AddOption\0updatePage\0\0addAbr\0"
+    "AddOption\0updatePage\0\0device\0addAbr\0"
     "on_pushButton_clicked\0on_AddOption_destroyed"
 };
 #undef QT_MOC_LITERAL
@@ -59,15 +60,15 @@ static const uint qt_meta_data_AddOption[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x06 /* Public */,
-       3,    0,   35,    2, 0x06 /* Public */,
+       1,    1,   34,    2, 0x06 /* Public */,
+       4,    0,   37,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    0,   37,    2, 0x08 /* Private */,
+       5,    0,   38,    2, 0x08 /* Private */,
+       6,    0,   39,    2, 0x08 /* Private */,
 
  // signals: parameters
-    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    3,
     QMetaType::Void,
 
  // slots: parameters
@@ -83,7 +84,7 @@ void AddOption::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         auto *_t = static_cast<AddOption *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->updatePage(); break;
+        case 0: _t->updatePage((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 1: _t->addAbr(); break;
         case 2: _t->on_pushButton_clicked(); break;
         case 3: _t->on_AddOption_destroyed(); break;
@@ -92,7 +93,7 @@ void AddOption::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (AddOption::*)();
+            using _t = void (AddOption::*)(QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&AddOption::updatePage)) {
                 *result = 0;
                 return;
@@ -106,7 +107,6 @@ void AddOption::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject AddOption::staticMetaObject = { {
@@ -150,9 +150,10 @@ int AddOption::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void AddOption::updatePage()
+void AddOption::updatePage(QString _t1)
 {
-    QMetaObject::activate(this, &staticMetaObject, 0, nullptr);
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 
 // SIGNAL 1

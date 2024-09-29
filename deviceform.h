@@ -26,7 +26,7 @@ public:
     void setup ();
     void editDevice(QString device, unsigned int id);
     void trigger(QString device);
-    void refresh();
+    void refresh(QString arg1);
     void clearPage();
 
 signals:
@@ -36,6 +36,7 @@ signals:
     void addCustomer();
     void belongingPage(QString deviceName);
     void pageUpdate();
+    void addAbr();
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
@@ -52,6 +53,8 @@ private slots:
     void populateEdit(QString device, unsigned int id);
 
     void adminMode();
+
+    void on_pushButton_2_clicked();
 
 private:
     void createBelonging(QString itemName,int index);
