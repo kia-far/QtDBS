@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include "deviceform.h"
 #include "tables.h"
-#include "edittable.h"
 #include "productregister.h"
 #include "searchform.h"
 #include "myfunctions.h"
@@ -47,7 +46,6 @@ private:
     Ui::MainWindow *ui;
     Tables *tables;
     DeviceForm d;
-    EditTable e;
     Tables *x = new Tables(this);
     ProductRegister b;
     SearchForm r;

@@ -4,7 +4,6 @@ release/addabr.o
 release/addoption.o
 release/customerform.o
 release/deviceform.o
-release/edittable.o
 release/itemabstract.o
 release/itemhandler.o
 release/jsonhandler.o
@@ -15,10 +14,8 @@ release/productedit.o
 release/productproxy.o
 release/productregister.o
 release/proxyview.o
-release/requestform.o
 release/searchform.o
 release/serviceedit.o
-release/singleton.o
 release/tables.o
 release/moc_DatabaseConnection.o
 release/moc_MyTableProxy.o
@@ -26,7 +23,6 @@ release/moc_addabr.o
 release/moc_addoption.o
 release/moc_customerform.o
 release/moc_deviceform.o
-release/moc_edittable.o
 release/moc_itemabstract.o
 release/moc_itemhandler.o
 release/moc_jsonhandler.o
@@ -38,5 +34,4 @@ release/moc_productregister.o
 release/moc_proxyview.o
 release/moc_searchform.o
 release/moc_serviceedit.o
-release/moc_singleton.o
 release/moc_tables.o

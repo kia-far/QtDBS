@@ -27,6 +27,7 @@ class Ui_AddAbr
 public:
     QVBoxLayout *verticalLayout_2;
     QVBoxLayout *verticalLayout;
+    QLabel *label_3;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QHBoxLayout *horizontalLayout_4;
@@ -77,6 +78,12 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        label_3 = new QLabel(AddAbr);
+        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout->addWidget(label_3);
+
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -162,7 +169,8 @@ public:
 
     void retranslateUi(QWidget *AddAbr)
     {
-        AddAbr->setWindowTitle(QCoreApplication::translate("AddAbr", "Form", nullptr));
+        AddAbr->setWindowTitle(QCoreApplication::translate("AddAbr", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\255\330\261\331\201 ", nullptr));
+        label_3->setText(QCoreApplication::translate("AddAbr", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\255\330\261\331\201 \330\254\330\257\333\214\330\257 \330\250\331\207 \330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 \330\257\330\263\330\252\332\257\330\247\331\207", nullptr));
         label->setText(QCoreApplication::translate("AddAbr", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
         label_2->setText(QCoreApplication::translate("AddAbr", "\330\255\330\261\331\201 \330\254\330\257\333\214\330\257 :", nullptr));
         submitButton->setText(QCoreApplication::translate("AddAbr", "\330\253\330\250\330\252", nullptr));

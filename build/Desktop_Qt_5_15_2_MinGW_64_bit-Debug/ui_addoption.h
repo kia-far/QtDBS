@@ -100,7 +100,7 @@ public:
 
     void retranslateUi(QWidget *AddOption)
     {
-        AddOption->setWindowTitle(QCoreApplication::translate("AddOption", "Form", nullptr));
+        AddOption->setWindowTitle(QCoreApplication::translate("AddOption", "\330\247\331\201\330\262\331\210\330\257\331\206", nullptr));
         label->setText(QCoreApplication::translate("AddOption", "TextLabel", nullptr));
         pushButton->setText(QCoreApplication::translate("AddOption", "\330\253\330\250\330\252", nullptr));
     } // retranslateUi

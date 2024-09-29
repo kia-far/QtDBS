@@ -16,7 +16,6 @@ SOURCES += \
     addoption.cpp \
     customerform.cpp \
     deviceform.cpp \
-    edittable.cpp \
     itemabstract.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
@@ -27,10 +26,8 @@ SOURCES += \
     productproxy.cpp \
     productregister.cpp \
     proxyview.cpp \
-    requestform.cpp \
     searchform.cpp \
     serviceedit.cpp \
-    singleton.cpp \
     tables.cpp
 
 HEADERS += \
@@ -40,7 +37,6 @@ HEADERS += \
     addoption.h \
     customerform.h \
     deviceform.h \
-    edittable.h \
     itemabstract.h \
     itemhandler.h \
     jsonhandler.h \
@@ -50,10 +46,8 @@ HEADERS += \
     productproxy.h \
     productregister.h \
     proxyview.h \
-    requestform.h \
     searchform.h \
     serviceedit.h \
-    singleton.h \
     tables.h
 
 FORMS += \
@@ -61,10 +55,8 @@ FORMS += \
     addoption.ui \
     customerform.ui \
     deviceform.ui \
-    edittable.ui \
     mainwindow.ui \
     productregister.ui \
-    requestform.ui \
     searchform.ui \
     serviceedit.ui \
     tables.ui

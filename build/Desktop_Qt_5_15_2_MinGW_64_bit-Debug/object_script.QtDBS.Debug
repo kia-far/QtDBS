@@ -4,7 +4,6 @@ debug/addabr.o
 debug/addoption.o
 debug/customerform.o
 debug/deviceform.o
-debug/edittable.o
 debug/itemabstract.o
 debug/itemhandler.o
 debug/jsonhandler.o
@@ -15,10 +14,8 @@ debug/productedit.o
 debug/productproxy.o
 debug/productregister.o
 debug/proxyview.o
-debug/requestform.o
 debug/searchform.o
 debug/serviceedit.o
-debug/singleton.o
 debug/tables.o
 debug/moc_DatabaseConnection.o
 debug/moc_MyTableProxy.o
@@ -26,7 +23,6 @@ debug/moc_addabr.o
 debug/moc_addoption.o
 debug/moc_customerform.o
 debug/moc_deviceform.o
-debug/moc_edittable.o
 debug/moc_itemabstract.o
 debug/moc_itemhandler.o
 debug/moc_jsonhandler.o
@@ -38,5 +34,4 @@ debug/moc_productregister.o
 debug/moc_proxyview.o
 debug/moc_searchform.o
 debug/moc_serviceedit.o
-debug/moc_singleton.o
 debug/moc_tables.o
