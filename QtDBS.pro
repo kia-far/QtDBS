@@ -16,13 +16,11 @@ SOURCES += \
     addoption.cpp \
     customerform.cpp \
     deviceform.cpp \
-    itemabstract.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
     main.cpp \
     mainwindow.cpp \
     myfunctions.cpp \
-    productedit.cpp \
     productproxy.cpp \
     productregister.cpp \
     proxyview.cpp \
@@ -37,12 +35,10 @@ HEADERS += \
     addoption.h \
     customerform.h \
     deviceform.h \
-    itemabstract.h \
     itemhandler.h \
     jsonhandler.h \
     mainwindow.h \
     myfunctions.h \
-    productedit.h \
     productproxy.h \
     productregister.h \
     proxyview.h \

@@ -379,6 +379,7 @@ void Tables::on_deleteBtn_clicked()
             case QMessageBox::Yes :{
                 // qDebug() << "delete device";
                 deleteRow(lastClicked,currentDevice);
+                pageRefresh();
                 // submit();
                 break;
             }

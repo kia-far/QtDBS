@@ -123,7 +123,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "\330\265\331\201\330\255\331\207 \330\247\330\265\331\204\333\214", nullptr));
         deviceBtn->setText(QString());
         productBtn->setText(QString());
         customerBtn->setText(QString());

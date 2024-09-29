@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>525</width>
-    <height>394</height>
+    <height>397</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>خدمات</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QPushButton {

@@ -4,13 +4,11 @@ release/addabr.o
 release/addoption.o
 release/customerform.o
 release/deviceform.o
-release/itemabstract.o
 release/itemhandler.o
 release/jsonhandler.o
 release/main.o
 release/mainwindow.o
 release/myfunctions.o
-release/productedit.o
 release/productproxy.o
 release/productregister.o
 release/proxyview.o
@@ -23,12 +21,10 @@ release/moc_addabr.o
 release/moc_addoption.o
 release/moc_customerform.o
 release/moc_deviceform.o
-release/moc_itemabstract.o
 release/moc_itemhandler.o
 release/moc_jsonhandler.o
 release/moc_mainwindow.o
 release/moc_myfunctions.o
-release/moc_productedit.o
 release/moc_productproxy.o
 release/moc_productregister.o
 release/moc_proxyview.o

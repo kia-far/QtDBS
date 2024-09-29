@@ -377,7 +377,7 @@ public:
 
     void retranslateUi(QWidget *DeviceForm)
     {
-        DeviceForm->setWindowTitle(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\257\330\263\330\252\332\257\330\247\331\207", nullptr));
+        DeviceForm->setWindowTitle(QCoreApplication::translate("DeviceForm", "\330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247", nullptr));
         label_5->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
         pushButton_2->setText(QCoreApplication::translate("DeviceForm", "...", nullptr));
         label->setText(QCoreApplication::translate("DeviceForm", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));

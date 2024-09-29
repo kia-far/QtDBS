@@ -210,7 +210,7 @@ public:
 
     void retranslateUi(QWidget *ProductRegister)
     {
-        ProductRegister->setWindowTitle(QCoreApplication::translate("ProductRegister", "Form", nullptr));
+        ProductRegister->setWindowTitle(QCoreApplication::translate("ProductRegister", "\331\205\330\255\330\265\331\210\331\204\330\247\330\252", nullptr));
         label_6->setText(QCoreApplication::translate("ProductRegister", "\330\252\330\247\330\261\333\214\330\256 \330\256\330\261\333\214\330\257 :", nullptr));
         dateEdit->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));
         label_5->setText(QCoreApplication::translate("ProductRegister", "\330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));

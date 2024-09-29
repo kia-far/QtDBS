@@ -58,7 +58,7 @@ public:
     {
         if (serviceEdit->objectName().isEmpty())
             serviceEdit->setObjectName(QString::fromUtf8("serviceEdit"));
-        serviceEdit->resize(525, 394);
+        serviceEdit->resize(525, 397);
         serviceEdit->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -242,7 +242,7 @@ public:
 
     void retranslateUi(QWidget *serviceEdit)
     {
-        serviceEdit->setWindowTitle(QCoreApplication::translate("serviceEdit", "Form", nullptr));
+        serviceEdit->setWindowTitle(QCoreApplication::translate("serviceEdit", "\330\256\330\257\331\205\330\247\330\252", nullptr));
         label_7->setText(QCoreApplication::translate("serviceEdit", "\331\205\330\255\330\265\331\210\331\204 :", nullptr));
         label_6->setText(QCoreApplication::translate("serviceEdit", "\331\205\330\264\330\252\330\261\333\214 :", nullptr));
         dateEdit->setDisplayFormat(QCoreApplication::translate("serviceEdit", "yyyy/M/d", nullptr));

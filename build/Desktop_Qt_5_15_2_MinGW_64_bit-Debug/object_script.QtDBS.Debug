@@ -4,13 +4,11 @@ debug/addabr.o
 debug/addoption.o
 debug/customerform.o
 debug/deviceform.o
-debug/itemabstract.o
 debug/itemhandler.o
 debug/jsonhandler.o
 debug/main.o
 debug/mainwindow.o
 debug/myfunctions.o
-debug/productedit.o
 debug/productproxy.o
 debug/productregister.o
 debug/proxyview.o
@@ -23,12 +21,10 @@ debug/moc_addabr.o
 debug/moc_addoption.o
 debug/moc_customerform.o
 debug/moc_deviceform.o
-debug/moc_itemabstract.o
 debug/moc_itemhandler.o
 debug/moc_jsonhandler.o
 debug/moc_mainwindow.o
 debug/moc_myfunctions.o
-debug/moc_productedit.o
 debug/moc_productproxy.o
 debug/moc_productregister.o
 debug/moc_proxyview.o

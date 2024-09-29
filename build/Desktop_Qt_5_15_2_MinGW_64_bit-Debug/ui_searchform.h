@@ -133,7 +133,7 @@ public:
 
     void retranslateUi(QWidget *SearchForm)
     {
-        SearchForm->setWindowTitle(QCoreApplication::translate("SearchForm", "Form", nullptr));
+        SearchForm->setWindowTitle(QCoreApplication::translate("SearchForm", "\330\254\330\263\330\252\330\254\331\210", nullptr));
         label_2->setText(QCoreApplication::translate("SearchForm", "\331\205\330\252\331\206 \330\254\330\263\330\252\330\254\331\210 :", nullptr));
         label->setText(QCoreApplication::translate("SearchForm", "\330\254\330\263\330\252\331\210\330\254\331\210 \330\257\330\261 :", nullptr));
     } // retranslateUi
