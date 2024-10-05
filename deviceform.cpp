@@ -37,6 +37,9 @@ void DeviceForm::trigger(QString device){
     admiMode = false;
     currentDevice = device;
     this->show();
+    this->activateWindow();
+
+
     setup();
 }
 
@@ -58,7 +61,11 @@ void DeviceForm::setup(){
     ui->pushButton->setFixedWidth(35);
 }
 void DeviceForm::editDevice(QString device , unsigned int id){
+
     this->show();
+    this->activateWindow();
+
+
     currentDevice = device;
     admiMode = false;
     setup();

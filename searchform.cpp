@@ -24,7 +24,9 @@ int currentSearch;
 void SearchForm::receiveTableIndex(int current){
     currentSearch = current;
     createCombo();
-    this->show();
+        this->show();
+    this->activateWindow();
+
 };
 void SearchForm::refresh(int current){
     currentSearch = current;

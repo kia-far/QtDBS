@@ -123,7 +123,9 @@ void Tables::setupTable(QString table){
 
 }
     else {qDebug() << "wrong input";}
-    this->show();
+this->show();
+this->activateWindow();
+
 }
 void Tables::searchInfo(QString currentSearchParam,QString searchText){
     searchParam = currentSearchParam;

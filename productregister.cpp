@@ -206,7 +206,9 @@ void ProductRegister::setup() {
         loadProductInfo();
         loadProductSecInfo();
     }
-    this->show();
+        this->show();
+    this->activateWindow();
+
 }
 
 void ProductRegister::loadProductInfo(){

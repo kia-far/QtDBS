@@ -28,7 +28,9 @@ void AddOption::setupBelonging(QString deviceName){
     this->setWindowTitle("افزودن متعلقات");
     ui->lineEdit->setPlaceholderText("نام متعلقات جدید");
     ui->label->setText("افزودن متعلقات");
-    this->show();
+        this->show();
+    this->activateWindow();
+
 }
 
 void AddOption::showError(QString errorMessage) {
@@ -65,7 +67,9 @@ void AddOption::setupDevice() {
     // if (editButton->isHidden()) {
     //     editButton->show();
     // }
-    this->show();
+        this->show();
+    this->activateWindow();
+
     devCalled = true;
 }
 
@@ -76,7 +80,9 @@ void AddOption::setupItem(QString deviceName){
     this->setWindowTitle("افزودن قطعه");
     ui->lineEdit->setPlaceholderText("نام قطعه جدید");
     ui->label->setText("افزودن قطعه");
-    this->show();
+        this->show();
+    this->activateWindow();
+
 }
 void AddOption::setupOption(QString deviceName,QString itemName){
     cleanupDevice();
@@ -86,7 +92,9 @@ void AddOption::setupOption(QString deviceName,QString itemName){
     this->setWindowTitle("افزودن گزینه");
     ui->lineEdit->setPlaceholderText("نام گزینه جدید");
     ui->label->setText("افزودن گزینه");
-    this->show();
+        this->show();
+    this->activateWindow();
+
 }
 void AddOption::on_pushButton_clicked()
 {

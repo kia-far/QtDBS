@@ -135,7 +135,9 @@ void CustomerForm::setup(){
             }
         }
     }
-    this->show();
+        this->show();
+    this->activateWindow();
+
 }
 void CustomerForm::keyBinds(){
     QAction *f0 = new QAction(this);

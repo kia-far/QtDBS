@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     // qDebug() << ItemHandler::loadDevices();
     // qDebug() << "reverseSN" << MyFunctions::reverseSN("B00n8892");
     this->show();
+    this->activateWindow();
+
     QObject::connect(x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);
     QObject::connect(&r, &SearchForm::searchWorking, x, &Tables::searchInfo);
     QObject::connect(x, &Tables::editProduct,&b, &ProductRegister::trigger);

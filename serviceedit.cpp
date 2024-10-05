@@ -159,7 +159,9 @@ void serviceEdit::setup(){
             }
         }
     }
-    this->show();
+        this->show();
+    this->activateWindow();
+
 }
 
 void serviceEdit::keyBinds(){

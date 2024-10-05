@@ -18,7 +18,9 @@ AddAbr::~AddAbr()
 }
 
 void AddAbr::setup() {
-    this->show();
+        this->show();
+    this->activateWindow();
+
     ui->comboBox->clear();
     ui->comboBox->addItems(ItemHandler::loadDevices());
     ui->comboBox->setCurrentIndex(0);
