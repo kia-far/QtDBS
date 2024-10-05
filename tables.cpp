@@ -492,6 +492,10 @@ void Tables::deleteRow(unsigned int ID, QString device) {
     } else {
         // qDebug() << "Rows successfully deleted from all tables";
     }
+    Product->setSearchParameters("ProductInfo.SerialNO", "");
+    ui->tableView->setModel(Product);
+    ui->tableView->resizeColumnsToContents();
+
 }
 
 
