@@ -14,6 +14,8 @@
 #include <QTextStream>
 #include <QAction>
 #include <QMessageBox>
+#include "logger.h"
+
 
 unsigned int lastClicked =4294967294;
 int currentTable =0;
@@ -64,13 +66,14 @@ Tables::~Tables()
 void Tables::setupTable(QString table){
     ui->comboBox_2->hide();
     if (table == "محصولات"){
+        logger::log("producgt proxy laoded ");
         ui->deleteBtn->setHidden(false);
 //        qDebug () << "product opened -------------------------------";
         currentTable = 3;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
-
+        logger::log("product proxy loaded into table");
     }
     else if(table == "دستگاه ها") {
         ui->deleteBtn->setHidden(false);
@@ -167,23 +170,33 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 
     }
     else {
+        logger::log("producgt proxy laoded ");
+        ui->deleteBtn->setHidden(false);
+        //        qDebug () << "product opened -------------------------------";
+        // currentTable = 3;
         Product->setSearchParameters(searchParam,searchText);
+        ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
-        // qDebug() << "hiiiiiii 4";
-
+        logger::log("product proxy loaded into table");
     }
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 {
+    logger::log("product proxy called");
     clickedID = 4294967294;
     lastClicked = 4294967294;
     currentDevice = "";
     ui->comboBox_2->hide();
     if(arg1 == "محصولات"){
+        logger::log("producgt proxy laoded ");
         ui->deleteBtn->setHidden(false);
+        //        qDebug () << "product opened -------------------------------";
+        currentTable = 3;
+        Product->setSearchParameters("ProductInfo.SerialNO","");
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
+        logger::log("product proxy loaded into table");
 
 
         currentTable =3;
@@ -257,6 +270,7 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
     clickedID = data.toUInt();
     if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();}
     else if(currentTable == 3){
+
         currentDevice = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow,1)).toString();
         // qDebug() << "currentDevice : "  << currentDevice;
     }
@@ -391,7 +405,7 @@ void Tables::on_deleteBtn_clicked()
 
             }
         }
-        else if(currentTable == 3){/*emit editProduct(lastClicked );*/
+        else if(currentTable == 3){
             QMessageBox msgBox;
             msgBox.setIcon(QMessageBox::Warning);
             msgBox.setWindowTitle("Error");

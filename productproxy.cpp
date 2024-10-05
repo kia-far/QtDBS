@@ -7,7 +7,7 @@
 #include <QSqlRecord>
 #include <QDebug>
 #include "itemhandler.h"
-
+#include "logger.h"
 
 
 ProductProxy::ProductProxy(QObject *parent)
@@ -123,7 +123,7 @@ void ProductProxy::loadData(QString searchParam, QString searchText) {
             columns.append(name); // Append each column name to the columns list
         }
     }
-
+    logger::log( "data loaded for product info and product sec info!");
     // Notify the view that the layout has changed (data and columns have been updated)
     emit layoutChanged();
 }
@@ -197,13 +197,14 @@ QVariant ProductProxy::data(const QModelIndex &index, int role) const {
     int row = index.row();
     int column = index.column();
 
-    if (row >= rows.size() || column >= columns.size()) {
+    if (row >= rows.size() || row < 0 || column >= rows[row].size() || column < 0) {
         qDebug() << "Index out of bounds: row" << row << "column" << column;
         return QVariant();
     }
 
     return rows.at(row).at(column);
 }
+
 
 bool ProductProxy::setData(const QModelIndex &index, const QVariant &value, int role) {
     if (data(index, role) != value) {

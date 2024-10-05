@@ -18,6 +18,7 @@ SOURCES += \
     deviceform.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
+    logger.cpp \
     main.cpp \
     mainwindow.cpp \
     myfunctions.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     deviceform.h \
     itemhandler.h \
     jsonhandler.h \
+    logger.h \
     mainwindow.h \
     myfunctions.h \
     productproxy.h \

@@ -9,6 +9,7 @@
 #include <QAction>
 #include "QSqlRecord"
 #include <QMessageBox>
+#include "logger.h"
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -322,6 +323,7 @@ void DeviceForm::submit(){
         }
         if(er&&err){
             ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+            logger::log("inserted product Info and product sec info : "+ QString::number(er)+" & "  +QString::number(err)+" inserted data for " + currentDevice);
             pageUpdate();
             this->close();
         }
@@ -336,6 +338,7 @@ void DeviceForm::submit(){
 
     }
     else {
+        logger::log("updated "+ currentDevice + " table");
         ItemHandler::updateTable(currentDevice,columns,givenData);
         emit pageUpdate();
         this->close();

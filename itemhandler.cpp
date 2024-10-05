@@ -6,6 +6,7 @@
 #include <QJsonArray>
 #include <QFile>
 #include <QSqlQuery>
+#include "logger.h"
 
 ItemHandler::ItemHandler(QObject *parent)
     : QAbstractItemModel(parent),
@@ -288,8 +289,10 @@ void ItemHandler::updateTable(const QString &tableName, const QStringList &colum
 
     // Execute the query
     if (!query.exec()) {
+        logger::log("Failed to update data:" + query.lastError().text());
         qDebug() << "Failed to update data:" << query.lastError().text();
     } else {
+        logger::log("Data updated successfully in table:" + tableName);
         // qDebug() << "Data updated successfully in table:" << tableName;
     }
 }
@@ -322,7 +325,7 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
 
     JsonHandler::saveInfoJson(somedoc);
     loadDevices();;
-
+    logger::log("Added new device:" + deviceName + "with abbreviation:" + deviceAbr);
 //    qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
 }
 
@@ -423,7 +426,9 @@ void ItemHandler::addAbr(QString deviceName, QChar newAbr) {
     // Save the changes to the JSON file
     QJsonDocument updatedDoc(loadedInfoObj);
     JsonHandler::saveInfoJson(updatedDoc);
-
+    QString addedAbr = "";
+    addedAbr.append(newAbr);
+    logger::log("Abbreviation added successfully! " + addedAbr);
     loadDevices();
     // qDebug() << "Abbreviation added successfully!";
 }

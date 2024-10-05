@@ -1,0 +1,20 @@
+/* styles.qss */
+
+QWidget {
+    background-color: #F8F8FF;
+    color: #23292E;
+}
+
+QTableView {
+    background-color: #F8F8FF;
+    alternate-background-color: #D9E5E8;
+}
+
+QTableView::item:selected {
+    background-color: #006FFF;
+}
+QPushButton {
+    background-color: #D7DBEA;
+    color: #23292E;
+}
+
