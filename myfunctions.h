@@ -2,6 +2,7 @@
 #define MYFUNCTIONS_H
 
 #include <QAbstractItemModel>
+#include <QSqlDatabase>
 
 class MyFunctions : public QAbstractItemModel
 {
@@ -25,13 +26,14 @@ public:
     static QStringList getLetters();
     static bool enterAdminMode();
     static bool setAdminMode(bool isActive);
-
+    static bool checkData(QString data,QString column, QString Table);
 //    static void initializeData();
 signals:
     void dataReady();
 private:
-   static int poslet;
-   static QStringList letters;
+    static int poslet;
+    static QStringList letters;
+
 };
 
 #endif // MYFUNCTIONS_H

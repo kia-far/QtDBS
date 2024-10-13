@@ -75,7 +75,6 @@ private:
     QList<QPushButton*> addBtns;
     QList<QCheckBox*> checkBoxes;
     QStringList getCustomers(QString something);
-    bool checkCustomer(QString name);
     DatabaseConnection &db;
     bool edit;
     bool admiMode;

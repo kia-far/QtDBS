@@ -182,12 +182,17 @@ void CustomerForm::updateCustomerNames(QString newName){
     q.addBindValue(newName);
     q.addBindValue(oldCustomerName);
 
-
     bool er = q.exec();
     if (!er) {
         qDebug() << "Error in CustomerInfo update:" << q.lastError().text();
     } else {
-        this->close();
-        //        qDebug() << "success 1 " + b[0];
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("آپدیت نام با مشکل مواجه شد");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+
     }
-    }}
+    }
+}

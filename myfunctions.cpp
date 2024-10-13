@@ -3,6 +3,8 @@
 #include <QDebug>
 #include <QApplication>
 #include <QFile>
+#include <QSqlQuery>
+#include <DatabaseConnection.h>
 
 int MyFunctions::poslet = -1;
 QStringList MyFunctions::letters = {};
@@ -379,3 +381,25 @@ bool MyFunctions::setAdminMode(bool isActive) {
     }
 }
 
+bool MyFunctions::checkData(QString data,QString column, QString table){
+    QStringList devices = ItemHandler::loadDevices();
+    DatabaseConnection& dbConnection = DatabaseConnection::getInstance();
+    QSqlQuery query(dbConnection.getConnection());
+
+    QStringList res;
+
+    query.prepare("SELECT "+ column +" FROM "+ table +" WHERE "+ column +" LIKE :halfText");
+    query.bindValue(":halfText", data);  // Use wildcards for partial match
+
+    // Execute the query
+    if (query.exec()) {
+        //        qDebug() << "Fetch the results";
+        while (query.next()) {
+            res << query.value(0).toString();  // Assuming 'name' is the first column
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    return res.length();
+}

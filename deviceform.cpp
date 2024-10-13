@@ -288,7 +288,7 @@ void DeviceForm::addDevice(){
 }
 
 void DeviceForm::submit(){
-    if(checkCustomer(ui->CustomerCombo->currentText())||ui->CustomerCombo->currentText()==""){
+    if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
     QString newText="";
 
     QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
@@ -470,23 +470,4 @@ void DeviceForm::on_pushButton_2_clicked()
     emit addAbr();
 }
 
-bool DeviceForm::checkCustomer(QString name){
-    QSqlQuery query(db.getConnection());
 
-    QStringList res;
-
-    query.prepare("SELECT Name FROM CustomerInfo WHERE Name LIKE :halfText");
-    query.bindValue(":halfText", "%" + name + "%");  // Use wildcards for partial match
-
-    // Execute the query
-    if (query.exec()) {
-        //        qDebug() << "Fetch the results";
-        while (query.next()) {
-            res << query.value(0).toString();  // Assuming 'name' is the first column
-        }
-    } else {
-        qDebug() << "Query execution failed:" << query.lastError().text();
-    }
-
-    return res.length();
-}

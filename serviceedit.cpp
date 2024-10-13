@@ -7,6 +7,9 @@
 #include <QSqlTableModel>
 #include <QAction>
 #include <QCalendar>
+#include <QCompleter>
+#include <QAbstractItemView>
+#include <itemhandler.h>
 
 serviceEdit::serviceEdit(QWidget *parent) :
     QWidget(parent),
@@ -16,6 +19,7 @@ serviceEdit::serviceEdit(QWidget *parent) :
     ui->setupUi(this);
     keyBinds();
     QDate minDate (1,1,1);
+    populateCombo();
     // qDebug()<<QCalendar::;
     QDate maxDate(9999, 12, 31);
 //    QJalaliCalendar
@@ -111,7 +115,7 @@ void serviceEdit::trigger(unsigned int serialnum){
 }
 void serviceEdit::setup(){
 
-
+    populateCombo();
     if (Modee == "REGISTER") {
         QCalendar calendar( QCalendar::System::Jalali);
         ui->dateEdit->setCalendar(calendar);
@@ -179,7 +183,26 @@ void serviceEdit::keyBinds(){
 }
 
 void serviceEdit::populateCombo() {
+    // QString arg2 = arg1.toUpper();
+    // ui->ProductCombo->blockSignals(true);
+    // ui->ProductCombo->setCurrentText(arg2);
+    // ui->ProductCombo->clear();
+    QStringList products = getProducts("");
+    QCompleter *pCompleter = new QCompleter(products);
+    pCompleter->popup()->setStyleSheet("font-size: 20px");
+    ui->ProductCombo->setCompleter(pCompleter);
+    qDebug() << products.length();
+    // ui->ProductCombo->blockSignals(false);
 
+    // ui->CustomerCombo->blockSignals(true);
+    // ui->CustomerCombo->clear();
+    QStringList customers = getCustomers("");
+    QCompleter *cCompleter = new QCompleter(customers);
+    cCompleter->popup()->setStyleSheet("font-size: 20px");
+    ui->CustomerCombo->setCompleter(cCompleter);
+    // ui->CustomerCombo->addItems(customers);
+    // ui->CustomerCombo->setCurrentText(arg1);
+    // ui->CustomerCombo->blockSignals(false);
 
 }
 
@@ -187,86 +210,103 @@ QStringList serviceEdit::getCustomers(QString halfText){
     QSqlQuery query(db.getConnection());
 
     QStringList res;
+    if(halfText==""){
+        query.prepare("SELECT Name FROM CustomerInfo WHERE Name LIKE :halfText");
+        query.bindValue(":halfText", "" + halfText + "%");  // Use wildcards for partial match
 
-    query.prepare("SELECT Name FROM CustomerInfo WHERE Name LIKE :halfText LIMIT 5");
-    query.bindValue(":halfText", "" + halfText + "%");  // Use wildcards for partial match
-
-    // Execute the query
-    if (query.exec()) {
-        //        qDebug() << "Fetch the results";
-        while (query.next()) {
-            res << query.value(0).toString();  // Assuming 'name' is the first column
+        // Execute the query
+        if (query.exec()) {
+            //        qDebug() << "Fetch the results";
+            while (query.next()) {
+                res << query.value(0).toString();  // Assuming 'name' is the first column
+            }
+        } else {
+            qDebug() << "Query execution failed:" << query.lastError().text();
         }
-    } else {
-        qDebug() << "Query execution failed:" << query.lastError().text();
     }
-
+    else{
+        QStringList devs = ItemHandler::loadDevices();
+        for(QString dev : devs){
+            query.prepare("SELECT CustomerName FROM "+ dev +" WHERE SerialNumber LIKE "+halfText);
+            if (query.exec()) {
+                //        qDebug() << "Fetch the results";
+                while (query.next()) {
+                    res << query.value(0).toString();  // Assuming 'name' is the first column
+                }
+            } else {
+                qDebug() << "Query execution failed:" << query.lastError().text();
+            }
+        }
+    }
     return res;
 }
 
 void serviceEdit::on_CustomerCombo_editTextChanged(const QString &arg1)
 {
-    ui->CustomerCombo->blockSignals(true);
-    ui->CustomerCombo->clear();
-    QStringList customers = getCustomers(arg1);
-    ui->CustomerCombo->addItems(customers);
-    ui->CustomerCombo->setCurrentText(arg1);
-    ui->CustomerCombo->blockSignals(false);
-
+    ui->CustomerCombo->setCurrentText(arg1.toUpper());
 }
-//"SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5"
 QStringList serviceEdit::getProducts(QString halfText){
     QSqlQuery query(db.getConnection());
-
     QStringList res;
-    if(!halfText.isEmpty()){
+    if(halfText==""){
         QString exeQ = MyFunctions::searchHandler("SerialNO", "ProductInfo", "SerialNO", halfText);
-    // if(halfText.at(0).toUpper() == "B"||halfText.at(0).toUpper() == "A"){
-    //     QString devName = "";
-    //     for(int i=9;i>halfText.length();i--){
-    //         devName.append("_");
-    //     }
-    //     // qDebug () << MyFunctions::newReverseSN(halfText.toUpper()) + devName;
-
-    //     if((MyFunctions::newReverseSN(halfText.toUpper()) + devName).length() == 10){
-    //         devName = devName.remove(0,1);
-    //     }
-    //     qDebug () << MyFunctions::newReverseSN(halfText.toUpper()) + devName;
-        exeQ.append(" LIMIT 5;");
         query.prepare(exeQ);
-
-    //     query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5");
-    //     query.bindValue(":halfText", MyFunctions::newReverseSN(halfText.toUpper()) + devName);}  // Use wildcards for partial match    }
-    // else{
-    //     query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE :halfText LIMIT 5");
-    //     query.bindValue(":halfText", MyFunctions::newReverseSN(halfText.toUpper()) + "%");  // Use wildcards for partial match
-    //     // qDebug() << (MyFunctions::newReverseSN(halfText));
-    //     // Execute the query
-    //     }
-    if (query.exec()) {
-        //        qDebug() << "Fetch the results";
-        while (query.next()) {
-            res << MyFunctions::intToStr(query.value(0).toUInt());  // Assuming 'name' is the first column
+        if (query.exec()) {
+            while (query.next()) {
+                res << MyFunctions::intToStr(query.value(0).toUInt());
+            }
+        } else {
+            qDebug() << "Query execution failed:" << query.lastError().text();
         }
-    } else {
-        qDebug() << "Query execution failed:" << query.lastError().text();
     }
-
+    else{
+        QStringList devs = ItemHandler::loadDevices();
+        for(QString dev : devs){
+            // qDebug() << "device :" << dev;
+            query.prepare(QString("SELECT SerialNumber FROM %1 WHERE CustomerName LIKE ?;").arg(dev));
+            query.addBindValue(halfText);
+            // query.addBindValue(halfText);
+            qDebug() << dev<<halfText;
+            if (query.exec()) {
+                       qDebug() << "Fetch the results"<<halfText;
+                while (query.next()) {
+                    res << MyFunctions::intToStr( query.value(0).toString().toUInt());  // Assuming 'name' is the first column
+                    qDebug() << "query.value(0)" << query.value(0).toString();
+                }
+            } else {
+                qDebug() << "Query execution failed:" << query.lastError().text();
+            }
+        }
+    }
+    qDebug() << "ran getProducts ";
     return res;
-}
-    QStringList a = {};
-    return (a);
 }
 
 
 void serviceEdit::on_ProductCombo_editTextChanged(const QString &arg1)
 {
-    ui->ProductCombo->blockSignals(true);
-    ui->ProductCombo->clear();
-    QStringList customers = getProducts(arg1);
-    ui->ProductCombo->addItems(customers);
-    ui->ProductCombo->setCurrentText(arg1);
-    ui->ProductCombo->blockSignals(false);
+    ui->ProductCombo->setCurrentText(arg1.toUpper());
+}
 
+
+void serviceEdit::on_ProductCombo_activated(int index)
+{
+    if(MyFunctions::checkData(MyFunctions::reverseSN( ui->ProductCombo->currentText()),"SerialNO","ProductInfo")){
+    ui->CustomerCombo->setCurrentText(getCustomers(MyFunctions::reverseSN( ui->ProductCombo->currentText())).at(0));
+    }
+}
+
+
+void serviceEdit::on_CustomerCombo_activated(int index)
+{
+    if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")){
+        // ui->ProductCombo->setCurrentText("hi");
+        QStringList products = getProducts(ui->CustomerCombo->currentText());
+        qDebug()<<products;
+        QCompleter *pCompleter = new QCompleter(products);
+        pCompleter->popup()->setStyleSheet("font-size: 20px");
+        ui->ProductCombo->setCompleter(pCompleter);
+        qDebug() << products.length();
+    }
 }
 

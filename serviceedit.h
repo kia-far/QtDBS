@@ -35,6 +35,10 @@ private slots:
 
     void on_ProductCombo_editTextChanged(const QString &arg1);
 
+    void on_ProductCombo_activated(int index);
+
+    void on_CustomerCombo_activated(int index);
+
 private:
     Ui::serviceEdit *ui;
     void keyBinds();
