@@ -23,6 +23,9 @@ public:
     static bool deviceFromLetter(QString SN, QString device);
     static void setLetters();
     static QStringList getLetters();
+    static bool enterAdminMode();
+    static bool setAdminMode(bool isActive);
+
 //    static void initializeData();
 signals:
     void dataReady();

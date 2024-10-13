@@ -1,6 +1,8 @@
 #include "myfunctions.h"
 #include "itemhandler.h"
 #include <QDebug>
+#include <QApplication>
+#include <QFile>
 
 int MyFunctions::poslet = -1;
 QStringList MyFunctions::letters = {};
@@ -236,84 +238,23 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
 
 
     }
-//         if(letterCount==0){
-//             if(STL > 2){
-//                 for(int i=4;i>=STL;i--){
-                
-//                 }
-//                 res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '%"+searchText+"' ";
-// }
-//             else{}
-//         }
-//         else if(letterCount==1){
-//             if(searchText.at(0).isLetter()){
-//                 if(searchText.at(0) == 'A'||searchText.at(0) == 'B'){}
-//                 else{}
-//             }
-//             else{}
-//         }
-//         else if(letterCount==2){}
-//         else{}
 
-//                 if(letters.contains(searchText.at(0))){res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '"+MyFunctions::reverseSN( searchText)+"%') OR ("+searchParam+" LIKE '___"+MyFunctions ::smallSN(searchText)+"%'))";}
-//         else{
-//             context = MyFunctions::smallSN(searchText);
-//             space = MyFunctions::querySolver();
-//             if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
-//             /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
-//             else{
-//                 res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '_%"+context+"%______') OR ("+searchParam+" LIKE '_____%"+context+"%'))";
-// //                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
-//             }
-//         }
-//     }
-        // qDebug () << res;
     return res;
 }
-// QString MyFunctions::deviceFromSN(QString SN) {
-//     try {
-//         if (letters.isEmpty()) {
-// //            qDebug() << "letters is empty, setting letters...";
-//             MyFunctions::setLetters();
-//         }
 
-//         // Validate SN here
-//         bool ok;
-//         int index = SN.toInt(&ok) - 1;
-// //        qDebug() << "letters :" << letters;
-
-//         if (!ok || index < 0 || letters.isEmpty()) {
-//             // Handle invalid SN
-// //            qDebug() << "invalid SN:" << SN;
-//             return QString();
-//         }
-
-//         return letters[(index * 2) + 1];
-//     } catch (const std::exception& e) {
-//         qDebug() << "Exception caught:" << e.what();
-//     }
-
-//     return QString(); // Or return an appropriate value
-// }
 
 bool MyFunctions::deviceFromLetter(QString SN,QString device) {
 
     if (letters.isEmpty()) {
-        //            qDebug() << "letters is empty, setting letters...";
         setLetters();
     }
-    // for(int i=0;i<letters.size()/2;i++){
-    // if(SN.at(0).toUpper() == letters[2*i+1]){
-    //         return letters[2*i];
-    // }
-    // }
+
     if(letters.contains(SN.at(0).toUpper())){
-        // qDebug() << "letters does include SN.at(0)";
-    // bool check=true;
+
         for(int i=0;i<letters.size();i++){
             if(letters[i]==SN.at(0).toUpper()){
                 for(int j=i;j>-1;j--){
-                    if(letters[j].length()==1){/*qDebug()<<"jumped! also length of BN"<<letters[0].length();*/}
+                    if(letters[j].length()==1){}
                     else{
                         if(letters[j]==device){return true;}
                         else{j=0;}
@@ -329,13 +270,11 @@ bool MyFunctions::deviceFromLetter(QString SN,QString device) {
 }
 
 void MyFunctions::setLetters() {
-//    qDebug() << "Setting letters from ItemHandler::nameLetter()...";
     letters.clear();  // Ensure the list is reset
 
     QStringList nameLetters = ItemHandler::nameLetter();
 
     if (nameLetters.isEmpty()) {
-//        qDebug() << "Warning: ItemHandler::nameLetter() is empty!";
         return;
     }
 
@@ -343,30 +282,100 @@ void MyFunctions::setLetters() {
         letters.append(nameLetters[i]);
     }
 
-//    isDataReady = true;  // Mark data as ready
-//    emit dataReady();  // Notify that data is ready
-   // qDebug() << "Letters set: " << letters;
+
+}
+
+bool MyFunctions::enterAdminMode(){
+    QString jsonPath;
+    QString adr = qApp->applicationDirPath();
+    QString jsonPathFile = adr + "/JSONPath";
+
+    // Open the file that contains the path to the JSON
+    QFile file(jsonPathFile);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        jsonPath = in.readLine().trimmed();  // Read and trim the database path from the file
+        file.close();
+
+        if (jsonPath.isEmpty()) {
+            qDebug() << "Database path file is empty!";
+            return false;
+        }
+    } else {
+        qDebug() << "Failed to open database path file:" << file.errorString();
+        return false;
+    }
+
+    // Now, open and read the AdminActive file
+    QString adminModeFile = jsonPath + "/AdminActive";  // Ensure proper path format
+    QFile adminFile(adminModeFile);
+
+    qDebug() << "AdminActive file path:" << adminModeFile;  // Debugging path
+
+    if (adminFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream adminIn(&adminFile);
+        QString value = adminIn.readLine().trimmed();  // Read and trim the content of AdminActive file
+        adminFile.close();
+
+        qDebug() << "AdminActive value read:" << value;  // Debugging value
+
+        // Check the value of AdminActive
+        if (value == "1") {
+            return false;  // Admin mode is active
+        } else if (value == "0") {
+            return true;   // Admin mode is not active
+        } else {
+            qDebug() << "Invalid value in AdminActive file!";
+            return false;
+        }
+    } else {
+        qDebug() << "Failed to open AdminActive file:" << adminFile.errorString();
+        return false;
+    }
 }
 
 
 
-//QStringList MyFunctions::getLetters(){
-//    if(letters.size()!=0){
-//    return letters;}
-//    else {
-//        letters = ItemHandler::nameLetter();
-//        return letters;
-//    }
-//}
-//void MyFunctions::initializeData() {
-//    // Start loading data
-//    qDebug() << "Loading data from JSON file...";
-//    MyFunctions::setLetters();
+bool MyFunctions::setAdminMode(bool isActive) {
+    QString jsonPath;
+    QString adr = qApp->applicationDirPath();
+    QString jsonPathFile = adr + "/JSONPath";
 
-//    if (!letters.isEmpty()) {
-////        isDataReady = true;  // Mark data as ready
-//        qDebug() << "Data successfully loaded at startup!";
-//    } else {
-//        qDebug() << "Data loading failed or is still empty!";
-//    }
-//}
+    // Open the file that contains the path to the JSON
+    QFile file(jsonPathFile);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        jsonPath = in.readLine();  // Read the database path from the file
+        file.close();
+
+        if (jsonPath.isEmpty()) {
+            qDebug() << "Database path file is empty!";
+            return false;
+        }
+    } else {
+        qDebug() << "Failed to open database path file:" << file.errorString();
+        return false;
+    }
+
+    // Now, open and write to the AdminActive file
+    QString adminModeFile = jsonPath + "/AdminActive";
+    QFile adminFile(adminModeFile);
+
+    if (adminFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
+        QTextStream adminOut(&adminFile);
+
+        // Write "1" if admin mode is active, otherwise write "0"
+        if (isActive) {
+            adminOut << "1";
+        } else {
+            adminOut << "0";
+        }
+
+        adminFile.close();
+        return true;  // Successfully wrote the value
+    } else {
+        qDebug() << "Failed to open AdminActive file for writing:" << adminFile.errorString();
+        return false;
+    }
+}
+

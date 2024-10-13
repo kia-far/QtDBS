@@ -9,6 +9,7 @@
 #include <QAction>
 #include "QSqlRecord"
 #include <QMessageBox>
+#include <QCloseEvent>
 #include "logger.h"
 
 DeviceForm::DeviceForm(QWidget *parent) :
@@ -28,7 +29,6 @@ int indexx;
 int indexcounter = 0;
 DeviceForm::~DeviceForm()
 {
-
     delete ui;
 }
 
@@ -288,7 +288,9 @@ void DeviceForm::addDevice(){
 }
 
 void DeviceForm::submit(){
+    if(checkCustomer(ui->CustomerCombo->currentText())||ui->CustomerCombo->currentText()==""){
     QString newText="";
+
     QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
     //description TEXT, belongings TEXT
     for (QLabel *label : labels) {
@@ -351,7 +353,15 @@ void DeviceForm::submit(){
         this->close();
     }
 }
-
+    else{
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("نام مشتری نادرست است");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+}
+}
 void DeviceForm::addBelonging(QString deviceName){
     emit belongingPage(deviceName);
 }
@@ -408,10 +418,28 @@ void DeviceForm::on_pushButton_clicked()
 
 
 void DeviceForm::adminMode(){
+    if(!admiMode){
+        if(MyFunctions::enterAdminMode()){
+
     admiMode= !admiMode;
+        MyFunctions::setAdminMode(true);
     // if(!admiMode){ui->AddItemBtn->hide();}
     // else {ui->AddItemBtn->show();}
     setup();
+        }
+        else{
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("حالت ادمین در حال استفاده است");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();        }
+    }
+    else{
+        admiMode = !admiMode;
+        MyFunctions::setAdminMode(false);
+        setup();
+    }
 }
 
 
@@ -442,3 +470,23 @@ void DeviceForm::on_pushButton_2_clicked()
     emit addAbr();
 }
 
+bool DeviceForm::checkCustomer(QString name){
+    QSqlQuery query(db.getConnection());
+
+    QStringList res;
+
+    query.prepare("SELECT Name FROM CustomerInfo WHERE Name LIKE :halfText");
+    query.bindValue(":halfText", "%" + name + "%");  // Use wildcards for partial match
+
+    // Execute the query
+    if (query.exec()) {
+        //        qDebug() << "Fetch the results";
+        while (query.next()) {
+            res << query.value(0).toString();  // Assuming 'name' is the first column
+        }
+    } else {
+        qDebug() << "Query execution failed:" << query.lastError().text();
+    }
+
+    return res.length();
+}

@@ -103,6 +103,7 @@ QStringList ItemHandler::loadbelongings(QString device) {
 
 void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     // loadDevices();
+    loadDevices();
     addNewInfoDevice(deviceName,deviceAbr);
     QJsonObject deviceObj = loadedObj;
     QJsonArray emptyArr;
@@ -121,13 +122,13 @@ void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     loadDevices();
 }
 void ItemHandler::addBelonging(QString device, QString itemName) {
-    // loadDevices();
+    loadDevices();
     if (!loadedInfoObj.contains("devices")) {
         qDebug() << "No devices found.";
         return;
 
     }
-
+    loadDevices();
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
     bool deviceFound = false;
 
@@ -170,7 +171,7 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
 //}
 
 void ItemHandler::addItems(QString deviceName, QString itemName) {
-    // loadDevices();
+    loadDevices();
     // qDebug() << "Device Name:" << deviceName;
     if (deviceName.isEmpty()) {
         qDebug() << "Error: deviceName is empty. Aborting.";
@@ -201,7 +202,7 @@ void ItemHandler::addItems(QString deviceName, QString itemName) {
     loadDevices();
 }
 void ItemHandler::addOptions(QString deviceName , QString itemName , QString optionName){
-    // loadDevices();
+    loadDevices();
     QJsonArray itemArr = loadedObj[deviceName].toArray();
     QStringList tempstr;
     QJsonArray newArr;
@@ -299,7 +300,7 @@ void ItemHandler::updateTable(const QString &tableName, const QStringList &colum
 
 
 void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
-    // loadDevices();
+    loadDevices();
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
     for (const QJsonValue &device : devicesArray) {
         if (device.toObject().contains(deviceName)) {
@@ -366,7 +367,7 @@ QStringList ItemHandler::nameLetter() {
 }
 
 void ItemHandler::addAbr(QString deviceName, QChar newAbr) {
-    // loadDevices();
+    loadDevices();
     newAbr = newAbr.toUpper();
 
     // Load the device array

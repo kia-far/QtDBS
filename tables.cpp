@@ -110,7 +110,6 @@ void Tables::setupTable(QString table){
 //        QSqlQueryModel *m = new QSqlQueryModel;
 //        m -> setQuery(q);
 //        currentTable = 0;
-//        ui->comboBox->setCurrentIndex(currentTable);
 //        ui->tableView->setModel(m);
 //+++++++++++++++++++++++++
         QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
@@ -119,6 +118,8 @@ void Tables::setupTable(QString table){
         Customer->loadData("SELECT * FROM CustomerInfo");
         ui->tableView->setModel(Customer);
         ui->tableView->resizeColumnsToContents();
+        currentTable=0;
+        ui->comboBox->setCurrentIndex(currentTable);
 
 
 }

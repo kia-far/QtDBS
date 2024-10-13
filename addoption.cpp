@@ -143,9 +143,11 @@ void AddOption::on_pushButton_clicked()
 void AddOption::cleanupDevice() {
     if (devCalled) {
         lineEdit_2->hide();
-        editButton->setHidden(true);
+        if (editButton) {
+            editButton->setHidden(true);
+        }
     }
-    devCalled =false;
+    devCalled = false;
 }
 
 void AddOption::on_AddOption_destroyed()

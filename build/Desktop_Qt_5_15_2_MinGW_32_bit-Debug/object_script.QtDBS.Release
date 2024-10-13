@@ -2,6 +2,7 @@ release/DatabaseConnection.o
 release/MyTableProxy.o
 release/addabr.o
 release/addoption.o
+release/changedb.o
 release/customerform.o
 release/deviceform.o
 release/itemhandler.o
@@ -20,6 +21,7 @@ release/moc_DatabaseConnection.o
 release/moc_MyTableProxy.o
 release/moc_addabr.o
 release/moc_addoption.o
+release/moc_changedb.o
 release/moc_customerform.o
 release/moc_deviceform.o
 release/moc_itemhandler.o

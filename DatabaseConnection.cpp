@@ -1,10 +1,27 @@
 #include "DatabaseConnection.h"
 #include <QApplication>
-// Singleton instance function
-DatabaseConnection::DatabaseConnection() {
-    QString addr = qApp->applicationDirPath();
+#include <QFile>
+#include <QTextStream>
+#include <QDebug>
 
-    openDatabase(addr+"/DB/InfoDB");
+DatabaseConnection::DatabaseConnection() {
+    QString adr = qApp->applicationDirPath();
+    QString dbPathFile = adr+"/DBPath";
+
+    QFile file(dbPathFile);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        QString dbPath = in.readLine();  // Read the database path from the file
+        file.close();
+
+        if (!dbPath.isEmpty()) {
+            openDatabase(dbPath);  // Open the database using the path from the file
+        } else {
+            qDebug() << "Database path file is empty!";
+        }
+    } else {
+        qDebug() << "Failed to open database path file:" << file.errorString();
+    }
 }
 
 DatabaseConnection::~DatabaseConnection() {

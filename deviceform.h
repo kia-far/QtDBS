@@ -44,7 +44,7 @@ private slots:
 
     void on_AddItemBtn_clicked();
 
-
+    // virtual void closeEvent(QCloseEvent *event);
 
     void on_CustomerCombo_editTextChanged(const QString &arg1);
 
@@ -75,6 +75,7 @@ private:
     QList<QPushButton*> addBtns;
     QList<QCheckBox*> checkBoxes;
     QStringList getCustomers(QString something);
+    bool checkCustomer(QString name);
     DatabaseConnection &db;
     bool edit;
     bool admiMode;

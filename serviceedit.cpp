@@ -189,7 +189,7 @@ QStringList serviceEdit::getCustomers(QString halfText){
     QStringList res;
 
     query.prepare("SELECT Name FROM CustomerInfo WHERE Name LIKE :halfText LIMIT 5");
-    query.bindValue(":halfText", "%" + halfText + "%");  // Use wildcards for partial match
+    query.bindValue(":halfText", "" + halfText + "%");  // Use wildcards for partial match
 
     // Execute the query
     if (query.exec()) {

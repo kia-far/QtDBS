@@ -2,11 +2,13 @@
 #include "ui_customerform.h"
 #include "myfunctions.h"
 #include <QtDebug>
+#include <QRegularExpression>
 #include <QSqlQuery>
 #include <QSqlError>
 #include <QSqlTableModel>
 #include <QAction>
 #include <QMessageBox>
+#include <itemhandler.h>
 
 
 CustomerForm::CustomerForm(QWidget *parent) :
@@ -29,6 +31,7 @@ void CustomerForm::on_pushButton_clicked()
     if (Modee == "REGISTER") { regSubmit(); }
     else if (Modee == "EDIT") { editSubmit(); }
     else { qDebug() << "what is the mode?"; }
+
 }
 void CustomerForm::regOn(){Modee = "REGISTER";setup();}
 void CustomerForm::editOn(unsigned int serial){
@@ -77,8 +80,11 @@ void CustomerForm::editSubmit(){
         msgBox.exec();
     }
     else{
+        if(oldCustomerName!=b[1]){
+            updateCustomerNames(b[1]);
+        }
     QSqlQuery q(db.getConnection());
-    q.prepare("UPDATE CustomerInfo SET Name = ?, ContactInfo = ?, RepresentName = ? WHERE ID = ?");
+    q.prepare("UPDATE CustomerInfo SET Name = ?, ContactInfo = ?, RepresentName = ? WHERE ID = ?;");
     q.addBindValue(b[1]);
     q.addBindValue(b[2]);
     q.addBindValue(b[3]);
@@ -92,6 +98,7 @@ void CustomerForm::editSubmit(){
         this->close();
         //        qDebug() << "success 1 " + b[0];
     }
+
     }
     emit callPageRefresh();
     this->close();
@@ -106,6 +113,7 @@ void CustomerForm::setup(){
 
 
     if (Modee == "REGISTER") {
+
         QSqlQuery query(db.getConnection());
         query.prepare("SELECT MAX(ID) FROM CustomerInfo");
         if (!query.exec()) {
@@ -118,6 +126,7 @@ void CustomerForm::setup(){
         ui->lineEdit_4->setText("");
         ui->lineEdit->hide();
     } else if (Modee == "EDIT") {
+
         QSqlQuery query(db.getConnection());
         query.prepare("SELECT * FROM CustomerInfo WHERE ID = ?");
         query.addBindValue(ID);
@@ -127,6 +136,7 @@ void CustomerForm::setup(){
             if (query.next()) {
                 ui->lineEdit->setText(QString::number(ID));
                 ui->lineEdit_2->setText(query.value("Name").toString());
+                oldCustomerName = query.value("Name").toString();
                 ui->lineEdit_3->setText(query.value("ContactInfo").toString());
                 ui->lineEdit_4->setText(query.value("RepresentName").toString());
                 ui->lineEdit->hide();
@@ -153,3 +163,31 @@ void CustomerForm::keyBinds(){
 
 }
 
+
+void CustomerForm::on_lineEdit_3_textChanged(const QString &text)
+{
+    QString filteredText = text;
+    filteredText.remove(QRegularExpression("[^0-9]"));  // Remove non-digits
+
+    if (filteredText != text) {
+        ui->lineEdit_3->setText(filteredText);  // Update the input with only digits
+    }
+}
+
+void CustomerForm::updateCustomerNames(QString newName){
+    QStringList devices = ItemHandler::loadDevices();
+    for (QString dev:devices){
+    QSqlQuery q(db.getConnection());
+    q.prepare("UPDATE "+ dev +" SET CustomerName = ? WHERE CustomerName = ?;");
+    q.addBindValue(newName);
+    q.addBindValue(oldCustomerName);
+
+
+    bool er = q.exec();
+    if (!er) {
+        qDebug() << "Error in CustomerInfo update:" << q.lastError().text();
+    } else {
+        this->close();
+        //        qDebug() << "success 1 " + b[0];
+    }
+    }}

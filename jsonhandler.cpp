@@ -9,15 +9,32 @@
 JsonHandler::JsonHandler(QObject *parent)
     : QAbstractItemModel(parent)
 {
-}
 
+}
+QString jsonPath;
 QString fileName = "";
 QString infoFileName = "";
 
 QJsonObject JsonHandler::loadJson() {
-    QString addr = qApp->applicationDirPath();
-    fileName = addr+"/JSON/items.json";
-    infoFileName = addr + "/JSON/info.json";
+    QString adr = qApp->applicationDirPath();
+    QString jsonPathFile = adr+"/JSONPath";
+    QFile file(jsonPathFile);
+    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        QTextStream in(&file);
+        jsonPath = in.readLine();  // Read the database path from the file
+        file.close();
+
+        if (!jsonPath.isEmpty()) {
+            // openDatabase(jsonPath);  // Open the database using the path from the file
+        } else {
+            qDebug() << "Database path file is empty!";
+        }
+    } else {
+        qDebug() << "Failed to open database path file:" << file.errorString();
+    }
+    // QString addr = qApp->applicationDirPath();
+    fileName = jsonPath+"/items.json";
+    infoFileName = jsonPath + "/info.json";
     QJsonObject obj;
     QFile jsonFile(fileName);
     if (jsonFile.open(QFile::ReadOnly)) {
@@ -45,18 +62,24 @@ QJsonObject JsonHandler::loadJson() {
 }
 
 void JsonHandler::saveJson(QJsonDocument document) {
-    QString addr = qApp->applicationDirPath();
-    fileName = addr+"/JSON/items.json";
-    infoFileName = addr + "/JSON/info.json";
+    if(jsonPath.isEmpty()){
+        loadJson();
+    }
+    // QString addr = qApp->applicationDirPath();
+    fileName = jsonPath+"/items.json";
+    infoFileName = jsonPath + "/info.json";
     QFile jsonFile(fileName);
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());
 }
 
 QJsonObject JsonHandler::loadInfoJson() {
-    QString addr = qApp->applicationDirPath();
-    fileName = addr+"/JSON/items.json";
-    infoFileName = addr + "/JSON/info.json";
+    if(jsonPath.isEmpty()){
+        loadJson();
+    }
+    // QString addr = qApp->applicationDirPath();
+    fileName = jsonPath+"/items.json";
+    infoFileName = jsonPath + "/info.json";
     QJsonObject obj;
     QFile jsonFile(infoFileName);
     if(jsonFile.open(QFile::ReadOnly)){
@@ -81,9 +104,12 @@ QJsonObject JsonHandler::loadInfoJson() {
     return obj;
 }
 void JsonHandler::saveInfoJson(QJsonDocument document) {
-    QString addr = qApp->applicationDirPath();
-    fileName = addr+"/JSON/items.json";
-    infoFileName = addr + "/JSON/info.json";
+    if(jsonPath.isEmpty()){
+        loadJson();
+    }
+    // QString addr = qApp->applicationDirPath();
+    fileName = jsonPath+"/items.json";
+    infoFileName = jsonPath + "/info.json";
     QFile jsonFile(infoFileName);
     jsonFile.open(QFile::WriteOnly);
     jsonFile.write(document.toJson());

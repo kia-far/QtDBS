@@ -35,6 +35,8 @@ signals:
 private slots:
     void on_pushButton_clicked();
 
+    void on_lineEdit_3_textChanged(const QString &arg1);
+
 private:
     Ui::CustomerForm *ui;
     void keyBinds();
@@ -43,8 +45,8 @@ private:
     QString b[5];
     unsigned int ID;
     DatabaseConnection &db;
-
-
+    void updateCustomerNames(QString newName);
+    QString oldCustomerName;
 };
 
 #endif // CUSTOMERFORM_H

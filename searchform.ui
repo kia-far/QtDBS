@@ -57,7 +57,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
        <item row="1" column="1">
         <widget class="QLabel" name="label">
          <property name="text">
-          <string>جستوجو در :</string>
+          <string>جستجو در :</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>

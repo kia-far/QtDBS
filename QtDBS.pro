@@ -14,6 +14,7 @@ SOURCES += \
     MyTableProxy.cpp \
     addabr.cpp \
     addoption.cpp \
+    changedb.cpp \
     customerform.cpp \
     deviceform.cpp \
     itemhandler.cpp \
@@ -34,6 +35,7 @@ HEADERS += \
     MyTableProxy.h \
     addabr.h \
     addoption.h \
+    changedb.h \
     customerform.h \
     deviceform.h \
     itemhandler.h \
@@ -51,6 +53,7 @@ HEADERS += \
 FORMS += \
     addabr.ui \
     addoption.ui \
+    changedb.ui \
     customerform.ui \
     deviceform.ui \
     mainwindow.ui \
@@ -65,6 +68,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    build/Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/JSON/info.json \
-    build/Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/JSON/items.json \
-    build/Desktop_Qt_5_15_2_MinGW_64_bit-Debug/debug/style/Style.qss
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/DBPath \
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSON/AdminActive \
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSON/info.json \
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSON/items.json \
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSONPath \
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/style/Style.qss

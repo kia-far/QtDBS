@@ -79,9 +79,12 @@ public:
 
         tableView = new QTableView(Tables);
         tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+        tableView->setFrameShadow(QFrame::Shadow::Sunken);
         tableView->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
         tableView->setEditTriggers(QAbstractItemView::EditTrigger::EditKeyPressed);
         tableView->setSelectionBehavior(QAbstractItemView::SelectionBehavior::SelectRows);
+        tableView->setTextElideMode(Qt::TextElideMode::ElideRight);
         tableView->setSortingEnabled(true);
         tableView->setWordWrap(true);
         tableView->horizontalHeader()->setCascadingSectionResizes(false);

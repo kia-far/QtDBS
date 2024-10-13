@@ -62,6 +62,12 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
    </item>
    <item row="2" column="0" colspan="12">
     <widget class="QTableView" name="tableView">
+     <property name="layoutDirection">
+      <enum>Qt::LayoutDirection::RightToLeft</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Shadow::Sunken</enum>
+     </property>
      <property name="sizeAdjustPolicy">
       <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents</enum>
      </property>
@@ -70,6 +76,9 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
      </property>
      <property name="selectionBehavior">
       <enum>QAbstractItemView::SelectionBehavior::SelectRows</enum>
+     </property>
+     <property name="textElideMode">
+      <enum>Qt::TextElideMode::ElideRight</enum>
      </property>
      <property name="sortingEnabled">
       <bool>true</bool>
