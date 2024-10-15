@@ -10,6 +10,8 @@
 #include "QSqlRecord"
 #include <QMessageBox>
 #include <QCloseEvent>
+#include <QCompleter>
+#include <QAbstractItemView>
 #include "logger.h"
 
 DeviceForm::DeviceForm(QWidget *parent) :
@@ -23,6 +25,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
+
 
 }
 int indexx;
@@ -44,6 +47,7 @@ void DeviceForm::trigger(QString device){
 }
 
 void DeviceForm::setup(){
+    getCustomers();
     if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
     else {ui->AddItemBtn->show();ui->pushButton_2->show(); }
     edit = false;
@@ -378,13 +382,13 @@ void DeviceForm::on_AddItemBtn_clicked()
 }
 
 
-QStringList DeviceForm::getCustomers(QString halfText) {
+void DeviceForm::getCustomers() {
     QSqlQuery query(db.getConnection());
 
     QStringList res;
 
-    query.prepare("SELECT Name FROM CustomerInfo WHERE Name LIKE :halfText LIMIT 5");
-    query.bindValue(":halfText", "%" + halfText + "%");  // Use wildcards for partial match
+    query.prepare("SELECT Name FROM CustomerInfo");
+    // query.bindValue(":halfText", "%" + halfText + "%");  // Use wildcards for partial match
 
     // Execute the query
     if (query.exec()) {
@@ -395,17 +399,16 @@ QStringList DeviceForm::getCustomers(QString halfText) {
     } else {
         qDebug() << "Query execution failed:" << query.lastError().text();
     }
+    customers = res;
+    QCompleter *cCompleter = new QCompleter(customers);
+    cCompleter->popup()->setStyleSheet("font-size: 20px");
+    ui->CustomerCombo->setCompleter(cCompleter);
 
-    return res;
 }
 
 void DeviceForm::on_CustomerCombo_editTextChanged(const QString &arg1) {
-    ui->CustomerCombo->blockSignals(true);
-    ui->CustomerCombo->clear();
-    QStringList customers = getCustomers(arg1);
-    ui->CustomerCombo->addItems(customers);
-    ui->CustomerCombo->setCurrentText(arg1);
-    ui->CustomerCombo->blockSignals(false);
+
+    ui->CustomerCombo->setCurrentText(arg1.toUpper());
 }
 
 
@@ -471,3 +474,9 @@ void DeviceForm::on_pushButton_2_clicked()
 }
 
 
+void DeviceForm::closeEvent(QCloseEvent *event){
+    if(admiMode){
+        adminMode();
+    }
+    event->accept();
+}

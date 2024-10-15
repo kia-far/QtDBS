@@ -187,7 +187,7 @@ void serviceEdit::populateCombo() {
     // ui->ProductCombo->blockSignals(true);
     // ui->ProductCombo->setCurrentText(arg2);
     // ui->ProductCombo->clear();
-    QStringList products = getProducts("");
+    products = getProducts("");
     QCompleter *pCompleter = new QCompleter(products);
     pCompleter->popup()->setStyleSheet("font-size: 20px");
     ui->ProductCombo->setCompleter(pCompleter);
@@ -196,7 +196,7 @@ void serviceEdit::populateCombo() {
 
     // ui->CustomerCombo->blockSignals(true);
     // ui->CustomerCombo->clear();
-    QStringList customers = getCustomers("");
+    customers = getCustomers("");
     QCompleter *cCompleter = new QCompleter(customers);
     cCompleter->popup()->setStyleSheet("font-size: 20px");
     ui->CustomerCombo->setCompleter(cCompleter);
@@ -241,10 +241,6 @@ QStringList serviceEdit::getCustomers(QString halfText){
     return res;
 }
 
-void serviceEdit::on_CustomerCombo_editTextChanged(const QString &arg1)
-{
-    ui->CustomerCombo->setCurrentText(arg1.toUpper());
-}
 QStringList serviceEdit::getProducts(QString halfText){
     QSqlQuery query(db.getConnection());
     QStringList res;
@@ -296,17 +292,28 @@ void serviceEdit::on_ProductCombo_activated(int index)
     }
 }
 
+void serviceEdit::on_CustomerCombo_editTextChanged(const QString &arg1)
+{
+    ui->CustomerCombo->setCurrentText(arg1.toUpper());
+    ui->CustomerCombo->clear();
+    QCompleter *pCompleter = new QCompleter(products);
+    pCompleter->popup()->setStyleSheet("font-size: 20px");
+    ui->ProductCombo->setCompleter(pCompleter);
+    qDebug() << "changed";
+}
 
 void serviceEdit::on_CustomerCombo_activated(int index)
 {
     if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")){
         // ui->ProductCombo->setCurrentText("hi");
         QStringList products = getProducts(ui->CustomerCombo->currentText());
-        qDebug()<<products;
-        QCompleter *pCompleter = new QCompleter(products);
-        pCompleter->popup()->setStyleSheet("font-size: 20px");
-        ui->ProductCombo->setCompleter(pCompleter);
-        qDebug() << products.length();
+        // qDebug()<<products;
+        ui->ProductCombo->clear();
+        ui->ProductCombo->addItems(products);
+        // QCompleter *pCompleter = new QCompleter(products);
+        // pCompleter->popup()->setStyleSheet("font-size: 20px");
+        // ui->ProductCombo->setCompleter(pCompleter);
+        // qDebug() << products.length();
     }
 }
 

@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSqlDatabase>
 #include <DatabaseConnection.h>
+#include <QCloseEvent>
 
 namespace Ui {
 class ProductRegister;
@@ -29,7 +30,7 @@ public:
     void updateProductSecInfo();
     bool registerProductInfo();
     bool registerProductSecInfo();
-
+    void closeEvent(QCloseEvent *event) override;
 signals :
     void devicePage();
     void pageUpdate();

@@ -40,6 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::pageUpdate, x,&Tables::pageRefresh);
     QObject::connect(&b, &ProductRegister::pageUpdate, x,&Tables::pageRefresh);
     QObject::connect(&c, &CustomerForm::callPageRefresh, x,&Tables::pageRefresh);
+    QObject::connect(&c, &CustomerForm::callPageRefresh, &d, &DeviceForm::getCustomers);
     QObject::connect(&s, &serviceEdit::callPageRefresh, x,&Tables::pageRefresh);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);

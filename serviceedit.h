@@ -41,6 +41,8 @@ private slots:
 
 private:
     Ui::serviceEdit *ui;
+    QStringList products;
+    QStringList customers;
     void keyBinds();
     void populateCombo();
     QStringList getCustomers(QString halfText);

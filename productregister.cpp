@@ -386,10 +386,35 @@ bool ProductRegister::registerProductSecInfo(){
 }
 
 void ProductRegister::adminMode(){
-    admiMode = !admiMode;
-    // ui->verticalSpacer->invalidate();
-    ui->devBtn->setHidden(!admiMode);
-    ui->pushButton_2->setHidden(!admiMode);
+    if(!admiMode){
+        if(MyFunctions::enterAdminMode()){
+
+            admiMode= !admiMode;
+            MyFunctions::setAdminMode(true);
+            // ui->verticalSpacer->invalidate();
+            ui->devBtn->setHidden(false);
+            ui->pushButton_2->setHidden(false);
+            // if(!admiMode){ui->AddItemBtn->hide();}
+            // else {ui->AddItemBtn->show();}
+            setup();
+        }
+        else{
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("حالت ادمین در حال استفاده است");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();        }
+    }
+    else{
+        admiMode = !admiMode;
+        // ui->verticalSpacer->invalidate();
+        ui->devBtn->setHidden(true);
+        ui->pushButton_2->setHidden(true);
+        MyFunctions::setAdminMode(false);
+        setup();
+    }
+
 }
 
 void ProductRegister::keybinds(){
@@ -428,3 +453,9 @@ void ProductRegister::on_pushButton_2_clicked()
     emit addAbr();
 }
 
+void ProductRegister::closeEvent(QCloseEvent *event){
+    if(admiMode){
+        adminMode();
+    }
+    event->accept();
+}

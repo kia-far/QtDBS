@@ -28,7 +28,8 @@ public:
     void trigger(QString device);
     void refresh(QString arg1);
     void clearPage();
-
+    void getCustomers();
+    void closeEvent(QCloseEvent *event) override;
 signals:
     void optionPage(QString deviceName,QString itemName);
     void itemPage(QString deviceName);
@@ -74,10 +75,10 @@ private:
     QList<QComboBox*> comboBoxes;
     QList<QPushButton*> addBtns;
     QList<QCheckBox*> checkBoxes;
-    QStringList getCustomers(QString something);
     DatabaseConnection &db;
     bool edit;
     bool admiMode;
+    QStringList customers;
 };
 
 #endif // DEVICEFORM_H
