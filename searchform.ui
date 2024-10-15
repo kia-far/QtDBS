@@ -123,6 +123,10 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>lineEdit</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

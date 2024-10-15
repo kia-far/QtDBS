@@ -52,7 +52,7 @@ private:
     QString b[8];
     unsigned int ID;
     DatabaseConnection &db;
-
+    void keyPressEvent(QKeyEvent *event) override;
 
 };
 

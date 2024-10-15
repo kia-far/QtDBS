@@ -21,6 +21,8 @@ private slots:
 
 private:
     Ui::AddAbr *ui;
+    void keyPressEvent(QKeyEvent *event) override;
+
 };
 
 #endif // ADDABR_H

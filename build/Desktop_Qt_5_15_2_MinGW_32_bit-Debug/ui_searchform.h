@@ -125,6 +125,7 @@ public:
 
         verticalLayout->addLayout(horizontalLayout_2);
 
+        QWidget::setTabOrder(comboBox, lineEdit);
 
         retranslateUi(SearchForm);
 

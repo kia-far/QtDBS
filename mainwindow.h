@@ -54,5 +54,7 @@ private:
     AddOption a;
     AddAbr aa;
     DatabaseConnection &db;
+    void keyPressEvent(QKeyEvent *event) override;
+
 };
 #endif // MAINWINDOW_H

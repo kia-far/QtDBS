@@ -79,6 +79,8 @@ private:
     bool edit;
     bool admiMode;
     QStringList customers;
+    void keyPressEvent(QKeyEvent *event) override;
+    void setTabOrders();
 };
 
 #endif // DEVICEFORM_H

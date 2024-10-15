@@ -448,9 +448,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
   <tabstop>comboBox</tabstop>
   <tabstop>lineEdit</tabstop>
   <tabstop>CustomerCombo</tabstop>
+  <tabstop>pushButton</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>SubmitBtn</tabstop>
-  <tabstop>pushButton</tabstop>
+  <tabstop>pushButton_2</tabstop>
+  <tabstop>AddItemBtn</tabstop>
  </tabstops>
  <resources/>
  <connections/>

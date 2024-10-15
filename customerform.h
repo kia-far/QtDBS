@@ -47,6 +47,8 @@ private:
     DatabaseConnection &db;
     void updateCustomerNames(QString newName);
     QString oldCustomerName;
+    void keyPressEvent(QKeyEvent *event) override;
+
 };
 
 #endif // CUSTOMERFORM_H

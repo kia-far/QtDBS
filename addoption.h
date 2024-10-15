@@ -40,6 +40,8 @@ private:
     QPushButton *editButton = nullptr;
     void cleanupDevice();
     bool devCalled;
+    void keyPressEvent(QKeyEvent *event) override;
+
 };
 
 #endif // ADDOPTION_H

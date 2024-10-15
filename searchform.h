@@ -31,6 +31,8 @@ private slots:
 
 private:
     Ui::SearchForm *ui;
+    void keyPressEvent(QKeyEvent *event) override;
+
 };
 
 #endif // SEARCHFORM_H

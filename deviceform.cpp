@@ -13,6 +13,7 @@
 #include <QCompleter>
 #include <QAbstractItemView>
 #include "logger.h"
+#include <QKeyEvent>
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
@@ -25,7 +26,6 @@ DeviceForm::DeviceForm(QWidget *parent) :
     if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
-
 
 }
 int indexx;
@@ -63,6 +63,7 @@ void DeviceForm::setup(){
     ui->comboBox->addItem("دستگاه جدید");}
     ui->comboBox->setFixedWidth(120);
     ui->pushButton->setFixedWidth(35);
+    setTabOrders();
 }
 void DeviceForm::editDevice(QString device , unsigned int id){
 
@@ -436,7 +437,8 @@ void DeviceForm::adminMode(){
             msgBox.setWindowTitle("Error");
             msgBox.setText("حالت ادمین در حال استفاده است");
             msgBox.setStandardButtons(QMessageBox::Ok);
-            msgBox.exec();        }
+            msgBox.exec();
+        }
     }
     else{
         admiMode = !admiMode;
@@ -479,4 +481,53 @@ void DeviceForm::closeEvent(QCloseEvent *event){
         adminMode();
     }
     event->accept();
+}
+
+void DeviceForm::keyPressEvent(QKeyEvent *event){
+    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+        bool moved = this->focusNextChild();
+        if (moved) {
+            qDebug() << "Moved focus to the next widget.";
+        }
+
+        // Mark the event as accepted
+        event->accept();
+    }
+    else{}
+}
+
+void DeviceForm::setTabOrders(){
+    setTabOrder(ui->comboBox,ui->lineEdit);
+    setTabOrder(ui->lineEdit,ui->CustomerCombo);
+    setTabOrder(ui->CustomerCombo,ui->pushButton);
+    if(comboBoxes.size()>1){
+        setTabOrder(ui->pushButton,comboBoxes.at(0));
+        for(int i=1;i<comboBoxes.size();i++){
+            setTabOrder(comboBoxes.at(i-1),comboBoxes.at(i));
+        }
+        setTabOrder(comboBoxes.at(comboBoxes.size()-1),ui->textEdit);
+    }
+    else if(comboBoxes.size()==1){
+        setTabOrder(ui->pushButton,comboBoxes.at(0));
+        setTabOrder(comboBoxes.at(0),ui->textEdit);
+    }
+    else    {setTabOrder(ui->pushButton,ui->textEdit);}
+    if(checkBoxes.size()>1){
+        setTabOrder(ui->textEdit,checkBoxes.at(0));
+        for(int i=1;i<checkBoxes.size();i++){
+            setTabOrder(checkBoxes.at(i-1),checkBoxes.at(i));
+        }
+        setTabOrder(checkBoxes.at(checkBoxes.size()-1),ui->SubmitBtn);
+    }
+    else if(checkBoxes.size()==1){
+        setTabOrder(ui->textEdit,checkBoxes.at(0));
+        setTabOrder(checkBoxes.at(0),ui->SubmitBtn);
+    }
+    else    {setTabOrder(ui->textEdit,ui->SubmitBtn);}
+    // if(!comboBoxes.isEmpty()){
+    //     setTabOrder(ui->CustomerCombo, comboBoxes.at(0));
+
+    // }
+
+
 }

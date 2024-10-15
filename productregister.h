@@ -5,6 +5,7 @@
 #include <QSqlDatabase>
 #include <DatabaseConnection.h>
 #include <QCloseEvent>
+#include <QKeyEvent>
 
 namespace Ui {
 class ProductRegister;
@@ -57,7 +58,7 @@ private:
     unsigned int Serialnum;
     DatabaseConnection &db;
     bool admiMode;
-
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
 #endif // PRODUCTREGISTER_H

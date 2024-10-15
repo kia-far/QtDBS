@@ -15,6 +15,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include "logger.h"
+#include <QKeyEvent>
 
 
 unsigned int lastClicked =4294967294;
@@ -502,4 +503,15 @@ void Tables::deleteRow(unsigned int ID, QString device) {
 }
 
 
+void Tables::keyPressEvent(QKeyEvent *event){
+    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+        bool moved = this->focusNextChild();
+        if (moved) {
+            qDebug() << "Moved focus to the next widget.";
+        }
 
+        // Mark the event as accepted
+        event->accept();
+    }
+    else{}
+}

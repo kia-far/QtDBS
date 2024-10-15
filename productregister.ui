@@ -198,10 +198,16 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
   </layout>
  </widget>
  <tabstops>
+  <tabstop>comboBox</tabstop>
+  <tabstop>lineEdit_8</tabstop>
   <tabstop>lineEdit_10</tabstop>
   <tabstop>lineEdit_11</tabstop>
+  <tabstop>dateEdit_2</tabstop>
+  <tabstop>dateEdit</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>devBtn</tabstop>
+  <tabstop>pushButton_2</tabstop>
  </tabstops>
  <resources/>
  <connections/>

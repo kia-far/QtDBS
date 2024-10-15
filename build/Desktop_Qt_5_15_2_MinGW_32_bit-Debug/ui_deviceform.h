@@ -366,9 +366,11 @@ public:
 
         QWidget::setTabOrder(comboBox, lineEdit);
         QWidget::setTabOrder(lineEdit, CustomerCombo);
-        QWidget::setTabOrder(CustomerCombo, textEdit);
+        QWidget::setTabOrder(CustomerCombo, pushButton);
+        QWidget::setTabOrder(pushButton, textEdit);
         QWidget::setTabOrder(textEdit, SubmitBtn);
-        QWidget::setTabOrder(SubmitBtn, pushButton);
+        QWidget::setTabOrder(SubmitBtn, pushButton_2);
+        QWidget::setTabOrder(pushButton_2, AddItemBtn);
 
         retranslateUi(DeviceForm);
 

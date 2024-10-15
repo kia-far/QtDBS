@@ -17,6 +17,8 @@ public:
 
 private:
     Ui::ChangeDB *ui;
+    void keyPressEvent(QKeyEvent *event) override;
+
 };
 
 #endif // CHANGEDB_H

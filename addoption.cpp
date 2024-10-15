@@ -3,6 +3,7 @@
 #include "itemhandler.h"
 #include <QDebug>
 #include <QMessageBox>
+#include <QKeyEvent>
 
 AddOption::AddOption(QWidget *parent) :
     QWidget(parent),
@@ -154,3 +155,15 @@ void AddOption::on_AddOption_destroyed()
 {
 }
 
+void AddOption::keyPressEvent(QKeyEvent *event){
+    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+        bool moved = this->focusNextChild();
+        if (moved) {
+            qDebug() << "Moved focus to the next widget.";
+        }
+
+        // Mark the event as accepted
+        event->accept();
+    }
+    else{}
+}

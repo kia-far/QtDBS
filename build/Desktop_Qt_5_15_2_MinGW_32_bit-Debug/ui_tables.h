@@ -143,6 +143,14 @@ public:
 
         gridLayout->addWidget(EditBtn, 0, 9, 1, 1);
 
+        QWidget::setTabOrder(comboBox, comboBox_2);
+        QWidget::setTabOrder(comboBox_2, mainWindowBtn);
+        QWidget::setTabOrder(mainWindowBtn, RefreshBtn);
+        QWidget::setTabOrder(RefreshBtn, AddBtn);
+        QWidget::setTabOrder(AddBtn, SearchBtn);
+        QWidget::setTabOrder(SearchBtn, EditBtn);
+        QWidget::setTabOrder(EditBtn, deleteBtn);
+        QWidget::setTabOrder(deleteBtn, tableView);
 
         retranslateUi(Tables);
 

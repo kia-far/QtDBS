@@ -9,7 +9,7 @@
 #include <QAction>
 #include <QMessageBox>
 #include <itemhandler.h>
-
+#include <QKeyEvent>
 
 CustomerForm::CustomerForm(QWidget *parent) :
     QWidget(parent),
@@ -195,4 +195,17 @@ void CustomerForm::updateCustomerNames(QString newName){
 
     }
     }
+}
+
+void CustomerForm::keyPressEvent(QKeyEvent *event){
+    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+        bool moved = this->focusNextChild();
+        if (moved) {
+            qDebug() << "Moved focus to the next widget.";
+        }
+
+        // Mark the event as accepted
+        event->accept();
+    }
+    else{}
 }

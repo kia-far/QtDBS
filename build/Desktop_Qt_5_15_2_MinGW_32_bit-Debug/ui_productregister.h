@@ -199,9 +199,15 @@ public:
 
         verticalLayout->addLayout(horizontalLayout);
 
+        QWidget::setTabOrder(comboBox, lineEdit_8);
+        QWidget::setTabOrder(lineEdit_8, lineEdit_10);
         QWidget::setTabOrder(lineEdit_10, lineEdit_11);
-        QWidget::setTabOrder(lineEdit_11, textEdit);
+        QWidget::setTabOrder(lineEdit_11, dateEdit_2);
+        QWidget::setTabOrder(dateEdit_2, dateEdit);
+        QWidget::setTabOrder(dateEdit, textEdit);
         QWidget::setTabOrder(textEdit, pushButton);
+        QWidget::setTabOrder(pushButton, devBtn);
+        QWidget::setTabOrder(devBtn, pushButton_2);
 
         retranslateUi(ProductRegister);
 

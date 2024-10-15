@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QMessageBox>
 
 JsonHandler::JsonHandler(QObject *parent)
     : QAbstractItemModel(parent)
@@ -14,6 +15,7 @@ JsonHandler::JsonHandler(QObject *parent)
 QString jsonPath;
 QString fileName = "";
 QString infoFileName = "";
+bool errShown=false;
 
 QJsonObject JsonHandler::loadJson() {
     QString adr = qApp->applicationDirPath();
@@ -25,9 +27,20 @@ QJsonObject JsonHandler::loadJson() {
         file.close();
 
         if (!jsonPath.isEmpty()) {
-            // openDatabase(jsonPath);  // Open the database using the path from the file
+            // Open the json using the path from the file
         } else {
-            qDebug() << "Database path file is empty!";
+            if(!errShown){
+                QMessageBox msgBox;
+                msgBox.setIcon(QMessageBox::Critical);
+                msgBox.setWindowTitle("Error");
+                msgBox.setText("آدرس جیسون خالی است"
+                               "در حال باز کردن جسیون محلی");
+                msgBox.setStandardButtons(QMessageBox::Ok);
+                msgBox.exec();
+                errShown = true;
+            }
+            jsonPath=adr+"/JSON";
+            qDebug() << "Json path file is empty!";
         }
     } else {
         qDebug() << "Failed to open database path file:" << file.errorString();
@@ -35,6 +48,7 @@ QJsonObject JsonHandler::loadJson() {
     // QString addr = qApp->applicationDirPath();
     fileName = jsonPath+"/items.json";
     infoFileName = jsonPath + "/info.json";
+    qDebug()<<fileName << infoFileName;
     QJsonObject obj;
     QFile jsonFile(fileName);
     if (jsonFile.open(QFile::ReadOnly)) {

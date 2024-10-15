@@ -68,6 +68,7 @@ private:
     DatabaseConnection &db;
     MainWindow *mainwindow;
     QString currentDevice;
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
 #endif // TABLES_H

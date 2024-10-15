@@ -3,6 +3,7 @@
 #include "QDebug"
 #include <QDialogButtonBox>
 #include <QPushButton>
+#include <QKeyEvent>
 
 SearchForm::SearchForm(QWidget *parent) :
     QWidget(parent),
@@ -126,3 +127,15 @@ void SearchForm::on_lineEdit_returnPressed()
     on_buttonBox_accepted();
 }
 
+void SearchForm::keyPressEvent(QKeyEvent *event){
+    if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
+        bool moved = this->focusNextChild();
+        if (moved) {
+            qDebug() << "Moved focus to the next widget.";
+        }
+
+        // Mark the event as accepted
+        event->accept();
+    }
+    else{}
+}

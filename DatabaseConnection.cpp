@@ -3,6 +3,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QMessageBox>
 
 DatabaseConnection::DatabaseConnection() {
     QString adr = qApp->applicationDirPath();
@@ -18,6 +19,14 @@ DatabaseConnection::DatabaseConnection() {
             openDatabase(dbPath);  // Open the database using the path from the file
         } else {
             qDebug() << "Database path file is empty!";
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("آدرس دیتابیس خالی است"
+                           "در حال باز کردن دیتابیس محلی");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();
+            openDatabase(adr+"/DB/InfoDB");
         }
     } else {
         qDebug() << "Failed to open database path file:" << file.errorString();
@@ -41,6 +50,24 @@ bool DatabaseConnection::openDatabase(const QString &dbName) {
         db.setDatabaseName(dbName);
 
         if (!db.open()) {
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Critical);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("دیتابیس در شبکه یافت نشد یا قابل دسترستی نیست");
+            msgBox.setStandardButtons(QMessageBox::Ok);
+            msgBox.exec();
+            int res = msgBox.exec();
+            switch(res) {
+            case QMessageBox::Ok :{
+                exit(1);
+                break;
+            }
+
+            default :
+                exit(1);
+                break;
+
+            }
             qDebug() << "Failed to open database:" << db.lastError().text();
             return false;
         }
