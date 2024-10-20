@@ -56,18 +56,7 @@ bool DatabaseConnection::openDatabase(const QString &dbName) {
             msgBox.setText("دیتابیس در شبکه یافت نشد یا قابل دسترستی نیست");
             msgBox.setStandardButtons(QMessageBox::Ok);
             msgBox.exec();
-            int res = msgBox.exec();
-            switch(res) {
-            case QMessageBox::Ok :{
-                exit(1);
-                break;
-            }
-
-            default :
-                exit(1);
-                break;
-
-            }
+            exit(1);
             qDebug() << "Failed to open database:" << db.lastError().text();
             return false;
         }

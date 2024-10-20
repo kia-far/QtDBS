@@ -47,6 +47,7 @@ void DeviceForm::trigger(QString device){
 }
 
 void DeviceForm::setup(){
+    ui->lineEdit->setReadOnly(false);
     getCustomers();
     if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
     else {ui->AddItemBtn->show();ui->pushButton_2->show(); }
@@ -198,6 +199,9 @@ void DeviceForm::clearLayout(QLayout *layout) {
     }
 }
 void DeviceForm::populateEdit(QString device,unsigned int id){
+    ui->comboBox->clear();
+    ui->comboBox->addItem(device);
+    ui->lineEdit->setReadOnly(true);
     edit = true;
     QString newText="";
     QSqlQuery query(db.getConnection());

@@ -18,6 +18,8 @@ serviceEdit::serviceEdit(QWidget *parent) :
     db(DatabaseConnection::getInstance())
 {
     ui->setupUi(this);
+    cCompleter = nullptr;
+    pCompleter = nullptr;
     keyBinds();
     QDate minDate (1,1,1);
     populateCombo();
@@ -28,10 +30,7 @@ serviceEdit::serviceEdit(QWidget *parent) :
     QCalendar calendar( QCalendar::System::Jalali);
     ui->dateEdit->setCalendar(calendar);
     ui->dateEdit->setDate(QDate::currentDate());
-    //
-//    db = QSqlDatabase::addDatabase("QSQLITE");
-//    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
-//    db.open();
+    // connect(ui->CustomerCombo,SIGNAL(activated(QString)),this,SLOT(onCustomerComboActivated(QString)));
 }
 
 serviceEdit::~serviceEdit()
@@ -189,8 +188,11 @@ void serviceEdit::populateCombo() {
     // ui->ProductCombo->setCurrentText(arg2);
     // ui->ProductCombo->clear();
     products = getProducts("");
-    QCompleter *pCompleter = new QCompleter(products);
+    if(!(pCompleter==nullptr)){
+        delete pCompleter;}
+    pCompleter = new QCompleter(products);
     pCompleter->popup()->setStyleSheet("font-size: 20px");
+    connect(pCompleter,SIGNAL(activated(QString)),this,SLOT(onProductComboCurrentTextChanged(QString)));
     ui->ProductCombo->setCompleter(pCompleter);
     qDebug() << products.length();
     // ui->ProductCombo->blockSignals(false);
@@ -198,9 +200,13 @@ void serviceEdit::populateCombo() {
     // ui->CustomerCombo->blockSignals(true);
     // ui->CustomerCombo->clear();
     customers = getCustomers("");
-    QCompleter *cCompleter = new QCompleter(customers);
+    if(!(cCompleter==nullptr)){
+        delete cCompleter;}
+    cCompleter = new QCompleter(customers);
     cCompleter->popup()->setStyleSheet("font-size: 20px");
     ui->CustomerCombo->setCompleter(cCompleter);
+    connect(cCompleter,SIGNAL(activated(QString)),this,SLOT(onCustomerComboActivated(QString)));
+    ui->ProductCombo->setCompleter(pCompleter);
     // ui->CustomerCombo->addItems(customers);
     // ui->CustomerCombo->setCurrentText(arg1);
     // ui->CustomerCombo->blockSignals(false);
@@ -284,30 +290,38 @@ void serviceEdit::on_ProductCombo_editTextChanged(const QString &arg1)
 {
     ui->ProductCombo->setCurrentText(arg1.toUpper());
 }
-
+void serviceEdit::onProductComboCurrentTextChanged( const QString &text){
+    qDebug() << text;
+    if(!text.isEmpty()){
+        qDebug () << "2000";
+        if(MyFunctions::checkData(MyFunctions::reverseSN(text),"SerialNO","ProductInfo")){
+            ui->CustomerCombo->blockSignals(true);
+            ui->CustomerCombo->setCurrentText(getCustomers(MyFunctions::reverseSN( text)).at(0));
+            ui->CustomerCombo->blockSignals(false);
+        }
+    }
+}
 
 void serviceEdit::on_ProductCombo_activated(int index)
 {
-    if(MyFunctions::checkData(MyFunctions::reverseSN( ui->ProductCombo->currentText()),"SerialNO","ProductInfo")){
-    ui->CustomerCombo->setCurrentText(getCustomers(MyFunctions::reverseSN( ui->ProductCombo->currentText())).at(0));
-    }
 }
 
 void serviceEdit::on_CustomerCombo_editTextChanged(const QString &arg1)
 {
     ui->CustomerCombo->setCurrentText(arg1.toUpper());
     ui->CustomerCombo->clear();
-    QCompleter *pCompleter = new QCompleter(products);
+    if(!(pCompleter==nullptr)){delete pCompleter;}
+    pCompleter = new QCompleter(products);
     pCompleter->popup()->setStyleSheet("font-size: 20px");
     ui->ProductCombo->setCompleter(pCompleter);
-    qDebug() << "changed";
+    connect(pCompleter,SIGNAL(activated(QString)),this,SLOT(onProductComboCurrentTextChanged(QString)));
 }
 
-void serviceEdit::on_CustomerCombo_activated(int index)
+void serviceEdit::onCustomerComboActivated(const QString &text)
 {
-    if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")){
+    if(MyFunctions::checkData(text,"Name","CustomerInfo")){
         // ui->ProductCombo->setCurrentText("hi");
-        QStringList products = getProducts(ui->CustomerCombo->currentText());
+        QStringList products = getProducts(text);
         // qDebug()<<products;
         ui->ProductCombo->clear();
         ui->ProductCombo->addItems(products);

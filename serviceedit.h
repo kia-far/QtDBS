@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QSqlDatabase>
 #include <DatabaseConnection.h>
+#include <QCompleter>
 
 namespace Ui {
 class serviceEdit;
@@ -35,9 +36,11 @@ private slots:
 
     void on_ProductCombo_editTextChanged(const QString &arg1);
 
+    void onProductComboCurrentTextChanged( const QString &text);
+
     void on_ProductCombo_activated(int index);
 
-    void on_CustomerCombo_activated(int index);
+    void onCustomerComboActivated(const QString &text);
 
 private:
     Ui::serviceEdit *ui;
@@ -52,6 +55,8 @@ private:
     QString b[8];
     unsigned int ID;
     DatabaseConnection &db;
+    QCompleter *pCompleter;
+    QCompleter *cCompleter;
     void keyPressEvent(QKeyEvent *event) override;
 
 };
