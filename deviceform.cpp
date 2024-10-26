@@ -152,10 +152,19 @@ void DeviceForm::createNewItem(QString itemName, int index) {
 
     if (admiMode) {
         comboBox->insertItem(setupOptions(itemName).size() + 1, "افزودن گزینه");
-        connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, itemName](int index) {
+        connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, comboBox, itemName](int index) {
             if (index == setupOptions(itemName).size() + 1) {
                 addOption(currentDevice, itemName);
             }
+            comboBox->setCurrentIndex(0);
+        });
+
+        comboBox->insertItem(setupOptions(itemName).size() + 2, "پاک کردن گزینه");
+        connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, comboBox , itemName](int index) {
+            if (index == setupOptions(itemName).size() + 2) {
+                removeOption(currentDevice, itemName);
+            }
+            comboBox->setCurrentIndex(0);
         });
     }
 
@@ -288,6 +297,9 @@ void DeviceForm::on_SubmitBtn_clicked()
 void DeviceForm::addOption(QString deviceName,QString itemName){
 //    qDebug() << "option possibly added : " << itemName;
     emit optionPage(deviceName,itemName);
+}
+void DeviceForm::removeOption(QString deviceName,QString itemName){
+    emit removeOptionPage(deviceName,itemName);
 }
 void DeviceForm::addItem(QString deviceName){
     emit itemPage(deviceName);

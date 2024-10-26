@@ -33,7 +33,7 @@ public:
     {
         if (AddOption->objectName().isEmpty())
             AddOption->setObjectName(QString::fromUtf8("AddOption"));
-        AddOption->resize(247, 218);
+        AddOption->resize(250, 200);
         AddOption->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"

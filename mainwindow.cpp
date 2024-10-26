@@ -31,6 +31,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(x, &Tables::addDevice, &d ,&DeviceForm::trigger);
     QObject::connect(x, &Tables::editDevice, &d ,&DeviceForm::editDevice);
     QObject::connect(&d, &DeviceForm::optionPage,&a, &AddOption::setupOption);
+    QObject::connect(&d, &DeviceForm::removeOptionPage,&dO,&DeleteOption::Setup);
     QObject::connect(&d, &DeviceForm::itemPage,&a, &AddOption::setupItem);
     QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);
     QObject::connect(&b, &ProductRegister::devicePage,&a, &AddOption::setupDevice);
@@ -44,6 +45,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&c, &CustomerForm::callPageRefresh, x,&Tables::pageRefresh);
     QObject::connect(&c, &CustomerForm::callPageRefresh, &d, &DeviceForm::getCustomers);
     QObject::connect(&s, &serviceEdit::callPageRefresh, x,&Tables::pageRefresh);
+    QObject::connect(&dO,&DeleteOption::refresh,&d,&DeviceForm::refresh);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

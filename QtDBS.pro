@@ -16,6 +16,7 @@ SOURCES += \
     addoption.cpp \
     changedb.cpp \
     customerform.cpp \
+    deleteoption.cpp \
     deviceform.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     addoption.h \
     changedb.h \
     customerform.h \
+    deleteoption.h \
     deviceform.h \
     itemhandler.h \
     jsonhandler.h \
@@ -55,6 +57,7 @@ FORMS += \
     addoption.ui \
     changedb.ui \
     customerform.ui \
+    deleteoption.ui \
     deviceform.ui \
     mainwindow.ui \
     productregister.ui \

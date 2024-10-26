@@ -32,6 +32,7 @@ public:
     void closeEvent(QCloseEvent *event) override;
 signals:
     void optionPage(QString deviceName,QString itemName);
+    void removeOptionPage(QString deviceName,QString itemName);
     void itemPage(QString deviceName);
     void devicePage();
     void addCustomer();
@@ -63,6 +64,7 @@ private:
     QStringList setupOptions( QString itemName);
     void clearLayout(QLayout *layout);
     void addOption(QString deviceName,QString itemName);
+    void removeOption(QString deviceName,QString itemName);
     void addItem(QString deviceName);
     void addDevice();
     void submit();

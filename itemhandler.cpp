@@ -225,6 +225,50 @@ void ItemHandler::addOptions(QString deviceName , QString itemName , QString opt
     loadDevices();;
 }
 
+//
+void ItemHandler::removeOptions(QString deviceName, QString itemName, QString optionName) {
+    if(optionName=="هیچ کدام"){
+
+    }
+    else{
+    loadDevices();
+    QJsonArray itemArr = loadedObj[deviceName].toArray();
+    bool iscorrect = false;
+    int i = 0;
+
+    // Find the item in the JSON array
+    while (!iscorrect && i < itemArr.size()) {
+        if (itemArr[i].toObject().begin().key() == itemName) {
+            QJsonArray optionArray = itemArr[i].toObject().begin().value().toArray();
+
+            // Search for and remove the specified option
+            for (int j = 0; j < optionArray.size(); ++j) {
+                qDebug() << optionArray[j];
+                if (optionArray[j].toString() == optionName) {
+                    qDebug() << "option found";
+                    optionArray.removeAt(j);
+                    break;
+                }
+            }
+
+            // Update the item with the modified array
+            QJsonObject updatedItemObj = itemArr[i].toObject();
+            updatedItemObj[itemName] = optionArray;
+            itemArr[i] = updatedItemObj;
+            loadedObj[deviceName] = itemArr;
+
+            iscorrect = true;
+        }
+        i++;
+    }
+
+    // Save the updated JSON document
+    QJsonDocument updatedDoc(loadedObj);
+    JsonHandler::saveJson(updatedDoc);
+    loadDevices();
+    }}
+
+//
 void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringList& columnNames, const QVariantList& dataValues) {
     DatabaseConnection& db = DatabaseConnection::getInstance();
 

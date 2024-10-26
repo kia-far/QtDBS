@@ -14,6 +14,7 @@
 #include "addoption.h"
 #include "myfunctions.h"
 #include "addabr.h"
+#include "deleteoption.h"
 
 class Tables;
 QT_BEGIN_NAMESPACE
@@ -53,6 +54,7 @@ private:
     CustomerForm c;
     AddOption a;
     AddAbr aa;
+    DeleteOption dO;
     DatabaseConnection &db;
     void keyPressEvent(QKeyEvent *event) override;
 
