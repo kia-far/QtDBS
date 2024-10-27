@@ -33,6 +33,7 @@ public:
     void setupTable(QString a);
 
 private slots:
+    void closePages();
     void on_productBtn_clicked();
     void on_deviceBtn_clicked();
 

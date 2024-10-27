@@ -2305,3 +2305,121 @@
 2024-10-27 12:37:03 - product proxy loaded into table
 2024-10-27 12:37:03 - product proxy loaded into table
 2024-10-27 12:37:08 - product proxy called
+2024-10-27 12:52:56 - data loaded for product info and product sec info!
+2024-10-27 12:52:56 - data loaded for product info and product sec info!
+2024-10-27 12:53:03 - product proxy called
+2024-10-27 12:53:07 - product proxy called
+2024-10-27 12:53:10 - product proxy called
+2024-10-27 12:53:10 - producgt proxy laoded 
+2024-10-27 12:53:10 - data loaded for product info and product sec info!
+2024-10-27 12:53:10 - product proxy loaded into table
+2024-10-27 12:53:10 - producgt proxy laoded 
+2024-10-27 12:53:10 - data loaded for product info and product sec info!
+2024-10-27 12:53:10 - product proxy loaded into table
+2024-10-27 12:53:12 - product proxy called
+2024-10-27 12:53:27 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:28 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:28 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:29 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:29 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:30 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:30 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:31 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:32 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:32 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:33 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:33 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:34 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:34 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:35 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:36 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:37 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:37 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:38 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:38 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:39 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:39 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:40 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:40 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:41 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:42 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:42 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:43 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:43 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:44 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:45 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:45 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:46 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:46 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:47 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:47 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:48 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:49 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:49 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:50 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:50 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:51 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:53:52 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 12:54:00 - product proxy called
+2024-10-27 13:07:48 - data loaded for product info and product sec info!
+2024-10-27 13:07:49 - data loaded for product info and product sec info!
+2024-10-27 13:07:50 - product proxy called
+2024-10-27 13:08:11 - product proxy called
+2024-10-27 13:08:11 - producgt proxy laoded 
+2024-10-27 13:08:11 - data loaded for product info and product sec info!
+2024-10-27 13:08:12 - product proxy loaded into table
+2024-10-27 13:08:12 - producgt proxy laoded 
+2024-10-27 13:08:12 - data loaded for product info and product sec info!
+2024-10-27 13:08:12 - product proxy loaded into table
+2024-10-27 13:08:15 - product proxy called
+2024-10-27 13:08:17 - product proxy called
+2024-10-27 13:08:25 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:26 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:27 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:27 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:28 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:29 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:29 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:30 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:30 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:31 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:31 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:32 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:33 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:34 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:35 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:35 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:36 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:37 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:38 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:39 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:40 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:40 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:41 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:41 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:42 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:43 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:43 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:44 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:45 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:45 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:46 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:47 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:47 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:48 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:48 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:49 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:50 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:50 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:51 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:52 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:53 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:53 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:54 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:55 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:56 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:56 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:57 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:57 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:08:58 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
+2024-10-27 13:09:02 - product proxy called
