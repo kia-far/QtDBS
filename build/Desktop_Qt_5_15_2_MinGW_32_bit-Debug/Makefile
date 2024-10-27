@@ -244,6 +244,7 @@ Makefile: ../../QtDBS.pro C:/newQt/5.15.2/mingw81_32/mkspecs/win32-g++/qmake.con
 		C:/newQt/5.15.2/mingw81_32/mkspecs/features/toolchain.prf \
 		C:/newQt/5.15.2/mingw81_32/mkspecs/features/default_pre.prf \
 		C:/newQt/5.15.2/mingw81_32/mkspecs/features/win32/default_pre.prf \
+		../../QXlsx.pri \
 		C:/newQt/5.15.2/mingw81_32/mkspecs/features/resolve_config.prf \
 		C:/newQt/5.15.2/mingw81_32/mkspecs/features/exclusive_builds_post.prf \
 		C:/newQt/5.15.2/mingw81_32/mkspecs/features/default_post.prf \
@@ -445,6 +446,7 @@ C:/newQt/5.15.2/mingw81_32/mkspecs/features/exclusive_builds.prf:
 C:/newQt/5.15.2/mingw81_32/mkspecs/features/toolchain.prf:
 C:/newQt/5.15.2/mingw81_32/mkspecs/features/default_pre.prf:
 C:/newQt/5.15.2/mingw81_32/mkspecs/features/win32/default_pre.prf:
+../../QXlsx.pri:
 C:/newQt/5.15.2/mingw81_32/mkspecs/features/resolve_config.prf:
 C:/newQt/5.15.2/mingw81_32/mkspecs/features/exclusive_builds_post.prf:
 C:/newQt/5.15.2/mingw81_32/mkspecs/features/default_post.prf:

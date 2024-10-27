@@ -16,6 +16,7 @@
 #include <QMessageBox>
 #include "logger.h"
 #include <QKeyEvent>
+#include "exporttoexcel.h"
 
 
 unsigned int lastClicked =4294967294;
@@ -37,6 +38,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 {
 
     ui->setupUi(this);
+    ui->toolButton->setFixedHeight(30);
     ui->progressBar->setHidden(true);
     ui->label->setHidden(true);
 //    ui->Edit->hide();
@@ -364,11 +366,11 @@ void Tables::keybinds(){
 
     connect(f3, SIGNAL(triggered()), this, SLOT(on_AddBtn_clicked()));
     this->addAction(f3);
-//    QAction *f4 = new QAction(this);
-//    f4->setShortcut(Qt::Key_P | Qt::CTRL);
+   QAction *f4 = new QAction(this);
+   f4->setShortcut(Qt::Key_E | Qt::CTRL);
 
-//    connect(f4, SIGNAL(triggered()), this, SLOT(on_comboBox_currentIndexChanged()));
-//    this->addAction(f4);
+   connect(f4, SIGNAL(triggered()), this, SLOT(getExport()));
+   this->addAction(f4);
 //    QAction *f5 = new QAction(this);
 //    f5->setShortcut(Qt::Key_C | Qt::CTRL);
 
@@ -543,4 +545,16 @@ void Tables::handleBtnEnable(bool a){
     ui->deleteBtn->setDisabled(a);
     ui->mainWindowBtn->setDisabled(a);
     ui->tableView->setDisabled(a);
+    ui->toolButton->setDisabled(a);
 }
+void Tables::getExport(){
+    qDebug() << "exported";
+    ExportExcel exporter;
+    exporter.exportToXlsx(ui->tableView);
+}
+
+void Tables::on_toolButton_triggered(QAction *arg1)
+{
+    getExport();
+}
+

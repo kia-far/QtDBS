@@ -1,31 +1,23 @@
-// #ifndef EXPORTTOEXCEL_H
-// #define EXPORTTOEXCEL_H
+#ifndef EXPORTEXCEL_H
+#define EXPORTEXCEL_H
 
-// // #include <QAxObject>
-// #include <QTableView>
-// #include <QAbstractItemModel>
-// #include <QFileDialog>
-// #include <QMessageBox>
+#include <QObject>
+#include <QTableView>
 
-// #include <QAbstractItemModel>
+class ExportExcel : public QObject {
+    Q_OBJECT
+public:
+    explicit ExportExcel(QObject *parent = nullptr);
 
-// class exportToExcel : public QAbstractItemModel
-// {
-//     Q_OBJECT
+    // Method to export data to an Excel file
+    void exportToXlsx(QTableView *tableView);
 
-// public:
-//     explicit exportToExcel(QObject *parent = nullptr);
+signals:
+    void exportSuccess(const QString &filePath);
+    void exportError(const QString &errorMessage);
 
-//     // Basic functionality:
-//     QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
-//     QModelIndex parent(const QModelIndex &index) const override;
+private:
+    QString getSaveFilePath();
+};
 
-//     int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-//     int columnCount(const QModelIndex &parent = QModelIndex()) const override;
-
-//     QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
-
-// private:
-// };
-
-// #endif // EXPORTTOEXCEL_H
+#endif // EXPORTEXCEL_H

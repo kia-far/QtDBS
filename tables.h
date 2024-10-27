@@ -40,6 +40,8 @@ signals:
     void editCustomer(unsigned int serialNum);
 
 private slots:
+    void getExport();
+
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
     void on_EditBtn_clicked();
@@ -60,6 +62,8 @@ private slots:
     void on_tableView_doubleClicked(const QModelIndex &index);
 
     void on_deleteBtn_clicked();
+
+    void on_toolButton_triggered(QAction *arg1);
 
 private:
     void deleteRow(unsigned int ID, QString device);
