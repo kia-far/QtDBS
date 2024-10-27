@@ -58,6 +58,7 @@ SOURCES       = ..\..\DatabaseConnection.cpp \
 		..\..\customerform.cpp \
 		..\..\deleteoption.cpp \
 		..\..\deviceform.cpp \
+		..\..\exporttoexcel.cpp \
 		..\..\itemhandler.cpp \
 		..\..\jsonhandler.cpp \
 		..\..\logger.cpp \
@@ -77,6 +78,7 @@ SOURCES       = ..\..\DatabaseConnection.cpp \
 		debug\moc_customerform.cpp \
 		debug\moc_deleteoption.cpp \
 		debug\moc_deviceform.cpp \
+		debug\moc_exporttoexcel.cpp \
 		debug\moc_itemhandler.cpp \
 		debug\moc_jsonhandler.cpp \
 		debug\moc_logger.cpp \
@@ -96,6 +98,7 @@ OBJECTS       = debug/DatabaseConnection.o \
 		debug/customerform.o \
 		debug/deleteoption.o \
 		debug/deviceform.o \
+		debug/exporttoexcel.o \
 		debug/itemhandler.o \
 		debug/jsonhandler.o \
 		debug/logger.o \
@@ -116,6 +119,7 @@ OBJECTS       = debug/DatabaseConnection.o \
 		debug/moc_customerform.o \
 		debug/moc_deleteoption.o \
 		debug/moc_deviceform.o \
+		debug/moc_exporttoexcel.o \
 		debug/moc_itemhandler.o \
 		debug/moc_jsonhandler.o \
 		debug/moc_logger.o \
@@ -141,6 +145,7 @@ DIST          = build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/DBPath \
 		..\..\customerform.h \
 		..\..\deleteoption.h \
 		..\..\deviceform.h \
+		..\..\exporttoexcel.h \
 		..\..\itemhandler.h \
 		..\..\jsonhandler.h \
 		..\..\logger.h \
@@ -159,6 +164,7 @@ DIST          = build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/DBPath \
 		..\..\customerform.cpp \
 		..\..\deleteoption.cpp \
 		..\..\deviceform.cpp \
+		..\..\exporttoexcel.cpp \
 		..\..\itemhandler.cpp \
 		..\..\jsonhandler.cpp \
 		..\..\logger.cpp \
@@ -190,10 +196,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) QtDBS.zip $(SOURCES) $(DIST) ..\..\QtDBS.pro C:\newQt\5.15.2\mingw81_32\mkspecs\features\spec_pre.prf C:\newQt\5.15.2\mingw81_32\mkspecs\qdevice.pri C:\newQt\5.15.2\mingw81_32\mkspecs\features\device_config.prf C:\newQt\5.15.2\mingw81_32\mkspecs\common\sanitize.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\gcc-base.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\g++-base.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\angle.conf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\windows_vulkan_sdk.prf C:\newQt\5.15.2\mingw81_32\mkspecs\common\windows-vulkan.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\g++-win32.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\windows-desktop.conf C:\newQt\5.15.2\mingw81_32\mkspecs\qconfig.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bodymovin_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_edid_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttracker.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttracker_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttrackerqml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttrackerqml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickshapes_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uiplugin.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_zlib_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\features\qt_functions.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qt_config.prf C:\newQt\5.15.2\mingw81_32\mkspecs\win32-g++\qmake.conf C:\newQt\5.15.2\mingw81_32\mkspecs\features\spec_post.prf .qmake.stash C:\newQt\5.15.2\mingw81_32\mkspecs\features\exclusive_builds.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\toolchain.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\default_pre.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\default_pre.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\resolve_config.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\exclusive_builds_post.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\default_post.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\build_pass.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qml_debug.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\precompile_header.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\warn_on.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qt.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\resources_functions.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\resources.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\moc.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\opengl.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\uic.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qmake_use.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\file_copies.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\windows.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\testcase_targets.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\exceptions.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\yacc.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\lex.prf ..\..\QtDBS.pro C:\newQt\5.15.2\mingw81_32\lib\Qt5Widgets.prl C:\newQt\5.15.2\mingw81_32\lib\Qt5Gui.prl C:\newQt\5.15.2\mingw81_32\lib\Qt5Sql.prl C:\newQt\5.15.2\mingw81_32\lib\Qt5Core.prl C:\newQt\5.15.2\mingw81_32\lib\qtmain.prl    C:\newQt\5.15.2\mingw81_32\mkspecs\features\data\dummy.cpp ..\..\DatabaseConnection.h ..\..\MyTableProxy.h ..\..\addabr.h ..\..\addoption.h ..\..\changedb.h ..\..\customerform.h ..\..\deleteoption.h ..\..\deviceform.h ..\..\itemhandler.h ..\..\jsonhandler.h ..\..\logger.h ..\..\mainwindow.h ..\..\myfunctions.h ..\..\productproxy.h ..\..\productregister.h ..\..\proxyview.h ..\..\searchform.h ..\..\serviceedit.h ..\..\tables.h  ..\..\DatabaseConnection.cpp ..\..\MyTableProxy.cpp ..\..\addabr.cpp ..\..\addoption.cpp ..\..\changedb.cpp ..\..\customerform.cpp ..\..\deleteoption.cpp ..\..\deviceform.cpp ..\..\itemhandler.cpp ..\..\jsonhandler.cpp ..\..\logger.cpp ..\..\main.cpp ..\..\mainwindow.cpp ..\..\myfunctions.cpp ..\..\productproxy.cpp ..\..\productregister.cpp ..\..\proxyview.cpp ..\..\searchform.cpp ..\..\serviceedit.cpp ..\..\tables.cpp ..\..\addabr.ui ..\..\addoption.ui ..\..\changedb.ui ..\..\customerform.ui ..\..\deleteoption.ui ..\..\deviceform.ui ..\..\mainwindow.ui ..\..\productregister.ui ..\..\searchform.ui ..\..\serviceedit.ui ..\..\tables.ui    
+	$(ZIP) QtDBS.zip $(SOURCES) $(DIST) ..\..\..\..\QtDBS.pro C:\newQt\5.15.2\mingw81_32\mkspecs\features\spec_pre.prf C:\newQt\5.15.2\mingw81_32\mkspecs\qdevice.pri C:\newQt\5.15.2\mingw81_32\mkspecs\features\device_config.prf C:\newQt\5.15.2\mingw81_32\mkspecs\common\sanitize.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\gcc-base.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\g++-base.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\angle.conf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\windows_vulkan_sdk.prf C:\newQt\5.15.2\mingw81_32\mkspecs\common\windows-vulkan.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\g++-win32.conf C:\newQt\5.15.2\mingw81_32\mkspecs\common\windows-desktop.conf C:\newQt\5.15.2\mingw81_32\mkspecs\qconfig.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3danimation_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_3drender_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axbase_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_axserver_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bodymovin_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_core_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_datavisualization_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_dbus_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designer_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_edid_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_gui_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_help_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttracker.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttracker_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttrackerqml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_insighttrackerqml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_location_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_network_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_networkauth_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_nfc_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_opengl_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioning_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_positioningquick_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_purchasing_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quick_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickshapes_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_repparser_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_script_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_scxml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sensors_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_serialport_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_sql_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_svg_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_testlib_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_texttospeech_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uiplugin.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_uitools_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_virtualkeyboard_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_websockets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_widgets_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_winextras_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xml_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\modules\qt_lib_zlib_private.pri C:\newQt\5.15.2\mingw81_32\mkspecs\features\qt_functions.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qt_config.prf C:\newQt\5.15.2\mingw81_32\mkspecs\win32-g++\qmake.conf C:\newQt\5.15.2\mingw81_32\mkspecs\features\spec_post.prf .qmake.stash C:\newQt\5.15.2\mingw81_32\mkspecs\features\exclusive_builds.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\toolchain.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\default_pre.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\default_pre.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\resolve_config.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\exclusive_builds_post.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\default_post.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\build_pass.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qml_debug.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\precompile_header.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\warn_on.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qt.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\resources_functions.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\resources.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\moc.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\opengl.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\uic.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\qmake_use.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\file_copies.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\win32\windows.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\testcase_targets.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\exceptions.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\yacc.prf C:\newQt\5.15.2\mingw81_32\mkspecs\features\lex.prf ..\..\QtDBS.pro C:\newQt\5.15.2\mingw81_32\lib\Qt5Widgets.prl C:\newQt\5.15.2\mingw81_32\lib\Qt5Gui.prl C:\newQt\5.15.2\mingw81_32\lib\Qt5Sql.prl C:\newQt\5.15.2\mingw81_32\lib\Qt5Core.prl C:\newQt\5.15.2\mingw81_32\lib\qtmain.prl    C:\newQt\5.15.2\mingw81_32\mkspecs\features\data\dummy.cpp ..\..\DatabaseConnection.h ..\..\MyTableProxy.h ..\..\addabr.h ..\..\addoption.h ..\..\changedb.h ..\..\customerform.h ..\..\deleteoption.h ..\..\deviceform.h ..\..\exporttoexcel.h ..\..\itemhandler.h ..\..\jsonhandler.h ..\..\logger.h ..\..\mainwindow.h ..\..\myfunctions.h ..\..\productproxy.h ..\..\productregister.h ..\..\proxyview.h ..\..\searchform.h ..\..\serviceedit.h ..\..\tables.h  ..\..\DatabaseConnection.cpp ..\..\MyTableProxy.cpp ..\..\addabr.cpp ..\..\addoption.cpp ..\..\changedb.cpp ..\..\customerform.cpp ..\..\deleteoption.cpp ..\..\deviceform.cpp ..\..\exporttoexcel.cpp ..\..\itemhandler.cpp ..\..\jsonhandler.cpp ..\..\logger.cpp ..\..\main.cpp ..\..\mainwindow.cpp ..\..\myfunctions.cpp ..\..\productproxy.cpp ..\..\productregister.cpp ..\..\proxyview.cpp ..\..\searchform.cpp ..\..\serviceedit.cpp ..\..\tables.cpp ..\..\addabr.ui ..\..\addoption.ui ..\..\changedb.ui ..\..\customerform.ui ..\..\deleteoption.ui ..\..\deviceform.ui ..\..\mainwindow.ui ..\..\productregister.ui ..\..\searchform.ui ..\..\serviceedit.ui ..\..\tables.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\DatabaseConnection.o debug\MyTableProxy.o debug\addabr.o debug\addoption.o debug\changedb.o debug\customerform.o debug\deleteoption.o debug\deviceform.o debug\itemhandler.o debug\jsonhandler.o debug\logger.o debug\main.o debug\mainwindow.o debug\myfunctions.o debug\productproxy.o debug\productregister.o debug\proxyview.o debug\searchform.o debug\serviceedit.o debug\tables.o debug\moc_DatabaseConnection.o debug\moc_MyTableProxy.o debug\moc_addabr.o debug\moc_addoption.o debug\moc_changedb.o debug\moc_customerform.o debug\moc_deleteoption.o debug\moc_deviceform.o debug\moc_itemhandler.o debug\moc_jsonhandler.o debug\moc_logger.o debug\moc_mainwindow.o debug\moc_myfunctions.o debug\moc_productproxy.o debug\moc_productregister.o debug\moc_proxyview.o debug\moc_searchform.o debug\moc_serviceedit.o debug\moc_tables.o
+	-$(DEL_FILE) debug\DatabaseConnection.o debug\MyTableProxy.o debug\addabr.o debug\addoption.o debug\changedb.o debug\customerform.o debug\deleteoption.o debug\deviceform.o debug\exporttoexcel.o debug\itemhandler.o debug\jsonhandler.o debug\logger.o debug\main.o debug\mainwindow.o debug\myfunctions.o debug\productproxy.o debug\productregister.o debug\proxyview.o debug\searchform.o debug\serviceedit.o debug\tables.o debug\moc_DatabaseConnection.o debug\moc_MyTableProxy.o debug\moc_addabr.o debug\moc_addoption.o debug\moc_changedb.o debug\moc_customerform.o debug\moc_deleteoption.o debug\moc_deviceform.o debug\moc_exporttoexcel.o debug\moc_itemhandler.o debug\moc_jsonhandler.o debug\moc_logger.o debug\moc_mainwindow.o debug\moc_myfunctions.o debug\moc_productproxy.o debug\moc_productregister.o debug\moc_proxyview.o debug\moc_searchform.o debug\moc_serviceedit.o debug\moc_tables.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -218,9 +224,9 @@ compiler_moc_predefs_clean:
 debug/moc_predefs.h: C:/newQt/5.15.2/mingw81_32/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h C:\newQt\5.15.2\mingw81_32\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: debug/moc_DatabaseConnection.cpp debug/moc_MyTableProxy.cpp debug/moc_addabr.cpp debug/moc_addoption.cpp debug/moc_changedb.cpp debug/moc_customerform.cpp debug/moc_deleteoption.cpp debug/moc_deviceform.cpp debug/moc_itemhandler.cpp debug/moc_jsonhandler.cpp debug/moc_logger.cpp debug/moc_mainwindow.cpp debug/moc_myfunctions.cpp debug/moc_productproxy.cpp debug/moc_productregister.cpp debug/moc_proxyview.cpp debug/moc_searchform.cpp debug/moc_serviceedit.cpp debug/moc_tables.cpp
+compiler_moc_header_make_all: debug/moc_DatabaseConnection.cpp debug/moc_MyTableProxy.cpp debug/moc_addabr.cpp debug/moc_addoption.cpp debug/moc_changedb.cpp debug/moc_customerform.cpp debug/moc_deleteoption.cpp debug/moc_deviceform.cpp debug/moc_exporttoexcel.cpp debug/moc_itemhandler.cpp debug/moc_jsonhandler.cpp debug/moc_logger.cpp debug/moc_mainwindow.cpp debug/moc_myfunctions.cpp debug/moc_productproxy.cpp debug/moc_productregister.cpp debug/moc_proxyview.cpp debug/moc_searchform.cpp debug/moc_serviceedit.cpp debug/moc_tables.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_DatabaseConnection.cpp debug\moc_MyTableProxy.cpp debug\moc_addabr.cpp debug\moc_addoption.cpp debug\moc_changedb.cpp debug\moc_customerform.cpp debug\moc_deleteoption.cpp debug\moc_deviceform.cpp debug\moc_itemhandler.cpp debug\moc_jsonhandler.cpp debug\moc_logger.cpp debug\moc_mainwindow.cpp debug\moc_myfunctions.cpp debug\moc_productproxy.cpp debug\moc_productregister.cpp debug\moc_proxyview.cpp debug\moc_searchform.cpp debug\moc_serviceedit.cpp debug\moc_tables.cpp
+	-$(DEL_FILE) debug\moc_DatabaseConnection.cpp debug\moc_MyTableProxy.cpp debug\moc_addabr.cpp debug\moc_addoption.cpp debug\moc_changedb.cpp debug\moc_customerform.cpp debug\moc_deleteoption.cpp debug\moc_deviceform.cpp debug\moc_exporttoexcel.cpp debug\moc_itemhandler.cpp debug\moc_jsonhandler.cpp debug\moc_logger.cpp debug\moc_mainwindow.cpp debug\moc_myfunctions.cpp debug\moc_productproxy.cpp debug\moc_productregister.cpp debug\moc_proxyview.cpp debug\moc_searchform.cpp debug\moc_serviceedit.cpp debug\moc_tables.cpp
 debug/moc_DatabaseConnection.cpp: ../../DatabaseConnection.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
@@ -1086,6 +1092,140 @@ debug/moc_deviceform.cpp: ../../deviceform.h \
 		debug/moc_predefs.h \
 		C:/newQt/5.15.2/mingw81_32/bin/moc.exe
 	C:\newQt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/kiafa/Documents/QtDBS/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -IC:/newQt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/kiafa/Documents/QtDBS -IC:/newQt/5.15.2/mingw81_32/include -IC:/newQt/5.15.2/mingw81_32/include/QtWidgets -IC:/newQt/5.15.2/mingw81_32/include/QtGui -IC:/newQt/5.15.2/mingw81_32/include/QtANGLE -IC:/newQt/5.15.2/mingw81_32/include/QtSql -IC:/newQt/5.15.2/mingw81_32/include/QtCore -I. -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/newQt/Tools/mingw810_32/i686-w64-mingw32/include ..\..\deviceform.h -o debug\moc_deviceform.cpp
+
+debug/moc_exporttoexcel.cpp: ../../exporttoexcel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QTableView \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtableview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qglobal.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qconfig.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qtcore-config.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsystemdetection.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qprocessordetection.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcompilerdetection.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qtypeinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsysinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qlogging.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qflags.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qbasicatomic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic_bootstrap.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qgenericatomic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic_cxx11.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic_msvc.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qglobalstatic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmutex.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstring.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qchar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qlist.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qiterator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qhashfunctions.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qpair.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qvector.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcontainertools_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qpoint.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qbytearraylist.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregexp.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmargins.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qrect.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsize.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpalette.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qcolor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qrgb.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qrgba64.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qbrush.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qmatrix.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qregion.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qline.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtransform.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qimage.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qfont.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qsizepolicy.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qevent.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qvariant.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qset.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qurl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qfile.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qfiledevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QFileDialog \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qfiledialog.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdir.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qfileinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
+		debug/moc_predefs.h \
+		C:/newQt/5.15.2/mingw81_32/bin/moc.exe
+	C:\newQt\5.15.2\mingw81_32\bin\moc.exe $(DEFINES) --include C:/Users/kiafa/Documents/QtDBS/build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/moc_predefs.h -IC:/newQt/5.15.2/mingw81_32/mkspecs/win32-g++ -IC:/Users/kiafa/Documents/QtDBS -IC:/newQt/5.15.2/mingw81_32/include -IC:/newQt/5.15.2/mingw81_32/include/QtWidgets -IC:/newQt/5.15.2/mingw81_32/include/QtGui -IC:/newQt/5.15.2/mingw81_32/include/QtANGLE -IC:/newQt/5.15.2/mingw81_32/include/QtSql -IC:/newQt/5.15.2/mingw81_32/include/QtCore -I. -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++ -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/i686-w64-mingw32 -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include/c++/backward -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include -IC:/newQt/Tools/mingw810_32/lib/gcc/i686-w64-mingw32/8.1.0/include-fixed -IC:/newQt/Tools/mingw810_32/i686-w64-mingw32/include ..\..\exporttoexcel.h -o debug\moc_exporttoexcel.cpp
 
 debug/moc_itemhandler.cpp: ../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
@@ -2592,9 +2732,50 @@ debug/addabr.o: ../../addabr.cpp ../../addabr.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		ui_addabr.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
 		../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
 		../../DatabaseConnection.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
@@ -2727,6 +2908,21 @@ debug/addoption.o: ../../addoption.cpp ../../addoption.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		ui_addoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
 		../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
@@ -2852,6 +3048,33 @@ debug/changedb.o: ../../changedb.cpp ../../changedb.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		ui_changedb.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QDialogButtonBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdialogbuttonbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QWidget \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/QKeyEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\changedb.o ..\..\changedb.cpp
 
@@ -2970,6 +3193,34 @@ debug/customerform.o: ../../customerform.cpp ../../customerform.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QString \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QDebug \
 		ui_customerform.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
 		../../myfunctions.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
@@ -2983,7 +3234,6 @@ debug/customerform.o: ../../customerform.cpp ../../customerform.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QAction \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
@@ -3097,9 +3347,43 @@ debug/deleteoption.o: ../../deleteoption.cpp ../../deleteoption.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		ui_deleteoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
 		../../myfunctions.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlDatabase \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqldatabase.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qtsqlglobal.h \
@@ -3259,6 +3543,29 @@ debug/deviceform.o: ../../deviceform.cpp ../../deviceform.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
 		ui_deviceform.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QFrame \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
 		../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
 		../../myfunctions.h \
@@ -3278,12 +3585,142 @@ debug/deviceform.o: ../../deviceform.cpp ../../deviceform.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcompleter.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QAbstractItemView \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
 		../../logger.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QFile \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QTextStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\deviceform.o ..\..\deviceform.cpp
+
+debug/exporttoexcel.o: ../../exporttoexcel.cpp C:/newQt/5.15.2/mingw81_32/include/QtCore/QFile \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qfile.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qfiledevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qiodevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qglobal.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qconfig-bootstrapped.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qconfig.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qtcore-config.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsystemdetection.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qprocessordetection.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcompilerdetection.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qtypeinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsysinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qlogging.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qflags.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qbasicatomic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic_bootstrap.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qgenericatomic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic_cxx11.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qatomic_msvc.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qglobalstatic.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmutex.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qnumeric.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qversiontagging.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobject.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobjectdefs.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qnamespace.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobjectdefs_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstring.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qchar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qbytearray.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qrefcount.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qarraydata.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringliteral.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringalgorithms.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringbuilder.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qlist.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qalgorithms.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qiterator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qhashfunctions.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qpair.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qvector.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcontainertools_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qpoint.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qbytearraylist.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringlist.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregexp.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qstringmatcher.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreevent.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qscopedpointer.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmetatype.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qvarlengtharray.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcontainerfwd.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qobject_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QTextStream \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qtextstream.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qlocale.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qvariant.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmap.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdebug.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qhash.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qset.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcontiguouscache.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsharedpointer.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qshareddata.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsharedpointer_impl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QFileDialog \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qfiledialog.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtguiglobal.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtgui-config.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtwidgets-config.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdir.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qfileinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qurl.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qurlquery.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qwindowdefs.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qwindowdefs_win.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qmargins.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpaintdevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qrect.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qsize.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpalette.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qcolor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qrgb.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qrgba64.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qbrush.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qmatrix.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpolygon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qregion.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdatastream.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qline.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtransform.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qimage.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpixelformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpixmap.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qfont.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qfontmetrics.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qfontinfo.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qsizepolicy.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qkeysequence.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qevent.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtableview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\exporttoexcel.o ..\..\exporttoexcel.cpp
 
 debug/itemhandler.o: ../../itemhandler.cpp ../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
@@ -4010,14 +4447,22 @@ debug/mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../addabr.h \
 		../../deleteoption.h \
 		ui_mainwindow.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/QIcon \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMenuBar \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmenubar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmenu.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QStatusBar \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstatusbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/QIcon
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\..\mainwindow.cpp
 
 debug/myfunctions.o: ../../myfunctions.cpp ../../myfunctions.h \
@@ -4360,9 +4805,59 @@ debug/productregister.o: ../../productregister.cpp ../../productregister.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/QCloseEvent \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/QKeyEvent \
 		ui_productregister.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QDateEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdatetimeedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcalendar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
 		../../myfunctions.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QtDebug \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqlquery.h \
@@ -4371,14 +4866,12 @@ debug/productregister.o: ../../productregister.cpp ../../productregister.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QAction \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
 		../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMessageBox \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmessagebox.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdialog.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/QCalendar \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcalendar.h
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QCalendar
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\productregister.o ..\..\productregister.cpp
 
 debug/proxyview.o: ../../proxyview.cpp ../../proxyview.h \
@@ -4575,13 +5068,52 @@ debug/searchform.o: ../../searchform.cpp ../../searchform.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvector2d.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtouchdevice.h \
 		ui_searchform.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/QDebug \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QDialogButtonBox \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdialogbuttonbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QDebug \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/QKeyEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\searchform.o ..\..\searchform.cpp
 
@@ -4703,6 +5235,55 @@ debug/serviceedit.o: ../../serviceedit.cpp ../../serviceedit.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcompleter.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qabstractitemmodel.h \
 		ui_serviceedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QVariant \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QDateEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdatetimeedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qdatetime.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcalendar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHBoxLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLineEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlineedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextcursor.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextformat.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qpen.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QTextEdit \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtextedit.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextdocument.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QVBoxLayout \
 		../../myfunctions.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QAbstractItemModel \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QtDebug \
@@ -4713,26 +5294,11 @@ debug/serviceedit.o: ../../serviceedit.cpp ../../serviceedit.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqlquerymodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QAction \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qaction.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qactiongroup.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QCalendar \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcalendar.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QAbstractItemView \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyleoption.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
 		../../itemhandler.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/QKeyEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\serviceedit.o ..\..\serviceedit.cpp
@@ -4861,16 +5427,13 @@ debug/tables.o: ../../tables.cpp ../../tables.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/QStringList \
 		../../productproxy.h \
 		ui_tables.h \
-		../../myfunctions.h \
-		../../mainwindow.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
-		../../deviceform.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QComboBox \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcombobox.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemdelegate.h \
@@ -4878,20 +5441,39 @@ debug/tables.o: ../../tables.cpp ../../tables.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractspinbox.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qvalidator.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtCore/qregularexpression.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtGui/qicon.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qslider.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractslider.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qstyle.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabbar.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtabwidget.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qrubberband.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/QList \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qframe.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QGridLayout \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QHeaderView \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qheaderview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractitemview.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/qitemselectionmodel.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QPushButton \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qpushbutton.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qabstractbutton.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QSpacerItem \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QTableView \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qtableview.h \
+		../../myfunctions.h \
+		../../mainwindow.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QMainWindow \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qmainwindow.h \
+		../../deviceform.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QLabel \
+		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlabel.h \
+		C:/newQt/5.15.2/mingw81_32/include/QtCore/QList \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QBoxLayout \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qboxlayout.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayout.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qlayoutitem.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qgridlayout.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QCheckBox \
 		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qcheckbox.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlQuery \
@@ -4915,13 +5497,6 @@ debug/tables.o: ../../tables.cpp ../../tables.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtGui/qtextoption.h \
 		../../addabr.h \
 		../../deleteoption.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/QApplication \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qapplication.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qcoreapplication.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtCore/qeventloop.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtWidgets/qdesktopwidget.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qguiapplication.h \
-		C:/newQt/5.15.2/mingw81_32/include/QtGui/qinputmethod.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlDriver \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/qsqldriver.h \
 		C:/newQt/5.15.2/mingw81_32/include/QtSql/QSqlQueryModel \
@@ -4961,6 +5536,9 @@ debug/moc_deleteoption.o: debug/moc_deleteoption.cpp
 
 debug/moc_deviceform.o: debug/moc_deviceform.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_deviceform.o debug\moc_deviceform.cpp
+
+debug/moc_exporttoexcel.o: debug/moc_exporttoexcel.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_exporttoexcel.o debug\moc_exporttoexcel.cpp
 
 debug/moc_itemhandler.o: debug/moc_itemhandler.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_itemhandler.o debug\moc_itemhandler.cpp

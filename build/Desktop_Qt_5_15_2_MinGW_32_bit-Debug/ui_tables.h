@@ -14,9 +14,12 @@
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
+#include <QtWidgets/QProgressBar>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -25,17 +28,20 @@ class Ui_Tables
 {
 public:
     QGridLayout *gridLayout;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *RefreshBtn;
+    QPushButton *mainWindowBtn;
     QTableView *tableView;
-    QComboBox *comboBox_2;
     QPushButton *AddBtn;
-    QPushButton *deleteBtn;
-    QPushButton *SearchBtn;
+    QPushButton *EditBtn;
     QComboBox *comboBox;
     QSpacerItem *horizontalSpacer;
-    QPushButton *mainWindowBtn;
-    QPushButton *EditBtn;
+    QSpacerItem *horizontalSpacer_2;
+    QPushButton *deleteBtn;
+    QComboBox *comboBox_2;
+    QPushButton *SearchBtn;
+    QPushButton *RefreshBtn;
+    QVBoxLayout *verticalLayout;
+    QLabel *label;
+    QProgressBar *progressBar;
 
     void setupUi(QWidget *Tables)
     {
@@ -64,18 +70,19 @@ public:
 "    border-color: #808080; /* Slightly darker border when pressed */\n"
 "}\n"
 "\n"
+"QPushButton:disabled {\n"
+"    background-color: #d3d3d3; /* Grayer color for disabled buttons */\n"
+"    color: #a0a0a0; /* Optional:"
+                        " lighter text color for better contrast */\n"
+"}\n"
 "\n"
 "QWidget {font: 12pt \"Segoe UI\";}"));
         gridLayout = new QGridLayout(Tables);
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+        mainWindowBtn = new QPushButton(Tables);
+        mainWindowBtn->setObjectName(QString::fromUtf8("mainWindowBtn"));
 
-        gridLayout->addItem(horizontalSpacer_2, 0, 4, 1, 1);
-
-        RefreshBtn = new QPushButton(Tables);
-        RefreshBtn->setObjectName(QString::fromUtf8("RefreshBtn"));
-
-        gridLayout->addWidget(RefreshBtn, 0, 6, 1, 1);
+        gridLayout->addWidget(mainWindowBtn, 0, 4, 1, 1);
 
         tableView = new QTableView(Tables);
         tableView->setObjectName(QString::fromUtf8("tableView"));
@@ -92,27 +99,17 @@ public:
         tableView->horizontalHeader()->setStretchLastSection(false);
         tableView->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
 
-        gridLayout->addWidget(tableView, 2, 0, 1, 12);
-
-        comboBox_2 = new QComboBox(Tables);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-
-        gridLayout->addWidget(comboBox_2, 0, 1, 1, 1);
+        gridLayout->addWidget(tableView, 4, 0, 1, 13);
 
         AddBtn = new QPushButton(Tables);
         AddBtn->setObjectName(QString::fromUtf8("AddBtn"));
 
-        gridLayout->addWidget(AddBtn, 0, 7, 1, 1);
+        gridLayout->addWidget(AddBtn, 0, 8, 1, 1);
 
-        deleteBtn = new QPushButton(Tables);
-        deleteBtn->setObjectName(QString::fromUtf8("deleteBtn"));
+        EditBtn = new QPushButton(Tables);
+        EditBtn->setObjectName(QString::fromUtf8("EditBtn"));
 
-        gridLayout->addWidget(deleteBtn, 0, 10, 1, 1);
-
-        SearchBtn = new QPushButton(Tables);
-        SearchBtn->setObjectName(QString::fromUtf8("SearchBtn"));
-
-        gridLayout->addWidget(SearchBtn, 0, 8, 1, 1);
+        gridLayout->addWidget(EditBtn, 0, 10, 1, 1);
 
         comboBox = new QComboBox(Tables);
         comboBox->addItem(QString());
@@ -131,17 +128,49 @@ public:
 
         horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
+        gridLayout->addItem(horizontalSpacer, 0, 3, 1, 1);
 
-        mainWindowBtn = new QPushButton(Tables);
-        mainWindowBtn->setObjectName(QString::fromUtf8("mainWindowBtn"));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(mainWindowBtn, 0, 3, 1, 1);
+        gridLayout->addItem(horizontalSpacer_2, 0, 5, 1, 1);
 
-        EditBtn = new QPushButton(Tables);
-        EditBtn->setObjectName(QString::fromUtf8("EditBtn"));
+        deleteBtn = new QPushButton(Tables);
+        deleteBtn->setObjectName(QString::fromUtf8("deleteBtn"));
 
-        gridLayout->addWidget(EditBtn, 0, 9, 1, 1);
+        gridLayout->addWidget(deleteBtn, 0, 11, 1, 1);
+
+        comboBox_2 = new QComboBox(Tables);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+
+        gridLayout->addWidget(comboBox_2, 0, 1, 1, 1);
+
+        SearchBtn = new QPushButton(Tables);
+        SearchBtn->setObjectName(QString::fromUtf8("SearchBtn"));
+
+        gridLayout->addWidget(SearchBtn, 0, 9, 1, 1);
+
+        RefreshBtn = new QPushButton(Tables);
+        RefreshBtn->setObjectName(QString::fromUtf8("RefreshBtn"));
+
+        gridLayout->addWidget(RefreshBtn, 0, 7, 1, 1);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        label = new QLabel(Tables);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        verticalLayout->addWidget(label);
+
+        progressBar = new QProgressBar(Tables);
+        progressBar->setObjectName(QString::fromUtf8("progressBar"));
+        progressBar->setMaximum(1000);
+        progressBar->setValue(0);
+
+        verticalLayout->addWidget(progressBar);
+
+
+        gridLayout->addLayout(verticalLayout, 2, 0, 1, 12);
 
         QWidget::setTabOrder(comboBox, comboBox_2);
         QWidget::setTabOrder(comboBox_2, mainWindowBtn);
@@ -160,17 +189,18 @@ public:
     void retranslateUi(QWidget *Tables)
     {
         Tables->setWindowTitle(QCoreApplication::translate("Tables", "\330\254\330\257\331\210\331\204", nullptr));
-        RefreshBtn->setText(QCoreApplication::translate("Tables", "\330\250\330\247\330\262\330\256\331\210\330\247\331\206\333\214", nullptr));
+        mainWindowBtn->setText(QCoreApplication::translate("Tables", "\330\265\331\201\330\255\331\207 \330\247\330\265\331\204\333\214", nullptr));
         AddBtn->setText(QCoreApplication::translate("Tables", "\330\247\331\201\330\262\331\210\330\257\331\206", nullptr));
-        deleteBtn->setText(QCoreApplication::translate("Tables", "\330\255\330\260\331\201", nullptr));
-        SearchBtn->setText(QCoreApplication::translate("Tables", "\330\254\330\263\330\252\330\254\331\210", nullptr));
+        EditBtn->setText(QCoreApplication::translate("Tables", "\331\210\333\214\330\261\330\247\333\214\330\264", nullptr));
         comboBox->setItemText(0, QCoreApplication::translate("Tables", "\331\205\330\264\330\252\330\261\333\214\330\247\331\206", nullptr));
         comboBox->setItemText(1, QCoreApplication::translate("Tables", "\330\256\330\257\331\205\330\247\330\252", nullptr));
         comboBox->setItemText(2, QCoreApplication::translate("Tables", "\330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247", nullptr));
         comboBox->setItemText(3, QCoreApplication::translate("Tables", "\331\205\330\255\330\265\331\210\331\204\330\247\330\252", nullptr));
 
-        mainWindowBtn->setText(QCoreApplication::translate("Tables", "\330\265\331\201\330\255\331\207 \330\247\330\265\331\204\333\214", nullptr));
-        EditBtn->setText(QCoreApplication::translate("Tables", "\331\210\333\214\330\261\330\247\333\214\330\264", nullptr));
+        deleteBtn->setText(QCoreApplication::translate("Tables", "\330\255\330\260\331\201", nullptr));
+        SearchBtn->setText(QCoreApplication::translate("Tables", "\330\254\330\263\330\252\330\254\331\210", nullptr));
+        RefreshBtn->setText(QCoreApplication::translate("Tables", "\330\250\330\247\330\262\330\256\331\210\330\247\331\206\333\214", nullptr));
+        label->setText(QCoreApplication::translate("Tables", "\330\257\330\261 \330\255\330\247\331\204 \330\247\330\266\330\247\331\201\331\207 \332\251\330\261\330\257\331\206 \330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247. \331\204\330\267\331\201\330\247 \331\205\331\206\330\252\330\270\330\261 \330\250\331\205\330\247\331\206\333\214\330\257.", nullptr));
     } // retranslateUi
 
 };

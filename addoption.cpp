@@ -11,7 +11,9 @@ AddOption::AddOption(QWidget *parent) :
     lineEdit_2(new QLineEdit()),
     devCalled(false)
 {
+    // ui->lineEdit->clear();
     ui->setupUi(this);
+
 //    devCalled=false;
     ui->verticalLayout_3->addWidget(lineEdit_2);
     lineEdit_2->hide();
@@ -142,6 +144,7 @@ void AddOption::on_pushButton_clicked()
     this->close();
 }
 void AddOption::cleanupDevice() {
+    ui->lineEdit->clear();
     if (devCalled) {
         lineEdit_2->hide();
         if (editButton) {

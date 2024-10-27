@@ -37,6 +37,8 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 {
 
     ui->setupUi(this);
+    ui->progressBar->setHidden(true);
+    ui->label->setHidden(true);
 //    ui->Edit->hide();
 //    QSqlDatabase db;
 //    db = QSqlDatabase ::addDatabase("QSQLITE");
@@ -125,7 +127,7 @@ void Tables::setupTable(QString table){
 
 }
     else {qDebug() << "wrong input";}
-this->show();
+this->showMaximized();
 this->activateWindow();
 
 }
@@ -514,4 +516,31 @@ void Tables::keyPressEvent(QKeyEvent *event){
         event->accept();
     }
     else{}
+}
+void Tables::handlePBStarted(){
+    ui->progressBar->setHidden(false);
+    ui->label->setHidden(false);
+    handleBtnEnable(true);
+}
+void Tables::handlePBFinished(){
+    ui->progressBar->setHidden(true);
+    ui->label->setHidden(true);
+    handleBtnEnable(false);
+}
+void Tables::setPBValue(int val){
+    ui->progressBar->setValue(val);
+}
+void Tables::setPBRange(int range){
+    ui->progressBar->setRange(0,range);
+}
+void Tables::handleBtnEnable(bool a){
+    ui->comboBox->setDisabled(a);
+    ui->comboBox_2->setDisabled(a);
+    ui->AddBtn->setDisabled(a);
+    ui->EditBtn->setDisabled(a);
+    ui->RefreshBtn->setDisabled(a);
+    ui->SearchBtn->setDisabled(a);
+    ui->deleteBtn->setDisabled(a);
+    ui->mainWindowBtn->setDisabled(a);
+    ui->tableView->setDisabled(a);
 }

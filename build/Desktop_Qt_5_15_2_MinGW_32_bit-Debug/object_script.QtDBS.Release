@@ -6,6 +6,7 @@ release/changedb.o
 release/customerform.o
 release/deleteoption.o
 release/deviceform.o
+release/exporttoexcel.o
 release/itemhandler.o
 release/jsonhandler.o
 release/logger.o
@@ -26,6 +27,7 @@ release/moc_changedb.o
 release/moc_customerform.o
 release/moc_deleteoption.o
 release/moc_deviceform.o
+release/moc_exporttoexcel.o
 release/moc_itemhandler.o
 release/moc_jsonhandler.o
 release/moc_logger.o

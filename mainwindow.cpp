@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
     // qDebug() << qApp->applicationDirPath();
     // qDebug() << ItemHandler::loadDevices();
     // qDebug() << "reverseSN" << MyFunctions::reverseSN("B00n8892");
-    this->show();
+    this->showMaximized();
     this->activateWindow();
 
     QObject::connect(x, &Tables::searchActive, &r, &SearchForm::receiveTableIndex);
@@ -46,6 +46,11 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&c, &CustomerForm::callPageRefresh, &d, &DeviceForm::getCustomers);
     QObject::connect(&s, &serviceEdit::callPageRefresh, x,&Tables::pageRefresh);
     QObject::connect(&dO,&DeleteOption::refresh,&d,&DeviceForm::refresh);
+    QObject::connect(&d, &DeviceForm::showPB, x,&Tables::handlePBStarted);
+    QObject::connect(&d, &DeviceForm::hidePB, x,&Tables::handlePBFinished);
+    QObject::connect(&d, &DeviceForm::setPBRange, x,&Tables::setPBRange);
+    QObject::connect(&d, &DeviceForm::setPBVal, x,&Tables::setPBValue);
+
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

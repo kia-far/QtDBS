@@ -14,14 +14,22 @@
 #include <QAbstractItemView>
 #include "logger.h"
 #include <QKeyEvent>
+#include <QtConcurrent/QtConcurrentRun>
+#include <QtConcurrent/QtConcurrent>
+
 
 DeviceForm::DeviceForm(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::DeviceForm),
     db(DatabaseConnection::getInstance())
 {
+    // progressBar;
     ui->setupUi(this);
+    ui->spinBox->setMinimumSize(50,25);
+    ui->spinBox->setValue(1);
+    ui->spinBox->setDisabled(true);
     admiMode=false;
+    checked = true;
     setup();
     if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
@@ -48,6 +56,10 @@ void DeviceForm::trigger(QString device){
 
 void DeviceForm::setup(){
     ui->lineEdit->setReadOnly(false);
+    ui->checkBox->setDisabled(false);
+    ui->checkBox->setChecked(false);
+    ui->spinBox->setValue(1);
+    ui->spinBox->setDisabled(true);
     getCustomers();
     if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
     else {ui->AddItemBtn->show();ui->pushButton_2->show(); }
@@ -155,16 +167,16 @@ void DeviceForm::createNewItem(QString itemName, int index) {
         connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, comboBox, itemName](int index) {
             if (index == setupOptions(itemName).size() + 1) {
                 addOption(currentDevice, itemName);
+                comboBox->setCurrentIndex(0);
             }
-            comboBox->setCurrentIndex(0);
         });
 
         comboBox->insertItem(setupOptions(itemName).size() + 2, "پاک کردن گزینه");
         connect(comboBox, QOverload<int>::of(&QComboBox::currentIndexChanged), this, [this, comboBox , itemName](int index) {
             if (index == setupOptions(itemName).size() + 2) {
                 removeOption(currentDevice, itemName);
+                comboBox->setCurrentIndex(0);
             }
-            comboBox->setCurrentIndex(0);
         });
     }
 
@@ -211,6 +223,10 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
     ui->comboBox->clear();
     ui->comboBox->addItem(device);
     ui->lineEdit->setReadOnly(true);
+    ui->checkBox->setChecked(false);
+    ui->checkBox->setDisabled(true);
+    ui->spinBox->setValue(1);
+    ui->spinBox->setDisabled(true);
     edit = true;
     QString newText="";
     QSqlQuery query(db.getConnection());
@@ -257,7 +273,7 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
 }
 void DeviceForm::on_SubmitBtn_clicked()
 {
-
+    // addBulk();
     if(MyFunctions::checkSN( ui->lineEdit->text())){
         if(!MyFunctions::deviceFromLetter(ui->lineEdit->text(),currentDevice)){
             QMessageBox msgBox;
@@ -270,7 +286,14 @@ void DeviceForm::on_SubmitBtn_clicked()
             int res = msgBox.exec();
             switch(res) {
             case QMessageBox::Yes :{
-                submit();
+                if(ui->spinBox->text().toInt()>1){
+                    if(checkBulkSN()){
+                    QtConcurrent::run(this, &DeviceForm::addBulk);
+                    }
+
+                }
+                else{
+                    submit(ui->lineEdit->text(),1);}
                 break;
             }
             case QMessageBox::No :{
@@ -282,7 +305,15 @@ void DeviceForm::on_SubmitBtn_clicked()
             }
         }
         else{
-            submit();
+            if(ui->spinBox->text().toInt()>1){
+                if(ui->spinBox->text().toInt()>1){
+                    if(checkBulkSN()){
+                    QtConcurrent::run(this, &DeviceForm::addBulk);
+                    }
+                }
+            }
+            else{
+                submit(ui->lineEdit->text(),1);}
 
         }
 }
@@ -292,7 +323,7 @@ void DeviceForm::on_SubmitBtn_clicked()
     msgBox.setText("شماره سریال صحیح نمیباشد");
     msgBox.setStandardButtons(QMessageBox::Ok);
     msgBox.exec();}
-}
+    }
 
 void DeviceForm::addOption(QString deviceName,QString itemName){
 //    qDebug() << "option possibly added : " << itemName;
@@ -308,32 +339,27 @@ void DeviceForm::addDevice(){
     emit devicePage();
 }
 
-void DeviceForm::submit(){
+void DeviceForm::submit(QString SN,int countt){
     if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
-    QString newText="";
+        QVariantList givenData;
 
-    QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
-    //description TEXT, belongings TEXT
-    for (QLabel *label : labels) {
-        QString text = label->text(); // Get the text from the QLineEdit
-        //        qDebug() << "column" << label->objectName() << ":" << text;
-        for(int i=0;i<text.size(); i++){
-            if (text.at(i)==" "){newText.append("_");}
-            else{newText.append(text.at(i));}
+        if(countt>1&&checked){
+            setColumns();
+            setChecks();
+            setCombos();
+            givenData = {MyFunctions::reverseSN(SN).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
+            for(QString string: combos)
+                {    givenData.append(string);}            checked = false;
         }
-        columns.append(text);
-    }
-    QString checks = "";
-    for (QCheckBox *checkBox : checkBoxes){
-        if(checkBox->isChecked()){
-            checks.append(checkBox->text()+" ");}
-    }
-    QVariantList givenData = {MyFunctions::reverseSN( ui->lineEdit->text()).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
-    for (QComboBox *comboBox : comboBoxes) {
-        QString text = comboBox->currentText();
-        //        qDebug() << "Data" << comboBox->objectName() << ":" << text;
-        givenData.append(text);
-    }
+        else{
+            setColumns();
+            setChecks();
+            setCombos();
+            givenData = {MyFunctions::reverseSN(SN).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
+            for(QString string: combos)
+                {    givenData.append(string);}
+        }
+        givenData[0] = MyFunctions::reverseSN(SN).toUInt();
     if (!edit){
         QSqlQuery q(db.getConnection());
         q.prepare("INSERT INTO ProductInfo (SerialNO , ProductName) VALUES (? ,?)");
@@ -346,7 +372,7 @@ void DeviceForm::submit(){
         }
         q.prepare("INSERT INTO ProductSecInfo (SerialNO) VALUES (?)");
         q.addBindValue(givenData[0].toString());
-
+        qDebug() << givenData;
         bool err = q.exec();
         if (!err) {
             qDebug() << "Error in ProductSecInfo insert:" << q.lastError().text();
@@ -354,7 +380,7 @@ void DeviceForm::submit(){
         if(er&&err){
             ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
             logger::log("inserted product Info and product sec info : "+ QString::number(er)+" & "  +QString::number(err)+" inserted data for " + currentDevice);
-            pageUpdate();
+            if(countt==1) emit pageUpdate();
             this->close();
         }
         else{
@@ -370,10 +396,10 @@ void DeviceForm::submit(){
     else {
         logger::log("updated "+ currentDevice + " table");
         ItemHandler::updateTable(currentDevice,columns,givenData);
-        emit pageUpdate();
+        if(countt==1)emit pageUpdate();
         this->close();
     }
-}
+    }
     else{
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Critical);
@@ -418,6 +444,7 @@ void DeviceForm::getCustomers() {
     }
     customers = res;
     QCompleter *cCompleter = new QCompleter(customers);
+    cCompleter->setFilterMode(Qt::MatchContains);
     cCompleter->popup()->setStyleSheet("font-size: 20px");
     ui->CustomerCombo->setCompleter(cCompleter);
 
@@ -546,4 +573,123 @@ void DeviceForm::setTabOrders(){
     // }
 
 
+}
+
+
+
+void DeviceForm::on_checkBox_stateChanged(int arg1)
+{
+    ui->spinBox->setDisabled(!arg1);
+    // addBulk();
+}
+
+void DeviceForm::addBulk(){
+    emit setPBRange(ui->spinBox->text().toInt());
+    handleStarted();
+    // ui->progressBar->setRange(0,ui->spinBox->text().toInt());
+        QSqlQuery query(db.getConnection());
+        QString serialno = ui->lineEdit->text();
+        setColumns();
+        setChecks();
+        for(int i=0;i<ui->spinBox->text().toInt();i++){
+            submit(serialno,2);
+            emit setPBVal(i);
+            //
+            unsigned int a = MyFunctions::reverseSN(serialno).toUInt();
+            a +=1;
+            serialno = MyFunctions::intToStr(a);
+        }
+        handleFinished();
+    checked = true;
+
+
+}
+bool DeviceForm::checkBulkSN(){
+    QSqlQuery query(db.getConnection());
+
+    QStringList res;
+    QString serialno = ui->lineEdit->text();
+    for(int i=0;i<ui->spinBox->text().toInt();i++){
+
+        query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE ?");
+        query.addBindValue(MyFunctions::reverseSN(serialno));  // Use wildcards for partial match
+
+        // Execute the query
+        if (query.exec()) {
+
+            while (query.next()) {
+                res.append( query.value(0).toString());
+            }
+        } else {
+            qDebug() << "Query execution failed:" << query.lastError().text();
+        }
+        unsigned int a = MyFunctions::reverseSN(serialno).toUInt();
+        a +=1;
+        serialno = MyFunctions::intToStr(a);
+    }
+    if(res.isEmpty()){
+        qDebug() << "no duplicates";
+        return true;
+    }
+
+    else{
+        // qDebug () << res;
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        QString msgTxt;
+        if(res.size()>1){
+            msgTxt = "شماره سریال های";
+            for(int i=0;i<res.size();i++){
+                msgTxt.append(" "+MyFunctions::intToStr( res[i].toUInt()));
+            }
+            msgTxt.append(" تکراری میباشند");
+        }
+        else{
+            msgTxt = "شماره سریال ";
+            msgTxt.append(MyFunctions::intToStr( res[0].toUInt()));
+            msgTxt.append(" تکراری است");
+        }
+        msgBox.setText(msgTxt);
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+        return false;
+    }
+}
+void DeviceForm::setColumns(){
+    QString newText = "";
+    columns=QStringList( {"SerialNumber", "CustomerName" ,"description","belongings"});
+    //description TEXT, belongings TEXT
+    for (QLabel *label : labels) {
+        QString text = label->text();
+        for(int i=0;i<text.size(); i++){
+            if (text.at(i)==" "){newText.append("_");}
+            else{newText.append(text.at(i));}
+        }
+        columns.append(text);
+    }
+    // qDebug () << columns;
+}
+void DeviceForm::setChecks(){
+    QString checks = "";
+    for (QCheckBox *checkBox : checkBoxes){
+        if(checkBox->isChecked()){
+            checks.append(checkBox->text()+" ");}
+    }
+    this->checks = checks;
+}
+void DeviceForm::setCombos(){
+    combos = QStringList({});
+    for (QComboBox *comboBox : comboBoxes) {
+        QString text = comboBox->currentText();
+        combos.append(text);
+    }
+}
+void DeviceForm::handleStarted(){
+    // qDebug() << "handle started yooo";
+    emit showPB();
+}
+void DeviceForm::handleFinished(){
+    emit hidePB();
+    emit pageUpdate();
 }

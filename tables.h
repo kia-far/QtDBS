@@ -21,7 +21,11 @@ public:
     void searchInfo(QString searchParam,QString searchText);
     void setupTable(QString table);
     void pageRefresh();
-
+    void handlePBStarted();
+    void handlePBFinished();
+    void setPBRange(int a);
+    void setPBValue(int a);
+    void handleBtnEnable(bool a);
 signals:
     void editDevice(QString device,unsigned int id);
     void edit(unsigned int serialNum,int index);

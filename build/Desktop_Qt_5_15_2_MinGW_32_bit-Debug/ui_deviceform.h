@@ -11,6 +11,7 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
@@ -19,6 +20,7 @@
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
+#include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -29,7 +31,6 @@ class Ui_DeviceForm
 {
 public:
     QHBoxLayout *horizontalLayout_10;
-    QSpacerItem *horizontalSpacer_4;
     QVBoxLayout *verticalLayout;
     QVBoxLayout *verticalLayout_6;
     QHBoxLayout *horizontalLayout_9;
@@ -44,6 +45,10 @@ public:
     QPushButton *pushButton_2;
     QLineEdit *lineEdit;
     QLabel *label;
+    QHBoxLayout *horizontalLayout_12;
+    QSpinBox *spinBox;
+    QSpacerItem *horizontalSpacer_4;
+    QCheckBox *checkBox;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *pushButton;
@@ -62,12 +67,12 @@ public:
     QPushButton *AddItemBtn;
     QFrame *line_2;
     QVBoxLayout *verticalLayout_2;
-    QHBoxLayout *horizontalLayout_2;
-    QTextEdit *textEdit;
-    QLabel *label_2;
     QHBoxLayout *horizontalLayout_8;
     QGridLayout *cbg;
     QLabel *label_4;
+    QHBoxLayout *horizontalLayout_2;
+    QTextEdit *textEdit;
+    QLabel *label_2;
     QHBoxLayout *horizontalLayout_4;
     QSpacerItem *horizontalSpacer;
     QPushButton *SubmitBtn;
@@ -104,10 +109,6 @@ public:
 "QWidget {font: 12pt \"Segoe UI\";}"));
         horizontalLayout_10 = new QHBoxLayout(DeviceForm);
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
-        horizontalSpacer_4 = new QSpacerItem(306, 20, QSizePolicy::Policy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_10->addItem(horizontalSpacer_4);
-
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
@@ -192,6 +193,27 @@ public:
 
 
         verticalLayout_3->addLayout(horizontalLayout);
+
+        horizontalLayout_12 = new QHBoxLayout();
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        spinBox = new QSpinBox(DeviceForm);
+        spinBox->setObjectName(QString::fromUtf8("spinBox"));
+        spinBox->setFrame(true);
+        spinBox->setMaximum(1000);
+
+        horizontalLayout_12->addWidget(spinBox);
+
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_12->addItem(horizontalSpacer_4);
+
+        checkBox = new QCheckBox(DeviceForm);
+        checkBox->setObjectName(QString::fromUtf8("checkBox"));
+
+        horizontalLayout_12->addWidget(checkBox);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_12);
 
         verticalLayout_4 = new QVBoxLayout();
         verticalLayout_4->setObjectName(QString::fromUtf8("verticalLayout_4"));
@@ -302,6 +324,23 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         verticalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
+        horizontalLayout_8 = new QHBoxLayout();
+        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        cbg = new QGridLayout();
+        cbg->setObjectName(QString::fromUtf8("cbg"));
+        cbg->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
+
+        horizontalLayout_8->addLayout(cbg);
+
+        label_4 = new QLabel(DeviceForm);
+        label_4->setObjectName(QString::fromUtf8("label_4"));
+        label_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
+
+        horizontalLayout_8->addWidget(label_4);
+
+
+        verticalLayout_2->addLayout(horizontalLayout_8);
+
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
         horizontalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
@@ -322,23 +361,6 @@ public:
 
 
         verticalLayout_2->addLayout(horizontalLayout_2);
-
-        horizontalLayout_8 = new QHBoxLayout();
-        horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
-        cbg = new QGridLayout();
-        cbg->setObjectName(QString::fromUtf8("cbg"));
-        cbg->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
-
-        horizontalLayout_8->addLayout(cbg);
-
-        label_4 = new QLabel(DeviceForm);
-        label_4->setObjectName(QString::fromUtf8("label_4"));
-        label_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
-
-        horizontalLayout_8->addWidget(label_4);
-
-
-        verticalLayout_2->addLayout(horizontalLayout_8);
 
         horizontalLayout_4 = new QHBoxLayout();
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
@@ -383,12 +405,13 @@ public:
         label_5->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
         pushButton_2->setText(QCoreApplication::translate("DeviceForm", "...", nullptr));
         label->setText(QCoreApplication::translate("DeviceForm", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));
+        checkBox->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\254\331\205\330\271\333\214", nullptr));
         pushButton->setText(QCoreApplication::translate("DeviceForm", "+", nullptr));
         label_3->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\256\330\261\333\214\330\257\330\247\330\261 :", nullptr));
         label_6->setText(QCoreApplication::translate("DeviceForm", "\331\202\330\267\330\271\330\247\330\252 :", nullptr));
         AddItemBtn->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \331\202\330\267\330\271\331\207", nullptr));
-        label_2->setText(QCoreApplication::translate("DeviceForm", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));
         label_4->setText(QCoreApplication::translate("DeviceForm", "\331\205\330\252\330\271\331\204\331\202\330\247\330\252 :", nullptr));
+        label_2->setText(QCoreApplication::translate("DeviceForm", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));
         SubmitBtn->setText(QCoreApplication::translate("DeviceForm", "\330\253\330\250\330\252", nullptr));
     } // retranslateUi
 

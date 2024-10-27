@@ -18,6 +18,7 @@ SOURCES += \
     customerform.cpp \
     deleteoption.cpp \
     deviceform.cpp \
+    exporttoexcel.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
     logger.cpp \
@@ -40,6 +41,7 @@ HEADERS += \
     customerform.h \
     deleteoption.h \
     deviceform.h \
+    exporttoexcel.h \
     itemhandler.h \
     jsonhandler.h \
     logger.h \

@@ -6,6 +6,7 @@ debug/changedb.o
 debug/customerform.o
 debug/deleteoption.o
 debug/deviceform.o
+debug/exporttoexcel.o
 debug/itemhandler.o
 debug/jsonhandler.o
 debug/logger.o
@@ -26,6 +27,7 @@ debug/moc_changedb.o
 debug/moc_customerform.o
 debug/moc_deleteoption.o
 debug/moc_deviceform.o
+debug/moc_exporttoexcel.o
 debug/moc_itemhandler.o
 debug/moc_jsonhandler.o
 debug/moc_logger.o
