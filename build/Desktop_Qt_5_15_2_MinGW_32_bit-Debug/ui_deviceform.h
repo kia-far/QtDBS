@@ -175,7 +175,7 @@ public:
 
         lineEdit = new QLineEdit(DeviceForm);
         lineEdit->setObjectName(QString::fromUtf8("lineEdit"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Fixed);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
@@ -185,8 +185,11 @@ public:
 
         label = new QLabel(DeviceForm);
         label->setObjectName(QString::fromUtf8("label"));
-        sizePolicy2.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
-        label->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy3);
         label->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout->addWidget(label);
@@ -240,8 +243,8 @@ public:
 
         label_3 = new QLabel(DeviceForm);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy3);
         label_3->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_3->addWidget(label_3);
@@ -267,8 +270,8 @@ public:
 
         label_6 = new QLabel(DeviceForm);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy2.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy3);
 
         horizontalLayout_14->addWidget(label_6);
 
@@ -346,16 +349,16 @@ public:
         horizontalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         textEdit = new QTextEdit(DeviceForm);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        sizePolicy2.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
+        textEdit->setSizePolicy(sizePolicy3);
         textEdit->setTabChangesFocus(true);
 
         horizontalLayout_2->addWidget(textEdit);
 
         label_2 = new QLabel(DeviceForm);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy2);
+        sizePolicy3.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy3);
 
         horizontalLayout_2->addWidget(label_2);
 

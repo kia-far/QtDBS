@@ -2423,3 +2423,9 @@
 2024-10-27 13:08:57 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
 2024-10-27 13:08:58 - inserted product Info and product sec info : 1 & 1 inserted data for Soroush
 2024-10-27 13:09:02 - product proxy called
+2024-10-27 13:13:35 - data loaded for product info and product sec info!
+2024-10-27 13:13:36 - data loaded for product info and product sec info!
+2024-10-27 13:13:41 - product proxy called
+2024-10-27 13:15:42 - data loaded for product info and product sec info!
+2024-10-27 13:15:43 - data loaded for product info and product sec info!
+2024-10-27 13:15:43 - product proxy called

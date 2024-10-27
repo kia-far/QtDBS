@@ -126,7 +126,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <widget class="QLineEdit" name="lineEdit">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -223,7 +223,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
            <item>
             <widget class="QComboBox" name="CustomerCombo">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
