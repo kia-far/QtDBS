@@ -555,6 +555,12 @@ void Tables::getExport(){
 
 void Tables::on_toolButton_triggered(QAction *arg1)
 {
+    // getExport();
+}
+
+
+void Tables::on_toolButton_clicked()
+{
     getExport();
 }
 

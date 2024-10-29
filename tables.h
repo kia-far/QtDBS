@@ -65,6 +65,8 @@ private slots:
 
     void on_toolButton_triggered(QAction *arg1);
 
+    void on_toolButton_clicked();
+
 private:
     void deleteRow(unsigned int ID, QString device);
     Ui::Tables *ui;

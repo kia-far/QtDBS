@@ -246,7 +246,8 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
     } else {
         qDebug() << "Query execution failed:" << query.lastError().text();
     }
-
+    // qDebug() << "this is res "<<res ;
+    // qDebug() << "this is ID" <<id;
     ui->CustomerCombo->setCurrentText(res[1]);
     ui->textEdit->setText(res[2]);
     QStringList columns={"SerialNumber", "CustomerName" ,"description","belongings"};
@@ -265,6 +266,7 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
 //        qDebug() << "Data" << comboBox->objectName() << ":" << text;
 //        givenData.append(text);
     comboBox->setCurrentText(res[count]);
+qDebug() << res[count]<<"this is res "<<count;
     count++;
     }
 

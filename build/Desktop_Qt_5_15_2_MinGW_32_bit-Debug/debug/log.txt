@@ -2456,3 +2456,52 @@
 2024-10-27 15:01:32 - data loaded for product info and product sec info!
 2024-10-27 15:01:33 - data loaded for product info and product sec info!
 2024-10-27 15:01:34 - product proxy called
+2024-10-29 09:17:04 - data loaded for product info and product sec info!
+2024-10-29 09:17:05 - data loaded for product info and product sec info!
+2024-10-29 09:17:10 - product proxy called
+2024-10-29 09:17:38 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:39 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:40 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:41 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:41 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:42 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:43 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:43 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:44 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:45 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:17:46 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:29:45 - data loaded for product info and product sec info!
+2024-10-29 09:29:46 - data loaded for product info and product sec info!
+2024-10-29 09:29:47 - product proxy called
+2024-10-29 09:30:31 - data loaded for product info and product sec info!
+2024-10-29 09:30:32 - data loaded for product info and product sec info!
+2024-10-29 09:31:13 - data loaded for product info and product sec info!
+2024-10-29 09:31:14 - data loaded for product info and product sec info!
+2024-10-29 09:31:15 - product proxy called
+2024-10-29 09:31:50 - data loaded for product info and product sec info!
+2024-10-29 09:31:51 - data loaded for product info and product sec info!
+2024-10-29 09:31:52 - product proxy called
+2024-10-29 09:34:27 - data loaded for product info and product sec info!
+2024-10-29 09:34:27 - data loaded for product info and product sec info!
+2024-10-29 09:35:01 - data loaded for product info and product sec info!
+2024-10-29 09:35:02 - data loaded for product info and product sec info!
+2024-10-29 09:35:03 - product proxy called
+2024-10-29 09:36:42 - data loaded for product info and product sec info!
+2024-10-29 09:36:42 - data loaded for product info and product sec info!
+2024-10-29 09:36:44 - product proxy called
+2024-10-29 09:43:26 - data loaded for product info and product sec info!
+2024-10-29 09:43:26 - data loaded for product info and product sec info!
+2024-10-29 09:43:32 - product proxy called
+2024-10-29 09:45:00 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:45:01 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:45:01 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:45:02 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:45:03 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:45:03 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:45:04 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-10-29 09:48:11 - data loaded for product info and product sec info!
+2024-10-29 09:48:12 - data loaded for product info and product sec info!
+2024-10-29 09:48:14 - product proxy called
+2024-10-29 09:48:58 - data loaded for product info and product sec info!
+2024-10-29 09:48:59 - data loaded for product info and product sec info!
+2024-10-29 09:49:00 - product proxy called
