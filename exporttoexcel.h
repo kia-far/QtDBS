@@ -3,6 +3,8 @@
 
 #include <QObject>
 #include <QTableView>
+#include <QList>
+#include <QVariant>
 
 class ExportExcel : public QObject {
     Q_OBJECT
@@ -11,6 +13,9 @@ public:
 
     // Method to export data to an Excel file
     void exportToXlsx(QTableView *tableView);
+
+    // Method to get data from a specific row
+    QList<QVariant> getRowData(QTableView *tableView, int row);
 
 signals:
     void exportSuccess(const QString &filePath);

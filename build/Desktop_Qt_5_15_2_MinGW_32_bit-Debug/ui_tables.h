@@ -44,6 +44,7 @@ public:
     QPushButton *deleteBtn;
     QSpacerItem *horizontalSpacer_2;
     QToolButton *toolButton;
+    QLabel *label_2;
 
     void setupUi(QWidget *Tables)
     {
@@ -179,6 +180,12 @@ public:
 
         gridLayout->addWidget(toolButton, 5, 12, 1, 1);
 
+        label_2 = new QLabel(Tables);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
+
+        gridLayout->addWidget(label_2, 5, 0, 1, 12);
+
         QWidget::setTabOrder(comboBox, comboBox_2);
         QWidget::setTabOrder(comboBox_2, mainWindowBtn);
         QWidget::setTabOrder(mainWindowBtn, RefreshBtn);
@@ -212,6 +219,7 @@ public:
         toolButton->setToolTip(QCoreApplication::translate("Tables", "<html><head/><body><p>\330\256\330\261\331\210\330\254\333\214 \330\247\332\251\330\263\331\204</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         toolButton->setText(QCoreApplication::translate("Tables", "...", nullptr));
+        label_2->setText(QCoreApplication::translate("Tables", "TextLabel", nullptr));
     } // retranslateUi
 
 };

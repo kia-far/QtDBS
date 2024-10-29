@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QDateEdit>
 #include <QtWidgets/QFrame>
 #include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
@@ -54,6 +55,13 @@ public:
     QPushButton *pushButton;
     QComboBox *CustomerCombo;
     QLabel *label_3;
+    QVBoxLayout *verticalLayout_9;
+    QHBoxLayout *horizontalLayout_17;
+    QDateEdit *dateEdit;
+    QLabel *label_7;
+    QHBoxLayout *horizontalLayout_16;
+    QDateEdit *dateEdit_2;
+    QLabel *label_8;
     QVBoxLayout *verticalLayout_7;
     QVBoxLayout *verticalLayout_5;
     QHBoxLayout *horizontalLayout_14;
@@ -255,6 +263,41 @@ public:
 
         verticalLayout_3->addLayout(verticalLayout_4);
 
+        verticalLayout_9 = new QVBoxLayout();
+        verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
+        horizontalLayout_17 = new QHBoxLayout();
+        horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
+        dateEdit = new QDateEdit(DeviceForm);
+        dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+
+        horizontalLayout_17->addWidget(dateEdit);
+
+        label_7 = new QLabel(DeviceForm);
+        label_7->setObjectName(QString::fromUtf8("label_7"));
+
+        horizontalLayout_17->addWidget(label_7);
+
+
+        verticalLayout_9->addLayout(horizontalLayout_17);
+
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
+        dateEdit_2 = new QDateEdit(DeviceForm);
+        dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
+
+        horizontalLayout_16->addWidget(dateEdit_2);
+
+        label_8 = new QLabel(DeviceForm);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        horizontalLayout_16->addWidget(label_8);
+
+
+        verticalLayout_9->addLayout(horizontalLayout_16);
+
+
+        verticalLayout_3->addLayout(verticalLayout_9);
+
 
         verticalLayout->addLayout(verticalLayout_3);
 
@@ -411,6 +454,8 @@ public:
         checkBox->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\254\331\205\330\271\333\214", nullptr));
         pushButton->setText(QCoreApplication::translate("DeviceForm", "+", nullptr));
         label_3->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\256\330\261\333\214\330\257\330\247\330\261 :", nullptr));
+        label_7->setText(QCoreApplication::translate("DeviceForm", "\330\252\330\247\330\261\333\214\330\256 \330\256\330\261\333\214\330\257 :", nullptr));
+        label_8->setText(QCoreApplication::translate("DeviceForm", "\330\252\330\247\330\261\333\214\330\256 \330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));
         label_6->setText(QCoreApplication::translate("DeviceForm", "\331\202\330\267\330\271\330\247\330\252 :", nullptr));
         AddItemBtn->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \331\202\330\267\330\271\331\207", nullptr));
         label_4->setText(QCoreApplication::translate("DeviceForm", "\331\205\330\252\330\271\331\204\331\202\330\247\330\252 :", nullptr));

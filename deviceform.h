@@ -84,6 +84,7 @@ private:
     void setCombos();
     void handleStarted();
     void handleFinished();
+    void loadDate(unsigned int id);
     QString currentDevice;
     int adder;
     Ui::DeviceForm *ui;

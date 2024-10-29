@@ -47,7 +47,23 @@ void ExportExcel::exportToXlsx(QTableView *tableView) {
         QMessageBox::warning(nullptr, "Export", "Failed to save the file.");
     }
 }
+QList<QVariant> ExportExcel::getRowData(QTableView *tableView, int row) {
+    QList<QVariant> rowData;
+    QAbstractItemModel *model = tableView->model();
 
+    // Check if row is within valid bounds
+    if (!model || row < 0 || row >= model->rowCount()) {
+        emit exportError("Invalid row index.");
+        return rowData;  // Return empty if invalid
+    }
+
+    // Retrieve data from each column in the specified row
+    for (int col = 0; col < model->columnCount(); ++col) {
+        rowData.append(model->data(model->index(row, col)));
+    }
+
+    return rowData;
+}
 QString ExportExcel::getSaveFilePath() {
     // Show file dialog to get the desired file path for the Excel file
     return QFileDialog::getSaveFileName(nullptr, "Save as Excel", "", "Excel files (*.xlsx)");

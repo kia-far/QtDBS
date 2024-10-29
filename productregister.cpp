@@ -194,9 +194,9 @@ void ProductRegister::setup() {
         ui->lineEdit_11->setText("");
         QCalendar calendar( QCalendar::System::Jalali);
         ui->dateEdit_2->setCalendar(calendar);
-        ui->dateEdit_2->setDate(QDate::currentDate());
+        ui->dateEdit_2->setDate(QDate::currentDate().addYears(1));
         ui->dateEdit->setCalendar(calendar);
-        ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+        ui->dateEdit->setDate(QDate::currentDate());
         ui->textEdit->setText("");
     } else if (Mode == "EDIT") {
         ui->comboBox->clear();
@@ -247,28 +247,10 @@ void ProductRegister::loadProductSecInfo(){
         qDebug() << "Database query error:" << query.lastError().text();
     } else {
         if (query.next()) {
-/*
-                QCalendar calendar(QCalendar::System::Jalali);
-                ui->dateEdit->setCalendar(calendar);
-                QString rt = query.value("Date").toString();
-                QStringList parts = rt.split('/');
-                if (parts.size() == 3) {
-                    int year = parts[0].toInt();
-                    int month = parts[1].toInt();
-                    int day = parts[2].toInt();
-                    QDate jalaliDate = QDate(year, month, day, calendar);
-                    if (jalaliDate.isValid()) {
-                        ui->dateEdit->setDate(jalaliDate);
-                    } else {
-                        qWarning() << "Invalid Jalali date!";
-                    }
-                } else {
-                    qWarning() << "Invalid date format!";
-                }
-*/
+
             QCalendar calendar(QCalendar::System::Jalali);
             ui->dateEdit_2->setCalendar(calendar);
-            QString rt = query.value("PurchaseDate").toString();
+            QString rt = query.value("GuarantyExp").toString();
             QStringList parts = rt.split('/');
             if (parts.size() == 3) {
                 int year = parts[0].toInt();
@@ -285,7 +267,7 @@ void ProductRegister::loadProductSecInfo(){
             }
             // QCalendar calendar(QCalendar::System::Jalali);
             ui->dateEdit->setCalendar(calendar);
-            rt = query.value("GuarantyExp").toString();
+            rt = query.value("PurchaseDate").toString();
             parts = rt.split('/');
             if (parts.size() == 3) {
                 int year = parts[0].toInt();

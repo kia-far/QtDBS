@@ -63,12 +63,14 @@ private slots:
 
     void on_deleteBtn_clicked();
 
-    void on_toolButton_triggered(QAction *arg1);
 
     void on_toolButton_clicked();
 
 private:
     void deleteRow(unsigned int ID, QString device);
+    void hideColumns();
+    void showColumns();
+    void populateLabel(int row);
     Ui::Tables *ui;
     void keybinds();
     ProxyView *View;

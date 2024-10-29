@@ -72,12 +72,27 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
             columns.append(columnName);
 //        }
     }
-
+    columns.append("تاریخ خرید");
     while (query.next()) {
         QVector<QVariant> row;
         for (int i = 0; i < numCols; ++i) {
             row.append(query.value(i));
         }
+        QString serialNo = query.value(record.indexOf("SerialNumber")).toString();
+        QSqlQuery dateQuery(db.getConnection());
+        dateQuery.prepare("SELECT PurchaseDate FROM ProductSecInfo WHERE SerialNO = :serialNo");
+        dateQuery.bindValue(":serialNo", serialNo);
+        // qDebug()
+        dateQuery.exec();
+
+        if (dateQuery.next()) {
+            row.append(dateQuery.value("PurchaseDate"));
+            // qDebug() << dateQuery.value("PurchaseDate");
+        } else {
+            row.append(QVariant());  // If no date is found, append null value
+        }
+
+        // rows.append(row);
         rows.append(row);
     }
 

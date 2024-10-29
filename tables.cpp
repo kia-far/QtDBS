@@ -17,6 +17,7 @@
 #include "logger.h"
 #include <QKeyEvent>
 #include "exporttoexcel.h"
+#include <QVariant>
 
 
 unsigned int lastClicked =4294967294;
@@ -91,6 +92,7 @@ void Tables::setupTable(QString table){
         currentTable = 2;
         ui->comboBox->setCurrentIndex(currentTable);
         ui->tableView->setModel(View);
+        hideColumns();
         ui->tableView->resizeColumnsToContents();
 
     }
@@ -152,7 +154,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->setModel(Customer);
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 1";
-
+        showColumns();
 
 
     }
@@ -167,7 +169,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->setModel(Services);
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 2";
-
+        showColumns();
     }
     else if(currentTable==2){
 
@@ -175,6 +177,8 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->setModel(View);
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 3";
+        hideColumns();
+
 
     }
     else {
@@ -187,6 +191,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->setModel(Product);
         ui->tableView->resizeColumnsToContents();
         logger::log("product proxy loaded into table");
+        showColumns();
     }
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
@@ -206,8 +211,9 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->resizeColumnsToContents();
         logger::log("product proxy loaded into table");
 
-
+        showColumns();
         currentTable =3;
+        ui->label_2->setHidden(true);
     }
     else if(arg1 == "مشتریان"){
         ui->deleteBtn->setHidden(true);
@@ -218,6 +224,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->setModel(Customer);
         currentTable =0;
         ui->tableView->resizeColumnsToContents();
+        ui->label_2->setHidden(true);
+        showColumns();
 
     }
     else if (arg1 == "خدمات"){
@@ -229,6 +237,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->setModel(Services);
         currentTable =1;
         ui->tableView->resizeColumnsToContents();
+        ui->label_2->setHidden(true);
+        showColumns();
 
     }
     else if (arg1 == "دستگاه ها") {
@@ -238,10 +248,14 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         QString searchParam = "SerialNumber";
         QString searchText = "";
         View->setSearchParameters(currentDevice,searchParam, searchText);
-
         ui->tableView->setModel(View);
+
         currentTable = 2;
+        hideColumns();
         ui->tableView->resizeColumnsToContents();
+        ui->label_2->setHidden(false);
+
+
 
     }
     Tables::on_RefreshBtn_clicked();
@@ -276,7 +290,9 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
 //    qDebug() << "Data in the first column of the selected row:" << data.toString();
     lastClicked = (MyFunctions ::reverseSN(data.toString())).toUInt();
     clickedID = data.toUInt();
-    if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();}
+    if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();
+        populateLabel(index.row());
+    }
     else if(currentTable == 3){
 
         currentDevice = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow,1)).toString();
@@ -330,9 +346,10 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     QString searchText = "";
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);
+    hideColumns();
     ui->tableView->resizeColumnsToContents();
     Tables::on_RefreshBtn_clicked();
-
+    hideColumns();
 }
 
 
@@ -553,14 +570,48 @@ void Tables::getExport(){
     exporter.exportToXlsx(ui->tableView);
 }
 
-void Tables::on_toolButton_triggered(QAction *arg1)
-{
-    // getExport();
-}
-
 
 void Tables::on_toolButton_clicked()
 {
     getExport();
 }
+void Tables::hideColumns(){
 
+    int columnCount = View->columnCount();
+    for (int i = 0; i < columnCount; ++i) {
+        ui->tableView->setColumnHidden(i, false);}
+    // int columnCount = View->columnCount();
+        qDebug()<<columnCount<<"this column countttt";
+    for (int i = 2; i < columnCount-2; ++i) {
+        ui->tableView->setColumnHidden(i, true);
+    }
+    ui->tableView->setColumnHidden(columnCount-1,true);
+    }
+void Tables::showColumns(){
+    int columnCount = View->columnCount();
+    for (int i = 0; i < columnCount; ++i) {
+        ui->tableView->setColumnHidden(i, false);
+    }}
+void Tables::populateLabel(int row){
+    ExportExcel exporter;
+    QString text = "";
+    int i = 0;
+    QList<QVariant> data = exporter.getRowData(ui->tableView,row);
+    for(QVariant variant : data){
+        if(i%3==0&&i!=0){
+            text.append("<br>");
+        }
+        qDebug() << variant.toString();
+        QString headerText = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
+
+        // Make header bold and 2 font sizes larger using HTML
+        text.append(QString("<span style='font-size:%1pt;'><b>%2</b></span>")
+                        .arg(ui->label_2->font().pointSize() + 2)
+                        .arg(headerText));
+        text.append(" : ");
+        text.append(variant.toString());
+        text.append("<pre>");
+        i++;
+    }
+    ui->label_2->setText(text);
+}

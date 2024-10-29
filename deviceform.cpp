@@ -25,6 +25,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
 {
     // progressBar;
     ui->setupUi(this);
+
     ui->spinBox->setMinimumSize(50,25);
     ui->spinBox->setValue(1);
     ui->spinBox->setDisabled(true);
@@ -55,6 +56,11 @@ void DeviceForm::trigger(QString device){
 }
 
 void DeviceForm::setup(){
+    QCalendar calendar( QCalendar::System::Jalali);
+    ui->dateEdit_2->setCalendar(calendar);
+    ui->dateEdit_2->setDate(QDate::currentDate());
+    ui->dateEdit->setCalendar(calendar);
+    ui->dateEdit->setDate(QDate::currentDate().addYears(1));
     ui->lineEdit->setReadOnly(false);
     ui->checkBox->setDisabled(false);
     ui->checkBox->setChecked(false);
@@ -220,6 +226,7 @@ void DeviceForm::clearLayout(QLayout *layout) {
     }
 }
 void DeviceForm::populateEdit(QString device,unsigned int id){
+    loadDate(id);
     ui->comboBox->clear();
     ui->comboBox->addItem(device);
     ui->lineEdit->setReadOnly(true);
@@ -273,6 +280,16 @@ qDebug() << res[count]<<"this is res "<<count;
 //    ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
 
 }
+
+/*
+        QCalendar calendar( QCalendar::System::Jalali);
+        ui->dateEdit_2->setCalendar(calendar);
+        ui->dateEdit_2->setDate(QDate::currentDate());
+        ui->dateEdit->setCalendar(calendar);
+        ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+ */
+
+
 void DeviceForm::on_SubmitBtn_clicked()
 {
     // addBulk();
@@ -694,4 +711,54 @@ void DeviceForm::handleStarted(){
 void DeviceForm::handleFinished(){
     emit hidePB();
     emit pageUpdate();
+}
+void DeviceForm::loadDate(unsigned int id){
+    QSqlQuery query(db.getConnection());
+    query.prepare("SELECT * FROM ProductSecInfo WHERE SerialNO = :serialNumber");
+    query.bindValue(":serialNumber", QString::number(id));
+    //    qDebug() << "Executing query for ProductSecInfo with Serialnum:" << Serialnum;
+
+    if (!query.exec()) {
+        qDebug() << "Database query error:" << query.lastError().text();
+    } else {
+        if (query.next()) {
+
+            QCalendar calendar(QCalendar::System::Jalali);
+            ui->dateEdit_2->setCalendar(calendar);
+            QString rt = query.value("GuarantyExp").toString();
+            QStringList parts = rt.split('/');
+            if (parts.size() == 3) {
+                int year = parts[0].toInt();
+                int month = parts[1].toInt();
+                int day = parts[2].toInt();
+                QDate jalaliDate = QDate(year, month, day, calendar);
+                if (jalaliDate.isValid()) {
+                    ui->dateEdit_2->setDate(jalaliDate);
+                } else {
+                    ui->dateEdit_2->setDate(QDate::currentDate());
+                }
+            } else {
+                ui->dateEdit_2->setDate(QDate::currentDate());
+            }
+            // QCalendar calendar(QCalendar::System::Jalali);
+            ui->dateEdit->setCalendar(calendar);
+            rt = query.value("PurchaseDate").toString();
+            parts = rt.split('/');
+            if (parts.size() == 3) {
+                int year = parts[0].toInt();
+                int month = parts[1].toInt();
+                int day = parts[2].toInt();
+                qDebug() << year<<month<<day<<"dateeeee";
+                QDate jalaliDate = QDate(year, month, day, calendar);
+                if (jalaliDate.isValid()) {
+                    ui->dateEdit->setDate(jalaliDate);
+                } else {
+                    ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+                }
+            } else {
+                ui->dateEdit->setDate(QDate::currentDate().addYears(1));}
+        } else {
+            qDebug() << "No data found for serial number:" << id;
+        }
+    }
 }
