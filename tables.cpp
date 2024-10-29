@@ -593,15 +593,17 @@ void Tables::showColumns(){
     for (int i = 0; i < columnCount; ++i) {
         ui->tableView->setColumnHidden(i, false);
     }}
-void Tables::populateLabel(int row){
+void Tables::populateLabel(int row) {
     ExportExcel exporter;
     QString text = "";
     int i = 0;
-    QList<QVariant> data = exporter.getRowData(ui->tableView,row);
-    for(QVariant variant : data){
-        if(i%3==0&&i!=0){
+    QList<QVariant> data = exporter.getRowData(ui->tableView, row);
+    for (QVariant variant : data) {
+        // Add a line break every three columns, except before the first one
+        if (i % 3 == 0 && i != 0) {
             text.append("<br>");
         }
+
         qDebug() << variant.toString();
         QString headerText = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
 
@@ -609,9 +611,11 @@ void Tables::populateLabel(int row){
         text.append(QString("<span style='font-size:%1pt;'><b>%2</b></span>")
                         .arg(ui->label_2->font().pointSize() + 2)
                         .arg(headerText));
-        text.append(" : ");
+        text.append("<b> : </b>");
         text.append(variant.toString());
-        text = text+ "     ";
+
+        // Add spaces between each header-data pair
+        text.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); // Adds three non-breaking spaces
         i++;
     }
     ui->label_2->setText(text);

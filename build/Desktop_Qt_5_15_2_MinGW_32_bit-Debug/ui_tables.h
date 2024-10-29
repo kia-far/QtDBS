@@ -182,6 +182,7 @@ public:
 
         label_2 = new QLabel(Tables);
         label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         label_2->setAlignment(Qt::AlignmentFlag::AlignCenter);
 
         gridLayout->addWidget(label_2, 5, 0, 1, 12);

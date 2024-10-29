@@ -2977,3 +2977,37 @@
 2024-10-29 14:14:43 - data loaded for product info and product sec info!
 2024-10-29 14:14:43 - product proxy loaded into table
 2024-10-29 14:15:30 - product proxy called
+2024-10-29 14:19:07 - updated BJ4 table
+2024-10-29 14:19:07 - Data updated successfully in table:BJ4
+2024-10-29 14:19:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:50 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:19:50 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:26:11 - data loaded for product info and product sec info!
+2024-10-29 14:26:12 - data loaded for product info and product sec info!
+2024-10-29 14:26:13 - product proxy called
+2024-10-29 14:31:42 - data loaded for product info and product sec info!
+2024-10-29 14:31:43 - data loaded for product info and product sec info!
+2024-10-29 14:31:44 - product proxy called
+2024-10-29 14:32:36 - data loaded for product info and product sec info!
+2024-10-29 14:32:37 - data loaded for product info and product sec info!
+2024-10-29 14:32:38 - product proxy called
+2024-10-29 14:33:39 - data loaded for product info and product sec info!
+2024-10-29 14:33:40 - data loaded for product info and product sec info!
+2024-10-29 14:33:40 - product proxy called
+2024-10-29 14:35:06 - data loaded for product info and product sec info!
+2024-10-29 14:35:07 - data loaded for product info and product sec info!
+2024-10-29 14:35:07 - product proxy called
+2024-10-29 14:35:26 - data loaded for product info and product sec info!
+2024-10-29 14:35:26 - data loaded for product info and product sec info!
+2024-10-29 14:35:27 - product proxy called
+2024-10-29 14:36:59 - data loaded for product info and product sec info!
+2024-10-29 14:36:59 - data loaded for product info and product sec info!
+2024-10-29 14:37:01 - product proxy called
