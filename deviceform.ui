@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>665</width>
-    <height>561</height>
+    <height>583</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -258,7 +258,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_17">
            <item>
-            <widget class="QDateEdit" name="dateEdit"/>
+            <widget class="QDateEdit" name="dateEdit">
+             <property name="displayFormat">
+              <string>yyyy/M/d</string>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_7">
@@ -272,7 +276,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_16">
            <item>
-            <widget class="QDateEdit" name="dateEdit_2"/>
+            <widget class="QDateEdit" name="dateEdit_2">
+             <property name="displayFormat">
+              <string>yyyy/M/d</string>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_8">

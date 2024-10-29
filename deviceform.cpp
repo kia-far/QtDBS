@@ -58,9 +58,9 @@ void DeviceForm::trigger(QString device){
 void DeviceForm::setup(){
     QCalendar calendar( QCalendar::System::Jalali);
     ui->dateEdit_2->setCalendar(calendar);
-    ui->dateEdit_2->setDate(QDate::currentDate());
+    ui->dateEdit_2->setDate(QDate::currentDate().addYears(1));
     ui->dateEdit->setCalendar(calendar);
-    ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+    ui->dateEdit->setDate(QDate::currentDate());
     ui->lineEdit->setReadOnly(false);
     ui->checkBox->setDisabled(false);
     ui->checkBox->setChecked(false);
@@ -389,8 +389,10 @@ void DeviceForm::submit(QString SN,int countt){
         if (!er) {
             qDebug() << "Error in ProductInfo insert:" << q.lastError().text();
         }
-        q.prepare("INSERT INTO ProductSecInfo (SerialNO) VALUES (?)");
+        q.prepare("INSERT INTO ProductSecInfo (SerialNO , PurchaseDate , GuarantyExp) VALUES (?,?,?)");
         q.addBindValue(givenData[0].toString());
+        q.addBindValue(ui->dateEdit->text());
+        q.addBindValue(ui->dateEdit_2->text());
         qDebug() << givenData;
         bool err = q.exec();
         if (!err) {

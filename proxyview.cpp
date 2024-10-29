@@ -73,6 +73,8 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 //        }
     }
     columns.append("تاریخ خرید");
+    columns.append("گارانتی"); // "گارانتی" stands for "Guaranty Exp" in Persian
+
     while (query.next()) {
         QVector<QVariant> row;
         for (int i = 0; i < numCols; ++i) {
@@ -80,19 +82,18 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
         }
         QString serialNo = query.value(record.indexOf("SerialNumber")).toString();
         QSqlQuery dateQuery(db.getConnection());
-        dateQuery.prepare("SELECT PurchaseDate FROM ProductSecInfo WHERE SerialNO = :serialNo");
+        dateQuery.prepare("SELECT PurchaseDate, GuarantyExp FROM ProductSecInfo WHERE SerialNO = :serialNo");
         dateQuery.bindValue(":serialNo", serialNo);
-        // qDebug()
         dateQuery.exec();
 
         if (dateQuery.next()) {
             row.append(dateQuery.value("PurchaseDate"));
-            // qDebug() << dateQuery.value("PurchaseDate");
+            row.append(dateQuery.value("GuarantyExp")); // Append the GuarantyExp value
         } else {
-            row.append(QVariant());  // If no date is found, append null value
+            row.append(QVariant());  // Append null for PurchaseDate if not found
+            row.append(QVariant());  // Append null for GuarantyExp if not found
         }
 
-        // rows.append(row);
         rows.append(row);
     }
 

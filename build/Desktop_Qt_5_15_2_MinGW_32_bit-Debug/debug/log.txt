@@ -2874,3 +2874,106 @@
 2024-10-29 13:50:19 - data loaded for product info and product sec info!
 2024-10-29 13:50:19 - product proxy loaded into table
 2024-10-29 13:50:19 - product proxy loaded into table
+2024-10-29 13:53:39 - data loaded for product info and product sec info!
+2024-10-29 13:53:40 - data loaded for product info and product sec info!
+2024-10-29 13:53:41 - product proxy called
+2024-10-29 13:53:52 - product proxy called
+2024-10-29 13:53:52 - producgt proxy laoded 
+2024-10-29 13:53:52 - data loaded for product info and product sec info!
+2024-10-29 13:53:52 - product proxy loaded into table
+2024-10-29 13:53:52 - producgt proxy laoded 
+2024-10-29 13:53:53 - data loaded for product info and product sec info!
+2024-10-29 13:53:53 - product proxy loaded into table
+2024-10-29 13:53:59 - producgt proxy laoded 
+2024-10-29 13:54:00 - data loaded for product info and product sec info!
+2024-10-29 13:54:00 - product proxy loaded into table
+2024-10-29 13:54:07 - producgt proxy laoded 
+2024-10-29 13:54:07 - data loaded for product info and product sec info!
+2024-10-29 13:54:07 - product proxy loaded into table
+2024-10-29 13:54:08 - product proxy called
+2024-10-29 13:57:11 - data loaded for product info and product sec info!
+2024-10-29 13:57:13 - data loaded for product info and product sec info!
+2024-10-29 13:57:15 - product proxy called
+2024-10-29 13:58:22 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:28 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:32 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:37 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:42 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:53 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:55 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:57 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:58:59 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 13:59:04 - product proxy called
+2024-10-29 13:59:04 - producgt proxy laoded 
+2024-10-29 13:59:05 - data loaded for product info and product sec info!
+2024-10-29 13:59:05 - product proxy loaded into table
+2024-10-29 13:59:05 - producgt proxy laoded 
+2024-10-29 13:59:05 - data loaded for product info and product sec info!
+2024-10-29 13:59:05 - product proxy loaded into table
+2024-10-29 14:01:55 - data loaded for product info and product sec info!
+2024-10-29 14:01:57 - data loaded for product info and product sec info!
+2024-10-29 14:01:58 - product proxy called
+2024-10-29 14:03:17 - data loaded for product info and product sec info!
+2024-10-29 14:03:18 - data loaded for product info and product sec info!
+2024-10-29 14:03:20 - product proxy called
+2024-10-29 14:03:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:03:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:03:53 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:03:55 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:03:58 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:03:59 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:01 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:03 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:06 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:08 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:10 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:12 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:15 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:16 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:18 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:25 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:27 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:28 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:30 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:32 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:04:35 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-10-29 14:08:26 - data loaded for product info and product sec info!
+2024-10-29 14:08:27 - data loaded for product info and product sec info!
+2024-10-29 14:08:28 - product proxy called
+2024-10-29 14:09:12 - data loaded for product info and product sec info!
+2024-10-29 14:09:13 - data loaded for product info and product sec info!
+2024-10-29 14:09:14 - product proxy called
+2024-10-29 14:10:32 - data loaded for product info and product sec info!
+2024-10-29 14:10:34 - data loaded for product info and product sec info!
+2024-10-29 14:10:34 - product proxy called
+2024-10-29 14:12:11 - data loaded for product info and product sec info!
+2024-10-29 14:12:13 - data loaded for product info and product sec info!
+2024-10-29 14:12:14 - product proxy called
+2024-10-29 14:13:07 - data loaded for product info and product sec info!
+2024-10-29 14:13:08 - data loaded for product info and product sec info!
+2024-10-29 14:13:09 - product proxy called
+2024-10-29 14:13:42 - data loaded for product info and product sec info!
+2024-10-29 14:13:44 - data loaded for product info and product sec info!
+2024-10-29 14:13:44 - product proxy called
+2024-10-29 14:14:43 - product proxy called
+2024-10-29 14:14:43 - producgt proxy laoded 
+2024-10-29 14:14:43 - data loaded for product info and product sec info!
+2024-10-29 14:14:43 - product proxy loaded into table
+2024-10-29 14:14:43 - producgt proxy laoded 
+2024-10-29 14:14:43 - data loaded for product info and product sec info!
+2024-10-29 14:14:43 - product proxy loaded into table
+2024-10-29 14:15:30 - product proxy called

@@ -582,9 +582,10 @@ void Tables::hideColumns(){
         ui->tableView->setColumnHidden(i, false);}
     // int columnCount = View->columnCount();
         qDebug()<<columnCount<<"this column countttt";
-    for (int i = 2; i < columnCount-2; ++i) {
+    for (int i = 2; i < columnCount-3; ++i) {
         ui->tableView->setColumnHidden(i, true);
     }
+    ui->tableView->setColumnHidden(columnCount-2,true);
     ui->tableView->setColumnHidden(columnCount-1,true);
     }
 void Tables::showColumns(){
@@ -610,7 +611,7 @@ void Tables::populateLabel(int row){
                         .arg(headerText));
         text.append(" : ");
         text.append(variant.toString());
-        text.append("<pre>");
+        text = text+ "     ";
         i++;
     }
     ui->label_2->setText(text);
