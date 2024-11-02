@@ -47,7 +47,7 @@ void ProductProxy::loadData(QString searchParam, QString searchText) {
     QStringList productNames = ItemHandler::loadDevices();  // Get the list of all device names
 
     // Debug output to check the product names
-    qDebug() << "List of device names:" << productNames;
+    // qDebug() << "List of device names:" << productNames;
 
     // Step 1: Clear existing rows and columns
     rows.clear();

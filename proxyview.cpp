@@ -73,7 +73,7 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
 //        }
     }
     columns.append("تاریخ خرید");
-    columns.append("گارانتی"); // "گارانتی" stands for "Guaranty Exp" in Persian
+    columns.append("تاریخ انقضای گارانتی");
 
     while (query.next()) {
         QVector<QVariant> row;

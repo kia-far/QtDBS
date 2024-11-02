@@ -18,6 +18,7 @@
 #include <QKeyEvent>
 #include "exporttoexcel.h"
 #include <QVariant>
+#include <QSpacerItem>
 
 
 unsigned int lastClicked =4294967294;
@@ -213,7 +214,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
         showColumns();
         currentTable =3;
-        ui->label_2->setHidden(true);
+        ui->widget->setHidden(true);
     }
     else if(arg1 == "مشتریان"){
         ui->deleteBtn->setHidden(true);
@@ -224,7 +225,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->setModel(Customer);
         currentTable =0;
         ui->tableView->resizeColumnsToContents();
-        ui->label_2->setHidden(true);
+        ui->widget->setHidden(true);
         showColumns();
 
     }
@@ -237,7 +238,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->tableView->setModel(Services);
         currentTable =1;
         ui->tableView->resizeColumnsToContents();
-        ui->label_2->setHidden(true);
+        ui->widget->setHidden(true);
         showColumns();
 
     }
@@ -253,7 +254,8 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         currentTable = 2;
         hideColumns();
         ui->tableView->resizeColumnsToContents();
-        ui->label_2->setHidden(false);
+        setupWidget();
+        ui->widget->setHidden(false);
 
 
 
@@ -350,6 +352,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     ui->tableView->resizeColumnsToContents();
     Tables::on_RefreshBtn_clicked();
     hideColumns();
+    setupWidget();
 }
 
 
@@ -528,7 +531,7 @@ void Tables::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
         bool moved = this->focusNextChild();
         if (moved) {
-            qDebug() << "Moved focus to the next widget.";
+            // qDebug() << "Moved focus to the next widget.";
         }
 
         // Mark the event as accepted
@@ -581,12 +584,12 @@ void Tables::hideColumns(){
     for (int i = 0; i < columnCount; ++i) {
         ui->tableView->setColumnHidden(i, false);}
     // int columnCount = View->columnCount();
-        qDebug()<<columnCount<<"this column countttt";
+        // qDebug()<<columnCount<<"this column countttt";
     for (int i = 2; i < columnCount-3; ++i) {
-        ui->tableView->setColumnHidden(i, true);
+        // ui->tableView->setColumnHidden(i, true);
     }
-    ui->tableView->setColumnHidden(columnCount-2,true);
-    ui->tableView->setColumnHidden(columnCount-1,true);
+    // ui->tableView->setColumnHidden(columnCount-2,true);
+    // ui->tableView->setColumnHidden(columnCount-1,true);
     }
 void Tables::showColumns(){
     int columnCount = View->columnCount();
@@ -594,29 +597,122 @@ void Tables::showColumns(){
         ui->tableView->setColumnHidden(i, false);
     }}
 void Tables::populateLabel(int row) {
+    qDebug() << lineEdits.size();
     ExportExcel exporter;
-    QString text = "";
+    QString text = "<div style='word-wrap: break-word;'>";
     int i = 0;
     QList<QVariant> data = exporter.getRowData(ui->tableView, row);
+
     for (QVariant variant : data) {
-        // Add a line break every three columns, except before the first one
-        if (i % 3 == 0 && i != 0) {
-            text.append("<br>");
+        // // if (i % 3 == 0 && i != 0) {
+        // //     text.append("<br>");
+        // // }
+        // QString headerText = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
+
+        // text.append(QString("<span style='font-size:%1pt;'><b>%2</b></span>")
+        //                 .arg(ui->textBrowser->font().pointSize() + 2)
+        //                 .arg(headerText));
+        // text.append("<b> : </b>");
+        // text.append(variant.toString());
+        // if(i==0){text.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");}
+        // if(i==1||i==2||i==data.size()-4||i==data.size()-2){text.append("<br>");}
+        // else text.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); // Adds spaces between each pair
+        switch (i) {
+        case 0:{ui->form_SN->setText(variant.toString());break;}
+        case 1:{ui->form_Name->setText(variant.toString());break;}
+        case 2:{
+            for(QCheckBox *checkBox:checkBoxes){
+                checkBox->setDisabled(false);
+                checkBox->setChecked(variant.toString().contains(checkBox->text()));
+                checkBox->setDisabled(true);
+            }
+            /*ui->form_pDate->setText(variant.toString());*/break;}
+        // case 3:{ui->form_gDate->setText(variant.toString());break;}
+
+
+
+        default:
+            if(i==data.size()-3){ui->form_pDate->setText(variant.toString());}
+            else if(i==data.size()-2){ui->form_gDate->setText(variant.toString());}
+            else if(i==data.size()-1){ui->form_description->setText(variant.toString());}
+            else{qDebug() << i;
+                if(!lineEdits.isEmpty())lineEdits.at(i-3)->setText(variant.toString());}
+
+            break;
         }
-
-        qDebug() << variant.toString();
-        QString headerText = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
-
-        // Make header bold and 2 font sizes larger using HTML
-        text.append(QString("<span style='font-size:%1pt;'><b>%2</b></span>")
-                        .arg(ui->label_2->font().pointSize() + 2)
-                        .arg(headerText));
-        text.append("<b> : </b>");
-        text.append(variant.toString());
-
-        // Add spaces between each header-data pair
-        text.append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"); // Adds three non-breaking spaces
         i++;
     }
-    ui->label_2->setText(text);
+    text.append("</div>");
+    // ui->form_description->setText(text);
+}
+void Tables::setupWidget(){
+    clearLayout(ui->form_partHBox);
+    clearLayout(ui->form_belHBox);
+    checkBoxes.clear();
+    lineEdits.clear();
+    labels.clear();
+    ui->form_dev->setText(currentDevice);
+    // int index;
+    for(int i=3;i<View->columnCount()-3;i++){
+        QString itemName = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
+        QLabel *label = new QLabel(itemName);
+        QString labelName = QString("label_%1").arg(i);
+        label->setObjectName(labelName);
+        label->setText(itemName);
+        label->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        label->setAlignment(Qt::AlignCenter);
+        label->adjustSize();
+
+        labels.append(label);
+        QString item = "";
+        QLineEdit *lineEdit = new QLineEdit();
+        QString lineEditName = QString("lineEdit_%1").arg(i);
+        lineEdit->setText(item);
+        lineEdit->setFixedSize(200,30);
+        lineEdit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+        lineEdit->adjustSize();
+
+        lineEdits.append(lineEdit);
+        QString hbName = QString("hb_%1").arg(i);
+        QHBoxLayout *hb = new QHBoxLayout;
+        hb->addWidget(label);
+        hb->addWidget(lineEdit);
+        QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        hb->addSpacerItem(spacer);
+        ui->form_partHBox->addLayout(hb);
+
+        QString headerText = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
+    }
+    int j=0;
+    QStringList belongings = ItemHandler::loadbelongings(currentDevice);
+    for(QString bel:belongings){
+        QCheckBox *checkBox = new QCheckBox;
+        QString CBName = QString("lineEdit_%1").arg(j);
+        checkBox->setObjectName(CBName);
+        checkBox->setText(bel);
+        checkBox->setChecked(false);
+        checkBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        checkBox->setDisabled(true);
+        checkBoxes.append(checkBox);
+        ui->form_belHBox->addWidget(checkBox);
+        QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        ui->form_belHBox->addSpacerItem(spacer);
+    }
+}
+
+void Tables::clearLayout(QLayout *layout) {
+
+    if (layout == NULL)
+        return;
+    QLayoutItem *item;
+    while((item = layout->takeAt(0))) {
+        if (item->layout()) {
+            clearLayout(item->layout());
+            delete item->layout();
+        }
+        if (item->widget()) {
+            delete item->widget();
+        }
+        //delete item;
+    }
 }

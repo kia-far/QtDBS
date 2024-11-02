@@ -3011,3 +3011,359 @@
 2024-10-29 14:36:59 - data loaded for product info and product sec info!
 2024-10-29 14:36:59 - data loaded for product info and product sec info!
 2024-10-29 14:37:01 - product proxy called
+2024-10-29 14:38:51 - data loaded for product info and product sec info!
+2024-10-29 14:38:51 - data loaded for product info and product sec info!
+2024-10-29 14:38:56 - product proxy called
+2024-10-29 14:43:52 - data loaded for product info and product sec info!
+2024-10-29 14:43:52 - data loaded for product info and product sec info!
+2024-10-29 14:44:46 - data loaded for product info and product sec info!
+2024-10-29 14:44:46 - data loaded for product info and product sec info!
+2024-10-29 14:44:48 - product proxy called
+2024-10-29 14:48:49 - data loaded for product info and product sec info!
+2024-10-29 14:48:50 - data loaded for product info and product sec info!
+2024-10-29 14:48:51 - product proxy called
+2024-10-29 14:48:57 - product proxy called
+2024-10-29 14:48:57 - producgt proxy laoded 
+2024-10-29 14:48:57 - data loaded for product info and product sec info!
+2024-10-29 14:48:57 - product proxy loaded into table
+2024-10-29 14:48:57 - producgt proxy laoded 
+2024-10-29 14:48:57 - data loaded for product info and product sec info!
+2024-10-29 14:48:57 - product proxy loaded into table
+2024-10-29 14:49:01 - product proxy called
+2024-11-02 09:00:32 - data loaded for product info and product sec info!
+2024-11-02 09:00:33 - data loaded for product info and product sec info!
+2024-11-02 09:00:34 - product proxy called
+2024-11-02 09:01:06 - updated BJ4 table
+2024-11-02 09:01:06 - Data updated successfully in table:BJ4
+2024-11-02 09:09:02 - data loaded for product info and product sec info!
+2024-11-02 09:09:03 - data loaded for product info and product sec info!
+2024-11-02 09:09:04 - product proxy called
+2024-11-02 09:12:37 - data loaded for product info and product sec info!
+2024-11-02 09:12:38 - data loaded for product info and product sec info!
+2024-11-02 09:12:39 - product proxy called
+2024-11-02 09:22:43 - data loaded for product info and product sec info!
+2024-11-02 09:22:43 - data loaded for product info and product sec info!
+2024-11-02 09:22:47 - product proxy called
+2024-11-02 09:23:10 - data loaded for product info and product sec info!
+2024-11-02 09:23:11 - data loaded for product info and product sec info!
+2024-11-02 09:23:12 - product proxy called
+2024-11-02 09:25:47 - data loaded for product info and product sec info!
+2024-11-02 09:25:48 - data loaded for product info and product sec info!
+2024-11-02 09:25:50 - product proxy called
+2024-11-02 09:26:21 - data loaded for product info and product sec info!
+2024-11-02 09:26:22 - data loaded for product info and product sec info!
+2024-11-02 09:26:22 - product proxy called
+2024-11-02 09:26:50 - data loaded for product info and product sec info!
+2024-11-02 09:26:51 - data loaded for product info and product sec info!
+2024-11-02 09:26:52 - product proxy called
+2024-11-02 09:27:03 - product proxy called
+2024-11-02 09:27:06 - product proxy called
+2024-11-02 09:27:10 - product proxy called
+2024-11-02 09:27:10 - producgt proxy laoded 
+2024-11-02 09:27:10 - data loaded for product info and product sec info!
+2024-11-02 09:27:10 - product proxy loaded into table
+2024-11-02 09:27:10 - producgt proxy laoded 
+2024-11-02 09:27:10 - data loaded for product info and product sec info!
+2024-11-02 09:27:10 - product proxy loaded into table
+2024-11-02 09:27:16 - product proxy called
+2024-11-02 09:29:34 - data loaded for product info and product sec info!
+2024-11-02 09:29:35 - data loaded for product info and product sec info!
+2024-11-02 09:29:38 - product proxy called
+2024-11-02 09:31:37 - data loaded for product info and product sec info!
+2024-11-02 09:31:37 - data loaded for product info and product sec info!
+2024-11-02 09:31:38 - product proxy called
+2024-11-02 09:34:38 - data loaded for product info and product sec info!
+2024-11-02 09:34:39 - data loaded for product info and product sec info!
+2024-11-02 09:34:39 - product proxy called
+2024-11-02 09:35:07 - data loaded for product info and product sec info!
+2024-11-02 09:35:07 - data loaded for product info and product sec info!
+2024-11-02 09:35:08 - product proxy called
+2024-11-02 09:35:57 - data loaded for product info and product sec info!
+2024-11-02 09:35:58 - data loaded for product info and product sec info!
+2024-11-02 09:35:59 - product proxy called
+2024-11-02 09:43:41 - data loaded for product info and product sec info!
+2024-11-02 09:43:42 - data loaded for product info and product sec info!
+2024-11-02 09:43:43 - product proxy called
+2024-11-02 09:46:41 - data loaded for product info and product sec info!
+2024-11-02 09:46:42 - data loaded for product info and product sec info!
+2024-11-02 09:46:44 - product proxy called
+2024-11-02 09:50:44 - data loaded for product info and product sec info!
+2024-11-02 09:50:45 - data loaded for product info and product sec info!
+2024-11-02 09:50:46 - product proxy called
+2024-11-02 09:51:14 - data loaded for product info and product sec info!
+2024-11-02 09:51:15 - data loaded for product info and product sec info!
+2024-11-02 09:51:16 - product proxy called
+2024-11-02 09:52:10 - data loaded for product info and product sec info!
+2024-11-02 09:52:10 - data loaded for product info and product sec info!
+2024-11-02 09:52:12 - product proxy called
+2024-11-02 09:53:11 - data loaded for product info and product sec info!
+2024-11-02 09:53:12 - data loaded for product info and product sec info!
+2024-11-02 09:53:13 - product proxy called
+2024-11-02 09:54:04 - data loaded for product info and product sec info!
+2024-11-02 09:54:04 - data loaded for product info and product sec info!
+2024-11-02 09:54:05 - product proxy called
+2024-11-02 09:54:56 - data loaded for product info and product sec info!
+2024-11-02 09:54:57 - data loaded for product info and product sec info!
+2024-11-02 09:54:58 - product proxy called
+2024-11-02 09:55:36 - data loaded for product info and product sec info!
+2024-11-02 09:55:36 - data loaded for product info and product sec info!
+2024-11-02 09:55:37 - product proxy called
+2024-11-02 09:56:13 - data loaded for product info and product sec info!
+2024-11-02 09:56:13 - data loaded for product info and product sec info!
+2024-11-02 09:56:14 - product proxy called
+2024-11-02 10:33:06 - data loaded for product info and product sec info!
+2024-11-02 10:33:06 - data loaded for product info and product sec info!
+2024-11-02 10:33:08 - product proxy called
+2024-11-02 10:34:25 - data loaded for product info and product sec info!
+2024-11-02 10:34:26 - data loaded for product info and product sec info!
+2024-11-02 10:34:27 - product proxy called
+2024-11-02 10:34:53 - data loaded for product info and product sec info!
+2024-11-02 10:34:54 - data loaded for product info and product sec info!
+2024-11-02 10:34:55 - product proxy called
+2024-11-02 10:40:17 - data loaded for product info and product sec info!
+2024-11-02 10:40:18 - data loaded for product info and product sec info!
+2024-11-02 10:40:20 - product proxy called
+2024-11-02 10:42:06 - data loaded for product info and product sec info!
+2024-11-02 10:42:06 - data loaded for product info and product sec info!
+2024-11-02 10:42:08 - product proxy called
+2024-11-02 10:42:57 - data loaded for product info and product sec info!
+2024-11-02 10:42:58 - data loaded for product info and product sec info!
+2024-11-02 10:42:59 - product proxy called
+2024-11-02 10:46:59 - data loaded for product info and product sec info!
+2024-11-02 10:46:59 - data loaded for product info and product sec info!
+2024-11-02 10:47:01 - product proxy called
+2024-11-02 11:19:13 - data loaded for product info and product sec info!
+2024-11-02 11:19:13 - data loaded for product info and product sec info!
+2024-11-02 11:19:14 - product proxy called
+2024-11-02 11:20:01 - data loaded for product info and product sec info!
+2024-11-02 11:20:01 - data loaded for product info and product sec info!
+2024-11-02 11:20:02 - product proxy called
+2024-11-02 11:21:27 - data loaded for product info and product sec info!
+2024-11-02 11:21:28 - data loaded for product info and product sec info!
+2024-11-02 11:21:29 - product proxy called
+2024-11-02 11:23:08 - data loaded for product info and product sec info!
+2024-11-02 11:23:09 - data loaded for product info and product sec info!
+2024-11-02 11:23:10 - product proxy called
+2024-11-02 11:23:47 - data loaded for product info and product sec info!
+2024-11-02 11:23:48 - data loaded for product info and product sec info!
+2024-11-02 11:23:48 - product proxy called
+2024-11-02 11:24:11 - data loaded for product info and product sec info!
+2024-11-02 11:24:12 - data loaded for product info and product sec info!
+2024-11-02 11:24:13 - product proxy called
+2024-11-02 11:25:14 - data loaded for product info and product sec info!
+2024-11-02 11:25:15 - data loaded for product info and product sec info!
+2024-11-02 11:25:16 - product proxy called
+2024-11-02 11:27:16 - data loaded for product info and product sec info!
+2024-11-02 11:27:16 - data loaded for product info and product sec info!
+2024-11-02 11:27:17 - product proxy called
+2024-11-02 11:27:44 - data loaded for product info and product sec info!
+2024-11-02 11:27:45 - data loaded for product info and product sec info!
+2024-11-02 11:27:46 - product proxy called
+2024-11-02 11:28:05 - data loaded for product info and product sec info!
+2024-11-02 11:28:06 - data loaded for product info and product sec info!
+2024-11-02 11:28:07 - product proxy called
+2024-11-02 11:28:25 - data loaded for product info and product sec info!
+2024-11-02 11:28:26 - data loaded for product info and product sec info!
+2024-11-02 11:28:27 - product proxy called
+2024-11-02 11:29:04 - data loaded for product info and product sec info!
+2024-11-02 11:29:04 - data loaded for product info and product sec info!
+2024-11-02 11:29:05 - product proxy called
+2024-11-02 11:29:52 - data loaded for product info and product sec info!
+2024-11-02 11:29:53 - data loaded for product info and product sec info!
+2024-11-02 11:29:53 - product proxy called
+2024-11-02 11:30:14 - data loaded for product info and product sec info!
+2024-11-02 11:30:14 - data loaded for product info and product sec info!
+2024-11-02 11:30:15 - product proxy called
+2024-11-02 11:31:10 - data loaded for product info and product sec info!
+2024-11-02 11:31:10 - data loaded for product info and product sec info!
+2024-11-02 11:31:12 - product proxy called
+2024-11-02 11:31:40 - data loaded for product info and product sec info!
+2024-11-02 11:31:41 - data loaded for product info and product sec info!
+2024-11-02 11:31:42 - product proxy called
+2024-11-02 11:33:02 - data loaded for product info and product sec info!
+2024-11-02 11:33:03 - data loaded for product info and product sec info!
+2024-11-02 11:33:04 - product proxy called
+2024-11-02 11:33:52 - data loaded for product info and product sec info!
+2024-11-02 11:33:52 - data loaded for product info and product sec info!
+2024-11-02 11:33:53 - product proxy called
+2024-11-02 11:34:17 - data loaded for product info and product sec info!
+2024-11-02 11:34:18 - data loaded for product info and product sec info!
+2024-11-02 11:34:18 - product proxy called
+2024-11-02 11:36:36 - data loaded for product info and product sec info!
+2024-11-02 11:36:37 - data loaded for product info and product sec info!
+2024-11-02 11:36:37 - product proxy called
+2024-11-02 11:37:07 - data loaded for product info and product sec info!
+2024-11-02 11:37:08 - data loaded for product info and product sec info!
+2024-11-02 11:37:09 - product proxy called
+2024-11-02 11:37:47 - data loaded for product info and product sec info!
+2024-11-02 11:37:48 - data loaded for product info and product sec info!
+2024-11-02 11:37:49 - product proxy called
+2024-11-02 11:38:59 - data loaded for product info and product sec info!
+2024-11-02 11:39:00 - data loaded for product info and product sec info!
+2024-11-02 11:39:01 - product proxy called
+2024-11-02 11:40:36 - data loaded for product info and product sec info!
+2024-11-02 11:40:37 - data loaded for product info and product sec info!
+2024-11-02 11:40:38 - product proxy called
+2024-11-02 11:45:08 - data loaded for product info and product sec info!
+2024-11-02 11:45:09 - data loaded for product info and product sec info!
+2024-11-02 11:45:18 - product proxy called
+2024-11-02 12:00:32 - data loaded for product info and product sec info!
+2024-11-02 12:00:33 - data loaded for product info and product sec info!
+2024-11-02 12:01:26 - data loaded for product info and product sec info!
+2024-11-02 12:01:27 - data loaded for product info and product sec info!
+2024-11-02 12:01:28 - product proxy called
+2024-11-02 12:06:02 - data loaded for product info and product sec info!
+2024-11-02 12:06:03 - data loaded for product info and product sec info!
+2024-11-02 12:06:04 - product proxy called
+2024-11-02 12:06:59 - data loaded for product info and product sec info!
+2024-11-02 12:06:59 - data loaded for product info and product sec info!
+2024-11-02 12:07:00 - product proxy called
+2024-11-02 12:07:30 - data loaded for product info and product sec info!
+2024-11-02 12:07:31 - data loaded for product info and product sec info!
+2024-11-02 12:07:34 - product proxy called
+2024-11-02 12:09:59 - data loaded for product info and product sec info!
+2024-11-02 12:10:00 - data loaded for product info and product sec info!
+2024-11-02 12:10:01 - product proxy called
+2024-11-02 12:13:26 - data loaded for product info and product sec info!
+2024-11-02 12:13:27 - data loaded for product info and product sec info!
+2024-11-02 12:13:28 - product proxy called
+2024-11-02 12:14:15 - data loaded for product info and product sec info!
+2024-11-02 12:14:15 - data loaded for product info and product sec info!
+2024-11-02 12:14:16 - product proxy called
+2024-11-02 12:14:34 - data loaded for product info and product sec info!
+2024-11-02 12:14:34 - data loaded for product info and product sec info!
+2024-11-02 12:14:35 - product proxy called
+2024-11-02 12:14:51 - data loaded for product info and product sec info!
+2024-11-02 12:14:52 - data loaded for product info and product sec info!
+2024-11-02 12:14:53 - product proxy called
+2024-11-02 12:15:28 - data loaded for product info and product sec info!
+2024-11-02 12:15:29 - data loaded for product info and product sec info!
+2024-11-02 12:15:30 - product proxy called
+2024-11-02 12:17:13 - updated BJ4 table
+2024-11-02 12:17:13 - Data updated successfully in table:BJ4
+2024-11-02 12:20:23 - data loaded for product info and product sec info!
+2024-11-02 12:20:24 - data loaded for product info and product sec info!
+2024-11-02 12:20:25 - product proxy called
+2024-11-02 12:21:00 - data loaded for product info and product sec info!
+2024-11-02 12:21:00 - data loaded for product info and product sec info!
+2024-11-02 12:21:01 - product proxy called
+2024-11-02 12:21:51 - data loaded for product info and product sec info!
+2024-11-02 12:21:51 - data loaded for product info and product sec info!
+2024-11-02 12:21:53 - product proxy called
+2024-11-02 12:25:36 - data loaded for product info and product sec info!
+2024-11-02 12:25:37 - data loaded for product info and product sec info!
+2024-11-02 12:25:40 - product proxy called
+2024-11-02 12:31:23 - data loaded for product info and product sec info!
+2024-11-02 12:31:23 - data loaded for product info and product sec info!
+2024-11-02 12:31:24 - product proxy called
+2024-11-02 12:32:08 - data loaded for product info and product sec info!
+2024-11-02 12:32:09 - data loaded for product info and product sec info!
+2024-11-02 12:32:10 - product proxy called
+2024-11-02 12:32:54 - data loaded for product info and product sec info!
+2024-11-02 12:32:55 - data loaded for product info and product sec info!
+2024-11-02 12:32:56 - product proxy called
+2024-11-02 12:33:47 - data loaded for product info and product sec info!
+2024-11-02 12:33:48 - data loaded for product info and product sec info!
+2024-11-02 12:33:49 - product proxy called
+2024-11-02 12:34:29 - data loaded for product info and product sec info!
+2024-11-02 12:34:30 - data loaded for product info and product sec info!
+2024-11-02 12:34:31 - product proxy called
+2024-11-02 12:38:05 - data loaded for product info and product sec info!
+2024-11-02 12:38:05 - data loaded for product info and product sec info!
+2024-11-02 12:38:07 - product proxy called
+2024-11-02 13:01:36 - data loaded for product info and product sec info!
+2024-11-02 13:01:37 - data loaded for product info and product sec info!
+2024-11-02 13:01:39 - product proxy called
+2024-11-02 13:07:40 - data loaded for product info and product sec info!
+2024-11-02 13:07:41 - data loaded for product info and product sec info!
+2024-11-02 13:07:43 - product proxy called
+2024-11-02 13:16:05 - data loaded for product info and product sec info!
+2024-11-02 13:16:06 - data loaded for product info and product sec info!
+2024-11-02 13:16:07 - product proxy called
+2024-11-02 13:17:31 - data loaded for product info and product sec info!
+2024-11-02 13:17:32 - data loaded for product info and product sec info!
+2024-11-02 13:17:33 - product proxy called
+2024-11-02 13:18:57 - data loaded for product info and product sec info!
+2024-11-02 13:18:57 - data loaded for product info and product sec info!
+2024-11-02 13:18:59 - product proxy called
+2024-11-02 13:19:58 - data loaded for product info and product sec info!
+2024-11-02 13:19:59 - data loaded for product info and product sec info!
+2024-11-02 13:20:00 - product proxy called
+2024-11-02 13:25:07 - data loaded for product info and product sec info!
+2024-11-02 13:25:07 - data loaded for product info and product sec info!
+2024-11-02 13:25:09 - product proxy called
+2024-11-02 13:26:17 - data loaded for product info and product sec info!
+2024-11-02 13:26:18 - data loaded for product info and product sec info!
+2024-11-02 13:27:05 - data loaded for product info and product sec info!
+2024-11-02 13:27:06 - data loaded for product info and product sec info!
+2024-11-02 13:27:08 - product proxy called
+2024-11-02 13:34:23 - data loaded for product info and product sec info!
+2024-11-02 13:34:24 - data loaded for product info and product sec info!
+2024-11-02 13:34:25 - product proxy called
+2024-11-02 13:35:53 - data loaded for product info and product sec info!
+2024-11-02 13:35:54 - data loaded for product info and product sec info!
+2024-11-02 13:35:54 - product proxy called
+2024-11-02 13:44:40 - data loaded for product info and product sec info!
+2024-11-02 13:44:41 - data loaded for product info and product sec info!
+2024-11-02 13:44:42 - product proxy called
+2024-11-02 13:45:09 - data loaded for product info and product sec info!
+2024-11-02 13:45:10 - data loaded for product info and product sec info!
+2024-11-02 13:45:12 - product proxy called
+2024-11-02 13:47:10 - data loaded for product info and product sec info!
+2024-11-02 13:47:11 - data loaded for product info and product sec info!
+2024-11-02 13:47:13 - product proxy called
+2024-11-02 13:48:20 - data loaded for product info and product sec info!
+2024-11-02 13:48:21 - data loaded for product info and product sec info!
+2024-11-02 13:48:23 - product proxy called
+2024-11-02 13:49:08 - data loaded for product info and product sec info!
+2024-11-02 13:49:08 - data loaded for product info and product sec info!
+2024-11-02 13:49:10 - product proxy called
+2024-11-02 13:49:51 - data loaded for product info and product sec info!
+2024-11-02 13:49:52 - data loaded for product info and product sec info!
+2024-11-02 13:49:53 - product proxy called
+2024-11-02 14:08:31 - data loaded for product info and product sec info!
+2024-11-02 14:08:32 - data loaded for product info and product sec info!
+2024-11-02 14:08:33 - product proxy called
+2024-11-02 14:16:58 - data loaded for product info and product sec info!
+2024-11-02 14:16:59 - data loaded for product info and product sec info!
+2024-11-02 14:17:00 - product proxy called
+2024-11-02 14:17:39 - data loaded for product info and product sec info!
+2024-11-02 14:17:39 - data loaded for product info and product sec info!
+2024-11-02 14:17:40 - product proxy called
+2024-11-02 14:18:50 - data loaded for product info and product sec info!
+2024-11-02 14:18:51 - data loaded for product info and product sec info!
+2024-11-02 14:18:52 - product proxy called
+2024-11-02 14:19:25 - data loaded for product info and product sec info!
+2024-11-02 14:19:26 - data loaded for product info and product sec info!
+2024-11-02 14:19:27 - product proxy called
+2024-11-02 14:20:25 - data loaded for product info and product sec info!
+2024-11-02 14:20:26 - data loaded for product info and product sec info!
+2024-11-02 14:20:26 - product proxy called
+2024-11-02 14:20:50 - data loaded for product info and product sec info!
+2024-11-02 14:20:50 - data loaded for product info and product sec info!
+2024-11-02 14:20:51 - product proxy called
+2024-11-02 14:21:42 - data loaded for product info and product sec info!
+2024-11-02 14:21:42 - data loaded for product info and product sec info!
+2024-11-02 14:21:43 - product proxy called
+2024-11-02 14:23:43 - data loaded for product info and product sec info!
+2024-11-02 14:23:44 - data loaded for product info and product sec info!
+2024-11-02 14:23:45 - product proxy called
+2024-11-02 14:25:35 - data loaded for product info and product sec info!
+2024-11-02 14:25:36 - data loaded for product info and product sec info!
+2024-11-02 14:25:39 - product proxy called
+2024-11-02 14:28:11 - data loaded for product info and product sec info!
+2024-11-02 14:28:12 - data loaded for product info and product sec info!
+2024-11-02 14:28:13 - product proxy called
+2024-11-02 14:28:53 - data loaded for product info and product sec info!
+2024-11-02 14:28:53 - data loaded for product info and product sec info!
+2024-11-02 14:28:54 - product proxy called
+2024-11-02 14:37:41 - data loaded for product info and product sec info!
+2024-11-02 14:37:41 - data loaded for product info and product sec info!
+2024-11-02 14:37:42 - product proxy called
+2024-11-02 14:38:18 - data loaded for product info and product sec info!
+2024-11-02 14:38:19 - data loaded for product info and product sec info!
+2024-11-02 14:38:20 - product proxy called
+2024-11-02 14:38:26 - updated BJ4 table
+2024-11-02 14:38:26 - Data updated successfully in table:BJ4
+2024-11-02 14:39:03 - updated BJ4 table
+2024-11-02 14:39:03 - Data updated successfully in table:BJ4

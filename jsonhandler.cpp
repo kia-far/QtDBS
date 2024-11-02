@@ -48,7 +48,7 @@ QJsonObject JsonHandler::loadJson() {
     // QString addr = qApp->applicationDirPath();
     fileName = jsonPath+"/items.json";
     infoFileName = jsonPath + "/info.json";
-    qDebug()<<fileName << infoFileName;
+    // qDebug()<<fileName << infoFileName;
     QJsonObject obj;
     QFile jsonFile(fileName);
     if (jsonFile.open(QFile::ReadOnly)) {

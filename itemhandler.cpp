@@ -30,7 +30,7 @@ QStringList ItemHandler::loadDevices(){
     QStringList tempstr = objs.keys();
 
     loadedObj = objs;
-    qDebug() << "i ran";
+    // qDebug() << "i ran";
     loadedInfoObj = iObjs;
     return tempstr;
 
@@ -243,9 +243,9 @@ void ItemHandler::removeOptions(QString deviceName, QString itemName, QString op
 
             // Search for and remove the specified option
             for (int j = 0; j < optionArray.size(); ++j) {
-                qDebug() << optionArray[j];
+                // qDebug() << optionArray[j];
                 if (optionArray[j].toString() == optionName) {
-                    qDebug() << "option found";
+                    // qDebug() << "option found";
                     optionArray.removeAt(j);
                     break;
                 }

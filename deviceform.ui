@@ -57,6 +57,19 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
            <item>
             <layout class="QHBoxLayout" name="horizontalLayout_5">
              <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
               <widget class="QComboBox" name="comboBox">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -69,19 +82,6 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
             </layout>
            </item>
           </layout>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Orientation::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
          </item>
          <item>
           <widget class="QLabel" name="label_5">
@@ -104,6 +104,19 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <property name="sizeConstraint">
           <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
          </property>
+         <item>
+          <spacer name="horizontalSpacer_9">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <widget class="QPushButton" name="pushButton_2">
            <property name="sizePolicy">
@@ -136,7 +149,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <widget class="QLabel" name="label">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -236,7 +249,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
            <item>
             <widget class="QLabel" name="label_3">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -258,7 +271,26 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_17">
            <item>
+            <spacer name="horizontalSpacer_7">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
             <widget class="QDateEdit" name="dateEdit">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="displayFormat">
               <string>yyyy/M/d</string>
              </property>
@@ -276,7 +308,26 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_16">
            <item>
+            <spacer name="horizontalSpacer_8">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
             <widget class="QDateEdit" name="dateEdit_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
              <property name="displayFormat">
               <string>yyyy/M/d</string>
              </property>
@@ -339,11 +390,36 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="vb">
-         <property name="sizeConstraint">
-          <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>1000</height>
+          </size>
          </property>
-        </layout>
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>637</width>
+            <height>52</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <item>
+            <layout class="QVBoxLayout" name="vb">
+             <property name="sizeConstraint">
+              <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
+             </property>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_11">
@@ -447,7 +523,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
          <item>
           <widget class="QLabel" name="label_2">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>

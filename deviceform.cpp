@@ -157,7 +157,7 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     label->setObjectName(labelName);
 
     // Set size policy to adjust based on content
-    label->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    label->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
     label->setAlignment(Qt::AlignCenter);
     label->adjustSize();
 
@@ -189,14 +189,14 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     // Set size policy and adjust combo box as well
     comboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
     comboBox->adjustSize();
-
     comboBoxes.append(comboBox);
 
     QString hbName = QString("hb_%1").arg(index);
     QHBoxLayout *hb = new QHBoxLayout;
-
+    QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
     // Set alignment and add widgets to layout
     label->setAlignment(Qt::AlignCenter);
+    hb->addSpacerItem(spacer);
     hb->addWidget(comboBox);
     hb->addWidget(label);
 
@@ -273,7 +273,7 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
 //        qDebug() << "Data" << comboBox->objectName() << ":" << text;
 //        givenData.append(text);
     comboBox->setCurrentText(res[count]);
-qDebug() << res[count]<<"this is res "<<count;
+// qDebug() << res[count]<<"this is res "<<count;
     count++;
     }
 
@@ -393,7 +393,7 @@ void DeviceForm::submit(QString SN,int countt){
         q.addBindValue(givenData[0].toString());
         q.addBindValue(ui->dateEdit->text());
         q.addBindValue(ui->dateEdit_2->text());
-        qDebug() << givenData;
+        // qDebug() << givenData;
         bool err = q.exec();
         if (!err) {
             qDebug() << "Error in ProductSecInfo insert:" << q.lastError().text();
@@ -551,7 +551,7 @@ void DeviceForm::keyPressEvent(QKeyEvent *event){
     if(event->key() == Qt::Key_Return || event->key() == Qt::Key_Enter){
         bool moved = this->focusNextChild();
         if (moved) {
-            qDebug() << "Moved focus to the next widget.";
+            // qDebug() << "Moved focus to the next widget.";
         }
 
         // Mark the event as accepted
@@ -649,7 +649,7 @@ bool DeviceForm::checkBulkSN(){
         serialno = MyFunctions::intToStr(a);
     }
     if(res.isEmpty()){
-        qDebug() << "no duplicates";
+        // qDebug() << "no duplicates";
         return true;
     }
 
@@ -750,7 +750,7 @@ void DeviceForm::loadDate(unsigned int id){
                 int year = parts[0].toInt();
                 int month = parts[1].toInt();
                 int day = parts[2].toInt();
-                qDebug() << year<<month<<day<<"dateeeee";
+                // qDebug() << year<<month<<day<<"dateeeee";
                 QDate jalaliDate = QDate(year, month, day, calendar);
                 if (jalaliDate.isValid()) {
                     ui->dateEdit->setDate(jalaliDate);

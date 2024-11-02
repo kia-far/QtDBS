@@ -20,6 +20,7 @@
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QScrollArea>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QSpinBox>
 #include <QtWidgets/QTextEdit>
@@ -38,11 +39,12 @@ public:
     QHBoxLayout *horizontalLayout_7;
     QHBoxLayout *horizontalLayout_6;
     QHBoxLayout *horizontalLayout_5;
-    QComboBox *comboBox;
     QSpacerItem *horizontalSpacer_3;
+    QComboBox *comboBox;
     QLabel *label_5;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout;
+    QSpacerItem *horizontalSpacer_9;
     QPushButton *pushButton_2;
     QLineEdit *lineEdit;
     QLabel *label;
@@ -57,9 +59,11 @@ public:
     QLabel *label_3;
     QVBoxLayout *verticalLayout_9;
     QHBoxLayout *horizontalLayout_17;
+    QSpacerItem *horizontalSpacer_7;
     QDateEdit *dateEdit;
     QLabel *label_7;
     QHBoxLayout *horizontalLayout_16;
+    QSpacerItem *horizontalSpacer_8;
     QDateEdit *dateEdit_2;
     QLabel *label_8;
     QVBoxLayout *verticalLayout_7;
@@ -68,6 +72,9 @@ public:
     QSpacerItem *horizontalSpacer_6;
     QLabel *label_6;
     QFrame *line;
+    QScrollArea *scrollArea;
+    QWidget *scrollAreaWidgetContents;
+    QVBoxLayout *verticalLayout_8;
     QVBoxLayout *vb;
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_5;
@@ -133,6 +140,10 @@ public:
         horizontalLayout_6->setObjectName(QString::fromUtf8("horizontalLayout_6"));
         horizontalLayout_5 = new QHBoxLayout();
         horizontalLayout_5->setObjectName(QString::fromUtf8("horizontalLayout_5"));
+        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_5->addItem(horizontalSpacer_3);
+
         comboBox = new QComboBox(DeviceForm);
         comboBox->setObjectName(QString::fromUtf8("comboBox"));
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -148,10 +159,6 @@ public:
 
 
         horizontalLayout_7->addLayout(horizontalLayout_6);
-
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_7->addItem(horizontalSpacer_3);
 
         label_5 = new QLabel(DeviceForm);
         label_5->setObjectName(QString::fromUtf8("label_5"));
@@ -170,6 +177,10 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
+        horizontalSpacer_9 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_9);
+
         pushButton_2 = new QPushButton(DeviceForm);
         pushButton_2->setObjectName(QString::fromUtf8("pushButton_2"));
         QSizePolicy sizePolicy1(QSizePolicy::Fixed, QSizePolicy::Fixed);
@@ -193,7 +204,7 @@ public:
 
         label = new QLabel(DeviceForm);
         label->setObjectName(QString::fromUtf8("label"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy3(QSizePolicy::Preferred, QSizePolicy::Expanding);
         sizePolicy3.setHorizontalStretch(0);
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
@@ -267,8 +278,14 @@ public:
         verticalLayout_9->setObjectName(QString::fromUtf8("verticalLayout_9"));
         horizontalLayout_17 = new QHBoxLayout();
         horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_17->addItem(horizontalSpacer_7);
+
         dateEdit = new QDateEdit(DeviceForm);
         dateEdit->setObjectName(QString::fromUtf8("dateEdit"));
+        sizePolicy2.setHeightForWidth(dateEdit->sizePolicy().hasHeightForWidth());
+        dateEdit->setSizePolicy(sizePolicy2);
 
         horizontalLayout_17->addWidget(dateEdit);
 
@@ -282,8 +299,14 @@ public:
 
         horizontalLayout_16 = new QHBoxLayout();
         horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_16->addItem(horizontalSpacer_8);
+
         dateEdit_2 = new QDateEdit(DeviceForm);
         dateEdit_2->setObjectName(QString::fromUtf8("dateEdit_2"));
+        sizePolicy2.setHeightForWidth(dateEdit_2->sizePolicy().hasHeightForWidth());
+        dateEdit_2->setSizePolicy(sizePolicy2);
 
         horizontalLayout_16->addWidget(dateEdit_2);
 
@@ -313,8 +336,11 @@ public:
 
         label_6 = new QLabel(DeviceForm);
         label_6->setObjectName(QString::fromUtf8("label_6"));
-        sizePolicy3.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
-        label_6->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(label_6->sizePolicy().hasHeightForWidth());
+        label_6->setSizePolicy(sizePolicy4);
 
         horizontalLayout_14->addWidget(label_6);
 
@@ -331,11 +357,24 @@ public:
 
         verticalLayout_7->addLayout(verticalLayout_5);
 
+        scrollArea = new QScrollArea(DeviceForm);
+        scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
+        scrollArea->setMaximumSize(QSize(16777215, 1000));
+        scrollArea->setWidgetResizable(true);
+        scrollAreaWidgetContents = new QWidget();
+        scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 637, 52));
+        verticalLayout_8 = new QVBoxLayout(scrollAreaWidgetContents);
+        verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         vb = new QVBoxLayout();
         vb->setObjectName(QString::fromUtf8("vb"));
         vb->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
 
-        verticalLayout_7->addLayout(vb);
+        verticalLayout_8->addLayout(vb);
+
+        scrollArea->setWidget(scrollAreaWidgetContents);
+
+        verticalLayout_7->addWidget(scrollArea);
 
         horizontalLayout_11 = new QHBoxLayout();
         horizontalLayout_11->setObjectName(QString::fromUtf8("horizontalLayout_11"));
@@ -392,8 +431,8 @@ public:
         horizontalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         textEdit = new QTextEdit(DeviceForm);
         textEdit->setObjectName(QString::fromUtf8("textEdit"));
-        sizePolicy3.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
-        textEdit->setSizePolicy(sizePolicy3);
+        sizePolicy4.setHeightForWidth(textEdit->sizePolicy().hasHeightForWidth());
+        textEdit->setSizePolicy(sizePolicy4);
         textEdit->setTabChangesFocus(true);
 
         horizontalLayout_2->addWidget(textEdit);

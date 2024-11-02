@@ -6,6 +6,10 @@
 #include "MyTableProxy.h"
 #include "productproxy.h"
 #include <DatabaseConnection.h>
+#include <QLabel>
+#include <QLineEdit>
+#include <QList>
+#include <QCheckBox>
 
 namespace Ui {
 class Tables;
@@ -71,6 +75,8 @@ private:
     void hideColumns();
     void showColumns();
     void populateLabel(int row);
+    void setupWidget();
+    void clearLayout(QLayout *layout);
     Ui::Tables *ui;
     void keybinds();
     ProxyView *View;
@@ -80,6 +86,9 @@ private:
     DatabaseConnection &db;
     MainWindow *mainwindow;
     QString currentDevice;
+    QList<QLabel*>labels;
+    QList<QLineEdit*>lineEdits;
+    QList<QCheckBox*>checkBoxes;
     void keyPressEvent(QKeyEvent *event) override;
 };
 
