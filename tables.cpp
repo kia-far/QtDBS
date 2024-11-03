@@ -19,7 +19,8 @@
 #include "exporttoexcel.h"
 #include <QVariant>
 #include <QSpacerItem>
-
+#include <QScrollArea>
+#include <QScrollBar>
 
 unsigned int lastClicked =4294967294;
 int currentTable =0;
@@ -59,7 +60,8 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
         file.close();
         keybinds();
     }
-
+    ui->toolButton->setIcon(QIcon(addr+"/images/excel.ico"));
+    ui->toolButton->setIconSize(QSize(25,25));
     ui->tableView->setAlternatingRowColors(true);
     ui->tableView->resizeColumnsToContents();
 //    currentTable = 3;
@@ -353,6 +355,8 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     Tables::on_RefreshBtn_clicked();
     hideColumns();
     setupWidget();
+    // ui->scrollArea->horizontalScrollBar()->setSliderPosition();
+
 }
 
 
@@ -586,10 +590,10 @@ void Tables::hideColumns(){
     // int columnCount = View->columnCount();
         // qDebug()<<columnCount<<"this column countttt";
     for (int i = 2; i < columnCount-3; ++i) {
-        // ui->tableView->setColumnHidden(i, true);
+        ui->tableView->setColumnHidden(i, true);
     }
-    // ui->tableView->setColumnHidden(columnCount-2,true);
-    // ui->tableView->setColumnHidden(columnCount-1,true);
+    ui->tableView->setColumnHidden(columnCount-2,true);
+    ui->tableView->setColumnHidden(columnCount-1,true);
     }
 void Tables::showColumns(){
     int columnCount = View->columnCount();
@@ -668,7 +672,8 @@ void Tables::setupWidget(){
         QLineEdit *lineEdit = new QLineEdit();
         QString lineEditName = QString("lineEdit_%1").arg(i);
         lineEdit->setText(item);
-        lineEdit->setFixedSize(200,30);
+        lineEdit->setFixedSize(200,40);
+        lineEdit->setReadOnly(true);
         lineEdit->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
         lineEdit->adjustSize();
 

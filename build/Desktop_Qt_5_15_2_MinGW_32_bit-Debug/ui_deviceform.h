@@ -49,8 +49,8 @@ public:
     QLineEdit *lineEdit;
     QLabel *label;
     QHBoxLayout *horizontalLayout_12;
-    QSpinBox *spinBox;
     QSpacerItem *horizontalSpacer_4;
+    QSpinBox *spinBox;
     QCheckBox *checkBox;
     QVBoxLayout *verticalLayout_4;
     QHBoxLayout *horizontalLayout_3;
@@ -83,6 +83,7 @@ public:
     QFrame *line_2;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_8;
+    QSpacerItem *horizontalSpacer_10;
     QGridLayout *cbg;
     QLabel *label_4;
     QHBoxLayout *horizontalLayout_2;
@@ -97,7 +98,7 @@ public:
     {
         if (DeviceForm->objectName().isEmpty())
             DeviceForm->setObjectName(QString::fromUtf8("DeviceForm"));
-        DeviceForm->resize(665, 583);
+        DeviceForm->resize(665, 656);
         DeviceForm->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -218,16 +219,16 @@ public:
 
         horizontalLayout_12 = new QHBoxLayout();
         horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
+        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_12->addItem(horizontalSpacer_4);
+
         spinBox = new QSpinBox(DeviceForm);
         spinBox->setObjectName(QString::fromUtf8("spinBox"));
         spinBox->setFrame(true);
         spinBox->setMaximum(1000);
 
         horizontalLayout_12->addWidget(spinBox);
-
-        horizontalSpacer_4 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_12->addItem(horizontalSpacer_4);
 
         checkBox = new QCheckBox(DeviceForm);
         checkBox->setObjectName(QString::fromUtf8("checkBox"));
@@ -363,7 +364,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 637, 52));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 637, 73));
         verticalLayout_8 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         vb = new QVBoxLayout();
@@ -411,6 +412,10 @@ public:
         verticalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_8->addItem(horizontalSpacer_10);
+
         cbg = new QGridLayout();
         cbg->setObjectName(QString::fromUtf8("cbg"));
         cbg->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);

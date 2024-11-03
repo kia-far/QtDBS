@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>972</width>
-    <height>728</height>
+    <height>828</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -245,6 +245,105 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
        <height>600</height>
       </size>
      </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget {
+    background-color: #d0dae1; /* Dark background color for the entire widget */
+    font: 12pt &quot;Segoe UI&quot;;
+}
+
+/* Style for QLineEdit with a darker background and smoother edges */
+QLineEdit {
+    background-color: #eff3f5; /* Darker grayish background */
+    color: #000000; /* Light text color for readability */
+    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
+    border-radius: 6px; /* Smooth, rounded edges */
+    padding: 5px; /* Padding for a cleaner look */
+    font: 12pt &quot;Segoe UI&quot;;
+}
+
+QLineEdit:focus {
+    border-color: #7878a0; /* Lighter border color on focus */
+    background-color: #e0e6eb; /* Slightly lighter background on focus */
+}
+
+QTextBrowser {
+    background-color: #eff3f5; /* Darker grayish background */
+    color: #000000; /* Light text color for readability */
+    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
+    border-radius: 6px; /* Smooth, rounded edges */
+    padding: 5px; /* Padding for a cleaner look */
+    font: 12pt &quot;Segoe UI&quot;;
+}
+
+QTextBrowser:focus {
+    border-color: #7878a0; /* Lighter border color on focus */
+    background-color: #4b4b5f; /* Slightly lighter background on focus */
+}
+
+QCheckBox {
+    color: #000000; /* Light text color for dark background */
+    font: 12pt &quot;Segoe UI&quot;;
+}
+
+QCheckBox:disabled {
+    color: #000000; /* Same text color for disabled state */
+    opacity: 1; /* Remove opacity reduction */
+}
+
+/* Blue indicator for checked and disabled QCheckBox */
+QCheckBox::indicator:checked:disabled {
+    background-color: #92a8b9; /* Blue color to appear as enabled */
+	opacity: 1;
+   /* border: 1px solid #3a7bd5;  Blue border to match the indicator */
+}
+
+QCheckBox::indicator:disabled {
+    opacity: 1; /* Remove opacity change for checkbox indicator */
+}
+
+/* Background color for QWidget */
+/* Style for the vertical scrollbar */
+QScrollBar:vertical {
+    background: #eff3f5; /* Background color of the scrollbar */
+    width: 10px; /* Width of the scrollbar */
+    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */
+    border-radius: 5px; /* Rounded edges for the scrollbar track */
+}
+
+/* Style for the horizontal scrollbar */
+QScrollBar:horizontal {
+    background: #eff3f5; /* Background color of the scrollbar */
+    height: 10px; /* Height of the scrollbar */
+    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */
+    border-radius: 5px; /* Rounded edges for the scrollbar track */
+}
+
+/* Handle (scroller) styling for both horizontal and vertical scrollbars */
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: #92a8b9; /* Color of the scroller */
+    min-height: 20px; /* Minimum height for the vertical handle */
+    min-width: 20px; /* Minimum width for the horizontal handle */
+    border-radius: 5px; /* Smooth, rounded edges for the handle */
+}
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover {
+    background: #b1c1cd; /* Slightly lighter color on hover for the handle */
+}
+
+/* Remove the top/bottom buttons on the scrollbar */
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    background: none; /* No additional lines/buttons */
+    height: 0px;
+    width: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical,
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none; /* No page scroll styling */
+}
+</string>
+     </property>
      <layout class="QVBoxLayout" name="verticalLayout_3">
       <item>
        <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -254,7 +353,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
            <enum>QLayout::SizeConstraint::SetMinimumSize</enum>
           </property>
           <item>
-           <widget class="QLineEdit" name="form_Name"/>
+           <widget class="QLineEdit" name="form_Name">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_3">
@@ -287,6 +390,9 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
            </widget>
           </item>
           <item>
@@ -310,7 +416,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_7">
           <item>
-           <widget class="QLineEdit" name="form_dev"/>
+           <widget class="QLineEdit" name="form_dev">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_5">
@@ -328,7 +438,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_16">
           <item>
-           <widget class="QLineEdit" name="form_gDate"/>
+           <widget class="QLineEdit" name="form_gDate">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_8">
@@ -355,7 +469,11 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
         <item>
          <layout class="QHBoxLayout" name="horizontalLayout_17">
           <item>
-           <widget class="QLineEdit" name="form_pDate"/>
+           <widget class="QLineEdit" name="form_pDate">
+            <property name="readOnly">
+             <bool>true</bool>
+            </property>
+           </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_7">
@@ -379,11 +497,17 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>140</height>
+          <height>150</height>
          </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
         <widget class="QWidget" name="scrollAreaWidgetContents">
          <property name="geometry">
@@ -391,7 +515,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
            <x>0</x>
            <y>0</y>
            <width>926</width>
-           <height>138</height>
+           <height>148</height>
           </rect>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
@@ -438,11 +562,17 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
         <property name="minimumSize">
          <size>
           <width>0</width>
-          <height>140</height>
+          <height>130</height>
          </size>
+        </property>
+        <property name="layoutDirection">
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
         <property name="widgetResizable">
          <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
         </property>
         <widget class="QWidget" name="scrollAreaWidgetContents_5">
          <property name="geometry">
@@ -450,7 +580,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
            <x>0</x>
            <y>0</y>
            <width>926</width>
-           <height>138</height>
+           <height>128</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -463,13 +593,13 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
              </sizepolicy>
             </property>
             <property name="layoutDirection">
-             <enum>Qt::LayoutDirection::LeftToRight</enum>
+             <enum>Qt::LayoutDirection::RightToLeft</enum>
             </property>
             <property name="title">
              <string>متعلقات</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+             <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_4">
              <item>

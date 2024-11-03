@@ -187,7 +187,7 @@ void DeviceForm::createNewItem(QString itemName, int index) {
     }
 
     // Set size policy and adjust combo box as well
-    comboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+    comboBox->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
     comboBox->adjustSize();
     comboBoxes.append(comboBox);
 
@@ -486,6 +486,18 @@ void DeviceForm::on_pushButton_clicked()
 
 
 void DeviceForm::adminMode(){
+    QStringList combos={};
+    for(QComboBox *comboBox: comboBoxes){
+        combos.append(comboBox->currentText());
+    }
+    QStringList dates = {ui->dateEdit->text(),ui->dateEdit_2->text()};
+    QStringList checks={};
+    for(QCheckBox *checkBox: checkBoxes){
+        if(checkBox->isChecked()) checks.append("1");
+        else checks.append("0");
+    }
+    bool ischecked = ui->checkBox->isChecked();
+    int count = ui->spinBox->value();
     if(!admiMode){
         if(MyFunctions::enterAdminMode()){
 
@@ -493,6 +505,7 @@ void DeviceForm::adminMode(){
         MyFunctions::setAdminMode(true);
     // if(!admiMode){ui->AddItemBtn->hide();}
     // else {ui->AddItemBtn->show();}
+
     setup();
         }
         else{
@@ -509,6 +522,31 @@ void DeviceForm::adminMode(){
         MyFunctions::setAdminMode(false);
         setup();
     }
+    if(combos.size()==comboBoxes.size()){
+        int i =0;
+        for(QComboBox *comboBox : comboBoxes){
+            comboBox->setCurrentText(combos[i]);
+            i++;
+        }
+    }
+    QStringList date1 = dates[0].split('/');
+    QCalendar calendar(QCalendar::System::Jalali);
+    ui->dateEdit->setCalendar(calendar);
+    QDate jalaliDate = QDate(date1[0].toInt(),date1[1].toInt(),date1[2].toInt(),calendar);
+    ui->dateEdit->setDate(jalaliDate);
+    QStringList date2 = dates[1].split('/');
+    ui->dateEdit_2->setCalendar(calendar);
+    QDate jalaliDate2 = QDate(date2[0].toInt(),date2[1].toInt(),date2[2].toInt(),calendar);
+    ui->dateEdit_2->setDate(jalaliDate2);
+    int j=0;
+    if(checks.size()==checkBoxes.size()){
+        for(QCheckBox *checkBox: checkBoxes){
+            checkBox->setChecked(checks[j]=="1");
+            j++;
+        }
+    }
+    ui->checkBox->setChecked(ischecked);
+    if(ischecked) ui->spinBox->setValue(count);
 }
 
 
@@ -737,10 +775,10 @@ void DeviceForm::loadDate(unsigned int id){
                 if (jalaliDate.isValid()) {
                     ui->dateEdit_2->setDate(jalaliDate);
                 } else {
-                    ui->dateEdit_2->setDate(QDate::currentDate());
+                    ui->dateEdit_2->setDate(QDate::currentDate().addYears(1));
                 }
             } else {
-                ui->dateEdit_2->setDate(QDate::currentDate());
+                ui->dateEdit_2->setDate(QDate::currentDate().addYears(1));
             }
             // QCalendar calendar(QCalendar::System::Jalali);
             ui->dateEdit->setCalendar(calendar);
@@ -755,10 +793,10 @@ void DeviceForm::loadDate(unsigned int id){
                 if (jalaliDate.isValid()) {
                     ui->dateEdit->setDate(jalaliDate);
                 } else {
-                    ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+                    ui->dateEdit->setDate(QDate::currentDate());
                 }
             } else {
-                ui->dateEdit->setDate(QDate::currentDate().addYears(1));}
+                ui->dateEdit->setDate(QDate::currentDate());}
         } else {
             qDebug() << "No data found for serial number:" << id;
         }

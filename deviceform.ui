@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>665</width>
-    <height>583</height>
+    <height>656</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -167,16 +167,6 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_12">
          <item>
-          <widget class="QSpinBox" name="spinBox">
-           <property name="frame">
-            <bool>true</bool>
-           </property>
-           <property name="maximum">
-            <number>1000</number>
-           </property>
-          </widget>
-         </item>
-         <item>
           <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
@@ -188,6 +178,16 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
             </size>
            </property>
           </spacer>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="spinBox">
+           <property name="frame">
+            <bool>true</bool>
+           </property>
+           <property name="maximum">
+            <number>1000</number>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QCheckBox" name="checkBox">
@@ -406,7 +406,7 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
             <x>0</x>
             <y>0</y>
             <width>637</width>
-            <height>52</height>
+            <height>73</height>
            </rect>
           </property>
           <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -483,6 +483,19 @@ QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
        </property>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <spacer name="horizontalSpacer_10">
+           <property name="orientation">
+            <enum>Qt::Orientation::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
          <item>
           <layout class="QGridLayout" name="cbg">
            <property name="sizeConstraint">

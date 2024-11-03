@@ -90,7 +90,7 @@ public:
     {
         if (Tables->objectName().isEmpty())
             Tables->setObjectName(QString::fromUtf8("Tables"));
-        Tables->resize(972, 728);
+        Tables->resize(972, 828);
         Tables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -229,6 +229,106 @@ public:
         widget->setSizePolicy(sizePolicy1);
         widget->setMinimumSize(QSize(0, 600));
         widget->setMaximumSize(QSize(16777215, 600));
+        widget->setStyleSheet(QString::fromUtf8("QWidget {\n"
+"    background-color: #d0dae1; /* Dark background color for the entire widget */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"/* Style for QLineEdit with a darker background and smoother edges */\n"
+"QLineEdit {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; /* Smooth, rounded edges */\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #e0e6eb; /* Slightly lighter background on focus */\n"
+"}\n"
+"\n"
+"QTextBrowser {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; "
+                        "/* Smooth, rounded edges */\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QTextBrowser:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #4b4b5f; /* Slightly lighter background on focus */\n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    color: #000000; /* Light text color for dark background */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QCheckBox:disabled {\n"
+"    color: #000000; /* Same text color for disabled state */\n"
+"    opacity: 1; /* Remove opacity reduction */\n"
+"}\n"
+"\n"
+"/* Blue indicator for checked and disabled QCheckBox */\n"
+"QCheckBox::indicator:checked:disabled {\n"
+"    background-color: #92a8b9; /* Blue color to appear as enabled */\n"
+"	opacity: 1;\n"
+"   /* border: 1px solid #3a7bd5;  Blue border to match the indicator */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:disabled {\n"
+"    opacity: 1; /* Remove opacity change for checkbox indicator */\n"
+"}\n"
+"\n"
+"/* Background color for QWidget */\n"
+""
+                        "/* Style for the vertical scrollbar */\n"
+"QScrollBar:vertical {\n"
+"    background: #eff3f5; /* Background color of the scrollbar */\n"
+"    width: 10px; /* Width of the scrollbar */\n"
+"    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */\n"
+"    border-radius: 5px; /* Rounded edges for the scrollbar track */\n"
+"}\n"
+"\n"
+"/* Style for the horizontal scrollbar */\n"
+"QScrollBar:horizontal {\n"
+"    background: #eff3f5; /* Background color of the scrollbar */\n"
+"    height: 10px; /* Height of the scrollbar */\n"
+"    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */\n"
+"    border-radius: 5px; /* Rounded edges for the scrollbar track */\n"
+"}\n"
+"\n"
+"/* Handle (scroller) styling for both horizontal and vertical scrollbars */\n"
+"QScrollBar::handle:vertical, QScrollBar::handle:horizontal {\n"
+"    background: #92a8b9; /* Color of the scroller */\n"
+"    min-height: 20px; /* Minimum height for the vertical handle */\n"
+"    min-width: 20px; /* Minimum width for the horizontal handle */\n"
+""
+                        "    border-radius: 5px; /* Smooth, rounded edges for the handle */\n"
+"}\n"
+"\n"
+"QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover {\n"
+"    background: #b1c1cd; /* Slightly lighter color on hover for the handle */\n"
+"}\n"
+"\n"
+"/* Remove the top/bottom buttons on the scrollbar */\n"
+"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,\n"
+"QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {\n"
+"    background: none; /* No additional lines/buttons */\n"
+"    height: 0px;\n"
+"    width: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical,\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none; /* No page scroll styling */\n"
+"}\n"
+""));
         verticalLayout_3 = new QVBoxLayout(widget);
         verticalLayout_3->setObjectName(QString::fromUtf8("verticalLayout_3"));
         horizontalLayout_5 = new QHBoxLayout();
@@ -238,6 +338,7 @@ public:
         horizontalLayout_3->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         form_Name = new QLineEdit(widget);
         form_Name->setObjectName(QString::fromUtf8("form_Name"));
+        form_Name->setReadOnly(true);
 
         horizontalLayout_3->addWidget(form_Name);
 
@@ -265,6 +366,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(form_SN->sizePolicy().hasHeightForWidth());
         form_SN->setSizePolicy(sizePolicy3);
+        form_SN->setReadOnly(true);
 
         horizontalLayout->addWidget(form_SN);
 
@@ -283,6 +385,7 @@ public:
         horizontalLayout_7->setObjectName(QString::fromUtf8("horizontalLayout_7"));
         form_dev = new QLineEdit(widget);
         form_dev->setObjectName(QString::fromUtf8("form_dev"));
+        form_dev->setReadOnly(true);
 
         horizontalLayout_7->addWidget(form_dev);
 
@@ -303,6 +406,7 @@ public:
         horizontalLayout_16->setObjectName(QString::fromUtf8("horizontalLayout_16"));
         form_gDate = new QLineEdit(widget);
         form_gDate->setObjectName(QString::fromUtf8("form_gDate"));
+        form_gDate->setReadOnly(true);
 
         horizontalLayout_16->addWidget(form_gDate);
 
@@ -322,6 +426,7 @@ public:
         horizontalLayout_17->setObjectName(QString::fromUtf8("horizontalLayout_17"));
         form_pDate = new QLineEdit(widget);
         form_pDate->setObjectName(QString::fromUtf8("form_pDate"));
+        form_pDate->setReadOnly(true);
 
         horizontalLayout_17->addWidget(form_pDate);
 
@@ -340,11 +445,13 @@ public:
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
         sizePolicy1.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
         scrollArea->setSizePolicy(sizePolicy1);
-        scrollArea->setMinimumSize(QSize(0, 140));
+        scrollArea->setMinimumSize(QSize(0, 150));
+        scrollArea->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         scrollArea->setWidgetResizable(true);
+        scrollArea->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 926, 138));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 926, 148));
         horizontalLayout_8 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         form_parts = new QGroupBox(scrollAreaWidgetContents);
@@ -371,19 +478,21 @@ public:
 
         scrollArea_2 = new QScrollArea(widget);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
-        scrollArea_2->setMinimumSize(QSize(0, 140));
+        scrollArea_2->setMinimumSize(QSize(0, 130));
+        scrollArea_2->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         scrollArea_2->setWidgetResizable(true);
+        scrollArea_2->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         scrollAreaWidgetContents_5 = new QWidget();
         scrollAreaWidgetContents_5->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_5"));
-        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 926, 138));
+        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 926, 128));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_5);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         form_bel = new QGroupBox(scrollAreaWidgetContents_5);
         form_bel->setObjectName(QString::fromUtf8("form_bel"));
         sizePolicy.setHeightForWidth(form_bel->sizePolicy().hasHeightForWidth());
         form_bel->setSizePolicy(sizePolicy);
-        form_bel->setLayoutDirection(Qt::LayoutDirection::LeftToRight);
-        form_bel->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
+        form_bel->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
+        form_bel->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         horizontalLayout_4 = new QHBoxLayout(form_bel);
         horizontalLayout_4->setObjectName(QString::fromUtf8("horizontalLayout_4"));
         form_belHBox = new QHBoxLayout();
