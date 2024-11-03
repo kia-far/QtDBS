@@ -92,7 +92,7 @@ QStringList ItemHandler::loadbelongings(QString device) {
         }
     }
     if (!deviceFound) {
-        qDebug() << "Device not found:" << device;
+        // qDebug() << "Device not found:" << device;
         return QStringList();
     }
 //    qDebug() << "Belongings loaded: " << tempstr;

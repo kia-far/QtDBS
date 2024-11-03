@@ -307,7 +307,17 @@ void DeviceForm::on_SubmitBtn_clicked()
             case QMessageBox::Yes :{
                 if(ui->spinBox->text().toInt()>1){
                     if(checkBulkSN()){
-                    QtConcurrent::run(this, &DeviceForm::addBulk);
+                        if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
+                            QtConcurrent::run(this, &DeviceForm::addBulk);
+                        }
+                        else{
+                            QMessageBox msgBox;
+                            msgBox.setIcon(QMessageBox::Critical);
+                            msgBox.setWindowTitle("Error");
+                            msgBox.setText("نام مشتری نادرست است");
+                            msgBox.setStandardButtons(QMessageBox::Ok);
+                            msgBox.exec();
+                        }
                     }
 
                 }
@@ -327,8 +337,17 @@ void DeviceForm::on_SubmitBtn_clicked()
             if(ui->spinBox->text().toInt()>1){
                 if(ui->spinBox->text().toInt()>1){
                     if(checkBulkSN()){
-                    QtConcurrent::run(this, &DeviceForm::addBulk);
-                    }
+                        if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
+                            QtConcurrent::run(this, &DeviceForm::addBulk);
+                        }
+                        else{
+                            QMessageBox msgBox;
+                            msgBox.setIcon(QMessageBox::Critical);
+                            msgBox.setWindowTitle("Error");
+                            msgBox.setText("نام مشتری نادرست است");
+                            msgBox.setStandardButtons(QMessageBox::Ok);
+                            msgBox.exec();
+                        }                    }
                 }
             }
             else{
@@ -359,7 +378,7 @@ void DeviceForm::addDevice(){
 }
 
 void DeviceForm::submit(QString SN,int countt){
-    if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
+    if(countt>1||(ui->CustomerCombo->currentText()==""||MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo"))){
         QVariantList givenData;
 
         if(countt>1&&checked){
@@ -368,12 +387,13 @@ void DeviceForm::submit(QString SN,int countt){
             setCombos();
             givenData = {MyFunctions::reverseSN(SN).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
             for(QString string: combos)
-                {    givenData.append(string);}            checked = false;
+                {    givenData.append(string);}
+            checked = false;
         }
         else{
-            setColumns();
-            setChecks();
-            setCombos();
+            // setColumns();
+            // setChecks();
+            // setCombos();
             givenData = {MyFunctions::reverseSN(SN).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
             for(QString string: combos)
                 {    givenData.append(string);}
@@ -650,10 +670,10 @@ void DeviceForm::addBulk(){
         QString serialno = ui->lineEdit->text();
         setColumns();
         setChecks();
-        for(int i=0;i<ui->spinBox->text().toInt();i++){
+        setCombos();
+            for(int i=0;i<ui->spinBox->value();i++){
             submit(serialno,2);
             emit setPBVal(i);
-            //
             unsigned int a = MyFunctions::reverseSN(serialno).toUInt();
             a +=1;
             serialno = MyFunctions::intToStr(a);
