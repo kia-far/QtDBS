@@ -79,6 +79,7 @@ public:
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_5;
     QSpacerItem *verticalSpacer;
+    QPushButton *pushButton_3;
     QPushButton *AddItemBtn;
     QFrame *line_2;
     QVBoxLayout *verticalLayout_2;
@@ -122,7 +123,148 @@ public:
 "}\n"
 "\n"
 "\n"
-"QWidget {font: 12pt \"Segoe UI\";}"));
+"QWidget {font: 12pt \"Segoe UI\";}\n"
+"QWidget {\n"
+"    background-color: #d0dae1; /* Dark background color for the entire widge"
+                        "t */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"/* Style for QLineEdit with a darker background and smoother edges */\n"
+"QLineEdit {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; /* Smooth, rounded edges */\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QLineEdit:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #e0e6eb; /* Slightly lighter background on focus */\n"
+"}\n"
+"\n"
+"QTextBrowser {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; /* Smooth, rounded edges */\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"   "
+                        " font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QTextBrowser:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #e0e6eb; /* Slightly lighter background on focus */\n"
+"}\n"
+"\n"
+"QCheckBox {\n"
+"    color: #000000; /* Light text color for dark background */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QCheckBox:disabled {\n"
+"    color: #000000; /* Same text color for disabled state */\n"
+"    opacity: 1; /* Remove opacity reduction */\n"
+"}\n"
+"\n"
+"/* Blue indicator for checked and disabled QCheckBox */\n"
+"QCheckBox::indicator:checked:disabled {\n"
+"    background-color: #92a8b9; /* Blue color to appear as enabled */\n"
+"	opacity: 1;\n"
+"   /* border: 1px solid #3a7bd5;  Blue border to match the indicator */\n"
+"}\n"
+"\n"
+"QCheckBox::indicator:disabled {\n"
+"    opacity: 1; /* Remove opacity change for checkbox indicator */\n"
+"}\n"
+"\n"
+"/* Background color for QWidget */\n"
+"/* Style for the vertical scrollbar */\n"
+"QScrollBar:vertical {\n"
+"    background: #"
+                        "eff3f5; /* Background color of the scrollbar */\n"
+"    width: 10px; /* Width of the scrollbar */\n"
+"    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */\n"
+"    border-radius: 5px; /* Rounded edges for the scrollbar track */\n"
+"}\n"
+"\n"
+"/* Style for the horizontal scrollbar */\n"
+"QScrollBar:horizontal {\n"
+"    background: #eff3f5; /* Background color of the scrollbar */\n"
+"    height: 10px; /* Height of the scrollbar */\n"
+"    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */\n"
+"    border-radius: 5px; /* Rounded edges for the scrollbar track */\n"
+"}\n"
+"\n"
+"/* Handle (scroller) styling for both horizontal and vertical scrollbars */\n"
+"QScrollBar::handle:vertical, QScrollBar::handle:horizontal {\n"
+"    background: #92a8b9; /* Color of the scroller */\n"
+"    min-height: 20px; /* Minimum height for the vertical handle */\n"
+"    min-width: 20px; /* Minimum width for the horizontal handle */\n"
+"    border-radius: 5px; /* Smooth, rounded edges for the handle */\n"
+"}\n"
+"\n"
+"Q"
+                        "ScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover {\n"
+"    background: #b1c1cd; /* Slightly lighter color on hover for the handle */\n"
+"}\n"
+"\n"
+"/* Remove the top/bottom buttons on the scrollbar */\n"
+"QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,\n"
+"QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {\n"
+"    background: none; /* No additional lines/buttons */\n"
+"    height: 0px;\n"
+"    width: 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical,\n"
+"QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {\n"
+"    background: none; /* No page scroll styling */\n"
+"}\n"
+"QTextEdit {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; /* Smooth, rounded edges */\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"    font: 12pt \""
+                        "Segoe UI\";\n"
+"}\n"
+"\n"
+"QTextEdit:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #e0e6eb; /* Slightly lighter background on focus */\n"
+"}\n"
+"QComboBox {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; /* Smooth, rounded edges */\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QComboBox:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #e0e6eb; /* Slightly lighter background on focus */\n"
+"}\n"
+"QDateEdit {\n"
+"    background-color: #eff3f5; /* Darker grayish background */\n"
+"    color: #000000; /* Light text color for readability */\n"
+"    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
+"    border-radius: 6px; /* Smooth, rounded edges "
+                        "*/\n"
+"    padding: 5px; /* Padding for a cleaner look */\n"
+"    font: 12pt \"Segoe UI\";\n"
+"}\n"
+"\n"
+"QDateEdit:focus {\n"
+"    border-color: #7878a0; /* Lighter border color on focus */\n"
+"    background-color: #e0e6eb; /* Slightly lighter background on focus */\n"
+"}"));
         horizontalLayout_10 = new QHBoxLayout(DeviceForm);
         horizontalLayout_10->setObjectName(QString::fromUtf8("horizontalLayout_10"));
         verticalLayout = new QVBoxLayout();
@@ -364,7 +506,7 @@ public:
         scrollArea->setWidgetResizable(true);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 637, 73));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 637, 50));
         verticalLayout_8 = new QVBoxLayout(scrollAreaWidgetContents);
         verticalLayout_8->setObjectName(QString::fromUtf8("verticalLayout_8"));
         vb = new QVBoxLayout();
@@ -386,6 +528,11 @@ public:
         verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Policy::Preferred, QSizePolicy::Minimum);
 
         horizontalLayout_11->addItem(verticalSpacer);
+
+        pushButton_3 = new QPushButton(DeviceForm);
+        pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
+
+        horizontalLayout_11->addWidget(pushButton_3);
 
         AddItemBtn = new QPushButton(DeviceForm);
         AddItemBtn->setObjectName(QString::fromUtf8("AddItemBtn"));
@@ -503,6 +650,7 @@ public:
         dateEdit_2->setDisplayFormat(QCoreApplication::translate("DeviceForm", "yyyy/M/d", nullptr));
         label_8->setText(QCoreApplication::translate("DeviceForm", "\330\252\330\247\330\261\333\214\330\256 \330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));
         label_6->setText(QCoreApplication::translate("DeviceForm", "\331\202\330\267\330\271\330\247\330\252 :", nullptr));
+        pushButton_3->setText(QCoreApplication::translate("DeviceForm", "\331\210\333\214\330\261\330\247\333\214\330\264 \331\202\330\267\330\271\331\207", nullptr));
         AddItemBtn->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \331\202\330\267\330\271\331\207", nullptr));
         label_4->setText(QCoreApplication::translate("DeviceForm", "\331\205\330\252\330\271\331\204\331\202\330\247\330\252 :", nullptr));
         label_2->setText(QCoreApplication::translate("DeviceForm", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));

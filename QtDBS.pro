@@ -22,6 +22,7 @@ SOURCES += \
     customerform.cpp \
     deleteoption.cpp \
     deviceform.cpp \
+    edititem.cpp \
     exporttoexcel.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
@@ -45,6 +46,7 @@ HEADERS += \
     customerform.h \
     deleteoption.h \
     deviceform.h \
+    edititem.h \
     exporttoexcel.h \
     itemhandler.h \
     jsonhandler.h \
@@ -65,6 +67,7 @@ FORMS += \
     customerform.ui \
     deleteoption.ui \
     deviceform.ui \
+    edititem.ui \
     mainwindow.ui \
     productregister.ui \
     searchform.ui \

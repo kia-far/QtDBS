@@ -50,7 +50,10 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::hidePB, x,&Tables::handlePBFinished);
     QObject::connect(&d, &DeviceForm::setPBRange, x,&Tables::setPBRange);
     QObject::connect(&d, &DeviceForm::setPBVal, x,&Tables::setPBValue);
-
+    QObject::connect(&d, &DeviceForm::editItem, &EI, &EditItem::setup);
+    QObject::connect(&EI,&EditItem::updateForms,&d, &DeviceForm::refresh);
+    QObject::connect(&EI,&EditItem::refreshTable,x,&Tables::pageRefresh);
+    QObject::connect(&d, &DeviceForm::closeEditItem,&EI, &EditItem::closeForm);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

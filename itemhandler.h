@@ -18,6 +18,7 @@ public:
     static void addDevices(QString deviceName,QString DeviceAbr);
     static void addNewInfoDevice(QString deviceName,QString deviceAbr);
     static void addItems(QString device, QString itemName);
+    static void editItem(QString device, QString oldItem, QString newItem);
     static void addOptions(QString deviceName , QString itemName, QString optionName);
     static void removeOptions(QString deviceName,QString itemName,QString optionName);
     static void addBelonging(QString deviceName, QString itemName);

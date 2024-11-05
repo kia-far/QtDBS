@@ -32,7 +32,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     admiMode=false;
     checked = true;
     setup();
-    if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
+    if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
 
@@ -67,8 +67,8 @@ void DeviceForm::setup(){
     ui->spinBox->setValue(1);
     ui->spinBox->setDisabled(true);
     getCustomers();
-    if(!admiMode){ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
-    else {ui->AddItemBtn->show();ui->pushButton_2->show(); }
+    if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
+    else {ui->pushButton_3->show();ui->AddItemBtn->show();ui->pushButton_2->show(); }
     edit = false;
     // admiMode = false;
     QString curDev = currentDevice;
@@ -379,25 +379,15 @@ void DeviceForm::addDevice(){
 
 void DeviceForm::submit(QString SN,int countt){
     if(countt>1||(ui->CustomerCombo->currentText()==""||MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo"))){
-        QVariantList givenData;
-
-        if(countt>1&&checked){
-            setColumns();
+        if(countt==1){
             setChecks();
+            setColumns();
             setCombos();
+        }
+        QVariantList givenData;
             givenData = {MyFunctions::reverseSN(SN).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
             for(QString string: combos)
                 {    givenData.append(string);}
-            checked = false;
-        }
-        else{
-            // setColumns();
-            // setChecks();
-            // setCombos();
-            givenData = {MyFunctions::reverseSN(SN).toUInt(),ui->CustomerCombo->currentText(),ui->textEdit->toPlainText(), checks};
-            for(QString string: combos)
-                {    givenData.append(string);}
-        }
         givenData[0] = MyFunctions::reverseSN(SN).toUInt();
     if (!edit){
         QSqlQuery q(db.getConnection());
@@ -539,6 +529,7 @@ void DeviceForm::adminMode(){
     }
     else{
         admiMode = !admiMode;
+        emit closeEditItem();
         MyFunctions::setAdminMode(false);
         setup();
     }
@@ -822,3 +813,9 @@ void DeviceForm::loadDate(unsigned int id){
         }
     }
 }
+
+void DeviceForm::on_pushButton_3_clicked()
+{
+    emit editItem(currentDevice);
+}
+

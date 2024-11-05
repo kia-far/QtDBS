@@ -40,8 +40,90 @@ QPushButton:disabled {
     background-color: #d3d3d3; /* Grayer color for disabled buttons */
     color: #a0a0a0; /* Optional: lighter text color for better contrast */
 }
+QToolButton {
+    background-color: rgb(228, 229, 244); /* Light gray background */
+    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */
+    border-radius: 6px; /* Rounded corners */
+     /* Padding for a button-like appearance */
+    color: black; /* Text color */
+    
+    /* Subtle gradient for a shiny effect */
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, 
+                                stop:0 #f0f0f0, stop:1 #d3d3d3);
+}
 
-QWidget {font: 12pt &quot;Segoe UI&quot;;}</string>
+QToolButton:hover {
+    background-color: #e6e6e6; /* Change to a lighter shade on hover */
+    border-color: #b0b0b0; /* Change border color on hover */
+}
+
+QToolButton:pressed {
+    background-color: #bfbfbf; /* Darker gray when pressed */
+    border-color: #808080; /* Slightly darker border when pressed */
+}
+
+QToolButton:disabled {
+    background-color: #d3d3d3; /* Grayer color for disabled buttons */
+    color: #a0a0a0; /* Optional: lighter text color for better contrast */
+}
+
+
+QWidget {font: 12pt &quot;Segoe UI&quot;;}
+QComboBox {
+    background-color: #eff3f5; /* Darker grayish background */
+    color: #000000; /* Light text color for readability */
+    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
+    border-radius: 6px; /* Smooth, rounded edges */
+    padding: 5px; /* Padding for a cleaner look */
+    font: 12pt &quot;Segoe UI&quot;;
+}
+
+QComboBox:focus {
+    border-color: #7878a0; /* Lighter border color on focus */
+    background-color: #e0e6eb; /* Slightly lighter background on focus */
+}
+#Tables {
+    background-color: #d0dae1; /* Dark background color for the entire widget */
+    font: 12pt &quot;Segoe UI&quot;;}
+QScrollBar:vertical {
+    background: #eff3f5; /* Background color of the scrollbar */
+    width: 10px; /* Width of the scrollbar */
+    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */
+    border-radius: 5px; /* Rounded edges for the scrollbar track */
+}
+
+/* Style for the horizontal scrollbar */
+QScrollBar:horizontal {
+    background: #eff3f5; /* Background color of the scrollbar */
+    height: 10px; /* Height of the scrollbar */
+    margin: 0px 0px 0px 0px; /* Margins around the scrollbar */
+    border-radius: 5px; /* Rounded edges for the scrollbar track */
+}
+
+/* Handle (scroller) styling for both horizontal and vertical scrollbars */
+QScrollBar::handle:vertical, QScrollBar::handle:horizontal {
+    background: #92a8b9; /* Color of the scroller */
+    min-height: 20px; /* Minimum height for the vertical handle */
+    min-width: 20px; /* Minimum width for the horizontal handle */
+    border-radius: 5px; /* Smooth, rounded edges for the handle */
+}
+
+QScrollBar::handle:vertical:hover, QScrollBar::handle:horizontal:hover {
+    background: #b1c1cd; /* Slightly lighter color on hover for the handle */
+}
+
+/* Remove the top/bottom buttons on the scrollbar */
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical,
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    background: none; /* No additional lines/buttons */
+    height: 0px;
+    width: 0px;
+}
+
+QScrollBar::add-page:vertical, QScrollBar::sub-page:vertical,
+QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
+    background: none; /* No page scroll styling */
+}</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="4" column="0" colspan="11">
@@ -277,7 +359,7 @@ QTextBrowser {
 
 QTextBrowser:focus {
     border-color: #7878a0; /* Lighter border color on focus */
-    background-color: #4b4b5f; /* Slightly lighter background on focus */
+    background-color: #e0e6eb; /* Slightly lighter background on focus */
 }
 
 QCheckBox {

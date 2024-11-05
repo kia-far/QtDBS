@@ -39,7 +39,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
     mainwindow(mainWin)
 
 {
-
+    batchInProgress = false;
     ui->setupUi(this);
     ui->toolButton->setFixedHeight(30);
     ui->progressBar->setHidden(true);
@@ -158,7 +158,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 1";
         showColumns();
-
+        ui->widget->hide();
 
     }
     else if (currentTable==1) {
@@ -173,6 +173,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 2";
         showColumns();
+        ui->widget->hide();
     }
     else if(currentTable==2){
 
@@ -181,6 +182,8 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 3";
         hideColumns();
+        setupWidget();
+        ui->widget->show();
 
 
     }
@@ -195,6 +198,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->resizeColumnsToContents();
         logger::log("product proxy loaded into table");
         showColumns();
+        ui->widget->hide();
     }
 }
 void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
@@ -307,22 +311,24 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
 
 void Tables::on_SearchBtn_clicked()
 {
-    emit searchActive(currentTable);
+        if(!batchInProgress){
+        emit searchActive(currentTable);}
 }
 
 
 void Tables::on_AddBtn_clicked()
-{
+{    if(!batchInProgress){
     if (currentTable==3){emit addProduct();}
     else if(currentTable==2){emit addDevice(currentDevice);}
     else if(currentTable==1){emit addService();}
     else{emit addCustomer();}
-}
+    }}
 
 
 void Tables::on_RefreshBtn_clicked()
-{
+{    if(!batchInProgress){
     emit refreshActive(currentTable);
+    }
 }
 
 void Tables::pageRefresh(){
@@ -332,9 +338,10 @@ void Tables::pageRefresh(){
 
 void Tables::on_mainWindowBtn_clicked()
 {
+    if(!batchInProgress){
     this->hide();
     mainwindow->show();
-}
+    }}
 
 
 
@@ -544,11 +551,13 @@ void Tables::keyPressEvent(QKeyEvent *event){
     else{}
 }
 void Tables::handlePBStarted(){
+    batchInProgress = true;
     ui->progressBar->setHidden(false);
     ui->label->setHidden(false);
     handleBtnEnable(true);
 }
 void Tables::handlePBFinished(){
+    batchInProgress = false;
     ui->progressBar->setHidden(true);
     ui->label->setHidden(true);
     handleBtnEnable(false);
@@ -572,10 +581,11 @@ void Tables::handleBtnEnable(bool a){
     ui->toolButton->setDisabled(a);
 }
 void Tables::getExport(){
+        if(!batchInProgress){
     qDebug() << "exported";
     ExportExcel exporter;
     exporter.exportToXlsx(ui->tableView);
-}
+        }}
 
 
 void Tables::on_toolButton_clicked()

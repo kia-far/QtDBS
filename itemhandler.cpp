@@ -201,6 +201,64 @@ void ItemHandler::addItems(QString deviceName, QString itemName) {
     }
     loadDevices();
 }
+void ItemHandler::editItem(QString device, QString oldItem, QString newItem) {
+    loadDevices();
+
+    if (!loadedObj.contains(device)) {
+        qDebug() << "Error: Device not found in JSON while editing item.";
+        return;
+    }
+
+    QJsonArray deviceArr = loadedObj[device].toArray();
+    bool itemFound = false;
+    QJsonArray itemContents;
+
+    // Loop through items in the device array to find the old item
+    for (int i = 0; i < deviceArr.size(); ++i) {
+        QJsonObject itemObj = deviceArr[i].toObject();
+        if (itemObj.contains(oldItem)) {
+            // Store the existing contents of the old item
+            itemContents = itemObj.value(oldItem).toArray();
+
+            // Remove the old item
+            deviceArr.removeAt(i);
+
+            // Add the new item with the stored contents
+            QJsonObject newItemObj;
+            newItemObj.insert(newItem, itemContents);
+            deviceArr.insert(i, newItemObj);
+
+            itemFound = true;
+            break;
+        }
+    }
+
+    if (!itemFound) {
+        qDebug() << "Warning: Item not found for editing.";
+        return;
+    }
+
+    // Update the JSON object
+    loadedObj[device] = deviceArr;
+    QJsonDocument updatedDoc(loadedObj);
+    JsonHandler::saveJson(updatedDoc);
+
+    // Update the database table
+    DatabaseConnection& db = DatabaseConnection::getInstance();
+    QSqlQuery query(db.getConnection());
+
+    // First, rename the column in the database
+    QString renameColumnQuery = QString("ALTER TABLE %1 RENAME COLUMN %2 TO %3").arg(device, oldItem, newItem);
+    if (!query.exec(renameColumnQuery)) {
+        qDebug() << "Failed to rename column:" << query.lastError().text();
+    } else {
+        qDebug() << "Column renamed successfully from" << oldItem << "to" << newItem;
+    }
+
+    loadDevices();
+}
+
+
 void ItemHandler::addOptions(QString deviceName , QString itemName , QString optionName){
     loadDevices();
     QJsonArray itemArr = loadedObj[deviceName].toArray();
@@ -291,8 +349,9 @@ void ItemHandler::insertDataIntoTable(const QString& tableName, const QStringLis
     for (int i = 0; i < dataValues.size(); ++i) {
         query.bindValue(i, dataValues[i]);
     }
+
     if (!query.exec()) {
-        qDebug() << "Failed to insert data:" << query.lastError().text();
+        qDebug() << "Failed to insert data to :"<<tableName<<columnNames << query.lastError().text();
     } else {
 //        qDebug() << "Data inserted successfully into table:" << tableName;
     }

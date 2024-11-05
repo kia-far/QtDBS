@@ -90,6 +90,7 @@ private:
     QList<QLineEdit*>lineEdits;
     QList<QCheckBox*>checkBoxes;
     void keyPressEvent(QKeyEvent *event) override;
+    bool batchInProgress;
 };
 
 #endif // TABLES_H

@@ -4163,3 +4163,423 @@
 2024-11-03 16:06:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
 2024-11-03 16:06:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
 2024-11-03 16:06:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:20:57 - data loaded for product info and product sec info!
+2024-11-05 10:20:58 - data loaded for product info and product sec info!
+2024-11-05 10:21:01 - product proxy called
+2024-11-05 10:22:09 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:11 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:13 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:15 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:21 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:22 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:27 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:29 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:33 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:35 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:36 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:42 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:43 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:54 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:57 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:22:58 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:01 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:02 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:05 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:08 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:10 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:11 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:15 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:18 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:20 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:22 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:27 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:28 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:30 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:32 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:36 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:52 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:56 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:23:59 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:08 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:12 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:16 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:21 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:25 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:29 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:43 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:50 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:53 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:53 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:54 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:55 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:56 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:57 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:58 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:24:59 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:00 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:01 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:02 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:03 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:03 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:05 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:06 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:07 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:07 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:08 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:10 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:10 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:11 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:12 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:13 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:13 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:14 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:14 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:15 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:16 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:18 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:20 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:20 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:21 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:22 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:25 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:27 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:29 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:30 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:30 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:32 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:32 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:33 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:35 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:36 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:36 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:37 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:37 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:42 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:42 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:43 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:50 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:52 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:52 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:53 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:54 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:55 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:55 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:56 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:57 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:58 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:25:59 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:00 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:00 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:02 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:03 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:05 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:05 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:06 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:07 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:08 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:09 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:09 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:10 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:12 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:13 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:14 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:15 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:16 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:18 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:20 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:21 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:21 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:22 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:25 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:27 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:28 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:29 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:30 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:32 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:33 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:36 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:37 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:37 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:42 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:50 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:53 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:54 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:55 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:56 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:57 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:58 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:26:59 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:00 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:01 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:02 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:02 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:03 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:04 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:05 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:06 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:06 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:07 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:08 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:09 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:09 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:10 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:11 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:12 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:13 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:14 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:14 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:15 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:16 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:16 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:17 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:18 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:19 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:20 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:21 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:22 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:23 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:24 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:25 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:26 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:27 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:28 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:28 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:29 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:30 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:31 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:33 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:33 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:34 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:35 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:35 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:37 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:38 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:39 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:40 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:41 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:42 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:43 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:44 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:45 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:46 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:47 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:48 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:49 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:50 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:27:51 - inserted product Info and product sec info : 1 & 1 inserted data for BJ4
+2024-11-05 10:48:51 - data loaded for product info and product sec info!
+2024-11-05 10:48:53 - data loaded for product info and product sec info!
+2024-11-05 10:48:54 - product proxy called
+2024-11-05 10:57:48 - data loaded for product info and product sec info!
+2024-11-05 10:57:49 - data loaded for product info and product sec info!
+2024-11-05 10:57:51 - product proxy called
+2024-11-05 11:15:10 - data loaded for product info and product sec info!
+2024-11-05 11:15:11 - data loaded for product info and product sec info!
+2024-11-05 11:15:12 - product proxy called
+2024-11-05 11:16:02 - data loaded for product info and product sec info!
+2024-11-05 11:16:03 - data loaded for product info and product sec info!
+2024-11-05 11:16:05 - product proxy called
+2024-11-05 11:16:52 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-11-05 11:17:03 - data loaded for product info and product sec info!
+2024-11-05 11:17:04 - data loaded for product info and product sec info!
+2024-11-05 11:17:05 - product proxy called
+2024-11-05 11:19:23 - data loaded for product info and product sec info!
+2024-11-05 11:19:24 - data loaded for product info and product sec info!
+2024-11-05 11:19:25 - product proxy called
+2024-11-05 11:19:43 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-11-05 11:25:38 - data loaded for product info and product sec info!
+2024-11-05 11:25:39 - data loaded for product info and product sec info!
+2024-11-05 11:26:00 - data loaded for product info and product sec info!
+2024-11-05 11:26:01 - data loaded for product info and product sec info!
+2024-11-05 11:26:08 - product proxy called
+2024-11-05 11:26:32 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-11-05 11:29:07 - data loaded for product info and product sec info!
+2024-11-05 11:29:08 - data loaded for product info and product sec info!
+2024-11-05 11:29:10 - product proxy called
+2024-11-05 11:29:44 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-11-05 11:32:10 - data loaded for product info and product sec info!
+2024-11-05 11:32:11 - data loaded for product info and product sec info!
+2024-11-05 11:32:16 - product proxy called
+2024-11-05 11:33:01 - data loaded for product info and product sec info!
+2024-11-05 11:33:02 - data loaded for product info and product sec info!
+2024-11-05 11:33:06 - product proxy called
+2024-11-05 11:34:14 - inserted product Info and product sec info : 1 & 1 inserted data for NoteTaker
+2024-11-05 11:37:34 - data loaded for product info and product sec info!
+2024-11-05 11:37:35 - data loaded for product info and product sec info!
+2024-11-05 11:37:37 - product proxy called
+2024-11-05 11:38:12 - data loaded for product info and product sec info!
+2024-11-05 11:38:13 - data loaded for product info and product sec info!
+2024-11-05 11:38:15 - product proxy called
+2024-11-05 11:39:40 - data loaded for product info and product sec info!
+2024-11-05 11:39:41 - data loaded for product info and product sec info!
+2024-11-05 11:39:42 - product proxy called
+2024-11-05 11:47:43 - data loaded for product info and product sec info!
+2024-11-05 11:47:44 - data loaded for product info and product sec info!
+2024-11-05 11:47:45 - product proxy called
+2024-11-05 11:53:14 - data loaded for product info and product sec info!
+2024-11-05 11:53:15 - data loaded for product info and product sec info!
+2024-11-05 11:53:20 - product proxy called
+2024-11-05 11:55:55 - data loaded for product info and product sec info!
+2024-11-05 11:55:56 - data loaded for product info and product sec info!
+2024-11-05 11:56:34 - data loaded for product info and product sec info!
+2024-11-05 11:56:35 - data loaded for product info and product sec info!
+2024-11-05 12:03:14 - product proxy called
+2024-11-05 12:09:41 - data loaded for product info and product sec info!
+2024-11-05 12:09:42 - data loaded for product info and product sec info!
+2024-11-05 12:09:44 - product proxy called
+2024-11-05 12:23:59 - data loaded for product info and product sec info!
+2024-11-05 12:24:00 - data loaded for product info and product sec info!
+2024-11-05 12:25:09 - data loaded for product info and product sec info!
+2024-11-05 12:25:10 - data loaded for product info and product sec info!
+2024-11-05 12:25:11 - product proxy called
+2024-11-05 12:26:59 - data loaded for product info and product sec info!
+2024-11-05 12:27:00 - data loaded for product info and product sec info!
+2024-11-05 12:27:01 - product proxy called
+2024-11-05 12:27:08 - data loaded for product info and product sec info!
+2024-11-05 12:27:09 - data loaded for product info and product sec info!
+2024-11-05 12:28:00 - data loaded for product info and product sec info!
+2024-11-05 12:28:01 - data loaded for product info and product sec info!
+2024-11-05 12:28:02 - product proxy called
+2024-11-05 12:31:12 - data loaded for product info and product sec info!
+2024-11-05 12:31:13 - data loaded for product info and product sec info!
+2024-11-05 12:31:15 - product proxy called
+2024-11-05 12:31:20 - product proxy called
+2024-11-05 12:31:33 - product proxy called
+2024-11-05 12:31:33 - producgt proxy laoded 
+2024-11-05 12:31:33 - data loaded for product info and product sec info!
+2024-11-05 12:31:33 - product proxy loaded into table
+2024-11-05 12:31:33 - producgt proxy laoded 
+2024-11-05 12:31:33 - data loaded for product info and product sec info!
+2024-11-05 12:31:33 - product proxy loaded into table
+2024-11-05 12:33:18 - product proxy called
+2024-11-05 12:33:26 - product proxy called
+2024-11-05 12:33:45 - product proxy called
+2024-11-05 12:40:21 - data loaded for product info and product sec info!
+2024-11-05 12:40:22 - data loaded for product info and product sec info!
+2024-11-05 12:40:25 - product proxy called
+2024-11-05 12:40:50 - product proxy called
+2024-11-05 12:40:54 - product proxy called
+2024-11-05 12:44:50 - data loaded for product info and product sec info!
+2024-11-05 12:44:51 - data loaded for product info and product sec info!
+2024-11-05 12:44:52 - product proxy called
+2024-11-05 12:45:03 - product proxy called
+2024-11-05 12:45:05 - product proxy called
+2024-11-05 12:45:08 - product proxy called
+2024-11-05 12:45:08 - producgt proxy laoded 
+2024-11-05 12:45:08 - data loaded for product info and product sec info!
+2024-11-05 12:45:08 - product proxy loaded into table
+2024-11-05 12:45:08 - producgt proxy laoded 
+2024-11-05 12:45:08 - data loaded for product info and product sec info!
+2024-11-05 12:45:09 - product proxy loaded into table
+2024-11-05 12:46:37 - data loaded for product info and product sec info!
+2024-11-05 12:46:38 - data loaded for product info and product sec info!
+2024-11-05 12:46:39 - product proxy called
+2024-11-05 12:47:27 - data loaded for product info and product sec info!
+2024-11-05 12:47:28 - data loaded for product info and product sec info!
+2024-11-05 12:47:29 - product proxy called
+2024-11-05 12:50:01 - data loaded for product info and product sec info!
+2024-11-05 12:50:02 - data loaded for product info and product sec info!
+2024-11-05 12:50:03 - product proxy called
+2024-11-05 13:04:56 - data loaded for product info and product sec info!
+2024-11-05 13:04:57 - data loaded for product info and product sec info!
+2024-11-05 13:05:00 - product proxy called
