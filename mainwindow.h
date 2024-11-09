@@ -16,6 +16,7 @@
 #include "addabr.h"
 #include "deleteoption.h"
 #include <edititem.h>
+#include <exporttoexcel.h>
 
 class Tables;
 QT_BEGIN_NAMESPACE
@@ -59,6 +60,7 @@ private:
     DeleteOption dO;
     DatabaseConnection &db;
     EditItem EI;
+    ExportExcel EE;
     void keyPressEvent(QKeyEvent *event) override;
 
 };

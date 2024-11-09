@@ -20,6 +20,7 @@ public:
 signals:
     void exportSuccess(const QString &filePath);
     void exportError(const QString &errorMessage);
+    void loadEmpty();
 
 private:
     QString getSaveFilePath();

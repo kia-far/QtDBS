@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&EI,&EditItem::updateForms,&d, &DeviceForm::refresh);
     QObject::connect(&EI,&EditItem::refreshTable,x,&Tables::pageRefresh);
     QObject::connect(&d, &DeviceForm::closeEditItem,&EI, &EditItem::closeForm);
+    QObject::connect(&EE,&ExportExcel::loadEmpty,x,&Tables::emptyWidget);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

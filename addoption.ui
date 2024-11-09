@@ -37,10 +37,10 @@ QPushButton:pressed {
 }
 
 
-QWidget {font: 12pt &quot;Segoe UI&quot;;}
+QWidget {font: 11pt &quot;Segoe UI&quot;;}
 QWidget {
     background-color: #d0dae1; /* Dark background color for the entire widget */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 /* Style for QLineEdit with a darker background and smoother edges */
@@ -50,7 +50,7 @@ QLineEdit {
     border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
     border-radius: 6px; /* Smooth, rounded edges */
     padding: 5px; /* Padding for a cleaner look */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 QLineEdit:focus {
@@ -64,7 +64,7 @@ QTextBrowser {
     border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
     border-radius: 6px; /* Smooth, rounded edges */
     padding: 5px; /* Padding for a cleaner look */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 QTextBrowser:focus {
@@ -74,7 +74,7 @@ QTextBrowser:focus {
 
 QCheckBox {
     color: #000000; /* Light text color for dark background */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 QCheckBox:disabled {
@@ -140,7 +140,7 @@ QTextEdit {
     border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
     border-radius: 6px; /* Smooth, rounded edges */
     padding: 5px; /* Padding for a cleaner look */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 QTextEdit:focus {
@@ -153,7 +153,7 @@ QComboBox {
     border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
     border-radius: 6px; /* Smooth, rounded edges */
     padding: 5px; /* Padding for a cleaner look */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 QComboBox:focus {
@@ -166,7 +166,7 @@ QDateEdit {
     border: 1px solid #5c5c70; /* Slightly lighter border for contrast */
     border-radius: 6px; /* Smooth, rounded edges */
     padding: 5px; /* Padding for a cleaner look */
-    font: 12pt &quot;Segoe UI&quot;;
+    font: 11pt &quot;Segoe UI&quot;;
 }
 
 QDateEdit:focus {

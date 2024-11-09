@@ -8,12 +8,17 @@ ExportExcel::ExportExcel(QObject *parent) : QObject(parent) {}
 
 void ExportExcel::exportToXlsx(QTableView *tableView) {
     // Get the model from the table view
+
     QAbstractItemModel *model = tableView->model();
+    if(model->rowCount()==0){
+        emit loadEmpty();
+        return;
+    }
     if (!model) {
+        loadEmpty();
         emit exportError("No model found in the table view.");
         return;
     }
-
     // Get file path to save the Excel file
     QString filePath = getSaveFilePath();
     if (filePath.isEmpty()) {
@@ -54,6 +59,7 @@ QList<QVariant> ExportExcel::getRowData(QTableView *tableView, int row) {
     // Check if row is within valid bounds
     if (!model || row < 0 || row >= model->rowCount()) {
         emit exportError("Invalid row index.");
+        emit loadEmpty();
         return rowData;  // Return empty if invalid
     }
 

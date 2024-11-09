@@ -81,7 +81,6 @@ public:
     QGroupBox *form_bel;
     QHBoxLayout *horizontalLayout_4;
     QHBoxLayout *form_belHBox;
-    QSpacerItem *verticalSpacer;
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout_9;
     QTextBrowser *form_description;
@@ -147,14 +146,14 @@ public:
 "}\n"
 "\n"
 "\n"
-"QWidget {font: 12pt \"Segoe UI\";}\n"
+"QWidget {font: 11pt \"Segoe UI\";}\n"
 "QComboBox {\n"
 "    background-color: #eff3f5; /* Darker grayish background */\n"
 "    color: #000000; /* Light text color for readability */\n"
 "    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
 "    border-radius: 6px; /* Smooth, rounded edges */\n"
 "    padding: 5px; /* Padding for a cleaner look */\n"
-"    font: 12pt \"Segoe UI\";\n"
+"    font: 11pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "QComboBox:focus {\n"
@@ -163,7 +162,7 @@ public:
 "}\n"
 "#Tables {\n"
 "    background-color: #d0dae1; /* Dark background color for the entire widget */\n"
-"    font: 12pt \"Segoe UI\";}\n"
+"    font: 11pt \"Segoe UI\";}\n"
 "QScrollBar:vertical {\n"
 "    background: #eff3f5; /* Background color of the scrollbar */\n"
 "    width: 10px; /* Width of the scrollbar */\n"
@@ -209,6 +208,7 @@ public:
         gridLayout->setObjectName(QString::fromUtf8("gridLayout"));
         tableView = new QTableView(Tables);
         tableView->setObjectName(QString::fromUtf8("tableView"));
+        tableView->setMinimumSize(QSize(0, 200));
         tableView->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         tableView->setFrameShadow(QFrame::Shadow::Sunken);
         tableView->setSizeAdjustPolicy(QAbstractScrollArea::SizeAdjustPolicy::AdjustToContents);
@@ -307,16 +307,16 @@ public:
 
         widget = new QWidget(Tables);
         widget->setObjectName(QString::fromUtf8("widget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
         widget->setSizePolicy(sizePolicy1);
-        widget->setMinimumSize(QSize(0, 600));
-        widget->setMaximumSize(QSize(16777215, 600));
+        widget->setMinimumSize(QSize(0, 0));
+        widget->setMaximumSize(QSize(16777215, 16777215));
         widget->setStyleSheet(QString::fromUtf8("QWidget {\n"
 "    background-color: #d0dae1; /* Dark background color for the entire widget */\n"
-"    font: 12pt \"Segoe UI\";\n"
+"    font: 11pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "/* Style for QLineEdit with a darker background and smoother edges */\n"
@@ -326,7 +326,7 @@ public:
 "    border: 1px solid #5c5c70; /* Slightly lighter border for contrast */\n"
 "    border-radius: 6px; /* Smooth, rounded edges */\n"
 "    padding: 5px; /* Padding for a cleaner look */\n"
-"    font: 12pt \"Segoe UI\";\n"
+"    font: 11pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "QLineEdit:focus {\n"
@@ -341,7 +341,7 @@ public:
 "    border-radius: 6px; "
                         "/* Smooth, rounded edges */\n"
 "    padding: 5px; /* Padding for a cleaner look */\n"
-"    font: 12pt \"Segoe UI\";\n"
+"    font: 11pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "QTextBrowser:focus {\n"
@@ -351,7 +351,7 @@ public:
 "\n"
 "QCheckBox {\n"
 "    color: #000000; /* Light text color for dark background */\n"
-"    font: 12pt \"Segoe UI\";\n"
+"    font: 11pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "QCheckBox:disabled {\n"
@@ -528,15 +528,18 @@ public:
 
         scrollArea = new QScrollArea(widget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        sizePolicy1.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
-        scrollArea->setSizePolicy(sizePolicy1);
-        scrollArea->setMinimumSize(QSize(0, 150));
+        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
+        scrollArea->setSizePolicy(sizePolicy4);
+        scrollArea->setMinimumSize(QSize(0, 125));
         scrollArea->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         scrollArea->setWidgetResizable(true);
         scrollArea->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         scrollAreaWidgetContents = new QWidget();
         scrollAreaWidgetContents->setObjectName(QString::fromUtf8("scrollAreaWidgetContents"));
-        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 926, 148));
+        scrollAreaWidgetContents->setGeometry(QRect(0, 0, 926, 123));
         horizontalLayout_8 = new QHBoxLayout(scrollAreaWidgetContents);
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         form_parts = new QGroupBox(scrollAreaWidgetContents);
@@ -563,13 +566,13 @@ public:
 
         scrollArea_2 = new QScrollArea(widget);
         scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
-        scrollArea_2->setMinimumSize(QSize(0, 130));
+        scrollArea_2->setMinimumSize(QSize(0, 100));
         scrollArea_2->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         scrollArea_2->setWidgetResizable(true);
         scrollArea_2->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
         scrollAreaWidgetContents_5 = new QWidget();
         scrollAreaWidgetContents_5->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_5"));
-        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 926, 128));
+        scrollAreaWidgetContents_5->setGeometry(QRect(0, 0, 926, 98));
         verticalLayout_2 = new QVBoxLayout(scrollAreaWidgetContents_5);
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         form_bel = new QGroupBox(scrollAreaWidgetContents_5);
@@ -592,10 +595,6 @@ public:
 
         verticalLayout_3->addWidget(scrollArea_2);
 
-        verticalSpacer = new QSpacerItem(20, 40, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        verticalLayout_3->addItem(verticalSpacer);
-
         groupBox = new QGroupBox(widget);
         groupBox->setObjectName(QString::fromUtf8("groupBox"));
         groupBox->setAlignment(Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter);
@@ -603,6 +602,7 @@ public:
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         form_description = new QTextBrowser(groupBox);
         form_description->setObjectName(QString::fromUtf8("form_description"));
+        form_description->setMaximumSize(QSize(16777215, 100));
         form_description->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 
         horizontalLayout_9->addWidget(form_description);

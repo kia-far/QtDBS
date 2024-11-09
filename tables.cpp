@@ -41,6 +41,7 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 {
     batchInProgress = false;
     ui->setupUi(this);
+    ui->widget->hide();
     ui->toolButton->setFixedHeight(30);
     ui->progressBar->setHidden(true);
     ui->label->setHidden(true);
@@ -97,7 +98,9 @@ void Tables::setupTable(QString table){
         ui->tableView->setModel(View);
         hideColumns();
         ui->tableView->resizeColumnsToContents();
-
+        setupWidget();
+        ui->widget->show();
+        populateLabel(0);
     }
     else if(table == "خدمات") {
         ui->deleteBtn->setHidden(true);
@@ -184,7 +187,8 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         hideColumns();
         setupWidget();
         ui->widget->show();
-
+        // qDebug()<<"populating now";
+        populateLabel(selectedRow);
 
     }
     else {
@@ -261,7 +265,9 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         hideColumns();
         ui->tableView->resizeColumnsToContents();
         setupWidget();
+        populateLabel(0);
         ui->widget->setHidden(false);
+
 
 
 
@@ -292,14 +298,14 @@ void Tables::on_EditBtn_clicked()
 
 void Tables::on_tableView_clicked(const QModelIndex &index)
 {
-    int selectedRow = index.row();
+    selectedRow = index.row();
 //    qDebug() << "Selected row:" << selectedRow;
     QVariant data = ui->tableView->model()->data(ui->tableView->model()->index(selectedRow, 0));
 //    qDebug() << "Data in the first column of the selected row:" << data.toString();
     lastClicked = (MyFunctions ::reverseSN(data.toString())).toUInt();
     clickedID = data.toUInt();
     if(currentTable == 2){currentDevice = ui->comboBox_2->currentText();
-        populateLabel(index.row());
+        populateLabel(selectedRow);
     }
     else if(currentTable == 3){
 
@@ -362,6 +368,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     Tables::on_RefreshBtn_clicked();
     hideColumns();
     setupWidget();
+    populateLabel(0);
     // ui->scrollArea->horizontalScrollBar()->setSliderPosition();
 
 }
@@ -585,7 +592,8 @@ void Tables::getExport(){
     qDebug() << "exported";
     ExportExcel exporter;
     exporter.exportToXlsx(ui->tableView);
-        }}
+        }
+}
 
 
 void Tables::on_toolButton_clicked()
@@ -615,6 +623,12 @@ void Tables::populateLabel(int row) {
     ExportExcel exporter;
     QString text = "<div style='word-wrap: break-word;'>";
     int i = 0;
+    qDebug() << "called on :"<<currentDevice<<row;
+    if(ui->tableView->model()->rowCount()==0){
+        emptyWidget();
+    }
+    else{
+
     QList<QVariant> data = exporter.getRowData(ui->tableView, row);
 
     for (QVariant variant : data) {
@@ -658,8 +672,9 @@ void Tables::populateLabel(int row) {
     }
     text.append("</div>");
     // ui->form_description->setText(text);
-}
+    }}
 void Tables::setupWidget(){
+    // ui->widget->setFixedHeight(600);
     clearLayout(ui->form_partHBox);
     clearLayout(ui->form_belHBox);
     checkBoxes.clear();
@@ -714,7 +729,14 @@ void Tables::setupWidget(){
         ui->form_belHBox->addSpacerItem(spacer);
     }
 }
-
+void Tables::emptyWidget(){
+    ui->form_Name->clear();
+    ui->form_pDate->clear();
+    ui->form_gDate->clear();
+    ui->form_SN->clear();
+    ui->form_description->setText("");
+    // ui->form_de
+}
 void Tables::clearLayout(QLayout *layout) {
 
     if (layout == NULL)

@@ -30,6 +30,7 @@ public:
     void setPBRange(int a);
     void setPBValue(int a);
     void handleBtnEnable(bool a);
+    void emptyWidget();
 signals:
     void editDevice(QString device,unsigned int id);
     void edit(unsigned int serialNum,int index);
@@ -91,6 +92,7 @@ private:
     QList<QCheckBox*>checkBoxes;
     void keyPressEvent(QKeyEvent *event) override;
     bool batchInProgress;
+    int selectedRow;
 };
 
 #endif // TABLES_H
