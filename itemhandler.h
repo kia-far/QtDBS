@@ -15,6 +15,7 @@ public:
     static QStringList loadItems(QString device);
     static QStringList loadOptions(QString device , QString item);
     static QStringList loadbelongings(QString device);
+    static QStringList loadVisibleBelongings(QString device);
     static void addDevices(QString deviceName,QString DeviceAbr);
     static void addNewInfoDevice(QString deviceName,QString deviceAbr);
     static void addItems(QString device, QString itemName);
@@ -27,6 +28,7 @@ public:
     static QStringList readLetters();
     static QStringList nameLetter();
     static void addAbr(QString device,QChar newAbr);
+    static void changeBelVisibility(QString deviceName, QString belonging);
 
 private:
     DatabaseConnection &db;

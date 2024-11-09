@@ -109,7 +109,7 @@ void DeviceForm::refresh(QString arg1){
         createNewItem(currentItems[i] , i);
     }
 
-    QStringList belongings = ItemHandler::loadbelongings(arg1);
+    QStringList belongings = ItemHandler::loadVisibleBelongings(arg1);
     for (int i=0;i<belongings.size();i++){
         createBelonging(belongings[i],i);
     }
@@ -122,7 +122,16 @@ void DeviceForm::refresh(QString arg1){
         //    newBelBtn->setFixedWidth(25);
         connect(newBelBtn, &QPushButton::clicked, this, [this ,arg1](){addBelonging (arg1);});
         indexx++;
-        ui->cbg->addWidget(newBelBtn,indexx/2,indexx%2);}
+        ui->cbg->addWidget(newBelBtn,indexx/2+indexx%2,0);
+        QPushButton *hideBelBtn = new QPushButton();
+        QString hideButtonName = QString("افزودن متعلقات");
+        hideBelBtn->setObjectName("newBelBtn");
+        hideBelBtn->setText("ویرایش متعلقات");
+        //    newBelBtn->setFixedWidth(25);
+        connect(hideBelBtn, &QPushButton::clicked, this, [this ,arg1](){hideBelonging (arg1);});
+        // indexx++;
+        ui->cbg->addWidget(hideBelBtn,indexx/2+indexx%2,1);
+    }
 }
 void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
@@ -442,6 +451,9 @@ void DeviceForm::submit(QString SN,int countt){
 }
 void DeviceForm::addBelonging(QString deviceName){
     emit belongingPage(deviceName);
+}
+void DeviceForm::hideBelonging(QString deviceName){
+    emit hideBelongingPage(deviceName);
 }
 void DeviceForm::clearPage(){
     for (QCheckBox *checkbox : checkBoxes){checkbox->setChecked(false);}

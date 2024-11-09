@@ -66,7 +66,7 @@ QStringList ItemHandler::loadOptions(QString device, QString item){
 }
 
 QStringList ItemHandler::loadbelongings(QString device) {
-    // loadDevices();
+    loadDevices();
     if (!loadedInfoObj.contains("devices")) {
         qDebug() << "No devices found.";
         return QStringList();
@@ -74,6 +74,7 @@ QStringList ItemHandler::loadbelongings(QString device) {
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
     bool deviceFound = false;
     QStringList tempstr;
+
     for (const QJsonValue &deviceValue : devicesArray) {
         QJsonObject deviceObj = deviceValue.toObject();
         if (deviceObj.contains(device)) {
@@ -81,7 +82,10 @@ QStringList ItemHandler::loadbelongings(QString device) {
             if (!deviceEntry.isEmpty()) {
                 QJsonArray belongingsArr = deviceEntry[0].toObject().value("belongings").toArray();
                 for (const QJsonValue &value : belongingsArr) {
-                    tempstr.append(value.toString());
+                    QJsonObject belongingObj = value.toObject();
+                    if (belongingObj.contains("item") /*&& belongingObj.value("visible").toInt() == 1*/) {
+                        tempstr.append(belongingObj.value("item").toString());
+                    }
                 }
                 deviceFound = true;
                 break;
@@ -92,14 +96,48 @@ QStringList ItemHandler::loadbelongings(QString device) {
         }
     }
     if (!deviceFound) {
-        // qDebug() << "Device not found:" << device;
         return QStringList();
     }
-//    qDebug() << "Belongings loaded: " << tempstr;
     return tempstr;
 }
 
+QStringList ItemHandler::loadVisibleBelongings(QString device){
+    {
+        loadDevices();
+        if (!loadedInfoObj.contains("devices")) {
+            qDebug() << "No devices found.";
+            return QStringList();
+        }
+        QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+        bool deviceFound = false;
+        QStringList tempstr;
 
+        for (const QJsonValue &deviceValue : devicesArray) {
+            QJsonObject deviceObj = deviceValue.toObject();
+            if (deviceObj.contains(device)) {
+                QJsonArray deviceEntry = deviceObj[device].toArray();
+                if (!deviceEntry.isEmpty()) {
+                    QJsonArray belongingsArr = deviceEntry[0].toObject().value("belongings").toArray();
+                    for (const QJsonValue &value : belongingsArr) {
+                        QJsonObject belongingObj = value.toObject();
+                        if (belongingObj.contains("item") && belongingObj.value("visible").toInt() == 1) {
+                            tempstr.append(belongingObj.value("item").toString());
+                        }
+                    }
+                    deviceFound = true;
+                    break;
+                } else {
+                    qDebug() << "No belongings found for device:" << device;
+                    return QStringList();
+                }
+            }
+        }
+        if (!deviceFound) {
+            return QStringList();
+        }
+        return tempstr;
+}
+}
 
 void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     // loadDevices();
@@ -121,14 +159,14 @@ void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
     }
     loadDevices();
 }
+
 void ItemHandler::addBelonging(QString device, QString itemName) {
     loadDevices();
     if (!loadedInfoObj.contains("devices")) {
         qDebug() << "No devices found.";
         return;
-
     }
-    loadDevices();
+
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
     bool deviceFound = false;
 
@@ -137,7 +175,13 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
         if (deviceObj.contains(device)) {
             QJsonArray deviceEntry = deviceObj[device].toArray();
             QJsonArray belongingsArr = deviceEntry[0].toObject().value("belongings").toArray();
-            belongingsArr.append(itemName);
+
+            // Create a new belonging object with "item" and "visible"
+            QJsonObject newBelonging;
+            newBelonging["item"] = itemName;
+            newBelonging["visible"] = 1;  // Set new item as visible by default
+
+            belongingsArr.append(newBelonging);
             QJsonObject updatedDeviceObj = deviceEntry[0].toObject();
             updatedDeviceObj["belongings"] = belongingsArr;
             deviceEntry[0] = updatedDeviceObj;
@@ -157,8 +201,6 @@ void ItemHandler::addBelonging(QString device, QString itemName) {
     QJsonDocument someDoc(loadedInfoObj);
     JsonHandler::saveInfoJson(someDoc);
     loadDevices();
-
-//    qDebug() << "Added item:" << itemName << "to device:" << device;
 }
 
 
@@ -405,19 +447,23 @@ void ItemHandler::updateTable(const QString &tableName, const QStringList &colum
 void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
     loadDevices();
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+
+    // Check if the device already exists
     for (const QJsonValue &device : devicesArray) {
         if (device.toObject().contains(deviceName)) {
             qDebug() << "Device already exists:" << deviceName;
             return;
         }
     }
+
+    // Create a new device object compatible with the new format
     QJsonObject newDeviceObj;
-    QJsonArray emptyBelongings;
+    QJsonArray emptyBelongings;  // Initialize an empty belongings array
     newDeviceObj["belongings"] = emptyBelongings;
 
     QJsonArray newDeviceEntry;
-    newDeviceEntry.append(newDeviceObj);
-    newDeviceEntry.append(deviceAbr);
+    newDeviceEntry.append(newDeviceObj);  // First element: belongings object
+    newDeviceEntry.append(deviceAbr);     // Second element: device abbreviation
 
     QJsonObject deviceObject;
     deviceObject[deviceName] = newDeviceEntry;
@@ -428,10 +474,10 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
     QJsonDocument somedoc(loadedInfoObj);
 
     JsonHandler::saveInfoJson(somedoc);
-    loadDevices();;
-    logger::log("Added new device:" + deviceName + "with abbreviation:" + deviceAbr);
-//    qDebug() << "Added new device:" << deviceName << "with abbreviation:" << deviceAbr;
+    loadDevices();
+    logger::log("Added new device:" + deviceName + " with abbreviation:" + deviceAbr);
 }
+
 
 
 QStringList ItemHandler::readLetters() {
@@ -537,4 +583,60 @@ void ItemHandler::addAbr(QString deviceName, QChar newAbr) {
     // qDebug() << "Abbreviation added successfully!";
 }
 
+void ItemHandler::changeBelVisibility(QString device, QString belonging) {
+    // Load the JSON data if not already loaded
+    loadDevices();
+    if (!loadedInfoObj.contains("devices")) {
+        qDebug() << "No devices found.";
+        return;
+    }
+
+    QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+    bool deviceFound = false;
+    bool belongingFound = false;
+
+    // Find the device in the array
+    for (int i = 0; i < devicesArray.size(); ++i) {
+        QJsonObject deviceObj = devicesArray[i].toObject();
+        if (deviceObj.contains(device)) {
+            QJsonArray deviceEntry = deviceObj[device].toArray();
+            QJsonObject belongingsObj = deviceEntry[0].toObject();
+            QJsonArray belongingsArr = belongingsObj.value("belongings").toArray();
+
+            // Find the specified belonging in the belongings array
+            for (int j = 0; j < belongingsArr.size(); ++j) {
+                QJsonObject belongingObj = belongingsArr[j].toObject();
+                if (belongingObj["item"].toString() == belonging) {
+                    int currentVisibility = belongingObj["visible"].toInt();
+                    belongingObj["visible"] = currentVisibility == 1 ? 0 : 1;  // Toggle visibility
+                    belongingsArr[j] = belongingObj;  // Update the belonging in the array
+                    belongingFound = true;
+                    break;
+                }
+            }
+
+            // Update belongings array if the belonging was found
+            if (belongingFound) {
+                belongingsObj["belongings"] = belongingsArr;
+                deviceEntry[0] = belongingsObj;
+                deviceObj[device] = deviceEntry;
+                devicesArray[i] = deviceObj;
+                deviceFound = true;
+                break;
+            }
+        }
+    }
+
+    if (!deviceFound) {
+        qDebug() << "Device not found:" << device;
+    } else if (!belongingFound) {
+        qDebug() << "Belonging not found:" << belonging << "for device:" << device;
+    } else {
+        // Save updated JSON if device and belonging were found
+        loadedInfoObj["devices"] = devicesArray;
+        QJsonDocument updatedDoc(loadedInfoObj);
+        JsonHandler::saveInfoJson(updatedDoc);  // Save the JSON document
+        qDebug() << "Visibility toggled for belonging:" << belonging << "in device:" << device;
+    }
+}
 

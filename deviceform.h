@@ -38,6 +38,7 @@ signals:
     void devicePage();
     void addCustomer();
     void belongingPage(QString deviceName);
+    void hideBelongingPage(QString deviceName);
     void pageUpdate();
     void addAbr();
     void showPB();
@@ -81,6 +82,7 @@ private:
     void addDevice();
     void submit(QString SN,int count);
     void addBelonging(QString deviceName);
+    void hideBelonging(QString deviceName);
     void keyBinds();
     bool checkBulkSN();
     void setColumns();

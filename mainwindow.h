@@ -16,6 +16,7 @@
 #include "addabr.h"
 #include "deleteoption.h"
 #include <edititem.h>
+#include <hidebelonging.h>
 #include <exporttoexcel.h>
 
 class Tables;
@@ -61,6 +62,7 @@ private:
     DatabaseConnection &db;
     EditItem EI;
     ExportExcel EE;
+    HideBelonging hb;
     void keyPressEvent(QKeyEvent *event) override;
 
 };

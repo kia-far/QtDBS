@@ -36,6 +36,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::devicePage,&a, &AddOption::setupDevice);
     QObject::connect(&b, &ProductRegister::devicePage,&a, &AddOption::setupDevice);
     QObject::connect(&d, &DeviceForm::belongingPage,&a,&AddOption::setupBelonging);
+    QObject::connect(&d, &DeviceForm::hideBelongingPage,&hb, &HideBelonging::setup);
     QObject::connect(&a, &AddOption::updatePage,&d , &DeviceForm::refresh);
     QObject::connect(&d, &DeviceForm::addCustomer,&c, &CustomerForm::regOn);
     QObject::connect(&d, &DeviceForm::addAbr,&aa, &AddAbr::setup);
@@ -54,6 +55,8 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&EI,&EditItem::updateForms,&d, &DeviceForm::refresh);
     QObject::connect(&EI,&EditItem::refreshTable,x,&Tables::pageRefresh);
     QObject::connect(&d, &DeviceForm::closeEditItem,&EI, &EditItem::closeForm);
+    QObject::connect(&d, &DeviceForm::closeEditItem,&hb,&HideBelonging::closePage);
+    QObject::connect(&hb, &HideBelonging::refreshDevPage,&d,&DeviceForm::refresh);
     QObject::connect(&EE,&ExportExcel::loadEmpty,x,&Tables::emptyWidget);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);

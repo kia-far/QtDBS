@@ -24,6 +24,7 @@ SOURCES += \
     deviceform.cpp \
     edititem.cpp \
     exporttoexcel.cpp \
+    hidebelonging.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
     logger.cpp \
@@ -48,6 +49,7 @@ HEADERS += \
     deviceform.h \
     edititem.h \
     exporttoexcel.h \
+    hidebelonging.h \
     itemhandler.h \
     jsonhandler.h \
     logger.h \
@@ -68,6 +70,7 @@ FORMS += \
     deleteoption.ui \
     deviceform.ui \
     edititem.ui \
+    hidebelonging.ui \
     mainwindow.ui \
     productregister.ui \
     searchform.ui \
