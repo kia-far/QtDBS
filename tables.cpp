@@ -282,7 +282,7 @@ void Tables::on_EditBtn_clicked()
         // qDebug() << "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
         if (currentTable == 0){emit editCustomer(clickedID);}
         else if (currentTable == 1){emit editService(clickedID);}
-        else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
+        else if (currentTable == 2){qDebug()<<"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"<<currentDevice;emit editDevice(currentDevice,lastClicked);}
         else {emit editProduct(lastClicked );}
     }
     else{
@@ -379,7 +379,7 @@ void Tables::on_tableView_doubleClicked(const QModelIndex &index)
     // qDebug() << "index :" << index<< "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
     if (currentTable == 0){emit editCustomer(clickedID);}
     else if (currentTable == 1){emit editService(clickedID);}
-    else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
+    else if (currentTable == 2){qDebug()<<"bbbbbbbbbbbbbbbbbbbbbbbbbbb" << currentDevice;emit editDevice(currentDevice,lastClicked);}
     else {emit editProduct(lastClicked );}
 }
 

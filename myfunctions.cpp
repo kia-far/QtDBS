@@ -5,6 +5,8 @@
 #include <QFile>
 #include <QSqlQuery>
 #include <DatabaseConnection.h>
+#include <QString>
+#include <QLocale>
 
 int MyFunctions::poslet = -1;
 QStringList MyFunctions::letters = {};
@@ -402,4 +404,37 @@ bool MyFunctions::checkData(QString data,QString column, QString table){
     }
 
     return res.length();
+}
+
+
+int MyFunctions::convertToEnglishInt(const QString& localizedNumber) {
+    // Use QLocale to parse the localized number (Persian in this case)
+    QLocale persianLocale(QLocale::Persian);
+
+    bool ok;
+    int number = persianLocale.toInt(localizedNumber, &ok);
+
+    if (!ok) {
+        // Handle the case if the input is not a valid integer
+        qDebug() << "Conversion failed. Input might not be a valid Persian number.";
+        return -1; // or another indicator for failure
+    }
+
+    return number;
+}
+
+
+QString MyFunctions::convertToEnglishString(const QString& localizedString) {
+    QString englishString;
+    for (QChar ch : localizedString) {
+        if (ch >= QChar(0x06F0) && ch <= QChar(0x06F9)) {
+            // Convert Persian numeral to English numeral
+            englishString += QChar(ch.unicode() - 0x06F0 + '0');
+        } else {
+            // Leave English characters and other symbols unchanged
+            englishString += ch;
+        }
+    }
+    // qDebug()<< "englishstring of :" << localizedString <<" is : "<<englishString;
+    return englishString;
 }

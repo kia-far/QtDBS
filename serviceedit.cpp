@@ -51,7 +51,7 @@ void serviceEdit::editOn(unsigned int serial){
     ID = serial;
 }
 void serviceEdit::regSubmit(){
-    b[0] = ui->dateEdit->text();
+    b[0] = MyFunctions::convertToEnglishString( ui->dateEdit->text());
     b[1]=ui->lineEdit_2->text();
     b[2]=ui->lineEdit_3->text();
     b[3]=ui->textEdit->toPlainText();
@@ -79,7 +79,7 @@ void serviceEdit::regSubmit(){
 }
 void serviceEdit::editSubmit(){
     b[0] = QString::number(ID);
-    b[1] = ui->dateEdit->text();
+    b[1] = MyFunctions::convertToEnglishString( ui->dateEdit->text());
     b[2] = ui->lineEdit_2->text();
     b[3] = ui->lineEdit_3->text();
     b[4] = ui->textEdit->toPlainText();

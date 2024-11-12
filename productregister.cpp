@@ -91,8 +91,8 @@ void ProductRegister::regSubmit()
                     a[1] = ui->comboBox->currentText();
                     a[2] = ui->lineEdit_10->text();
                     a[3] = ui->lineEdit_11->text();
-                    a[4] = ui->dateEdit_2->text();
-                    a[5] = ui->dateEdit->text();
+                    a[4] = MyFunctions::convertToEnglishString( ui->dateEdit_2->text());
+                    a[5] = MyFunctions::convertToEnglishString( ui->dateEdit->text());
                     a[6] = ui->textEdit->toPlainText();
 
                     //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
@@ -130,8 +130,8 @@ void ProductRegister::regSubmit()
                 a[1] = ui->comboBox->currentText();
                 a[2] = ui->lineEdit_10->text();
                 a[3] = ui->lineEdit_11->text();
-                a[4] = ui->dateEdit_2->text();
-                a[5] = ui->dateEdit->text();
+                a[4] = MyFunctions::convertToEnglishString( ui->dateEdit_2->text());
+                a[5] = MyFunctions::convertToEnglishString( ui->dateEdit->text());
                 a[6] = ui->textEdit->toPlainText();
 
         //        qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5] + " 7: " + a[6];
@@ -166,8 +166,8 @@ void ProductRegister::editSubmit()
     a[1] = ui->comboBox->currentText();
     a[2] = ui->lineEdit_10->text();
     a[3] = ui->lineEdit_11->text();
-    a[4] = ui->dateEdit_2->text();
-    a[5] = ui->dateEdit->text();
+    a[4] = MyFunctions::convertToEnglishString( ui->dateEdit_2->text());
+    a[5] = MyFunctions::convertToEnglishString( ui->dateEdit->text());
     a[6] = ui->textEdit->toPlainText();
 
 //    qDebug() << " 1: " + a[0] + " 2: " + a[1] + " 3: " + a[2] + " 4: " + a[3] + " 5: " + a[4] + " 6: " + a[5];
@@ -199,6 +199,7 @@ void ProductRegister::setup() {
         ui->dateEdit->setDate(QDate::currentDate());
         ui->textEdit->setText("");
     } else if (Mode == "EDIT") {
+        ui->label_8->setText("");
         ui->comboBox->clear();
         ui->lineEdit_8->setReadOnly(false);
         ui->lineEdit_8->setText(MyFunctions::intToStr(Serialnum));
@@ -454,4 +455,44 @@ void ProductRegister::keyPressEvent(QKeyEvent *event){
         event->accept();
     }
     else{}
+}
+
+void ProductRegister::on_comboBox_currentTextChanged(const QString &arg1)
+{
+    if(Mode=="EDIT"){
+        ui->comboBox->setCurrentText(currentComboText);}
+    else{
+        if(arg1!="انتخاب نشده") loadLastSN(arg1);
+        else{
+            ui->label_8->setText("");
+        }
+    }
+}
+void ProductRegister::loadLastSN(QString device) {
+    this->max=0;
+    unsigned int max = 0;
+
+    QSqlQuery query(db.getConnection());
+    QString queryStr = QString("SELECT SerialNumber FROM %1").arg(device);
+    query.prepare(queryStr);
+
+    if (!query.exec()) {
+        qDebug() << "Database query error:" << query.lastError().text();
+    } else {
+        while (query.next()) {
+            unsigned int curr = query.value(0).toUInt();
+
+            // Extract the last four digits
+            unsigned int lastFourDigits = curr % 10000;
+
+            // Check if these last four digits are the maximum found so far
+            if (lastFourDigits > max) {
+                max = lastFourDigits;
+                this->max=curr;
+            }
+        }
+    }
+    if(this->max>0)
+        ui->label_8->setText(MyFunctions::intToStr(this->max)+ " : " +"آخرین شماره سریال ");
+    qDebug() << "Executed query:" << query.executedQuery();
 }

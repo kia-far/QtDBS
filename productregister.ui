@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>394</width>
-    <height>438</height>
+    <height>446</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -282,6 +282,13 @@ QDateEdit:focus {
       <widget class="QDateEdit" name="dateEdit">
        <property name="displayFormat">
         <string>yyyy/M/d</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

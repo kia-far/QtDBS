@@ -16,6 +16,7 @@
 #include <QKeyEvent>
 #include <QtConcurrent/QtConcurrentRun>
 #include <QtConcurrent/QtConcurrent>
+#include <QVariant>
 
 
 DeviceForm::DeviceForm(QWidget *parent) :
@@ -45,17 +46,20 @@ DeviceForm::~DeviceForm()
 }
 
 void DeviceForm::trigger(QString device){
+    edit= false;
     clearPage();
     admiMode = false;
     currentDevice = device;
     this->show();
     this->activateWindow();
 
-
+    qDebug() << "calling setup from trigger ";
     setup();
 }
 
 void DeviceForm::setup(){
+    ui->comboBox->blockSignals(true);
+    loadLastSN();
     QCalendar calendar( QCalendar::System::Jalali);
     ui->dateEdit_2->setCalendar(calendar);
     ui->dateEdit_2->setDate(QDate::currentDate().addYears(1));
@@ -69,13 +73,16 @@ void DeviceForm::setup(){
     getCustomers();
     if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
     else {ui->pushButton_3->show();ui->AddItemBtn->show();ui->pushButton_2->show(); }
-    edit = false;
+    // edit = false;
     // admiMode = false;
+    qDebug() << "this is currentDevice:" << currentDevice;
     QString curDev = currentDevice;
     QStringList devices = ItemHandler::loadDevices();
-    ui->comboBox->clear();
-    for(int i=0;i<devices.length();i++){
-    ui->comboBox->addItem(devices[i]);}
+    if(edit==false){
+        ui->comboBox->clear();
+        for(int i=0;i<devices.length();i++){
+                ui->comboBox->addItem(devices[i]);}
+    }
     ui->comboBox->setCurrentText(curDev);
     if(admiMode){
 
@@ -83,21 +90,33 @@ void DeviceForm::setup(){
     ui->comboBox->setFixedWidth(120);
     ui->pushButton->setFixedWidth(35);
     setTabOrders();
+    refresh(currentDevice);
+    ui->comboBox->blockSignals(false);
 }
 void DeviceForm::editDevice(QString device , unsigned int id){
+    ui->comboBox->blockSignals(true);
 
     this->show();
     this->activateWindow();
 
-
+    this->id = id;
     currentDevice = device;
-    admiMode = false;
+    // qDebug() << "ddddddddddddddddddddddd"<<currentDevice;
+    // admiMode = false;
+    edit= true;
     setup();
+    qDebug() <<"this is currentDevice in editDevice :"<<currentDevice;
+    // ui->comboBox->blockSignals(true);
     ui->comboBox->setCurrentText(device);
+    // ui->comboBox->blockSignals(false);
     ui->lineEdit->setText(MyFunctions::intToStr(id));
+    qDebug() << "pop is called from editDevice";
     populateEdit(device,id);
+    qDebug() << device<<"device after popedit called in editDevice grhuuuuuuuuuuuuuuuuuuuuuuuuuurrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr";
+    ui->comboBox->blockSignals(false);
 }
 void DeviceForm::refresh(QString arg1){
+    qDebug() << "this is arg1" << arg1;
     clearLayout(ui->vb);
     clearLayout(ui->cbg);
     labels.clear();
@@ -132,18 +151,26 @@ void DeviceForm::refresh(QString arg1){
         // indexx++;
         ui->cbg->addWidget(hideBelBtn,indexx/2+indexx%2,1);
     }
+    qDebug()<<"this is edit: "<< edit;
+    if(edit){
+        qDebug() << "this is where pop is called : refresh";
+        populateEdit(arg1,id);}
 }
 void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
+    ui->comboBox->blockSignals(true);
     if(arg1=="دستگاه جدید"){
         addDevice();
         ui->comboBox->setCurrentIndex(0);
     }
     else{
+        qDebug() << arg1;
     currentDevice = arg1;
         refresh(arg1);
 
-}}
+    }
+    ui->comboBox->blockSignals(false);
+}
 void DeviceForm::createBelonging(QString itemName,int index){
 
     QCheckBox *checkBox = new QCheckBox(itemName);
@@ -235,9 +262,14 @@ void DeviceForm::clearLayout(QLayout *layout) {
     }
 }
 void DeviceForm::populateEdit(QString device,unsigned int id){
+    ui->comboBox->blockSignals(true);
+    qDebug() << "device is " << device<<" in popedit";
+    currentDevice = device;
+    ui->lastSNLabel->setText("");
     loadDate(id);
     ui->comboBox->clear();
     ui->comboBox->addItem(device);
+    ui->comboBox->blockSignals(false);
     ui->lineEdit->setReadOnly(true);
     ui->checkBox->setChecked(false);
     ui->checkBox->setDisabled(true);
@@ -248,9 +280,9 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
     QSqlQuery query(db.getConnection());
 
     QStringList res;
-
+    qDebug() << device <<"device pre query!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
     query.prepare("SELECT * FROM " + device + " WHERE SerialNumber LIKE "+QString::number(id));
-
+    qDebug() << device<< id<<"in pop";
     if (query.exec()) {
         QSqlRecord record = query.record();
         int numCols = record.count();
@@ -301,6 +333,9 @@ void DeviceForm::populateEdit(QString device,unsigned int id){
 
 void DeviceForm::on_SubmitBtn_clicked()
 {
+    // loadLastSN();
+    // qDebug() << MyFunctions::convertToEnglishString("1400/12/9");
+    // qDebug() << MyFunctions::convertToEnglishString("۱۱۱۱/۳۳/۱۱");
     // addBulk();
     if(MyFunctions::checkSN( ui->lineEdit->text())){
         if(!MyFunctions::deviceFromLetter(ui->lineEdit->text(),currentDevice)){
@@ -314,7 +349,7 @@ void DeviceForm::on_SubmitBtn_clicked()
             int res = msgBox.exec();
             switch(res) {
             case QMessageBox::Yes :{
-                if(ui->spinBox->text().toInt()>1){
+                if( MyFunctions::convertToEnglishInt( ui->spinBox->text())>1){
                     if(checkBulkSN()){
                         if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
                             QtConcurrent::run(this, &DeviceForm::addBulk);
@@ -343,8 +378,9 @@ void DeviceForm::on_SubmitBtn_clicked()
             }
         }
         else{
-            if(ui->spinBox->text().toInt()>1){
-                if(ui->spinBox->text().toInt()>1){
+            if(MyFunctions::convertToEnglishInt( ui->spinBox->text())>1){
+                logger::log("submit pressed entering bulk!");
+                if(MyFunctions::convertToEnglishInt( ui->spinBox->text())>1){
                     if(checkBulkSN()){
                         if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
                             QtConcurrent::run(this, &DeviceForm::addBulk);
@@ -360,6 +396,7 @@ void DeviceForm::on_SubmitBtn_clicked()
                 }
             }
             else{
+                logger::log("entering solo submit!");
                 submit(ui->lineEdit->text(),1);}
 
         }
@@ -410,8 +447,8 @@ void DeviceForm::submit(QString SN,int countt){
         }
         q.prepare("INSERT INTO ProductSecInfo (SerialNO , PurchaseDate , GuarantyExp) VALUES (?,?,?)");
         q.addBindValue(givenData[0].toString());
-        q.addBindValue(ui->dateEdit->text());
-        q.addBindValue(ui->dateEdit_2->text());
+        q.addBindValue( MyFunctions::convertToEnglishString(ui->dateEdit->text()));
+        q.addBindValue(MyFunctions::convertToEnglishString(ui->dateEdit_2->text()));
         // qDebug() << givenData;
         bool err = q.exec();
         if (!err) {
@@ -512,14 +549,14 @@ void DeviceForm::adminMode(){
     for(QComboBox *comboBox: comboBoxes){
         combos.append(comboBox->currentText());
     }
-    QStringList dates = {ui->dateEdit->text(),ui->dateEdit_2->text()};
+    QStringList dates = {MyFunctions::convertToEnglishString(ui->dateEdit->text()),MyFunctions::convertToEnglishString(ui->dateEdit_2->text())};
     QStringList checks={};
     for(QCheckBox *checkBox: checkBoxes){
         if(checkBox->isChecked()) checks.append("1");
         else checks.append("0");
     }
     bool ischecked = ui->checkBox->isChecked();
-    int count = ui->spinBox->value();
+    int count = MyFunctions::convertToEnglishInt( ui->spinBox->text());
     if(!admiMode){
         if(MyFunctions::enterAdminMode()){
 
@@ -543,6 +580,7 @@ void DeviceForm::adminMode(){
         admiMode = !admiMode;
         emit closeEditItem();
         MyFunctions::setAdminMode(false);
+
         setup();
     }
     if(combos.size()==comboBoxes.size()){
@@ -666,7 +704,8 @@ void DeviceForm::on_checkBox_stateChanged(int arg1)
 }
 
 void DeviceForm::addBulk(){
-    emit setPBRange(ui->spinBox->text().toInt());
+    logger::log("addBulk start");
+    emit setPBRange(MyFunctions::convertToEnglishInt( ui->spinBox->text()));
     handleStarted();
     // ui->progressBar->setRange(0,ui->spinBox->text().toInt());
         QSqlQuery query(db.getConnection());
@@ -674,7 +713,7 @@ void DeviceForm::addBulk(){
         setColumns();
         setChecks();
         setCombos();
-            for(int i=0;i<ui->spinBox->value();i++){
+            for(int i=0;i<MyFunctions::convertToEnglishInt( ui->spinBox->text());i++){
             submit(serialno,2);
             emit setPBVal(i);
             unsigned int a = MyFunctions::reverseSN(serialno).toUInt();
@@ -684,14 +723,15 @@ void DeviceForm::addBulk(){
         handleFinished();
     checked = true;
 
-
+        logger::log("addbulk done!!");
 }
 bool DeviceForm::checkBulkSN(){
+    logger::log("checking bulk sn");
     QSqlQuery query(db.getConnection());
 
     QStringList res;
     QString serialno = ui->lineEdit->text();
-    for(int i=0;i<ui->spinBox->text().toInt();i++){
+    for(int i=0;i<MyFunctions::convertToEnglishInt( ui->spinBox->text());i++){
 
         query.prepare("SELECT SerialNO FROM ProductInfo WHERE SerialNO LIKE ?");
         query.addBindValue(MyFunctions::reverseSN(serialno));  // Use wildcards for partial match
@@ -829,5 +869,34 @@ void DeviceForm::loadDate(unsigned int id){
 void DeviceForm::on_pushButton_3_clicked()
 {
     emit editItem(currentDevice);
+}
+
+void DeviceForm::loadLastSN() {
+    this->max=0;
+    unsigned int max = 0;
+
+    QSqlQuery query(db.getConnection());
+    QString queryStr = QString("SELECT SerialNumber FROM %1").arg(currentDevice);
+    query.prepare(queryStr);
+
+    if (!query.exec()) {
+        qDebug() << "Database query error:" << query.lastError().text();
+    } else {
+        while (query.next()) {
+            unsigned int curr = query.value(0).toUInt();
+
+            // Extract the last four digits
+            unsigned int lastFourDigits = curr % 10000;
+
+            // Check if these last four digits are the maximum found so far
+            if (lastFourDigits > max) {
+                max = lastFourDigits;
+                this->max=curr;
+            }
+        }
+    }
+    if(this->max>0)
+        ui->lastSNLabel->setText(MyFunctions::intToStr(this->max)+ " : " +"آخرین شماره سریال ");
+    qDebug() << "Executed query:" << query.executedQuery();
 }
 

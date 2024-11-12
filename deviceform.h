@@ -91,6 +91,7 @@ private:
     void handleStarted();
     void handleFinished();
     void loadDate(unsigned int id);
+    void loadLastSN();
     QString currentDevice;
     int adder;
     Ui::DeviceForm *ui;
@@ -108,6 +109,8 @@ private:
     QString checks;
     QStringList combos;
     bool checked;
+    unsigned int max;
+    unsigned int id;
     // QProgressBar progressBar;
 };
 

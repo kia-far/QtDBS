@@ -42,7 +42,7 @@ void CustomerForm::regSubmit(){
 
     b[0]=ui->lineEdit->text();
     b[1]=ui->lineEdit_2->text();
-    b[2]=ui->lineEdit_3->text();
+    b[2]=MyFunctions::convertToEnglishString( ui->lineEdit_3->text());
     b[3]=ui->lineEdit_4->text();
     if(b[1].isEmpty()){
         QMessageBox msgBox;
@@ -69,7 +69,7 @@ void CustomerForm::regSubmit(){
 void CustomerForm::editSubmit(){
     b[0] = QString::number(ID);
     b[1] = ui->lineEdit_2->text();
-    b[2] = ui->lineEdit_3->text();
+    b[2] = MyFunctions::convertToEnglishString( ui->lineEdit_3->text());
     b[3] = ui->lineEdit_4->text();
     if(b[1].isEmpty()){
         QMessageBox msgBox;

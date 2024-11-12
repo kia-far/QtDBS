@@ -50,6 +50,8 @@ private slots:
 
     void on_pushButton_2_clicked();
 
+    void on_comboBox_currentTextChanged(const QString &arg1);
+
 private:
     Ui::ProductRegister *ui;
     void keybinds();
@@ -58,6 +60,8 @@ private:
     unsigned int Serialnum;
     DatabaseConnection &db;
     bool admiMode;
+    void loadLastSN(QString device);
+    unsigned int max;
     void keyPressEvent(QKeyEvent *event) override;
 };
 

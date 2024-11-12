@@ -27,6 +27,8 @@ public:
     static bool enterAdminMode();
     static bool setAdminMode(bool isActive);
     static bool checkData(QString data,QString column, QString Table);
+    static int convertToEnglishInt(const QString& localizedNumber);
+    static QString convertToEnglishString(const QString& localizedNumber);
 //    static void initializeData();
 signals:
     void dataReady();

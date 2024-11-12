@@ -47,6 +47,7 @@ public:
     QTextEdit *textEdit;
     QLabel *label_3;
     QDateEdit *dateEdit;
+    QLabel *label_8;
     QHBoxLayout *horizontalLayout;
     QSpacerItem *horizontalSpacer;
     QPushButton *pushButton;
@@ -56,7 +57,7 @@ public:
     {
         if (ProductRegister->objectName().isEmpty())
             ProductRegister->setObjectName(QString::fromUtf8("ProductRegister"));
-        ProductRegister->resize(394, 438);
+        ProductRegister->resize(394, 446);
         ProductRegister->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -317,6 +318,11 @@ public:
 
         gridLayout->addWidget(dateEdit, 9, 0, 1, 1);
 
+        label_8 = new QLabel(ProductRegister);
+        label_8->setObjectName(QString::fromUtf8("label_8"));
+
+        gridLayout->addWidget(label_8, 0, 0, 1, 1);
+
 
         verticalLayout->addLayout(gridLayout);
 
@@ -367,6 +373,7 @@ public:
         label_7->setText(QCoreApplication::translate("ProductRegister", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));
         label_3->setText(QCoreApplication::translate("ProductRegister", "\331\201\330\247\332\251\330\252\331\210\330\261 :", nullptr));
         dateEdit->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));
+        label_8->setText(QString());
         pushButton->setText(QCoreApplication::translate("ProductRegister", "\330\253\330\250\330\252", nullptr));
     } // retranslateUi
 
