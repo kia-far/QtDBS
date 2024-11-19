@@ -4,7 +4,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 QT+=sql
-
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
@@ -15,6 +14,7 @@ QXLSX_SOURCEPATH=./source/  # current QXlsx source path is ./source/
 include(./QXlsx.pri)
 SOURCES += \
     DatabaseConnection.cpp \
+    DllHandler.cpp \
     MyTableProxy.cpp \
     addabr.cpp \
     addoption.cpp \
@@ -36,10 +36,11 @@ SOURCES += \
     proxyview.cpp \
     searchform.cpp \
     serviceedit.cpp \
-    tables.cpp
+    tables.cpp \
 
 HEADERS += \
     DatabaseConnection.h \
+    DllHandler.h \
     MyTableProxy.h \
     addabr.h \
     addoption.h \
@@ -60,7 +61,7 @@ HEADERS += \
     proxyview.h \
     searchform.h \
     serviceedit.h \
-    tables.h
+    tables.h \
 
 FORMS += \
     addabr.ui \
@@ -89,3 +90,4 @@ DISTFILES += \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSON/items.json \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSONPath \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/style/Style.qss
+

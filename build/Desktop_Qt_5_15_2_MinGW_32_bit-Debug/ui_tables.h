@@ -89,7 +89,7 @@ public:
     {
         if (Tables->objectName().isEmpty())
             Tables->setObjectName(QString::fromUtf8("Tables"));
-        Tables->resize(972, 828);
+        Tables->resize(972, 853);
         Tables->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -602,6 +602,7 @@ public:
         horizontalLayout_9->setObjectName(QString::fromUtf8("horizontalLayout_9"));
         form_description = new QTextBrowser(groupBox);
         form_description->setObjectName(QString::fromUtf8("form_description"));
+        form_description->setMinimumSize(QSize(0, 100));
         form_description->setMaximumSize(QSize(16777215, 100));
         form_description->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
 

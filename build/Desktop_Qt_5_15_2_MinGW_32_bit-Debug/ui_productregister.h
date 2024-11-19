@@ -369,7 +369,7 @@ public:
         label_4->setText(QCoreApplication::translate("ProductRegister", "\330\264\331\205\330\247\330\261\331\207 anydesk :", nullptr));
         label_2->setText(QCoreApplication::translate("ProductRegister", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
         label_5->setText(QCoreApplication::translate("ProductRegister", "\330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));
-        devBtn->setText(QCoreApplication::translate("ProductRegister", "\330\252\331\206\330\270\333\214\331\205\330\247\330\252 \330\257\330\263\330\252\332\257\330\247\331\207", nullptr));
+        devBtn->setText(QCoreApplication::translate("ProductRegister", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\257\330\263\330\252\332\257\330\247\331\207", nullptr));
         label_7->setText(QCoreApplication::translate("ProductRegister", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252 :", nullptr));
         label_3->setText(QCoreApplication::translate("ProductRegister", "\331\201\330\247\332\251\330\252\331\210\330\261 :", nullptr));
         dateEdit->setDisplayFormat(QCoreApplication::translate("ProductRegister", "yyyy/M/d", nullptr));

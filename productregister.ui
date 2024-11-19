@@ -257,7 +257,7 @@ QDateEdit:focus {
      <item row="0" column="1">
       <widget class="QPushButton" name="devBtn">
        <property name="text">
-        <string>تنظیمات دستگاه</string>
+        <string>افزودن دستگاه</string>
        </property>
       </widget>
      </item>

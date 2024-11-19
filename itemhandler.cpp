@@ -432,7 +432,6 @@ void ItemHandler::updateTable(const QString &tableName, const QStringList &colum
 
     // Bind the serial number for the WHERE clause
     query.bindValue(dataValues.size() - 1, serialNumber); // Last bind value is the serial number
-
     // Execute the query
     if (!query.exec()) {
         logger::log("Failed to update data:" + query.lastError().text());

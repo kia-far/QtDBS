@@ -18,6 +18,7 @@
 #include <edititem.h>
 #include <hidebelonging.h>
 #include <exporttoexcel.h>
+#include <DllHandler.h>
 
 class Tables;
 QT_BEGIN_NAMESPACE
@@ -34,6 +35,8 @@ public:
     void onDataReady();
     void setBtnIcon();
     void setupTable(QString a);
+public slots:
+    int testQrCode();
 
 private slots:
     void closePages();

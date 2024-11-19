@@ -32,7 +32,7 @@ DeviceForm::DeviceForm(QWidget *parent) :
     ui->spinBox->setDisabled(true);
     admiMode=false;
     checked = true;
-    setup();
+
     if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
@@ -46,6 +46,7 @@ DeviceForm::~DeviceForm()
 }
 
 void DeviceForm::trigger(QString device){
+
     edit= false;
     clearPage();
     admiMode = false;
@@ -90,6 +91,8 @@ void DeviceForm::setup(){
     ui->comboBox->setFixedWidth(120);
     ui->pushButton->setFixedWidth(35);
     setTabOrders();
+    qDebug() << "refresh called from setup: " << currentDevice << "is the current device";
+
     refresh(currentDevice);
     ui->comboBox->blockSignals(false);
 }
@@ -164,7 +167,7 @@ void DeviceForm::on_comboBox_currentIndexChanged(const QString &arg1)
         ui->comboBox->setCurrentIndex(0);
     }
     else{
-        qDebug() << arg1;
+        qDebug() <<"calling refresh from combobox index changed. this is the combobox text:" <<arg1;
     currentDevice = arg1;
         refresh(arg1);
 
@@ -473,6 +476,16 @@ void DeviceForm::submit(QString SN,int countt){
     else {
         logger::log("updated "+ currentDevice + " table");
         ItemHandler::updateTable(currentDevice,columns,givenData);
+        QSqlQuery q(db.getConnection());
+        q.prepare("UPDATE ProductSecInfo SET  PurchaseDate  = ? , GuarantyExp = ? WHERE SerialNO = ?");
+        q.addBindValue( MyFunctions::convertToEnglishString(ui->dateEdit->text()));
+        q.addBindValue(MyFunctions::convertToEnglishString(ui->dateEdit_2->text()));
+        q.addBindValue(givenData[0].toString());
+        // qDebug() << givenData;
+        bool err = q.exec();
+        if (!err) {
+            qDebug() << "Error in ProductSecInfo insert:" << q.lastError().text();
+        }
         if(countt==1)emit pageUpdate();
         this->close();
     }

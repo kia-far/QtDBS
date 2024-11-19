@@ -619,11 +619,11 @@ void Tables::showColumns(){
         ui->tableView->setColumnHidden(i, false);
     }}
 void Tables::populateLabel(int row) {
-    qDebug() << lineEdits.size();
+    // qDebug() << lineEdits.size();
     ExportExcel exporter;
     QString text = "<div style='word-wrap: break-word;'>";
     int i = 0;
-    qDebug() << "called on :"<<currentDevice<<row;
+    // qDebug() << "called on :"<<currentDevice<<row;
     if(ui->tableView->model()->rowCount()==0){
         emptyWidget();
     }
@@ -663,7 +663,7 @@ void Tables::populateLabel(int row) {
             if(i==data.size()-3){ui->form_pDate->setText(variant.toString());}
             else if(i==data.size()-2){ui->form_gDate->setText(variant.toString());}
             else if(i==data.size()-1){ui->form_description->setText(variant.toString());}
-            else{qDebug() << i;
+            else{/*qDebug() << i;*/
                 if(!lineEdits.isEmpty())lineEdits.at(i-3)->setText(variant.toString());}
 
             break;
@@ -752,4 +752,8 @@ void Tables::clearLayout(QLayout *layout) {
         }
         //delete item;
     }
+}
+
+void Tables::getQrCode(){
+
 }

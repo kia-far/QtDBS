@@ -10,6 +10,8 @@
 #include <QLineEdit>
 #include <QList>
 #include <QCheckBox>
+#include <windows.h>
+// #include <WINPSK_u.dll>
 
 namespace Ui {
 class Tables;
@@ -91,6 +93,7 @@ private:
     QList<QLineEdit*>lineEdits;
     QList<QCheckBox*>checkBoxes;
     void keyPressEvent(QKeyEvent *event) override;
+    void getQrCode();
     bool batchInProgress;
     int selectedRow;
 };

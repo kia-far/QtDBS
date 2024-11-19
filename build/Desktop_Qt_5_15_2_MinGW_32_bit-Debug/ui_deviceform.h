@@ -80,6 +80,9 @@ public:
     QFrame *line_2;
     QVBoxLayout *verticalLayout_2;
     QHBoxLayout *horizontalLayout_8;
+    QScrollArea *scrollArea_2;
+    QWidget *scrollAreaWidgetContents_2;
+    QHBoxLayout *horizontalLayout_12;
     QSpacerItem *horizontalSpacer_10;
     QGridLayout *cbg;
     QLabel *label_4;
@@ -95,7 +98,7 @@ public:
     {
         if (DeviceForm->objectName().isEmpty())
             DeviceForm->setObjectName(QString::fromUtf8("DeviceForm"));
-        DeviceForm->resize(665, 656);
+        DeviceForm->resize(665, 668);
         DeviceForm->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -542,21 +545,34 @@ public:
         verticalLayout_2->setSizeConstraint(QLayout::SizeConstraint::SetNoConstraint);
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
+        scrollArea_2 = new QScrollArea(DeviceForm);
+        scrollArea_2->setObjectName(QString::fromUtf8("scrollArea_2"));
+        scrollArea_2->setMinimumSize(QSize(0, 100));
+        scrollArea_2->setWidgetResizable(true);
+        scrollAreaWidgetContents_2 = new QWidget();
+        scrollAreaWidgetContents_2->setObjectName(QString::fromUtf8("scrollAreaWidgetContents_2"));
+        scrollAreaWidgetContents_2->setGeometry(QRect(0, 0, 635, 98));
+        horizontalLayout_12 = new QHBoxLayout(scrollAreaWidgetContents_2);
+        horizontalLayout_12->setObjectName(QString::fromUtf8("horizontalLayout_12"));
         horizontalSpacer_10 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        horizontalLayout_8->addItem(horizontalSpacer_10);
+        horizontalLayout_12->addItem(horizontalSpacer_10);
 
         cbg = new QGridLayout();
         cbg->setObjectName(QString::fromUtf8("cbg"));
         cbg->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
 
-        horizontalLayout_8->addLayout(cbg);
+        horizontalLayout_12->addLayout(cbg);
 
-        label_4 = new QLabel(DeviceForm);
+        label_4 = new QLabel(scrollAreaWidgetContents_2);
         label_4->setObjectName(QString::fromUtf8("label_4"));
         label_4->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
-        horizontalLayout_8->addWidget(label_4);
+        horizontalLayout_12->addWidget(label_4);
+
+        scrollArea_2->setWidget(scrollAreaWidgetContents_2);
+
+        horizontalLayout_8->addWidget(scrollArea_2);
 
 
         verticalLayout_2->addLayout(horizontalLayout_8);

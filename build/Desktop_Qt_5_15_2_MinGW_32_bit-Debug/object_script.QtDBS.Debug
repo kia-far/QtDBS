@@ -32,6 +32,7 @@ debug/xlsxworksheet.o
 debug/xlsxzipreader.o
 debug/xlsxzipwriter.o
 debug/DatabaseConnection.o
+debug/DllHandler.o
 debug/MyTableProxy.o
 debug/addabr.o
 debug/addoption.o
