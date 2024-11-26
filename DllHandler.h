@@ -29,7 +29,7 @@ private:
     typedef int (*ClosePortFunc)();
     typedef  int (*SetLabelHeightFunc)(unsigned int,unsigned int);
     typedef  int (*SetLabelWidthFunc)(unsigned int);
-    typedef int (*DrawQRFunc)(int, int,int,int,int,int,int,int,int, const char*);
+    typedef int (*DrawQRFunc)(int, int,int,int,int,int,int,int,int,const char*);
     typedef int (*DrawBarFunc)(int, int,int,const char*,int,int,int,const char,const char*);
     typedef int (*PrintLabelFunc)(int, int);
     typedef int (*SetPrinterSpeed)(unsigned int);
@@ -48,6 +48,8 @@ private:
     static ClearBuffer PTK_ClearBuffer;
     static SetDirection PTK_SetDirection;
     static SetFontName PTK_SetBarCodeFontName;
+
+    static QString countChars(QString input);
 
 };
 

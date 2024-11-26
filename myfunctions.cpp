@@ -290,6 +290,10 @@ void MyFunctions::setLetters() {
 }
 
 bool MyFunctions::enterAdminMode(){
+    //
+
+    return true;
+    ///
     QString jsonPath;
     QString adr = qApp->applicationDirPath();
     QString jsonPathFile = adr + "/JSONPath";

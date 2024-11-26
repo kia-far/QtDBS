@@ -649,9 +649,25 @@ void Tables::populateLabel(int row) {
         case 0:{ui->form_SN->setText(variant.toString());break;}
         case 1:{ui->form_Name->setText(variant.toString());break;}
         case 2:{
+            int k=0;
             for(QCheckBox *checkBox:checkBoxes){
                 checkBox->setDisabled(false);
                 checkBox->setChecked(variant.toString().contains(checkBox->text()));
+                checkBox->setHidden(!(variant.toString().contains(checkBox->text())));
+                if(checkBox->isHidden()){
+                    checkBox->setFixedWidth(0);
+                    checkBox->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
+                    spacers[k]->changeSize(0, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
+                    qDebug() << ui->form_belHBox->itemAt(2*k)->widget()->objectName();
+                }
+                else{
+                    qDebug() << k;
+                    checkBox->setFixedWidth(200);
+                    checkBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+                    spacers[k]->changeSize(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+                }
+                k++;
                 checkBox->setDisabled(true);
             }
             /*ui->form_pDate->setText(variant.toString());*/break;}
@@ -677,6 +693,7 @@ void Tables::setupWidget(){
     // ui->widget->setFixedHeight(600);
     clearLayout(ui->form_partHBox);
     clearLayout(ui->form_belHBox);
+    spacers.clear();
     checkBoxes.clear();
     lineEdits.clear();
     labels.clear();
@@ -717,16 +734,19 @@ void Tables::setupWidget(){
     QStringList belongings = ItemHandler::loadbelongings(currentDevice);
     for(QString bel:belongings){
         QCheckBox *checkBox = new QCheckBox;
-        QString CBName = QString("lineEdit_%1").arg(j);
+        QString CBName = QString("checkBox_%1").arg(j);
         checkBox->setObjectName(CBName);
         checkBox->setText(bel);
         checkBox->setChecked(false);
+        checkBox->setHidden(false);
         checkBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         checkBox->setDisabled(true);
         checkBoxes.append(checkBox);
         ui->form_belHBox->addWidget(checkBox);
         QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
+        spacers.append(spacer);
         ui->form_belHBox->addSpacerItem(spacer);
+        j++;
     }
 }
 void Tables::emptyWidget(){

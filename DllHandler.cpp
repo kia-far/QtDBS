@@ -1,5 +1,7 @@
 #include "DllHandler.h"
 #include <QDebug>
+#include <QString>
+// #include "winnt.h"
 
 QLibrary DllHandler::library;
 DllHandler::OpenPortFunc DllHandler::OpenPort = nullptr;
@@ -66,7 +68,11 @@ int DllHandler::setLabelWidth(unsigned int width) {
 }
 
 int DllHandler::drawQRCode(int x, int y, const QString& content) {
-    return PTK_DrawBarcode2D_QR(x, y, 200 , 175, 0, 2, 1, 0, 7,content.toUtf8().constData());
+    QString newContent = DllHandler::countChars(content);
+    // QString myString = newContent;
+    // LPCSTR
+    // QString::utf16(newContent.toUtf8().constData())
+    return PTK_DrawBarcode2D_QR(x, y, 200 , 175, 0, 2, 1, 0, 8,content.toUtf8().constData());
 }
 int DllHandler::drawBarCode(int x, int y, const QString& content) {
     QString a = "1";
@@ -88,4 +94,34 @@ int DllHandler::setDirection(char let){
 }
 int DllHandler::setFont(int x,int y,int direc,int font,int hori,int vert,char color,const char* text){
     return PTK_SetBarCodeFontName( x, y, direc, font, hori, vert, color, text);
+}
+QString DllHandler::countChars(QString input){
+    int englishCount = 0;
+    int persianCount = 0;
+    int symbolCount = 0;
+    QString text=input;
+    // Iterate through each character in the input
+    for (const QChar& c : input) {
+        if (c.isLetter()) {
+            // Check if the character is an English letter (a-zA-Z)
+            if (c.unicode() >= 'A' && c.unicode() <= 'Z' ||
+                c.unicode() >= 'a' && c.unicode() <= 'z') {
+                ++englishCount;
+            }
+            // Check if the character is a Persian letter (Unicode range)
+            else if (c.unicode() >= 0x0600 && c.unicode() <= 0x06FF) {
+                ++persianCount;
+            }
+        }
+        // Check if the character is a symbol
+        else if (QString("[]!@#$%^&*()-=_+{}|:;\"'<>,.?/\\`~").contains(c)) {
+            ++symbolCount;
+        }
+    }
+    int charDeficit =400- (symbolCount+englishCount+persianCount*2);
+    for(int i=0;i<charDeficit;i++){
+        text.append(" ");
+    }
+    qDebug() << symbolCount<<englishCount<<persianCount<<charDeficit;
+    return text;
 }

@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QList>
 #include <QCheckBox>
+#include <QSpacerItem>
 #include <windows.h>
 // #include <WINPSK_u.dll>
 
@@ -92,6 +93,7 @@ private:
     QList<QLabel*>labels;
     QList<QLineEdit*>lineEdits;
     QList<QCheckBox*>checkBoxes;
+    QList<QSpacerItem*>spacers;
     void keyPressEvent(QKeyEvent *event) override;
     void getQrCode();
     bool batchInProgress;

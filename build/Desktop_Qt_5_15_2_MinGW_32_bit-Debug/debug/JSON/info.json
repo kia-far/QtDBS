@@ -22,6 +22,14 @@
             "BJ4": [
                 {
                     "belongings": [
+                        {
+                            "item": "aa",
+                            "visible": 1
+                        },
+                        {
+                            "item": "bb",
+                            "visible": 1
+                        }
                     ]
                 },
                 "B"

@@ -174,31 +174,37 @@ int MainWindow::testQrCode(){
     qDebug() << DllHandler::setPrintSpeed(i);
     // qDebug() <<DllHandler::setLabelHeight(160, 1);
     qDebug() <<DllHandler::setLabelWidth(420);
-    qDebug() << DllHandler::setFont(160,110,0,4,1,1,'N',"N98A0001");
+    qDebug() << DllHandler::setFont(230,110,0,4,1,1,'N',"N98A0001");
 
     QString p1 = "PACTOS Inc.";
-    QString p2 = "\n";
+
+    QString p2 = "\x09\x0D";
     QString p3 = QString::fromUtf8( "شرکت پکتوس");
-    QString p4 = "\n";
+    QString p4 = "\x09\x0D";
     QString p5 = QString::fromUtf8( "برجسته نگار هوشمند همراه");
-    QString p6 = "\n";
+    QString p6 = "\x09\x0D";
     QString p7 = QString::fromUtf8("نام خریدار: نهاد کتابخانه های عمومی استان یزد");
-    QString p8 = "\n";
+    QString p8 = "\x09\x0D";
     QString p9 = QString::fromUtf8( "شماره سریال");
-    QString p10 = "\n";
+    QString p10 = "";
     QString p11 =  ": N98A0001";
-    QString p12 = "\n";
+    QString p12 = "\x09\x0D";
     QString p13 = QString::fromUtf8( "تاریخ خرید");
-    QString p14 = "\n";
+    QString p14 = "";
     QString p15 = "1398/11/17";
-    QString p16 = "\n";
-    QString p17 = QString::fromUtf8( "مدت گارانتی: یکسال");
-    QString p18 = "\n";
+    QString p16 = "\x09\x0D";
+    QString p17 = QString::fromUtf8( "تاریخ انقضای گارانتی: ");
+    QString p23 = "1399/11/17";
+    QString p18 = "\x09\x0D";
     QString p19 = "www.pactos.ir";
-    QString p20 = "\n";
+    QString p20 = "\x09\x0D";
     QString p21 = "Email: info@pactos.ir";
-    qDebug() <<DllHandler::drawQRCode(20, 25, p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+p12+p13+p14+p15+p16+p17+p18+p19+p20+p21);
-    qDebug() << DllHandler::drawBarCode(160,40, "N98A0001");
+    QString p22 = "";
+    for (int i=0;i<200;i++){p22.append("ش");}
+
+    qDebug() << p22.toUtf8().size();
+    qDebug() <<DllHandler::drawQRCode(75, 25, p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+p12+p13+p14+p15+p16+p17+p18+p19+p20+p21);
+    qDebug() << DllHandler::drawBarCode(230,40, "N98A0001");
     qDebug() <<DllHandler::printLabel(1, 1)<<"print";
 
     qDebug() <<DllHandler::closePort()<<"closeport";
