@@ -74,6 +74,8 @@ private slots:
 
     void on_toolButton_clicked();
 
+    void on_printBtn_clicked();
+
 private:
     void deleteRow(unsigned int ID, QString device);
     void hideColumns();
@@ -95,7 +97,8 @@ private:
     QList<QCheckBox*>checkBoxes;
     QList<QSpacerItem*>spacers;
     void keyPressEvent(QKeyEvent *event) override;
-    void getQrCode();
+    void getQrCode(int row);
+    void printQR(QStringList QRData);
     bool batchInProgress;
     int selectedRow;
 };

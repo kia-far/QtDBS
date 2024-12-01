@@ -76,7 +76,7 @@ int DllHandler::drawQRCode(int x, int y, const QString& content) {
 }
 int DllHandler::drawBarCode(int x, int y, const QString& content) {
     QString a = "1";
-    return PTK_DrawBarcode(x, y, 0 , a.toUtf8() , 1, 1,60, 'N',content.toUtf8());
+    return PTK_DrawBarcode(x, y, 0 , a.toUtf8() , 1, 1,60, 'N',content.toUtf8().constData());
 }
 
 int DllHandler::printLabel(int copies, int pause) {

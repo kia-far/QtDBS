@@ -18,7 +18,6 @@ SOURCES += \
     MyTableProxy.cpp \
     addabr.cpp \
     addoption.cpp \
-    changedb.cpp \
     customerform.cpp \
     deleteoption.cpp \
     deviceform.cpp \
@@ -27,10 +26,12 @@ SOURCES += \
     hidebelonging.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
+    loadqrtext.cpp \
     logger.cpp \
     main.cpp \
     mainwindow.cpp \
     myfunctions.cpp \
+    printqr.cpp \
     productproxy.cpp \
     productregister.cpp \
     proxyview.cpp \
@@ -44,7 +45,6 @@ HEADERS += \
     MyTableProxy.h \
     addabr.h \
     addoption.h \
-    changedb.h \
     customerform.h \
     deleteoption.h \
     deviceform.h \
@@ -53,9 +53,11 @@ HEADERS += \
     hidebelonging.h \
     itemhandler.h \
     jsonhandler.h \
+    loadqrtext.h \
     logger.h \
     mainwindow.h \
     myfunctions.h \
+    printqr.h \
     productproxy.h \
     productregister.h \
     proxyview.h \
@@ -66,12 +68,12 @@ HEADERS += \
 FORMS += \
     addabr.ui \
     addoption.ui \
-    changedb.ui \
     customerform.ui \
     deleteoption.ui \
     deviceform.ui \
     edititem.ui \
     hidebelonging.ui \
+    loadqrtext.ui \
     mainwindow.ui \
     productregister.ui \
     searchform.ui \
@@ -89,5 +91,6 @@ DISTFILES += \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSON/info.json \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSON/items.json \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/JSONPath \
+    build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/QRPath \
     build/Desktop_Qt_5_15_2_MinGW_32_bit-Debug/debug/style/Style.qss
 

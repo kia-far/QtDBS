@@ -19,6 +19,7 @@
 #include <hidebelonging.h>
 #include <exporttoexcel.h>
 #include <DllHandler.h>
+#include "loadqrtext.h"
 
 class Tables;
 QT_BEGIN_NAMESPACE
@@ -35,8 +36,6 @@ public:
     void onDataReady();
     void setBtnIcon();
     void setupTable(QString a);
-public slots:
-    int testQrCode();
 
 private slots:
     void closePages();
@@ -66,6 +65,7 @@ private:
     EditItem EI;
     ExportExcel EE;
     HideBelonging hb;
+    LoadQRText QR;
     void keyPressEvent(QKeyEvent *event) override;
 
 };

@@ -17,6 +17,7 @@
 #include <QtConcurrent/QtConcurrentRun>
 #include <QtConcurrent/QtConcurrent>
 #include <QVariant>
+#include <printqr.h>
 
 
 DeviceForm::DeviceForm(QWidget *parent) :
@@ -33,11 +34,12 @@ DeviceForm::DeviceForm(QWidget *parent) :
     admiMode=false;
     checked = true;
 
-    if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
+    if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide();ui->EditQRBtn->hide(); }
 //    new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Q), this, SLOT(this.close()));
     keyBinds();
 
 }
+int count;
 int indexx;
 int indexcounter = 0;
 DeviceForm::~DeviceForm()
@@ -72,8 +74,8 @@ void DeviceForm::setup(){
     ui->spinBox->setValue(1);
     ui->spinBox->setDisabled(true);
     getCustomers();
-    if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide(); }
-    else {ui->pushButton_3->show();ui->AddItemBtn->show();ui->pushButton_2->show(); }
+    if(!admiMode){ui->pushButton_3->hide();ui->AddItemBtn->hide();ui->pushButton_2->hide();ui->EditQRBtn->hide(); }
+    else {ui->pushButton_3->show();ui->AddItemBtn->show();ui->pushButton_2->show();ui->EditQRBtn->show(); }
     // edit = false;
     // admiMode = false;
     qDebug() << "this is currentDevice:" << currentDevice;
@@ -355,6 +357,8 @@ void DeviceForm::on_SubmitBtn_clicked()
                 if( MyFunctions::convertToEnglishInt( ui->spinBox->text())>1){
                     if(checkBulkSN()){
                         if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
+                            if(askForQR()){count = 3;}
+                            else{count = 2;}
                             QtConcurrent::run(this, &DeviceForm::addBulk);
                         }
                         else{
@@ -386,6 +390,8 @@ void DeviceForm::on_SubmitBtn_clicked()
                 if(MyFunctions::convertToEnglishInt( ui->spinBox->text())>1){
                     if(checkBulkSN()){
                         if(MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo")||ui->CustomerCombo->currentText()==""){
+                            if(askForQR()){count =3;}
+                            else{count = 2;}
                             QtConcurrent::run(this, &DeviceForm::addBulk);
                         }
                         else{
@@ -427,6 +433,8 @@ void DeviceForm::addDevice(){
 }
 
 void DeviceForm::submit(QString SN,int countt){
+
+    SN = SN.toUpper();
     if(countt>1||(ui->CustomerCombo->currentText()==""||MyFunctions::checkData(ui->CustomerCombo->currentText(),"Name","CustomerInfo"))){
         if(countt==1){
             setChecks();
@@ -438,6 +446,7 @@ void DeviceForm::submit(QString SN,int countt){
             for(QString string: combos)
                 {    givenData.append(string);}
         givenData[0] = MyFunctions::reverseSN(SN).toUInt();
+
     if (!edit){
         QSqlQuery q(db.getConnection());
         q.prepare("INSERT INTO ProductInfo (SerialNO , ProductName) VALUES (? ,?)");
@@ -459,6 +468,17 @@ void DeviceForm::submit(QString SN,int countt){
         }
         if(er&&err){
             ItemHandler::insertDataIntoTable(currentDevice,columns,givenData);
+            if(countt==1){
+                if(askForQR()){
+                    QStringList QRData={SN,ui->CustomerCombo->currentText(),"","",MyFunctions::convertToEnglishString( ui->dateEdit->text()),MyFunctions::convertToEnglishString( ui->dateEdit_2->text())};
+                    PrintQR::printQRCode(QRData,currentDevice);
+                }
+            }
+            else if(countt==3){
+                QStringList QRData={SN,ui->CustomerCombo->currentText(),"","",MyFunctions::convertToEnglishString( ui->dateEdit->text()),MyFunctions::convertToEnglishString( ui->dateEdit_2->text())};
+                PrintQR::printQRCode(QRData,currentDevice);
+            }
+            else;
             logger::log("inserted product Info and product sec info : "+ QString::number(er)+" & "  +QString::number(err)+" inserted data for " + currentDevice);
             if(countt==1) emit pageUpdate();
             this->close();
@@ -718,6 +738,8 @@ void DeviceForm::on_checkBox_stateChanged(int arg1)
 
 void DeviceForm::addBulk(){
     logger::log("addBulk start");
+    // int countt = count;
+    qDebug() << "after asking";
     emit setPBRange(MyFunctions::convertToEnglishInt( ui->spinBox->text()));
     handleStarted();
     // ui->progressBar->setRange(0,ui->spinBox->text().toInt());
@@ -727,7 +749,7 @@ void DeviceForm::addBulk(){
         setChecks();
         setCombos();
             for(int i=0;i<MyFunctions::convertToEnglishInt( ui->spinBox->text());i++){
-            submit(serialno,2);
+            submit(serialno,count);
             emit setPBVal(i);
             unsigned int a = MyFunctions::reverseSN(serialno).toUInt();
             a +=1;
@@ -911,5 +933,34 @@ void DeviceForm::loadLastSN() {
     if(this->max>0)
         ui->lastSNLabel->setText(MyFunctions::intToStr(this->max)+ " : " +"آخرین شماره سریال ");
     qDebug() << "Executed query:" << query.executedQuery();
+}
+
+bool DeviceForm::askForQR(){
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowTitle("QR Code");
+    msgBox.setText("آیا میخواهید QR Code را هم پرینت بگیرید؟");
+    msgBox.setStandardButtons(QMessageBox::Yes| QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+    int res = msgBox.exec();
+    switch(res) {
+    case QMessageBox::Yes :{
+        return true;
+        break;
+    }
+    case QMessageBox::No :{
+        return false;
+        break;
+    }
+    default :
+        return false;
+        break;
+
+    }
+}
+
+void DeviceForm::on_EditQRBtn_clicked()
+{
+    emit openQREdit();
 }
 

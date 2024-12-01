@@ -126,7 +126,7 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="4" column="0" colspan="11">
+   <item row="4" column="0" colspan="12">
     <widget class="QTableView" name="tableView">
      <property name="minimumSize">
       <size>
@@ -172,28 +172,12 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </attribute>
     </widget>
    </item>
-   <item row="0" column="2">
-    <spacer name="horizontalSpacer">
-     <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
-     </property>
-     <property name="sizeHint" stdset="0">
-      <size>
-       <width>40</width>
-       <height>20</height>
-      </size>
-     </property>
-    </spacer>
-   </item>
-   <item row="0" column="9">
-    <widget class="QPushButton" name="deleteBtn">
+   <item row="0" column="3">
+    <widget class="QPushButton" name="mainWindowBtn">
      <property name="text">
-      <string>حذف</string>
+      <string>صفحه اصلی</string>
      </property>
     </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QComboBox" name="comboBox_2"/>
    </item>
    <item row="0" column="4">
     <spacer name="horizontalSpacer_2">
@@ -208,42 +192,27 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </property>
     </spacer>
    </item>
-   <item row="0" column="7">
+   <item row="0" column="11">
+    <widget class="QToolButton" name="toolButton">
+     <property name="toolTip">
+      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;خروجی اکسل&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="8">
     <widget class="QPushButton" name="SearchBtn">
      <property name="text">
       <string>جستجو</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="5">
-    <widget class="QPushButton" name="RefreshBtn">
-     <property name="text">
-      <string>بازخوانی</string>
-     </property>
-    </widget>
+   <item row="0" column="1">
+    <widget class="QComboBox" name="comboBox_2"/>
    </item>
-   <item row="0" column="3">
-    <widget class="QPushButton" name="mainWindowBtn">
-     <property name="text">
-      <string>صفحه اصلی</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="8">
-    <widget class="QPushButton" name="EditBtn">
-     <property name="text">
-      <string>ویرایش</string>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="6">
-    <widget class="QPushButton" name="AddBtn">
-     <property name="text">
-      <string>افزودن</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="0" colspan="11">
+   <item row="2" column="0" colspan="12">
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QLabel" name="label">
@@ -267,53 +236,41 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
      </item>
     </layout>
    </item>
-   <item row="0" column="10">
-    <widget class="QToolButton" name="toolButton">
-     <property name="toolTip">
-      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;خروجی اکسل&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-     </property>
+   <item row="0" column="7">
+    <widget class="QPushButton" name="AddBtn">
      <property name="text">
-      <string>...</string>
+      <string>افزودن</string>
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QComboBox" name="comboBox">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
+   <item row="0" column="9">
+    <widget class="QPushButton" name="EditBtn">
+     <property name="text">
+      <string>ویرایش</string>
      </property>
-     <property name="baseSize">
+    </widget>
+   </item>
+   <item row="0" column="6">
+    <widget class="QPushButton" name="RefreshBtn">
+     <property name="text">
+      <string>بازخوانی</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="2">
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Orientation::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
       <size>
-       <width>0</width>
-       <height>0</height>
+       <width>40</width>
+       <height>20</height>
       </size>
      </property>
-     <item>
-      <property name="text">
-       <string>مشتریان</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>خدمات</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>دستگاه ها</string>
-      </property>
-     </item>
-     <item>
-      <property name="text">
-       <string>محصولات</string>
-      </property>
-     </item>
-    </widget>
+    </spacer>
    </item>
-   <item row="6" column="0" colspan="11">
+   <item row="6" column="0" colspan="12">
     <widget class="QWidget" name="widget" native="true">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
@@ -732,6 +689,56 @@ QScrollBar::add-page:horizontal, QScrollBar::sub-page:horizontal {
        </widget>
       </item>
      </layout>
+    </widget>
+   </item>
+   <item row="0" column="0">
+    <widget class="QComboBox" name="comboBox">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <item>
+      <property name="text">
+       <string>مشتریان</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>خدمات</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>دستگاه ها</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>محصولات</string>
+      </property>
+     </item>
+    </widget>
+   </item>
+   <item row="0" column="10">
+    <widget class="QPushButton" name="deleteBtn">
+     <property name="text">
+      <string>حذف</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QPushButton" name="printBtn">
+     <property name="text">
+      <string>QR چاپ</string>
+     </property>
     </widget>
    </item>
   </layout>

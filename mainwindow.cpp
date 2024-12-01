@@ -59,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&d, &DeviceForm::closeEditItem,&hb,&HideBelonging::closePage);
     QObject::connect(&hb, &HideBelonging::refreshDevPage,&d,&DeviceForm::refresh);
     QObject::connect(&EE,&ExportExcel::loadEmpty,x,&Tables::emptyWidget);
+    QObject::connect(&d, &DeviceForm::openQREdit, &QR,&LoadQRText::setup);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();
@@ -102,11 +103,7 @@ void MainWindow::setBtnIcon(){
     ui->customerBtn->setIconSize(ui->customerBtn->size());
     ui->serviceBtn->setIconSize(ui->serviceBtn->size());
 
-    QAction *f0 = new QAction(this);
-    f0->setShortcut(Qt::Key_P | Qt::CTRL);
 
-    connect(f0, SIGNAL(triggered()), this, SLOT(testQrCode()));
-    this->addAction(f0);
 }
 void MainWindow::setupTable(QString a){
     emit setupTables(a);
@@ -160,55 +157,4 @@ void MainWindow::keyPressEvent(QKeyEvent *event){
     else{}
 }
 
-int MainWindow::testQrCode(){
-    if (!DllHandler::loadDll("WINPSK")) {  // No need to include .dll
-        qDebug() << "hi";
-        return -1;
-    }
 
-    qDebug() << DllHandler::closePort();
-    qDebug() << DllHandler::openPort(1);
-    qDebug() << DllHandler::clearbuffer();
-    qDebug() << DllHandler::setDirection('B');
-    unsigned int i = 1;
-    qDebug() << DllHandler::setPrintSpeed(i);
-    // qDebug() <<DllHandler::setLabelHeight(160, 1);
-    qDebug() <<DllHandler::setLabelWidth(420);
-    qDebug() << DllHandler::setFont(230,110,0,4,1,1,'N',"N98A0001");
-
-    QString p1 = "PACTOS Inc.";
-
-    QString p2 = "\x09\x0D";
-    QString p3 = QString::fromUtf8( "شرکت پکتوس");
-    QString p4 = "\x09\x0D";
-    QString p5 = QString::fromUtf8( "برجسته نگار هوشمند همراه");
-    QString p6 = "\x09\x0D";
-    QString p7 = QString::fromUtf8("نام خریدار: نهاد کتابخانه های عمومی استان یزد");
-    QString p8 = "\x09\x0D";
-    QString p9 = QString::fromUtf8( "شماره سریال");
-    QString p10 = "";
-    QString p11 =  ": N98A0001";
-    QString p12 = "\x09\x0D";
-    QString p13 = QString::fromUtf8( "تاریخ خرید");
-    QString p14 = "";
-    QString p15 = "1398/11/17";
-    QString p16 = "\x09\x0D";
-    QString p17 = QString::fromUtf8( "تاریخ انقضای گارانتی: ");
-    QString p23 = "1399/11/17";
-    QString p18 = "\x09\x0D";
-    QString p19 = "www.pactos.ir";
-    QString p20 = "\x09\x0D";
-    QString p21 = "Email: info@pactos.ir";
-    QString p22 = "";
-    for (int i=0;i<200;i++){p22.append("ش");}
-
-    qDebug() << p22.toUtf8().size();
-    qDebug() <<DllHandler::drawQRCode(75, 25, p1+p2+p3+p4+p5+p6+p7+p8+p9+p10+p11+p12+p13+p14+p15+p16+p17+p18+p19+p20+p21);
-    qDebug() << DllHandler::drawBarCode(230,40, "N98A0001");
-    qDebug() <<DllHandler::printLabel(1, 1)<<"print";
-
-    qDebug() <<DllHandler::closePort()<<"closeport";
-    DllHandler::unloadDll();
-
-    return 0;
-}

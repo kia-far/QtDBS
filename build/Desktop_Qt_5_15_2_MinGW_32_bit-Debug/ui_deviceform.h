@@ -40,6 +40,7 @@ public:
     QHBoxLayout *horizontalLayout_6;
     QHBoxLayout *horizontalLayout_5;
     QLabel *lastSNLabel;
+    QPushButton *EditQRBtn;
     QSpacerItem *horizontalSpacer_3;
     QComboBox *comboBox;
     QLabel *label_5;
@@ -98,7 +99,7 @@ public:
     {
         if (DeviceForm->objectName().isEmpty())
             DeviceForm->setObjectName(QString::fromUtf8("DeviceForm"));
-        DeviceForm->resize(665, 668);
+        DeviceForm->resize(665, 716);
         DeviceForm->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "    background-color: rgb(228, 229, 244); /* Light gray background */\n"
 "    border: 1px solid #a9a9a9; /* Darker gray border for a 3D effect */\n"
@@ -286,6 +287,11 @@ public:
         lastSNLabel->setObjectName(QString::fromUtf8("lastSNLabel"));
 
         horizontalLayout_5->addWidget(lastSNLabel);
+
+        EditQRBtn = new QPushButton(DeviceForm);
+        EditQRBtn->setObjectName(QString::fromUtf8("EditQRBtn"));
+
+        horizontalLayout_5->addWidget(EditQRBtn);
 
         horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
@@ -642,6 +648,7 @@ public:
     {
         DeviceForm->setWindowTitle(QCoreApplication::translate("DeviceForm", "\330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247", nullptr));
         lastSNLabel->setText(QString());
+        EditQRBtn->setText(QCoreApplication::translate("DeviceForm", "QR \330\252\330\272\333\214\333\214\330\261", nullptr));
         label_5->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
         checkBox->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \330\254\331\205\330\271\333\214", nullptr));
         pushButton_2->setText(QCoreApplication::translate("DeviceForm", "...", nullptr));

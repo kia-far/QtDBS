@@ -47,6 +47,7 @@ signals:
     void setPBRange(int range);
     void editItem(QString device);
     void closeEditItem();
+    void openQREdit();
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
@@ -71,6 +72,8 @@ private slots:
 
     void on_pushButton_3_clicked();
 
+    void on_EditQRBtn_clicked();
+
 private:
     void createBelonging(QString itemName,int index);
     void createNewItem(QString itemName , int index);
@@ -92,6 +95,7 @@ private:
     void handleFinished();
     void loadDate(unsigned int id);
     void loadLastSN();
+    bool askForQR();
     QString currentDevice;
     int adder;
     Ui::DeviceForm *ui;

@@ -21,6 +21,10 @@
 #include <QSpacerItem>
 #include <QScrollArea>
 #include <QScrollBar>
+#include <QTableView>
+#include <QItemSelectionModel>
+#include "DllHandler.h"
+#include "printqr.h"
 
 unsigned int lastClicked =4294967294;
 int currentTable =0;
@@ -50,7 +54,9 @@ Tables::Tables(MainWindow *mainWin,QWidget *parent) :
 //    db = QSqlDatabase ::addDatabase("QSQLITE");
 //    db.setDatabaseName("C:\\Users\\kiafa\\Desktop\\Job\\DB\\sqlitestudio_x64-3.4.4\\SQLiteStudio\\InfoDB");
 //    db.open();
+    ui->comboBox_2->blockSignals(true);
     ui->comboBox_2->addItems(ItemHandler::loadDevices());
+    ui->comboBox_2->blockSignals(false);
     // qDebug() << "loadDevice result :"<<ItemHandler::loadDevices();
     QString addr = qApp->applicationDirPath();
     QFile file(addr+"/style/Style.qss"); // Use resource system or provide a direct path
@@ -99,6 +105,7 @@ void Tables::setupTable(QString table){
         hideColumns();
         ui->tableView->resizeColumnsToContents();
         setupWidget();
+        // qDebug() << "setup table";
         ui->widget->show();
         populateLabel(0);
     }
@@ -185,6 +192,8 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         ui->tableView->resizeColumnsToContents();
         // qDebug() << "hiiiiiii 3";
         hideColumns();
+
+        // qDebug() << "search info : ";
         setupWidget();
         ui->widget->show();
         // qDebug()<<"populating now";
@@ -265,6 +274,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
         hideColumns();
         ui->tableView->resizeColumnsToContents();
         setupWidget();
+        // qDebug() << "combo index changed";
         populateLabel(0);
         ui->widget->setHidden(false);
 
@@ -282,7 +292,7 @@ void Tables::on_EditBtn_clicked()
         // qDebug() << "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
         if (currentTable == 0){emit editCustomer(clickedID);}
         else if (currentTable == 1){emit editService(clickedID);}
-        else if (currentTable == 2){qDebug()<<"aaaaaaaaaaaaaaaaaaaaaaaaaaaaa"<<currentDevice;emit editDevice(currentDevice,lastClicked);}
+        else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
         else {emit editProduct(lastClicked );}
     }
     else{
@@ -364,6 +374,7 @@ void Tables::on_comboBox_2_currentIndexChanged(const QString &arg1)
     View->setSearchParameters(currentDevice,searchParam, searchText);
     ui->tableView->setModel(View);
     hideColumns();
+    // qDebug() << "combo 2";
     ui->tableView->resizeColumnsToContents();
     Tables::on_RefreshBtn_clicked();
     hideColumns();
@@ -379,7 +390,7 @@ void Tables::on_tableView_doubleClicked(const QModelIndex &index)
     // qDebug() << "index :" << index<< "clickedID :" << clickedID <<"lastClicked :" << lastClicked;
     if (currentTable == 0){emit editCustomer(clickedID);}
     else if (currentTable == 1){emit editService(clickedID);}
-    else if (currentTable == 2){qDebug()<<"bbbbbbbbbbbbbbbbbbbbbbbbbbb" << currentDevice;emit editDevice(currentDevice,lastClicked);}
+    else if (currentTable == 2){emit editDevice(currentDevice,lastClicked);}
     else {emit editProduct(lastClicked );}
 }
 
@@ -658,10 +669,10 @@ void Tables::populateLabel(int row) {
                     checkBox->setFixedWidth(0);
                     checkBox->setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Preferred);
                     spacers[k]->changeSize(0, 20, QSizePolicy::Preferred, QSizePolicy::Minimum);
-                    qDebug() << ui->form_belHBox->itemAt(2*k)->widget()->objectName();
+                    // qDebug() << ui->form_belHBox->itemAt(2*k)->widget()->objectName();
                 }
                 else{
-                    qDebug() << k;
+                    // qDebug() << k;
                     checkBox->setFixedWidth(200);
                     checkBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
                     spacers[k]->changeSize(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -670,6 +681,7 @@ void Tables::populateLabel(int row) {
                 k++;
                 checkBox->setDisabled(true);
             }
+
             /*ui->form_pDate->setText(variant.toString());*/break;}
         // case 3:{ui->form_gDate->setText(variant.toString());break;}
 
@@ -690,6 +702,7 @@ void Tables::populateLabel(int row) {
     // ui->form_description->setText(text);
     }}
 void Tables::setupWidget(){
+    QStringList belongings = ItemHandler::loadbelongings(currentDevice);
     // ui->widget->setFixedHeight(600);
     clearLayout(ui->form_partHBox);
     clearLayout(ui->form_belHBox);
@@ -731,18 +744,17 @@ void Tables::setupWidget(){
         QString headerText = ui->tableView->model()->headerData(i, Qt::Horizontal).toString();
     }
     int j=0;
-    QStringList belongings = ItemHandler::loadbelongings(currentDevice);
+    // qDebug() << ui->tableView->model()->headerData(2,Qt::Horizontal).toString() << "data for 2";
     for(QString bel:belongings){
         QCheckBox *checkBox = new QCheckBox;
         QString CBName = QString("checkBox_%1").arg(j);
         checkBox->setObjectName(CBName);
         checkBox->setText(bel);
         checkBox->setChecked(false);
-        checkBox->setHidden(false);
         checkBox->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         checkBox->setDisabled(true);
-        checkBoxes.append(checkBox);
         ui->form_belHBox->addWidget(checkBox);
+        checkBoxes.append(checkBox);
         QSpacerItem *spacer = new QSpacerItem(40, 20, QSizePolicy::MinimumExpanding, QSizePolicy::Minimum);
         spacers.append(spacer);
         ui->form_belHBox->addSpacerItem(spacer);
@@ -774,6 +786,32 @@ void Tables::clearLayout(QLayout *layout) {
     }
 }
 
-void Tables::getQrCode(){
+void Tables::getQrCode(int row){
+    ExportExcel exporter;
+    QStringList rowData = {};
+    QList<QVariant> data = exporter.getRowData(ui->tableView,row);
+    for(QVariant info:data){
+        rowData.append( info.toString());
+    }
+    QStringList QRData = {rowData.at(0),rowData.at(1),"",""};
+    QRData.append(rowData.at(rowData.size()-3));
+    QRData.append(rowData.at(rowData.size()-2));
+    // qDebug() << QRData;
 
+    PrintQR::printQRCode(QRData,currentDevice);
 }
+
+
+
+void Tables::on_printBtn_clicked()
+{
+    if(!ui->tableView->selectionModel()->selectedIndexes().isEmpty()){
+        QList<QModelIndex> list = ui->tableView->selectionModel()->selectedRows();
+        for(QModelIndex index:list){
+            qDebug() << index.row()<<"row";
+            qDebug() << index.data().toString()<<"sn";
+            getQrCode(index.row());
+        }
+    }
+}
+

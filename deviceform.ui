@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>665</width>
-    <height>668</height>
+    <height>716</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -195,6 +195,13 @@ QDateEdit:focus {
               <widget class="QLabel" name="lastSNLabel">
                <property name="text">
                 <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="EditQRBtn">
+               <property name="text">
+                <string>QR تغییر</string>
                </property>
               </widget>
              </item>

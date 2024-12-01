@@ -35,20 +35,18 @@ class Ui_Tables
 public:
     QGridLayout *gridLayout;
     QTableView *tableView;
-    QSpacerItem *horizontalSpacer;
-    QPushButton *deleteBtn;
-    QComboBox *comboBox_2;
-    QSpacerItem *horizontalSpacer_2;
-    QPushButton *SearchBtn;
-    QPushButton *RefreshBtn;
     QPushButton *mainWindowBtn;
-    QPushButton *EditBtn;
-    QPushButton *AddBtn;
+    QSpacerItem *horizontalSpacer_2;
+    QToolButton *toolButton;
+    QPushButton *SearchBtn;
+    QComboBox *comboBox_2;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QProgressBar *progressBar;
-    QToolButton *toolButton;
-    QComboBox *comboBox;
+    QPushButton *AddBtn;
+    QPushButton *EditBtn;
+    QPushButton *RefreshBtn;
+    QSpacerItem *horizontalSpacer;
     QWidget *widget;
     QVBoxLayout *verticalLayout_3;
     QHBoxLayout *horizontalLayout_5;
@@ -84,6 +82,9 @@ public:
     QGroupBox *groupBox;
     QHBoxLayout *horizontalLayout_9;
     QTextBrowser *form_description;
+    QComboBox *comboBox;
+    QPushButton *deleteBtn;
+    QPushButton *printBtn;
 
     void setupUi(QWidget *Tables)
     {
@@ -222,50 +223,31 @@ public:
         tableView->horizontalHeader()->setStretchLastSection(false);
         tableView->verticalHeader()->setProperty("showSortIndicator", QVariant(true));
 
-        gridLayout->addWidget(tableView, 4, 0, 1, 11);
-
-        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
-
-        deleteBtn = new QPushButton(Tables);
-        deleteBtn->setObjectName(QString::fromUtf8("deleteBtn"));
-
-        gridLayout->addWidget(deleteBtn, 0, 9, 1, 1);
-
-        comboBox_2 = new QComboBox(Tables);
-        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
-
-        gridLayout->addWidget(comboBox_2, 0, 1, 1, 1);
-
-        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        gridLayout->addItem(horizontalSpacer_2, 0, 4, 1, 1);
-
-        SearchBtn = new QPushButton(Tables);
-        SearchBtn->setObjectName(QString::fromUtf8("SearchBtn"));
-
-        gridLayout->addWidget(SearchBtn, 0, 7, 1, 1);
-
-        RefreshBtn = new QPushButton(Tables);
-        RefreshBtn->setObjectName(QString::fromUtf8("RefreshBtn"));
-
-        gridLayout->addWidget(RefreshBtn, 0, 5, 1, 1);
+        gridLayout->addWidget(tableView, 4, 0, 1, 12);
 
         mainWindowBtn = new QPushButton(Tables);
         mainWindowBtn->setObjectName(QString::fromUtf8("mainWindowBtn"));
 
         gridLayout->addWidget(mainWindowBtn, 0, 3, 1, 1);
 
-        EditBtn = new QPushButton(Tables);
-        EditBtn->setObjectName(QString::fromUtf8("EditBtn"));
+        horizontalSpacer_2 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
 
-        gridLayout->addWidget(EditBtn, 0, 8, 1, 1);
+        gridLayout->addItem(horizontalSpacer_2, 0, 4, 1, 1);
 
-        AddBtn = new QPushButton(Tables);
-        AddBtn->setObjectName(QString::fromUtf8("AddBtn"));
+        toolButton = new QToolButton(Tables);
+        toolButton->setObjectName(QString::fromUtf8("toolButton"));
 
-        gridLayout->addWidget(AddBtn, 0, 6, 1, 1);
+        gridLayout->addWidget(toolButton, 0, 11, 1, 1);
+
+        SearchBtn = new QPushButton(Tables);
+        SearchBtn->setObjectName(QString::fromUtf8("SearchBtn"));
+
+        gridLayout->addWidget(SearchBtn, 0, 8, 1, 1);
+
+        comboBox_2 = new QComboBox(Tables);
+        comboBox_2->setObjectName(QString::fromUtf8("comboBox_2"));
+
+        gridLayout->addWidget(comboBox_2, 0, 1, 1, 1);
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
@@ -283,35 +265,34 @@ public:
         verticalLayout->addWidget(progressBar);
 
 
-        gridLayout->addLayout(verticalLayout, 2, 0, 1, 11);
+        gridLayout->addLayout(verticalLayout, 2, 0, 1, 12);
 
-        toolButton = new QToolButton(Tables);
-        toolButton->setObjectName(QString::fromUtf8("toolButton"));
+        AddBtn = new QPushButton(Tables);
+        AddBtn->setObjectName(QString::fromUtf8("AddBtn"));
 
-        gridLayout->addWidget(toolButton, 0, 10, 1, 1);
+        gridLayout->addWidget(AddBtn, 0, 7, 1, 1);
 
-        comboBox = new QComboBox(Tables);
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->addItem(QString());
-        comboBox->setObjectName(QString::fromUtf8("comboBox"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
-        comboBox->setSizePolicy(sizePolicy);
-        comboBox->setBaseSize(QSize(0, 0));
+        EditBtn = new QPushButton(Tables);
+        EditBtn->setObjectName(QString::fromUtf8("EditBtn"));
 
-        gridLayout->addWidget(comboBox, 0, 0, 1, 1);
+        gridLayout->addWidget(EditBtn, 0, 9, 1, 1);
+
+        RefreshBtn = new QPushButton(Tables);
+        RefreshBtn->setObjectName(QString::fromUtf8("RefreshBtn"));
+
+        gridLayout->addWidget(RefreshBtn, 0, 6, 1, 1);
+
+        horizontalSpacer = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        gridLayout->addItem(horizontalSpacer, 0, 2, 1, 1);
 
         widget = new QWidget(Tables);
         widget->setObjectName(QString::fromUtf8("widget"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
-        widget->setSizePolicy(sizePolicy1);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(widget->sizePolicy().hasHeightForWidth());
+        widget->setSizePolicy(sizePolicy);
         widget->setMinimumSize(QSize(0, 0));
         widget->setMaximumSize(QSize(16777215, 16777215));
         widget->setStyleSheet(QString::fromUtf8("QWidget {\n"
@@ -429,11 +410,11 @@ public:
 
         label_3 = new QLabel(widget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        QSizePolicy sizePolicy2(QSizePolicy::Preferred, QSizePolicy::Expanding);
-        sizePolicy2.setHorizontalStretch(0);
-        sizePolicy2.setVerticalStretch(0);
-        sizePolicy2.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
-        label_3->setSizePolicy(sizePolicy2);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(label_3->sizePolicy().hasHeightForWidth());
+        label_3->setSizePolicy(sizePolicy1);
         label_3->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout_3->addWidget(label_3);
@@ -446,19 +427,19 @@ public:
         horizontalLayout->setSizeConstraint(QLayout::SizeConstraint::SetMinimumSize);
         form_SN = new QLineEdit(widget);
         form_SN->setObjectName(QString::fromUtf8("form_SN"));
-        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy3.setHorizontalStretch(0);
-        sizePolicy3.setVerticalStretch(0);
-        sizePolicy3.setHeightForWidth(form_SN->sizePolicy().hasHeightForWidth());
-        form_SN->setSizePolicy(sizePolicy3);
+        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy2.setHorizontalStretch(0);
+        sizePolicy2.setVerticalStretch(0);
+        sizePolicy2.setHeightForWidth(form_SN->sizePolicy().hasHeightForWidth());
+        form_SN->setSizePolicy(sizePolicy2);
         form_SN->setReadOnly(true);
 
         horizontalLayout->addWidget(form_SN);
 
         label_2 = new QLabel(widget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        sizePolicy2.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
-        label_2->setSizePolicy(sizePolicy2);
+        sizePolicy1.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy1);
         label_2->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
 
         horizontalLayout->addWidget(label_2);
@@ -528,11 +509,11 @@ public:
 
         scrollArea = new QScrollArea(widget);
         scrollArea->setObjectName(QString::fromUtf8("scrollArea"));
-        QSizePolicy sizePolicy4(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        sizePolicy4.setHorizontalStretch(0);
-        sizePolicy4.setVerticalStretch(0);
-        sizePolicy4.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
-        scrollArea->setSizePolicy(sizePolicy4);
+        QSizePolicy sizePolicy3(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        sizePolicy3.setHorizontalStretch(0);
+        sizePolicy3.setVerticalStretch(0);
+        sizePolicy3.setHeightForWidth(scrollArea->sizePolicy().hasHeightForWidth());
+        scrollArea->setSizePolicy(sizePolicy3);
         scrollArea->setMinimumSize(QSize(0, 125));
         scrollArea->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         scrollArea->setWidgetResizable(true);
@@ -544,8 +525,11 @@ public:
         horizontalLayout_8->setObjectName(QString::fromUtf8("horizontalLayout_8"));
         form_parts = new QGroupBox(scrollAreaWidgetContents);
         form_parts->setObjectName(QString::fromUtf8("form_parts"));
-        sizePolicy.setHeightForWidth(form_parts->sizePolicy().hasHeightForWidth());
-        form_parts->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy4(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        sizePolicy4.setHorizontalStretch(0);
+        sizePolicy4.setVerticalStretch(0);
+        sizePolicy4.setHeightForWidth(form_parts->sizePolicy().hasHeightForWidth());
+        form_parts->setSizePolicy(sizePolicy4);
         form_parts->setMinimumSize(QSize(0, 0));
         form_parts->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         form_parts->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
@@ -577,8 +561,8 @@ public:
         verticalLayout_2->setObjectName(QString::fromUtf8("verticalLayout_2"));
         form_bel = new QGroupBox(scrollAreaWidgetContents_5);
         form_bel->setObjectName(QString::fromUtf8("form_bel"));
-        sizePolicy.setHeightForWidth(form_bel->sizePolicy().hasHeightForWidth());
-        form_bel->setSizePolicy(sizePolicy);
+        sizePolicy4.setHeightForWidth(form_bel->sizePolicy().hasHeightForWidth());
+        form_bel->setSizePolicy(sizePolicy4);
         form_bel->setLayoutDirection(Qt::LayoutDirection::RightToLeft);
         form_bel->setAlignment(Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter);
         horizontalLayout_4 = new QHBoxLayout(form_bel);
@@ -612,7 +596,29 @@ public:
         verticalLayout_3->addWidget(groupBox);
 
 
-        gridLayout->addWidget(widget, 6, 0, 1, 11);
+        gridLayout->addWidget(widget, 6, 0, 1, 12);
+
+        comboBox = new QComboBox(Tables);
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->addItem(QString());
+        comboBox->setObjectName(QString::fromUtf8("comboBox"));
+        sizePolicy4.setHeightForWidth(comboBox->sizePolicy().hasHeightForWidth());
+        comboBox->setSizePolicy(sizePolicy4);
+        comboBox->setBaseSize(QSize(0, 0));
+
+        gridLayout->addWidget(comboBox, 0, 0, 1, 1);
+
+        deleteBtn = new QPushButton(Tables);
+        deleteBtn->setObjectName(QString::fromUtf8("deleteBtn"));
+
+        gridLayout->addWidget(deleteBtn, 0, 10, 1, 1);
+
+        printBtn = new QPushButton(Tables);
+        printBtn->setObjectName(QString::fromUtf8("printBtn"));
+
+        gridLayout->addWidget(printBtn, 0, 5, 1, 1);
 
         QWidget::setTabOrder(comboBox, comboBox_2);
         QWidget::setTabOrder(comboBox_2, mainWindowBtn);
@@ -631,22 +637,16 @@ public:
     void retranslateUi(QWidget *Tables)
     {
         Tables->setWindowTitle(QCoreApplication::translate("Tables", "\330\254\330\257\331\210\331\204", nullptr));
-        deleteBtn->setText(QCoreApplication::translate("Tables", "\330\255\330\260\331\201", nullptr));
-        SearchBtn->setText(QCoreApplication::translate("Tables", "\330\254\330\263\330\252\330\254\331\210", nullptr));
-        RefreshBtn->setText(QCoreApplication::translate("Tables", "\330\250\330\247\330\262\330\256\331\210\330\247\331\206\333\214", nullptr));
         mainWindowBtn->setText(QCoreApplication::translate("Tables", "\330\265\331\201\330\255\331\207 \330\247\330\265\331\204\333\214", nullptr));
-        EditBtn->setText(QCoreApplication::translate("Tables", "\331\210\333\214\330\261\330\247\333\214\330\264", nullptr));
-        AddBtn->setText(QCoreApplication::translate("Tables", "\330\247\331\201\330\262\331\210\330\257\331\206", nullptr));
-        label->setText(QCoreApplication::translate("Tables", "\330\257\330\261 \330\255\330\247\331\204 \330\247\330\266\330\247\331\201\331\207 \332\251\330\261\330\257\331\206 \330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247. \331\204\330\267\331\201\330\247 \331\205\331\206\330\252\330\270\330\261 \330\250\331\205\330\247\331\206\333\214\330\257.", nullptr));
 #if QT_CONFIG(tooltip)
         toolButton->setToolTip(QCoreApplication::translate("Tables", "<html><head/><body><p>\330\256\330\261\331\210\330\254\333\214 \330\247\332\251\330\263\331\204</p></body></html>", nullptr));
 #endif // QT_CONFIG(tooltip)
         toolButton->setText(QCoreApplication::translate("Tables", "...", nullptr));
-        comboBox->setItemText(0, QCoreApplication::translate("Tables", "\331\205\330\264\330\252\330\261\333\214\330\247\331\206", nullptr));
-        comboBox->setItemText(1, QCoreApplication::translate("Tables", "\330\256\330\257\331\205\330\247\330\252", nullptr));
-        comboBox->setItemText(2, QCoreApplication::translate("Tables", "\330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247", nullptr));
-        comboBox->setItemText(3, QCoreApplication::translate("Tables", "\331\205\330\255\330\265\331\210\331\204\330\247\330\252", nullptr));
-
+        SearchBtn->setText(QCoreApplication::translate("Tables", "\330\254\330\263\330\252\330\254\331\210", nullptr));
+        label->setText(QCoreApplication::translate("Tables", "\330\257\330\261 \330\255\330\247\331\204 \330\247\330\266\330\247\331\201\331\207 \332\251\330\261\330\257\331\206 \330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247. \331\204\330\267\331\201\330\247 \331\205\331\206\330\252\330\270\330\261 \330\250\331\205\330\247\331\206\333\214\330\257.", nullptr));
+        AddBtn->setText(QCoreApplication::translate("Tables", "\330\247\331\201\330\262\331\210\330\257\331\206", nullptr));
+        EditBtn->setText(QCoreApplication::translate("Tables", "\331\210\333\214\330\261\330\247\333\214\330\264", nullptr));
+        RefreshBtn->setText(QCoreApplication::translate("Tables", "\330\250\330\247\330\262\330\256\331\210\330\247\331\206\333\214", nullptr));
         label_3->setText(QCoreApplication::translate("Tables", "\331\206\330\247\331\205 \330\256\330\261\333\214\330\257\330\247\330\261 :", nullptr));
         label_2->setText(QCoreApplication::translate("Tables", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));
         label_5->setText(QCoreApplication::translate("Tables", "\331\206\330\247\331\205 \330\257\330\263\330\252\332\257\330\247\331\207 :", nullptr));
@@ -655,6 +655,13 @@ public:
         form_parts->setTitle(QCoreApplication::translate("Tables", "\331\202\330\267\330\271\330\247\330\252", nullptr));
         form_bel->setTitle(QCoreApplication::translate("Tables", "\331\205\330\252\330\271\331\204\331\202\330\247\330\252", nullptr));
         groupBox->setTitle(QCoreApplication::translate("Tables", "\330\252\331\210\330\266\333\214\330\255\330\247\330\252", nullptr));
+        comboBox->setItemText(0, QCoreApplication::translate("Tables", "\331\205\330\264\330\252\330\261\333\214\330\247\331\206", nullptr));
+        comboBox->setItemText(1, QCoreApplication::translate("Tables", "\330\256\330\257\331\205\330\247\330\252", nullptr));
+        comboBox->setItemText(2, QCoreApplication::translate("Tables", "\330\257\330\263\330\252\332\257\330\247\331\207 \331\207\330\247", nullptr));
+        comboBox->setItemText(3, QCoreApplication::translate("Tables", "\331\205\330\255\330\265\331\210\331\204\330\247\330\252", nullptr));
+
+        deleteBtn->setText(QCoreApplication::translate("Tables", "\330\255\330\260\331\201", nullptr));
+        printBtn->setText(QCoreApplication::translate("Tables", "QR \332\206\330\247\331\276", nullptr));
     } // retranslateUi
 
 };
