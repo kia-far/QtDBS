@@ -37,6 +37,7 @@ private:
     QString item;
     QString func;
     QLineEdit *lineEdit_2; // Member variable for QLineEdit
+    QLineEdit *lineEdit_3;
     QPushButton *editButton = nullptr;
     void cleanupDevice();
     bool devCalled;

@@ -9,6 +9,7 @@ AddOption::AddOption(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::AddOption),
     lineEdit_2(new QLineEdit()),
+    lineEdit_3(new QLineEdit()),
     devCalled(false)
 {
     // ui->lineEdit->clear();
@@ -17,6 +18,9 @@ AddOption::AddOption(QWidget *parent) :
 //    devCalled=false;
     ui->verticalLayout_3->addWidget(lineEdit_2);
     lineEdit_2->hide();
+    ui->verticalLayout_3->addWidget(lineEdit_3);
+    lineEdit_3->hide();
+
 }
 
 AddOption::~AddOption()
@@ -58,6 +62,14 @@ void AddOption::setupDevice() {
     lineEdit_2->setText("");
     ui->lineEdit->setPlaceholderText("نام دستگاه");
     lineEdit_2->setPlaceholderText("مخفف نام دستگاه");
+
+    if (lineEdit_3->isHidden()) {
+        lineEdit_3->show();
+    }
+
+
+    lineEdit_3->setText("");
+    lineEdit_3->setPlaceholderText("نام کامل دستگاه");
 
     // Create button only if it doesn't exist
     // if (!editButton) {
@@ -108,11 +120,11 @@ void AddOption::on_pushButton_clicked()
             if (text.at(i)==" "){newText.append("_");}
             else{newText.append(text.at(i));}
         }
-        if(text.isEmpty()||lineEdit_2->text().isEmpty()){
-            showError("هر دو خانه را پر کنید");
+        if(text.isEmpty()||lineEdit_2->text().isEmpty()||lineEdit_3->text().isEmpty()){
+            showError("هر سه خانه را پر کنید");
         }
         else{
-            ItemHandler::addDevices(text,lineEdit_2->text().toUpper());}
+            ItemHandler::addDevices(text,lineEdit_2->text().toUpper(),lineEdit_3->text());}
     }
     else if (func == "belonging"){
 
@@ -147,6 +159,7 @@ void AddOption::cleanupDevice() {
     ui->lineEdit->clear();
     if (devCalled) {
         lineEdit_2->hide();
+        lineEdit_3->hide();
         if (editButton) {
             editButton->setHidden(true);
         }

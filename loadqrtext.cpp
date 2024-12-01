@@ -104,7 +104,9 @@ void LoadQRText::on_buttonBox_accepted()
     if(newtext.contains("serialnumber")&&newtext.contains("xxxx/xx/xx")&&newtext.contains("yyyy/yy/yy")&&newtext.contains("devicename")&&newtext.contains("customername")){
     QString adr = qApp->applicationDirPath();
     QString QRPathFile = adr+"/QRPath";
-    saveText(QRPathFile,newtext.toUtf8());}
+    saveText(QRPathFile,newtext.toUtf8());
+    this->close();
+    }
     else{
         QMessageBox msgBox;
         msgBox.setIcon(QMessageBox::Information);

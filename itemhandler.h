@@ -16,8 +16,8 @@ public:
     static QStringList loadOptions(QString device , QString item);
     static QStringList loadbelongings(QString device);
     static QStringList loadVisibleBelongings(QString device);
-    static void addDevices(QString deviceName,QString DeviceAbr);
-    static void addNewInfoDevice(QString deviceName,QString deviceAbr);
+    static void addDevices(QString deviceName,QString DeviceAbr,QString deviceFullName);
+    static void addNewInfoDevice(QString deviceName,QString deviceAbr, QString deviceFullName);
     static void addItems(QString device, QString itemName);
     static void editItem(QString device, QString oldItem, QString newItem);
     static void addOptions(QString deviceName , QString itemName, QString optionName);
@@ -29,6 +29,7 @@ public:
     static QStringList nameLetter();
     static void addAbr(QString device,QChar newAbr);
     static void changeBelVisibility(QString deviceName, QString belonging);
+    static QString getDeviceFullName(QString deviceName);
 
 private:
     DatabaseConnection &db;

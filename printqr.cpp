@@ -3,6 +3,7 @@
 #include "loadqrtext.h"
 #include <QDebug>
 #include <QApplication>
+#include "itemhandler.h"
 #include <logger.h>
 #include <QMessageBox>
 
@@ -16,12 +17,13 @@ void PrintQR::printQRCode(QStringList QRData,QString device){
         qDebug() << "hi";
         // return -1;
     }
+    QString fullDeviceName = ItemHandler::getDeviceFullName(device);
     QString adr = qApp->applicationDirPath();
     QString QRPathFile = adr+"/QRPath";
     QString text = LoadQRText::loadText(QRPathFile);
     QString newText = text.toUtf8();
     newText.replace("serialnumber", QRData.at(0).toUtf8());
-    newText.replace("devicename", device.toUtf8());
+    newText.replace("devicename", fullDeviceName.toUtf8());
     newText.replace("customername", QRData.at(1).toUtf8());
     newText.replace("xxxx/xx/xx", QRData.at(4).toUtf8());
     newText.replace("yyyy/yy/yy", QRData.at(5).toUtf8());

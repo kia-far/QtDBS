@@ -139,10 +139,10 @@ QStringList ItemHandler::loadVisibleBelongings(QString device){
 }
 }
 
-void ItemHandler::addDevices(QString deviceName,QString deviceAbr) {
+void ItemHandler::addDevices(QString deviceName,QString deviceAbr, QString deviceFullName) {
     // loadDevices();
     loadDevices();
-    addNewInfoDevice(deviceName,deviceAbr);
+    addNewInfoDevice(deviceName,deviceAbr,deviceFullName);
     QJsonObject deviceObj = loadedObj;
     QJsonArray emptyArr;
     deviceObj.insert(deviceName,emptyArr);
@@ -443,7 +443,7 @@ void ItemHandler::updateTable(const QString &tableName, const QStringList &colum
 }
 
 
-void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
+void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr, QString deviceFullName) {
     loadDevices();
     QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
 
@@ -459,9 +459,10 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
     QJsonObject newDeviceObj;
     QJsonArray emptyBelongings;  // Initialize an empty belongings array
     newDeviceObj["belongings"] = emptyBelongings;
+    newDeviceObj["fullName"] = deviceFullName;  // Add full name to the device object
 
     QJsonArray newDeviceEntry;
-    newDeviceEntry.append(newDeviceObj);  // First element: belongings object
+    newDeviceEntry.append(newDeviceObj);  // First element: belongings object with fullName
     newDeviceEntry.append(deviceAbr);     // Second element: device abbreviation
 
     QJsonObject deviceObject;
@@ -474,8 +475,9 @@ void ItemHandler::addNewInfoDevice(QString deviceName, QString deviceAbr) {
 
     JsonHandler::saveInfoJson(somedoc);
     loadDevices();
-    logger::log("Added new device:" + deviceName + " with abbreviation:" + deviceAbr);
+    logger::log("Added new device: " + deviceName + " with abbreviation: " + deviceAbr + " and full name: " + deviceFullName);
 }
+
 
 
 
@@ -639,3 +641,36 @@ void ItemHandler::changeBelVisibility(QString device, QString belonging) {
     }
 }
 
+QString ItemHandler::getDeviceFullName(QString deviceName) {
+    loadDevices();
+
+    if (!loadedInfoObj.contains("devices")) {
+        qDebug() << "No devices found.";
+        return QString();
+    }
+
+    QJsonArray devicesArray = loadedInfoObj["devices"].toArray();
+
+    // Search for the specified device
+    for (const QJsonValue &deviceValue : devicesArray) {
+        QJsonObject deviceObj = deviceValue.toObject();
+        if (deviceObj.contains(deviceName)) {
+            QJsonArray deviceEntry = deviceObj[deviceName].toArray();
+            if (!deviceEntry.isEmpty()) {
+                QJsonObject belongingsObj = deviceEntry[0].toObject();
+                if (belongingsObj.contains("fullName")) {
+                    return belongingsObj["fullName"].toString(); // Return the full name
+                } else {
+                    qDebug() << "Full name not found for device:" << deviceName;
+                    return QString();
+                }
+            } else {
+                qDebug() << "Device entry is empty for device:" << deviceName;
+                return QString();
+            }
+        }
+    }
+
+    qDebug() << "Device not found:" << deviceName;
+    return QString();
+}
