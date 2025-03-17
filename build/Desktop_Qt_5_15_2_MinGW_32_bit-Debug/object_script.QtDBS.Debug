@@ -36,7 +36,9 @@ debug/DllHandler.o
 debug/MyTableProxy.o
 debug/addabr.o
 debug/addoption.o
+debug/customcombobox.o
 debug/customerform.o
+debug/deleteitem.o
 debug/deleteoption.o
 debug/deviceform.o
 debug/edititem.o
@@ -61,7 +63,9 @@ debug/moc_DatabaseConnection.o
 debug/moc_MyTableProxy.o
 debug/moc_addabr.o
 debug/moc_addoption.o
+debug/moc_customcombobox.o
 debug/moc_customerform.o
+debug/moc_deleteitem.o
 debug/moc_deleteoption.o
 debug/moc_deviceform.o
 debug/moc_edititem.o

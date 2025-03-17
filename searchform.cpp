@@ -4,6 +4,7 @@
 #include <QDialogButtonBox>
 #include <QPushButton>
 #include <QKeyEvent>
+#include "itemhandler.h"
 
 SearchForm::SearchForm(QWidget *parent) :
     QWidget(parent),
@@ -14,6 +15,8 @@ SearchForm::SearchForm(QWidget *parent) :
     okbtn->setText("جستجو");
     QPushButton *rejbtn = ui->buttonBox->button(QDialogButtonBox::Cancel);
     rejbtn->setText("بستن");
+    showItemSearch(false);
+    showBelongingSearch(false);
 }
 
 SearchForm::~SearchForm()
@@ -22,7 +25,9 @@ SearchForm::~SearchForm()
 }
 int currentSearch;
 
-void SearchForm::receiveTableIndex(int current){
+void SearchForm::receiveTableIndex(int current,QString device){
+    // qDebug() << device;
+    currentDev=device;
     currentSearch = current;
     createCombo();
         this->show();
@@ -38,6 +43,9 @@ void SearchForm::refresh(int current){
 };
 
 void SearchForm::createCombo(){
+    ui->comboBox->blockSignals(true);
+    showItemSearch(false);
+    showBelongingSearch(false);
     ui->comboBox->clear(); // Clear existing items
 
     if (currentSearch == 0) {
@@ -56,17 +64,23 @@ void SearchForm::createCombo(){
         ui->comboBox->addItem("شماره سریال");
         ui->comboBox->addItem("نام مشتری");
         ui->comboBox->addItem("متعلقات");
+        ui->comboBox->addItem("قطعات");
 
     } else{
         ui->comboBox->addItem("شماره سریال");
         ui->comboBox->addItem("نام محصول");
         ui->comboBox->addItem("شماره anydesk");
     }
+    ui->comboBox->blockSignals(false);
+
 }
 
 void SearchForm::on_buttonBox_accepted()
 {
-    QString searchText = ui->lineEdit->text();
+    QString searchText;
+    if (!(ui->comboBox->currentText()=="متعلقات"))
+    {searchText = ui->lineEdit->text();}
+
 //    qDebug() << "accepted";
     if (currentSearch == 0){/*Customers*/
         if (ui->comboBox->currentText()=="نام"){emit searchWorking("Name",searchText);}
@@ -95,7 +109,11 @@ void SearchForm::on_buttonBox_accepted()
     else if (currentSearch == 2){/*Devices*/
         if (ui->comboBox->currentText()=="شماره سریال"){emit searchWorking("SerialNumber",searchText);}
         else if (ui->comboBox->currentText()=="نام مشتری"){emit searchWorking("CustomerName",searchText);}
-        else if (ui->comboBox->currentText()=="متعلقات"){emit searchWorking("belongings",searchText);}
+        else if (ui->comboBox->currentText()=="متعلقات"){emit searchWorking("belongings",ui->comboBox_4->currentText());}
+        else if (ui->comboBox->currentText()=="قطعات"){
+            if(ui->comboBox_3->count() >0){ emit searchWorking(ui->comboBox_2->currentText(),ui->comboBox_3->currentText());}
+            else{this->close();}
+        }
         else {}
     }
     else {/*Product*/
@@ -118,7 +136,13 @@ void SearchForm::on_buttonBox_rejected()
 
 void SearchForm::on_comboBox_currentIndexChanged(const QString &arg1)
 {
-//    qDebug() << arg1 + "hello";
+    if(arg1=="متعلقات"){showItemSearch(false);showBelongingSearch(true);}
+    else if(arg1=="قطعات"){
+        showBelongingSearch(false);
+        showItemSearch(true);
+    }
+    else {showItemSearch(false);showBelongingSearch(false);}
+
 }
 
 
@@ -139,3 +163,48 @@ void SearchForm::keyPressEvent(QKeyEvent *event){
     }
     else{}
 }
+
+void SearchForm::showItemSearch(bool istrue){
+    qDebug() << "entered";
+    if(!istrue)ui->widget->hide();
+    else {
+        ui->widget->show();
+        if(!currentDev.isEmpty()){
+            QStringList Items = ItemHandler::loadItems(currentDev);
+            if(!Items.isEmpty()){
+            ui->comboBox_2->blockSignals(true);
+            ui->comboBox_2->clear();
+            ui->comboBox_2->addItems(Items);
+            ui->comboBox_2->blockSignals(false);
+            populateOptions(ui->comboBox_2->currentText());
+            }}
+    }
+    qDebug() << "exited ";
+}
+void SearchForm::populateOptions(QString item){
+    QStringList options = ItemHandler::loadOptions(currentDev,item);
+    if(options.size()>0){
+    ui->comboBox_3->clear();
+    ui->comboBox_3->addItem("هیچ کدام");
+    ui->comboBox_3->addItems(options);}
+
+}
+void SearchForm::showBelongingSearch(bool istrue){
+    if(!istrue){ui->comboBox_4->hide();ui->lineEdit->show();}
+    else{
+        ui->lineEdit->hide();
+        QStringList belongings = ItemHandler::loadbelongings(currentDev);
+        ui->comboBox_4->clear();
+        ui->comboBox_4->addItems(belongings);
+        ui->comboBox_4->show();
+    }
+}
+
+void SearchForm::on_comboBox_2_currentIndexChanged(int index)
+{
+    QString item = ui->comboBox_2->currentText();
+    populateOptions(item);
+}
+
+
+

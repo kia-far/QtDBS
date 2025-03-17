@@ -60,6 +60,10 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&hb, &HideBelonging::refreshDevPage,&d,&DeviceForm::refresh);
     QObject::connect(&EE,&ExportExcel::loadEmpty,x,&Tables::emptyWidget);
     QObject::connect(&d, &DeviceForm::openQREdit, &QR,&LoadQRText::setup);
+    QObject::connect(&d, &DeviceForm::openDeleteItem,&DI,&DeleteItem::setup);
+    QObject::connect(&a, &AddOption::refreshDevices,&d, &DeviceForm::refresh);
+    QObject::connect(&DI, &DeleteItem::refreshDevices,&d,&DeviceForm::refresh);
+    QObject::connect(&DI, &DeleteItem::refreshTable,x,&Tables::pageRefresh);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

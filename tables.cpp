@@ -81,6 +81,7 @@ Tables::~Tables()
 
 void Tables::setupTable(QString table){
     ui->comboBox_2->hide();
+    ui->printBtn->hide();
     if (table == "محصولات"){
         logger::log("producgt proxy laoded ");
         ui->deleteBtn->setHidden(false);
@@ -94,6 +95,7 @@ void Tables::setupTable(QString table){
     else if(table == "دستگاه ها") {
         ui->deleteBtn->setHidden(false);
         ui->comboBox_2->show();
+        ui->printBtn->show();
         currentDevice=ui->comboBox_2->currentText();
 //        qDebug () << "device opened -------------------------------";
         QString searchParam = "SerialNumber";
@@ -110,7 +112,7 @@ void Tables::setupTable(QString table){
         populateLabel(0);
     }
     else if(table == "خدمات") {
-        ui->deleteBtn->setHidden(true);
+        ui->deleteBtn->setHidden(false);
 //        qDebug () << "service opened -------------------------------";
         QStringList columnNames = {"شناسه","محصول","مشتری","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
         QSqlDatabase a = (db.getConnection());
@@ -132,7 +134,7 @@ void Tables::setupTable(QString table){
 //        currentTable = 0;
 //        ui->tableView->setModel(m);
 //+++++++++++++++++++++++++
-        QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
+        QStringList columnNames = {"شناسه", "نام", "اطلاعات تماس", "نام نماینده"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
         Customer->loadData("SELECT * FROM CustomerInfo");
@@ -149,7 +151,9 @@ this->activateWindow();
 
 }
 void Tables::searchInfo(QString currentSearchParam,QString searchText){
+
     searchParam = currentSearchParam;
+
 //    qDebug()<<QString::number(currentTable)+"  "  + "  "+ searchParam+ "   " +searchText;
     if(currentTable==0){
 
@@ -160,7 +164,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
         QString res;
         if (searchText==""){res = "SELECT * FROM CustomerInfo";}
         else{res = "SELECT * FROM CustomerInfo WHERE "+searchParam+" LIKE '%"+searchText+"%'";}
-        QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
+        QStringList columnNames = {"شناسه", "نام", "اطلاعات تماس", "نام نماینده"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
         Customer->loadData(res);
@@ -187,6 +191,19 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
     }
     else if(currentTable==2){
 
+        // ui->comboBox_2->clear();
+        // ui->comboBox_2->blockSignals(true);
+        // ui->comboBox_2->addItems(ItemHandler::loadDevices());
+        // ui->comboBox_2->blockSignals(false);
+        if(devices!=ItemHandler::loadDevices()){
+            qDebug() << "this is called ";
+            devices = ItemHandler::loadDevices();
+            ui->comboBox_2->blockSignals(true);
+            ui->comboBox_2->clear();
+            ui->comboBox_2->addItems(devices);
+            ui->comboBox_2->blockSignals(false);
+            ui->comboBox_2->setCurrentText(currentDevice);
+        }
         View->setSearchParameters(currentDevice,searchParam, searchText);
         ui->tableView->setModel(View);
         ui->tableView->resizeColumnsToContents();
@@ -201,7 +218,7 @@ void Tables::searchInfo(QString currentSearchParam,QString searchText){
 
     }
     else {
-        logger::log("producgt proxy laoded ");
+        logger::log("product proxy laoded ");
         ui->deleteBtn->setHidden(false);
         //        qDebug () << "product opened -------------------------------";
         // currentTable = 3;
@@ -220,6 +237,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
     clickedID = 4294967294;
     lastClicked = 4294967294;
     currentDevice = "";
+    ui->printBtn->hide();
     ui->comboBox_2->hide();
     if(arg1 == "محصولات"){
         logger::log("producgt proxy laoded ");
@@ -237,7 +255,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
     }
     else if(arg1 == "مشتریان"){
         ui->deleteBtn->setHidden(true);
-        QStringList columnNames = {"شناسه", "نام", "شماره تماس", "نام نماینده"}; // Example list
+        QStringList columnNames = {"شناسه", "نام", "اطلاعات تماس", "نام نماینده"};
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Customer = new MyTableProxy(columnNames,a,this);
         Customer->loadData("SELECT * FROM CustomerInfo");
@@ -249,7 +267,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
 
     }
     else if (arg1 == "خدمات"){
-        ui->deleteBtn->setHidden(true);
+        ui->deleteBtn->setHidden(false);
         QStringList columnNames = {"شناسه","محصول","مشتری","تاریخ","مسئول","نوع خدمات","قطعه مشکل دار","توضیحات"}; // Example list
         QSqlDatabase a = (db.getConnection());
         MyTableProxy *Services = new MyTableProxy(columnNames,a,this);
@@ -263,6 +281,7 @@ void Tables::on_comboBox_currentIndexChanged(const QString &arg1)
     }
     else if (arg1 == "دستگاه ها") {
         ui->deleteBtn->setHidden(false);
+        ui->printBtn->show();
         ui->comboBox_2->show();
         currentDevice=ui->comboBox_2->currentText();
         QString searchParam = "SerialNumber";
@@ -328,7 +347,7 @@ void Tables::on_tableView_clicked(const QModelIndex &index)
 void Tables::on_SearchBtn_clicked()
 {
         if(!batchInProgress){
-        emit searchActive(currentTable);}
+        emit searchActive(currentTable,currentDevice);}
 }
 
 
@@ -348,8 +367,9 @@ void Tables::on_RefreshBtn_clicked()
 }
 
 void Tables::pageRefresh(){
+    if(!batchInProgress){
     emit refreshActive(currentTable);
-
+    }
 }
 
 void Tables::on_mainWindowBtn_clicked()
@@ -486,6 +506,25 @@ void Tables::on_deleteBtn_clicked()
 
             }
         }
+        else if (currentTable==1){
+            QMessageBox msgBox;
+            msgBox.setIcon(QMessageBox::Warning);
+            msgBox.setWindowTitle("Error");
+            msgBox.setText("آیا از پاک کردن این خدمت مطمئنید؟");
+            msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+            msgBox.setDefaultButton(QMessageBox::No);
+            int res = msgBox.exec();
+
+            switch(res) {
+            case QMessageBox::Yes:
+                DeleteSingleService(clickedID);
+                break;
+            case QMessageBox::No:
+                break;
+            default:
+                break;
+            }
+        }
         else{}
     }
     else{
@@ -503,6 +542,38 @@ void Tables::deleteRow(unsigned int ID, QString device) {
     QSqlDatabase db = QSqlDatabase::database();  // Assuming db connection is already established
     QSqlQuery query(db);
 
+    // First, check if there are any related services in ServiceInfo table
+    query.prepare("SELECT COUNT(*) FROM ServiceInfo WHERE Product = ?");
+    query.addBindValue(ID);
+
+    if (!query.exec() || !query.next()) {
+        qDebug() << "Error checking ServiceInfo table:" << query.lastError().text();
+        return;
+    }
+
+    int serviceCount = query.value(0).toInt();
+
+    // Ask for confirmation if services exist
+    if (serviceCount > 0) {
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("آیا خدمات این دستگاه نیز حذف شوند؟");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+        msgBox.setDefaultButton(QMessageBox::No);
+        int res = msgBox.exec();
+
+        switch(res) {
+        case QMessageBox::Yes:
+            DeleteServices(ID);
+            break;
+        case QMessageBox::No:
+            break;
+        default:
+            break;
+        }
+    }
+
     // Enable foreign key constraints (especially important for SQLite)
     query.exec("PRAGMA foreign_keys = ON;");
 
@@ -512,20 +583,9 @@ void Tables::deleteRow(unsigned int ID, QString device) {
         return;
     }
 
-    // Delete from ProductSecInfo first (child table)
-    query.prepare("DELETE FROM ProductSecInfo WHERE SerialNO = ?");
-    query.addBindValue(ID);
-
-    if (!query.exec()) {
-        qDebug() << "Error in deleting from ProductSecInfo:" << query.lastError().text();
-        db.rollback();
-        return;
-    }
-
     // Now delete from ProductInfo (parent table)
     query.prepare("DELETE FROM ProductInfo WHERE SerialNO = ?");
     query.addBindValue(ID);
-
     if (!query.exec()) {
         qDebug() << "Error in deleting from ProductInfo:" << query.lastError().text();
         db.rollback();
@@ -535,7 +595,6 @@ void Tables::deleteRow(unsigned int ID, QString device) {
     // Finally, delete from the device-specific table
     query.prepare(QString("DELETE FROM %1 WHERE SerialNumber = ?").arg(device));
     query.addBindValue(ID);
-
     if (!query.exec()) {
         qDebug() << "Error in deleting from" << device << ":" << query.lastError().text();
         db.rollback();
@@ -546,13 +605,70 @@ void Tables::deleteRow(unsigned int ID, QString device) {
     if (!db.commit()) {
         qDebug() << "Failed to commit transaction:" << db.lastError().text();
         db.rollback();
-    } else {
-        // qDebug() << "Rows successfully deleted from all tables";
     }
+
     Product->setSearchParameters("ProductInfo.SerialNO", "");
     ui->tableView->setModel(Product);
     ui->tableView->resizeColumnsToContents();
+}
 
+void Tables::DeleteServices(unsigned int productID) {
+    QSqlDatabase db = QSqlDatabase::database();
+    QSqlQuery query(db);
+
+    // Begin transaction
+    if (!db.transaction()) {
+        qDebug() << "Failed to start transaction for service deletion:" << db.lastError().text();
+        return;
+    }
+
+    // Delete all related services for this product
+    query.prepare("DELETE FROM ServiceInfo WHERE Product = ?");
+    query.addBindValue(productID);
+
+    if (!query.exec()) {
+        qDebug() << "Error deleting services:" << query.lastError().text();
+        db.rollback();
+        return;
+    }
+
+    // Commit transaction
+    if (!db.commit()) {
+        qDebug() << "Failed to commit service deletion transaction:" << db.lastError().text();
+        db.rollback();
+    } else {
+        qDebug() << "All related services deleted successfully";
+    }
+}
+
+void Tables::DeleteSingleService(unsigned int serviceID) {
+    QSqlDatabase db = QSqlDatabase::database();
+    QSqlQuery query(db);
+
+    // Begin transaction
+    if (!db.transaction()) {
+        qDebug() << "Failed to start transaction for service deletion:" << db.lastError().text();
+        return;
+    }
+
+    // Delete the specific service with the given ID
+    query.prepare("DELETE FROM ServiceInfo WHERE ID = ?");
+    query.addBindValue(serviceID);
+
+    if (!query.exec()) {
+        qDebug() << "Error deleting service:" << query.lastError().text();
+        db.rollback();
+        return;
+    }
+
+    // Commit transaction
+    if (!db.commit()) {
+        qDebug() << "Failed to commit service deletion transaction:" << db.lastError().text();
+        db.rollback();
+    } else {
+        qDebug() << "Service deleted successfully";
+    }
+    pageRefresh();
 }
 
 
@@ -597,6 +713,7 @@ void Tables::handleBtnEnable(bool a){
     ui->mainWindowBtn->setDisabled(a);
     ui->tableView->setDisabled(a);
     ui->toolButton->setDisabled(a);
+    ui->printBtn->setDisabled(a);
 }
 void Tables::getExport(){
         if(!batchInProgress){
@@ -621,8 +738,8 @@ void Tables::hideColumns(){
     for (int i = 2; i < columnCount-3; ++i) {
         ui->tableView->setColumnHidden(i, true);
     }
-    ui->tableView->setColumnHidden(columnCount-2,true);
-    ui->tableView->setColumnHidden(columnCount-1,true);
+
+    // ui->tableView->setColumnHidden(columnCount-1,true);
     }
 void Tables::showColumns(){
     int columnCount = View->columnCount();
@@ -702,6 +819,11 @@ void Tables::populateLabel(int row) {
     // ui->form_description->setText(text);
     }}
 void Tables::setupWidget(){
+    // ui->comboBox_2->clear();
+    // ui->comboBox_2->blockSignals(true);
+    // if(ui->comboBox_2->count()!=ItemHandler::loadDevices().size())
+    // ui->comboBox_2->addItems(ItemHandler::loadDevices());
+    // ui->comboBox_2->blockSignals(false);
     QStringList belongings = ItemHandler::loadbelongings(currentDevice);
     // ui->widget->setFixedHeight(600);
     clearLayout(ui->form_partHBox);

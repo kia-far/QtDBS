@@ -311,7 +311,7 @@ public:
     {
         CustomerForm->setWindowTitle(QCoreApplication::translate("CustomerForm", "\331\205\330\264\330\252\330\261\333\214 \331\207\330\247", nullptr));
         label_2->setText(QCoreApplication::translate("CustomerForm", "\331\206\330\247\331\205 :", nullptr));
-        label_3->setText(QCoreApplication::translate("CustomerForm", "\330\264\331\205\330\247\330\261\331\207 \330\252\331\205\330\247\330\263 :", nullptr));
+        label_3->setText(QCoreApplication::translate("CustomerForm", "\330\247\330\267\331\204\330\247\330\271\330\247\330\252 \330\252\331\205\330\247\330\263 :", nullptr));
         label_4->setText(QCoreApplication::translate("CustomerForm", "\331\206\330\247\331\205 \331\206\331\205\330\247\333\214\331\206\330\257\331\207 :", nullptr));
         pushButton->setText(QCoreApplication::translate("CustomerForm", "\330\253\330\250\330\252", nullptr));
     } // retranslateUi

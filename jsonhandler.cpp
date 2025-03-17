@@ -33,8 +33,8 @@ QJsonObject JsonHandler::loadJson() {
                 QMessageBox msgBox;
                 msgBox.setIcon(QMessageBox::Critical);
                 msgBox.setWindowTitle("Error");
-                msgBox.setText("آدرس جیسون خالی است"
-                               "در حال باز کردن جسیون محلی");
+                msgBox.setText(" آدرس جیسون خالی است "
+                               " در حال باز کردن جسیون محلی ");
                 msgBox.setStandardButtons(QMessageBox::Ok);
                 msgBox.exec();
                 errShown = true;

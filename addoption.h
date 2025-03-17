@@ -25,6 +25,7 @@ public:
 signals:
     void updatePage(QString device);
     void addAbr();
+    void refreshDevices(QString device);
 
 private slots:
 void on_pushButton_clicked();

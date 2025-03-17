@@ -35,8 +35,6 @@ signals:
 private slots:
     void on_pushButton_clicked();
 
-    void on_lineEdit_3_textChanged(const QString &arg1);
-
 private:
     Ui::CustomerForm *ui;
     void keyBinds();

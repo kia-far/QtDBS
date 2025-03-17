@@ -11,6 +11,7 @@
 #include "DatabaseConnection.h"
 #include <QSqlQuery>
 #include <QProgressBar>
+#include "customcombobox.h"
 
 namespace Ui {
 class DeviceForm;
@@ -48,6 +49,7 @@ signals:
     void editItem(QString device);
     void closeEditItem();
     void openQREdit();
+    void openDeleteItem(QString device);
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
@@ -74,6 +76,9 @@ private slots:
 
     void on_EditQRBtn_clicked();
 
+    void on_pushButton_4_clicked();
+
+
 private:
     void createBelonging(QString itemName,int index);
     void createNewItem(QString itemName , int index);
@@ -96,7 +101,9 @@ private:
     void loadDate(unsigned int id);
     void loadLastSN();
     bool askForQR();
+    bool checkItem(QString deviceName, QString itemName);
     QString currentDevice;
+    QStringList devices;
     int adder;
     Ui::DeviceForm *ui;
     QList<QLabel*> labels;
@@ -115,6 +122,7 @@ private:
     bool checked;
     unsigned int max;
     unsigned int id;
+    CustomComboBox *customCombo;
     // QProgressBar progressBar;
 };
 

@@ -76,6 +76,7 @@ public:
     QHBoxLayout *horizontalLayout_11;
     QSpacerItem *horizontalSpacer_5;
     QSpacerItem *verticalSpacer;
+    QPushButton *pushButton_4;
     QPushButton *pushButton_3;
     QPushButton *AddItemBtn;
     QFrame *line_2;
@@ -369,6 +370,7 @@ public:
         sizePolicy3.setVerticalStretch(0);
         sizePolicy3.setHeightForWidth(lineEdit->sizePolicy().hasHeightForWidth());
         lineEdit->setSizePolicy(sizePolicy3);
+        lineEdit->setMaxLength(8);
 
         horizontalLayout->addWidget(lineEdit);
 
@@ -402,6 +404,8 @@ public:
         CustomerCombo->setObjectName(QString::fromUtf8("CustomerCombo"));
         sizePolicy3.setHeightForWidth(CustomerCombo->sizePolicy().hasHeightForWidth());
         CustomerCombo->setSizePolicy(sizePolicy3);
+        CustomerCombo->setFocusPolicy(Qt::FocusPolicy::ClickFocus);
+        CustomerCombo->setContextMenuPolicy(Qt::ContextMenuPolicy::ActionsContextMenu);
         CustomerCombo->setEditable(true);
 
         horizontalLayout_3->addWidget(CustomerCombo);
@@ -521,6 +525,11 @@ public:
 
         horizontalLayout_11->addItem(verticalSpacer);
 
+        pushButton_4 = new QPushButton(DeviceForm);
+        pushButton_4->setObjectName(QString::fromUtf8("pushButton_4"));
+
+        horizontalLayout_11->addWidget(pushButton_4);
+
         pushButton_3 = new QPushButton(DeviceForm);
         pushButton_3->setObjectName(QString::fromUtf8("pushButton_3"));
 
@@ -631,13 +640,21 @@ public:
 
         horizontalLayout_10->addLayout(verticalLayout);
 
-        QWidget::setTabOrder(comboBox, lineEdit);
-        QWidget::setTabOrder(lineEdit, CustomerCombo);
+        QWidget::setTabOrder(lineEdit, checkBox);
+        QWidget::setTabOrder(checkBox, spinBox);
+        QWidget::setTabOrder(spinBox, CustomerCombo);
         QWidget::setTabOrder(CustomerCombo, pushButton);
-        QWidget::setTabOrder(pushButton, textEdit);
+        QWidget::setTabOrder(pushButton, dateEdit);
+        QWidget::setTabOrder(dateEdit, dateEdit_2);
+        QWidget::setTabOrder(dateEdit_2, scrollArea);
+        QWidget::setTabOrder(scrollArea, scrollArea_2);
+        QWidget::setTabOrder(scrollArea_2, textEdit);
         QWidget::setTabOrder(textEdit, SubmitBtn);
-        QWidget::setTabOrder(SubmitBtn, pushButton_2);
+        QWidget::setTabOrder(SubmitBtn, EditQRBtn);
+        QWidget::setTabOrder(EditQRBtn, pushButton_2);
         QWidget::setTabOrder(pushButton_2, AddItemBtn);
+        QWidget::setTabOrder(AddItemBtn, pushButton_3);
+        QWidget::setTabOrder(pushButton_3, comboBox);
 
         retranslateUi(DeviceForm);
 
@@ -654,12 +671,14 @@ public:
         pushButton_2->setText(QCoreApplication::translate("DeviceForm", "...", nullptr));
         label->setText(QCoreApplication::translate("DeviceForm", "\330\264\331\205\330\247\330\261\331\207 \330\263\330\261\333\214\330\247\331\204 :", nullptr));
         pushButton->setText(QCoreApplication::translate("DeviceForm", "+", nullptr));
+        CustomerCombo->setPlaceholderText(QString());
         label_3->setText(QCoreApplication::translate("DeviceForm", "\331\206\330\247\331\205 \330\256\330\261\333\214\330\257\330\247\330\261 :", nullptr));
         dateEdit_2->setDisplayFormat(QCoreApplication::translate("DeviceForm", "yyyy/M/d", nullptr));
         label_8->setText(QCoreApplication::translate("DeviceForm", "\330\252\330\247\330\261\333\214\330\256 \330\247\331\206\331\202\330\266\330\247\333\214 \332\257\330\247\330\261\330\247\331\206\330\252\333\214 :", nullptr));
         dateEdit->setDisplayFormat(QCoreApplication::translate("DeviceForm", "yyyy/M/d", nullptr));
         label_7->setText(QCoreApplication::translate("DeviceForm", "\330\252\330\247\330\261\333\214\330\256 \330\256\330\261\333\214\330\257 :", nullptr));
         label_6->setText(QCoreApplication::translate("DeviceForm", "\331\202\330\267\330\271\330\247\330\252 :", nullptr));
+        pushButton_4->setText(QCoreApplication::translate("DeviceForm", "\330\255\330\260\331\201 \331\202\330\267\330\271\331\207", nullptr));
         pushButton_3->setText(QCoreApplication::translate("DeviceForm", "\331\210\333\214\330\261\330\247\333\214\330\264 \331\202\330\267\330\271\331\207", nullptr));
         AddItemBtn->setText(QCoreApplication::translate("DeviceForm", "\330\247\331\201\330\262\331\210\330\257\331\206 \331\202\330\267\330\271\331\207", nullptr));
         label_4->setText(QCoreApplication::translate("DeviceForm", "\331\205\330\252\330\271\331\204\331\202\330\247\330\252 :", nullptr));

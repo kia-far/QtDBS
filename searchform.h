@@ -14,7 +14,7 @@ class SearchForm : public QWidget
 public:
     explicit SearchForm(QWidget *parent = nullptr);
     void createCombo();
-    void receiveTableIndex(int current);
+    void receiveTableIndex(int current,QString device);
     void refresh(int current);
     ~SearchForm();
 signals:
@@ -29,9 +29,16 @@ private slots:
 
     void on_lineEdit_returnPressed();
 
+    void on_comboBox_2_currentIndexChanged(int index);
+
+
 private:
     Ui::SearchForm *ui;
     void keyPressEvent(QKeyEvent *event) override;
+    void showItemSearch(bool istrue);
+    void populateOptions(QString item);
+    void showBelongingSearch(bool istrue);
+    QString currentDev;
 
 };
 

@@ -18,8 +18,10 @@ SOURCES += \
     MyTableProxy.cpp \
     addabr.cpp \
     addoption.cpp \
+    customcombobox.cpp \
     customerform.cpp \
-    deleteoption.cpp \
+    deleteitem.cpp \
+    deleteoption.cpp\
     deviceform.cpp \
     edititem.cpp \
     exporttoexcel.cpp \
@@ -45,8 +47,10 @@ HEADERS += \
     MyTableProxy.h \
     addabr.h \
     addoption.h \
+    customcombobox.h \
     customerform.h \
-    deleteoption.h \
+    deleteitem.h \
+    deleteoption.h\
     deviceform.h \
     edititem.h \
     exporttoexcel.h \
@@ -68,8 +72,10 @@ HEADERS += \
 FORMS += \
     addabr.ui \
     addoption.ui \
+    customcombobox.ui \
     customerform.ui \
-    deleteoption.ui \
+    deleteitem.ui \
+    deleteoption.ui\
     deviceform.ui \
     edititem.ui \
     hidebelonging.ui \

@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Tables_t {
-    QByteArrayData data[33];
-    char stringdata0[475];
+    QByteArrayData data[34];
+    char stringdata0[482];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -42,38 +42,39 @@ QT_MOC_LITERAL(6, 34, 9), // "serialNum"
 QT_MOC_LITERAL(7, 44, 5), // "index"
 QT_MOC_LITERAL(8, 50, 12), // "searchActive"
 QT_MOC_LITERAL(9, 63, 7), // "current"
-QT_MOC_LITERAL(10, 71, 11), // "editProduct"
-QT_MOC_LITERAL(11, 83, 13), // "refreshActive"
-QT_MOC_LITERAL(12, 97, 10), // "addProduct"
-QT_MOC_LITERAL(13, 108, 9), // "addDevice"
-QT_MOC_LITERAL(14, 118, 10), // "addService"
-QT_MOC_LITERAL(15, 129, 11), // "editService"
-QT_MOC_LITERAL(16, 141, 11), // "addCustomer"
-QT_MOC_LITERAL(17, 153, 12), // "editCustomer"
-QT_MOC_LITERAL(18, 166, 9), // "getExport"
-QT_MOC_LITERAL(19, 176, 31), // "on_comboBox_currentIndexChanged"
-QT_MOC_LITERAL(20, 208, 4), // "arg1"
-QT_MOC_LITERAL(21, 213, 18), // "on_EditBtn_clicked"
-QT_MOC_LITERAL(22, 232, 20), // "on_tableView_clicked"
-QT_MOC_LITERAL(23, 253, 11), // "QModelIndex"
-QT_MOC_LITERAL(24, 265, 20), // "on_SearchBtn_clicked"
-QT_MOC_LITERAL(25, 286, 17), // "on_AddBtn_clicked"
-QT_MOC_LITERAL(26, 304, 21), // "on_RefreshBtn_clicked"
-QT_MOC_LITERAL(27, 326, 24), // "on_mainWindowBtn_clicked"
-QT_MOC_LITERAL(28, 351, 33), // "on_comboBox_2_currentIndexCha..."
-QT_MOC_LITERAL(29, 385, 26), // "on_tableView_doubleClicked"
-QT_MOC_LITERAL(30, 412, 20), // "on_deleteBtn_clicked"
-QT_MOC_LITERAL(31, 433, 21), // "on_toolButton_clicked"
-QT_MOC_LITERAL(32, 455, 19) // "on_printBtn_clicked"
+QT_MOC_LITERAL(10, 71, 6), // "Device"
+QT_MOC_LITERAL(11, 78, 11), // "editProduct"
+QT_MOC_LITERAL(12, 90, 13), // "refreshActive"
+QT_MOC_LITERAL(13, 104, 10), // "addProduct"
+QT_MOC_LITERAL(14, 115, 9), // "addDevice"
+QT_MOC_LITERAL(15, 125, 10), // "addService"
+QT_MOC_LITERAL(16, 136, 11), // "editService"
+QT_MOC_LITERAL(17, 148, 11), // "addCustomer"
+QT_MOC_LITERAL(18, 160, 12), // "editCustomer"
+QT_MOC_LITERAL(19, 173, 9), // "getExport"
+QT_MOC_LITERAL(20, 183, 31), // "on_comboBox_currentIndexChanged"
+QT_MOC_LITERAL(21, 215, 4), // "arg1"
+QT_MOC_LITERAL(22, 220, 18), // "on_EditBtn_clicked"
+QT_MOC_LITERAL(23, 239, 20), // "on_tableView_clicked"
+QT_MOC_LITERAL(24, 260, 11), // "QModelIndex"
+QT_MOC_LITERAL(25, 272, 20), // "on_SearchBtn_clicked"
+QT_MOC_LITERAL(26, 293, 17), // "on_AddBtn_clicked"
+QT_MOC_LITERAL(27, 311, 21), // "on_RefreshBtn_clicked"
+QT_MOC_LITERAL(28, 333, 24), // "on_mainWindowBtn_clicked"
+QT_MOC_LITERAL(29, 358, 33), // "on_comboBox_2_currentIndexCha..."
+QT_MOC_LITERAL(30, 392, 26), // "on_tableView_doubleClicked"
+QT_MOC_LITERAL(31, 419, 20), // "on_deleteBtn_clicked"
+QT_MOC_LITERAL(32, 440, 21), // "on_toolButton_clicked"
+QT_MOC_LITERAL(33, 462, 19) // "on_printBtn_clicked"
 
     },
     "Tables\0editDevice\0\0device\0id\0edit\0"
     "serialNum\0index\0searchActive\0current\0"
-    "editProduct\0refreshActive\0addProduct\0"
-    "addDevice\0addService\0editService\0"
-    "addCustomer\0editCustomer\0getExport\0"
-    "on_comboBox_currentIndexChanged\0arg1\0"
-    "on_EditBtn_clicked\0on_tableView_clicked\0"
+    "Device\0editProduct\0refreshActive\0"
+    "addProduct\0addDevice\0addService\0"
+    "editService\0addCustomer\0editCustomer\0"
+    "getExport\0on_comboBox_currentIndexChanged\0"
+    "arg1\0on_EditBtn_clicked\0on_tableView_clicked\0"
     "QModelIndex\0on_SearchBtn_clicked\0"
     "on_AddBtn_clicked\0on_RefreshBtn_clicked\0"
     "on_mainWindowBtn_clicked\0"
@@ -100,35 +101,35 @@ static const uint qt_meta_data_Tables[] = {
  // signals: name, argc, parameters, tag, flags
        1,    2,  134,    2, 0x06 /* Public */,
        5,    2,  139,    2, 0x06 /* Public */,
-       8,    1,  144,    2, 0x06 /* Public */,
-      10,    1,  147,    2, 0x06 /* Public */,
-      11,    1,  150,    2, 0x06 /* Public */,
-      12,    0,  153,    2, 0x06 /* Public */,
-      13,    1,  154,    2, 0x06 /* Public */,
-      14,    0,  157,    2, 0x06 /* Public */,
-      15,    1,  158,    2, 0x06 /* Public */,
-      16,    0,  161,    2, 0x06 /* Public */,
-      17,    1,  162,    2, 0x06 /* Public */,
+       8,    2,  144,    2, 0x06 /* Public */,
+      11,    1,  149,    2, 0x06 /* Public */,
+      12,    1,  152,    2, 0x06 /* Public */,
+      13,    0,  155,    2, 0x06 /* Public */,
+      14,    1,  156,    2, 0x06 /* Public */,
+      15,    0,  159,    2, 0x06 /* Public */,
+      16,    1,  160,    2, 0x06 /* Public */,
+      17,    0,  163,    2, 0x06 /* Public */,
+      18,    1,  164,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      18,    0,  165,    2, 0x08 /* Private */,
-      19,    1,  166,    2, 0x08 /* Private */,
-      21,    0,  169,    2, 0x08 /* Private */,
-      22,    1,  170,    2, 0x08 /* Private */,
-      24,    0,  173,    2, 0x08 /* Private */,
-      25,    0,  174,    2, 0x08 /* Private */,
-      26,    0,  175,    2, 0x08 /* Private */,
-      27,    0,  176,    2, 0x08 /* Private */,
-      28,    1,  177,    2, 0x08 /* Private */,
-      29,    1,  180,    2, 0x08 /* Private */,
-      30,    0,  183,    2, 0x08 /* Private */,
-      31,    0,  184,    2, 0x08 /* Private */,
-      32,    0,  185,    2, 0x08 /* Private */,
+      19,    0,  167,    2, 0x08 /* Private */,
+      20,    1,  168,    2, 0x08 /* Private */,
+      22,    0,  171,    2, 0x08 /* Private */,
+      23,    1,  172,    2, 0x08 /* Private */,
+      25,    0,  175,    2, 0x08 /* Private */,
+      26,    0,  176,    2, 0x08 /* Private */,
+      27,    0,  177,    2, 0x08 /* Private */,
+      28,    0,  178,    2, 0x08 /* Private */,
+      29,    1,  179,    2, 0x08 /* Private */,
+      30,    1,  182,    2, 0x08 /* Private */,
+      31,    0,  185,    2, 0x08 /* Private */,
+      32,    0,  186,    2, 0x08 /* Private */,
+      33,    0,  187,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::UInt,    3,    4,
     QMetaType::Void, QMetaType::UInt, QMetaType::Int,    6,    7,
-    QMetaType::Void, QMetaType::Int,    9,
+    QMetaType::Void, QMetaType::Int, QMetaType::QString,    9,   10,
     QMetaType::Void, QMetaType::UInt,    6,
     QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void,
@@ -140,15 +141,15 @@ static const uint qt_meta_data_Tables[] = {
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   20,
+    QMetaType::Void, QMetaType::QString,   21,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 23,    7,
-    QMetaType::Void,
-    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 24,    7,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   20,
-    QMetaType::Void, 0x80000000 | 23,    7,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   21,
+    QMetaType::Void, 0x80000000 | 24,    7,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -164,7 +165,7 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         switch (_id) {
         case 0: _t->editDevice((*reinterpret_cast< QString(*)>(_a[1])),(*reinterpret_cast< uint(*)>(_a[2]))); break;
         case 1: _t->edit((*reinterpret_cast< uint(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
-        case 2: _t->searchActive((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 2: _t->searchActive((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< QString(*)>(_a[2]))); break;
         case 3: _t->editProduct((*reinterpret_cast< uint(*)>(_a[1]))); break;
         case 4: _t->refreshActive((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 5: _t->addProduct(); break;
@@ -205,7 +206,7 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             }
         }
         {
-            using _t = void (Tables::*)(int );
+            using _t = void (Tables::*)(int , QString );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::searchActive)) {
                 *result = 2;
                 return;
@@ -325,9 +326,9 @@ void Tables::edit(unsigned int _t1, int _t2)
 }
 
 // SIGNAL 2
-void Tables::searchActive(int _t1)
+void Tables::searchActive(int _t1, QString _t2)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))), const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t2))) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);
 }
 

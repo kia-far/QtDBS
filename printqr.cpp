@@ -10,8 +10,7 @@
 PrintQR::PrintQR(QObject *parent)
     : QAbstractItemModel(parent)
 {}
-
-void PrintQR::printQRCode(QStringList QRData,QString device){
+void PrintQR::printQRCode(QStringList QRData,QString device) {
 
     if (!DllHandler::loadDll("WINPSK")) {  // No need to include .dll
         qDebug() << "hi";
@@ -53,6 +52,14 @@ void PrintQR::printQRCode(QStringList QRData,QString device){
     logger::log(QString::number(DllHandler::printLabel(1, 1))+" print return value");
     logger::log(QString::number(DllHandler::closePort())+" closeport 2 return value");
     DllHandler::unloadDll();
+}
 
-
+bool PrintQR::checkConnection(){
+    if (!DllHandler::loadDll("WINPSK")) {  // No need to include .dll
+        qDebug() << "hi";
+        // return -1;
+    }
+    int open = DllHandler::openPort(1);
+    if(open<1){return false;}
+    else {return true;}
 }

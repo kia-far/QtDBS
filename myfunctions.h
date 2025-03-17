@@ -23,12 +23,13 @@ public:
     // static bool deviceFromSN(QString SN,QString device);
     static bool deviceFromLetter(QString SN, QString device);
     static void setLetters();
-    static QStringList getLetters();
+    // static QStringList getLetters();
     static bool enterAdminMode();
     static bool setAdminMode(bool isActive);
     static bool checkData(QString data,QString column, QString Table);
     static int convertToEnglishInt(const QString& localizedNumber);
     static QString convertToEnglishString(const QString& localizedNumber);
+    static bool checkOldSN(QString SN);
 //    static void initializeData();
 signals:
     void dataReady();

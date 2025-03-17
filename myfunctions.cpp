@@ -15,6 +15,7 @@ MyFunctions::MyFunctions(QObject *parent)
 {
 }
 QString MyFunctions::intToStr(unsigned int number) {
+    if (9999<number&&number<100000){return (QString::number(number));}
     QString numberStr = QString::number(number).rightJustified(10, '0'); // Ensure it's a 10-digit string
 
     if (numberStr.length() != 10)
@@ -51,6 +52,9 @@ QString MyFunctions::intToStr(unsigned int number) {
 
 
 QString MyFunctions::reverseSN(const QString &input) {
+    if(input.size()==5){
+        return input;
+    }
     if (input.length() != 8)
         return QString(); // Return empty string if format is incorrect
 
@@ -103,7 +107,7 @@ QString MyFunctions::newReverseSN(const QString &input) {
     if (!result.isEmpty() && result.at(0) == '0') {
         result.remove(0, 1);
     }
-
+    qDebug() << result;
     return result;
 }
 
@@ -126,7 +130,7 @@ QString MyFunctions::smallSN(QString input) {
             }
         }
     }
-
+    qDebug() << result;
     return result;
 }
 
@@ -144,38 +148,10 @@ QString MyFunctions::querySolver(){
     return res;
 }
 
-// int MyFunctions :: binaryToDecimal(const QString& binary) {
 
-//     int decimal = 0;
-//     int power = 1;
-//     for (int i = binary.length() - 1; i >= 0; --i) {
-//         int bit = binary.at(i).digitValue();
-
-//         decimal += bit * power;
-
-//         power *= 2;
-//     }
-
-//     return decimal;
-// }
-
-// QString MyFunctions :: decimalToBinary(int decimal) {
-//     QString binary = "";
-
-//     while (decimal > 0 || binary.length() < 14) {
-//         binary.prepend(QString::number(decimal % 2));
-
-//         decimal /= 2;
-//     }
-
-//     while (binary.length() < 14) {
-//         binary.prepend('0');
-//     }
-
-//     return binary;
-// }
 
 bool MyFunctions :: checkSN(QString sn){
+    if(checkOldSN(sn)){return true;}
     setLetters();
     bool result = true;
     sn=sn.toUpper();
@@ -222,7 +198,7 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
     else{
         if(searchText.at(0).isLetter()){
             if( letters.contains( searchText.at(0))){
-                res = "SELECT "+ column +" FROM "+tableName+" WHERE ("+searchParam + " LIKE '"+MyFunctions::newReverseSN( searchText)+"%') OR ("+searchParam + " LIKE '____" +MyFunctions::newReverseSN(searchText)+"%')";
+                res = "SELECT "+ column +" FROM "+tableName+" WHERE ("+searchParam + " LIKE '"+MyFunctions::newReverseSN( searchText)+"%' AND " +searchParam +" LIKE '__________'" +") OR ("+searchParam + " LIKE '____" +MyFunctions::newReverseSN(searchText)+"%')";
             }
             else{
                 res = "SELECT "+ column +" FROM "+tableName+" WHERE ("+searchParam + " LIKE '____" +MyFunctions::newReverseSN(searchText)+"%')";
@@ -235,7 +211,7 @@ QString MyFunctions::searchHandler(QString column,QString tableName, QString sea
             if(!(space=="-1")){res = "SELECT "+column+" FROM "+tableName+" WHERE "+searchParam+" LIKE '"+space+context+"%'";
             /*qDebug()<<"LIKE debug try '"+space+context+"%'";*/}
             else{
-                res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '__%"+context+"%______') OR ("+searchParam+" LIKE '______%"+context+"%'))";
+                res = "SELECT "+column+" FROM "+tableName+" WHERE (("+searchParam+" LIKE '__%"+context+"%______') OR ("+searchParam+" LIKE '______%"+context+"%') OR (" + searchParam+" LIKE '_____' AND  "+searchParam+ " LIKE '%"+context + "%' ))" ;
 //                                    qDebug()<<"LIKE debug try '"+space+context+"%'";
             }
         }
@@ -252,7 +228,7 @@ bool MyFunctions::deviceFromLetter(QString SN,QString device) {
     if (letters.isEmpty()) {
         setLetters();
     }
-
+    if(checkOldSN(SN)){return true;}
     if(letters.contains(SN.at(0).toUpper())){
 
         for(int i=0;i<letters.size();i++){
@@ -287,13 +263,11 @@ void MyFunctions::setLetters() {
     }
 
 
+
 }
 
 bool MyFunctions::enterAdminMode(){
-    //
 
-    return true;
-    ///
     QString jsonPath;
     QString adr = qApp->applicationDirPath();
     QString jsonPathFile = adr + "/JSONPath";
@@ -306,8 +280,8 @@ bool MyFunctions::enterAdminMode(){
         file.close();
 
         if (jsonPath.isEmpty()) {
-            qDebug() << "Database path file is empty!";
-            return false;
+            qDebug() <<"offline mode!";
+            return true;
         }
     } else {
         qDebug() << "Failed to open database path file:" << file.errorString();
@@ -318,14 +292,14 @@ bool MyFunctions::enterAdminMode(){
     QString adminModeFile = jsonPath + "/AdminActive";  // Ensure proper path format
     QFile adminFile(adminModeFile);
 
-    qDebug() << "AdminActive file path:" << adminModeFile;  // Debugging path
+    // qDebug() << "AdminActive file path:" << adminModeFile;  // Debugging path
 
     if (adminFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
         QTextStream adminIn(&adminFile);
         QString value = adminIn.readLine().trimmed();  // Read and trim the content of AdminActive file
         adminFile.close();
 
-        qDebug() << "AdminActive value read:" << value;  // Debugging value
+        // qDebug() << "AdminActive value read:" << value;  // Debugging value
 
         // Check the value of AdminActive
         if (value == "1") {
@@ -441,4 +415,15 @@ QString MyFunctions::convertToEnglishString(const QString& localizedString) {
     }
     // qDebug()<< "englishstring of :" << localizedString <<" is : "<<englishString;
     return englishString;
+}
+
+bool MyFunctions::checkOldSN(QString SN){
+    if(SN.size()!=5) return false;
+    if(SN.at(0)=='0') return false;
+    for(int i=0;i<SN.size();i++){
+        if(!SN.at(i).isDigit())
+            return false;
+    }
+    return true;
+
 }

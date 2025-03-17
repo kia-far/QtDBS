@@ -140,7 +140,7 @@ QStringList ItemHandler::loadVisibleBelongings(QString device){
 }
 
 void ItemHandler::addDevices(QString deviceName,QString deviceAbr, QString deviceFullName) {
-    // loadDevices();
+
     loadDevices();
     addNewInfoDevice(deviceName,deviceAbr,deviceFullName);
     QJsonObject deviceObj = loadedObj;
@@ -234,7 +234,7 @@ void ItemHandler::addItems(QString deviceName, QString itemName) {
     JsonHandler::saveJson(updatedDoc);
     DatabaseConnection& db = DatabaseConnection::getInstance();
     QSqlQuery query(db.getConnection());
-    QString addColumnQuery = QString("ALTER TABLE %1 ADD COLUMN %2 TEXT").arg(deviceName, itemName);
+    QString addColumnQuery = QString("ALTER TABLE %1 ADD COLUMN %2 TEXT NOT NULL DEFAULT 'هیچ کدام'").arg(deviceName, itemName);
 
     if (!query.exec(addColumnQuery)) {
         qDebug() << "Failed to add column:" << query.lastError().text();
@@ -295,6 +295,133 @@ void ItemHandler::editItem(QString device, QString oldItem, QString newItem) {
         qDebug() << "Failed to rename column:" << query.lastError().text();
     } else {
         qDebug() << "Column renamed successfully from" << oldItem << "to" << newItem;
+    }
+
+    loadDevices();
+}
+
+void ItemHandler::deleteItem(QString device, QString itemToDelete) {
+    loadDevices();
+    if (!loadedObj.contains(device)) {
+        qDebug() << "Error: Device not found in JSON while deleting item.";
+        return;
+    }
+    QJsonArray deviceArr = loadedObj[device].toArray();
+    bool itemFound = false;
+    // Loop through items in the device array to find and remove the item
+    for (int i = 0; i < deviceArr.size(); ++i) {
+        QJsonObject itemObj = deviceArr[i].toObject();
+        if (itemObj.contains(itemToDelete)) {
+            deviceArr.removeAt(i); // Remove the item from JSON
+            itemFound = true;
+            break;
+        }
+    }
+    if (!itemFound) {
+        qDebug() << "Warning: Item not found for deletion.";
+        return;
+    }
+    // Update the JSON object
+    loadedObj[device] = deviceArr;
+    QJsonDocument updatedDoc(loadedObj);
+    JsonHandler::saveJson(updatedDoc);
+
+    // Remove the column from the database table using the SQLite workaround
+    DatabaseConnection& db = DatabaseConnection::getInstance();
+    QSqlDatabase dbConn = db.getConnection();
+    QSqlQuery query(dbConn);
+
+    // Start a transaction
+    if (!query.exec("BEGIN TRANSACTION")) {
+        qDebug() << "Failed to start transaction:" << query.lastError().text();
+        return;
+    }
+
+    try {
+        // Get table info to create new table with same structure minus the deleted column
+        QString pragmaQuery = QString("PRAGMA table_info(%1)").arg(device);
+        if (!query.exec(pragmaQuery)) {
+            throw QString("Failed to get table info: %1").arg(query.lastError().text());
+        }
+
+        // Build the CREATE TABLE statement parts
+        QStringList columnDefinitions;
+        QStringList columnNames;
+        QString primaryKey;
+
+        while (query.next()) {
+            QString colName = query.value(1).toString();
+            QString colType = query.value(2).toString();
+            int notNull = query.value(3).toInt();
+            QString defaultValue = query.value(4).toString();
+            int isPK = query.value(5).toInt();
+
+            // Skip the column we want to delete
+            if (colName.compare(itemToDelete, Qt::CaseInsensitive) == 0) {
+                continue;
+            }
+
+            // Build column definition
+            QString colDef = colName + " " + colType;
+            if (notNull) {
+                colDef += " NOT NULL";
+            }
+            if (!defaultValue.isEmpty()) {
+                colDef += " DEFAULT " + defaultValue;
+            }
+            if (isPK) {
+                colDef += " PRIMARY KEY";
+                primaryKey = colName;
+            }
+
+            columnDefinitions.append(colDef);
+            columnNames.append(colName);
+        }
+
+        if (columnDefinitions.isEmpty()) {
+            throw QString("No columns found or all columns would be dropped");
+        }
+
+        // Create new table with correct structure
+        QString createNewTableSQL = QString("CREATE TABLE temp_%1 (%2)").arg(device).arg(columnDefinitions.join(", "));
+        qDebug() << "Creating table with: " << createNewTableSQL;
+
+        if (!query.exec(createNewTableSQL)) {
+            throw QString("Failed to create new table: %1").arg(query.lastError().text());
+        }
+
+        // Copy data from old table to new table
+        QString copyDataSQL = QString("INSERT INTO temp_%1 SELECT %2 FROM %1")
+                                  .arg(device)
+                                  .arg(columnNames.join(", "));
+        qDebug() << "Copying data with: " << copyDataSQL;
+
+        if (!query.exec(copyDataSQL)) {
+            throw QString("Failed to copy data: %1").arg(query.lastError().text());
+        }
+
+        // Drop old table
+        QString dropOldTableSQL = QString("DROP TABLE %1").arg(device);
+        if (!query.exec(dropOldTableSQL)) {
+            throw QString("Failed to drop old table: %1").arg(query.lastError().text());
+        }
+
+        // Rename new table
+        QString renameTableSQL = QString("ALTER TABLE temp_%1 RENAME TO %1").arg(device);
+        if (!query.exec(renameTableSQL)) {
+            throw QString("Failed to rename table: %1").arg(query.lastError().text());
+        }
+
+        if (!query.exec("COMMIT")) {
+            throw QString("Failed to commit transaction: %1").arg(query.lastError().text());
+        }
+
+        qDebug() << "Column deleted successfully:" << itemToDelete;
+    }
+    catch (const QString& errorMsg) {
+        qDebug() << errorMsg;
+        query.exec("ROLLBACK");
+        qDebug() << "Transaction rolled back due to error";
     }
 
     loadDevices();

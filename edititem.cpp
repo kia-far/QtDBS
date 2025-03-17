@@ -2,6 +2,7 @@
 #include "ui_edititem.h"
 #include <myfunctions.h>
 #include <itemhandler.h>
+#include <QMessageBox>
 
 EditItem::EditItem(QWidget *parent)
     : QWidget(parent)
@@ -28,6 +29,15 @@ void EditItem::setup(QString device){
 
 void EditItem::on_pushButton_clicked()
 {
+    if(ui->lineEdit->text().isEmpty()){
+        QMessageBox msgBox;
+        msgBox.setIcon(QMessageBox::Critical);
+        msgBox.setWindowTitle("Error");
+        msgBox.setText("نام قطعه نمیتواند خالی باشد");
+        msgBox.setStandardButtons(QMessageBox::Ok);
+        msgBox.exec();
+    }
+    else{
     qDebug () << "device is :" << device;
     QString newText = "";
     QString text = ui->lineEdit->text();
@@ -37,7 +47,7 @@ void EditItem::on_pushButton_clicked()
     ItemHandler::editItem(device,item,newText);
     emit updateForms(device);
     emit refreshTable();
-    this->close();
+    this->close();}
 }
 
 

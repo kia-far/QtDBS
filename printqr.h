@@ -10,6 +10,8 @@ class PrintQR : public QAbstractItemModel
 public:
     explicit PrintQR(QObject *parent = nullptr);
     static void printQRCode(QStringList QRData,QString device);
+    static bool checkConnection();
+
 
 private:
 };

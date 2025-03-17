@@ -316,6 +316,9 @@ QDateEdit:focus {
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
+           <property name="maxLength">
+            <number>8</number>
+           </property>
           </widget>
          </item>
          <item>
@@ -379,8 +382,17 @@ QDateEdit:focus {
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
+             <property name="focusPolicy">
+              <enum>Qt::FocusPolicy::ClickFocus</enum>
+             </property>
+             <property name="contextMenuPolicy">
+              <enum>Qt::ContextMenuPolicy::ActionsContextMenu</enum>
+             </property>
              <property name="editable">
               <bool>true</bool>
+             </property>
+             <property name="placeholderText">
+              <string/>
              </property>
             </widget>
            </item>
@@ -579,6 +591,13 @@ QDateEdit:focus {
           </spacer>
          </item>
          <item>
+          <widget class="QPushButton" name="pushButton_4">
+           <property name="text">
+            <string>حذف قطعه</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="pushButton_3">
            <property name="text">
             <string>ویرایش قطعه</string>
@@ -750,14 +769,22 @@ QDateEdit:focus {
   </layout>
  </widget>
  <tabstops>
-  <tabstop>comboBox</tabstop>
   <tabstop>lineEdit</tabstop>
+  <tabstop>checkBox</tabstop>
+  <tabstop>spinBox</tabstop>
   <tabstop>CustomerCombo</tabstop>
   <tabstop>pushButton</tabstop>
+  <tabstop>dateEdit</tabstop>
+  <tabstop>dateEdit_2</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>scrollArea_2</tabstop>
   <tabstop>textEdit</tabstop>
   <tabstop>SubmitBtn</tabstop>
+  <tabstop>EditQRBtn</tabstop>
   <tabstop>pushButton_2</tabstop>
   <tabstop>AddItemBtn</tabstop>
+  <tabstop>pushButton_3</tabstop>
+  <tabstop>comboBox</tabstop>
  </tabstops>
  <resources/>
  <connections/>

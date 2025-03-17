@@ -82,7 +82,7 @@ void ProxyView::loadData(QString device ,QString searchParam,QString searchText)
         }
         QString serialNo = query.value(record.indexOf("SerialNumber")).toString();
         QSqlQuery dateQuery(db.getConnection());
-        dateQuery.prepare("SELECT PurchaseDate, GuarantyExp FROM ProductSecInfo WHERE SerialNO = :serialNo");
+        dateQuery.prepare("SELECT PurchaseDate, GuarantyExp FROM ProductInfo WHERE SerialNO = :serialNo");
         dateQuery.bindValue(":serialNo", serialNo);
         dateQuery.exec();
 

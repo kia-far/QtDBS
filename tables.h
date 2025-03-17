@@ -37,7 +37,7 @@ public:
 signals:
     void editDevice(QString device,unsigned int id);
     void edit(unsigned int serialNum,int index);
-    void searchActive(int current);
+    void searchActive(int current, QString Device);
     void editProduct(unsigned int serialNum);
     void refreshActive(int current);
     void addProduct();
@@ -78,6 +78,8 @@ private slots:
 
 private:
     void deleteRow(unsigned int ID, QString device);
+    void DeleteServices(unsigned int ID);
+    void DeleteSingleService(unsigned int ID);
     void hideColumns();
     void showColumns();
     void populateLabel(int row);
@@ -92,6 +94,7 @@ private:
     DatabaseConnection &db;
     MainWindow *mainwindow;
     QString currentDevice;
+    QStringList devices;
     QList<QLabel*>labels;
     QList<QLineEdit*>lineEdits;
     QList<QCheckBox*>checkBoxes;

@@ -164,15 +164,6 @@ void CustomerForm::keyBinds(){
 }
 
 
-void CustomerForm::on_lineEdit_3_textChanged(const QString &text)
-{
-    QString filteredText = text;
-    filteredText.remove(QRegularExpression("[^0-9]"));  // Remove non-digits
-
-    if (filteredText != text) {
-        ui->lineEdit_3->setText(filteredText);  // Update the input with only digits
-    }
-}
 
 void CustomerForm::updateCustomerNames(QString newName){
     QStringList devices = ItemHandler::loadDevices();

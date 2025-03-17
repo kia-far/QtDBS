@@ -20,6 +20,7 @@
 #include <exporttoexcel.h>
 #include <DllHandler.h>
 #include "loadqrtext.h"
+#include "deleteitem.h"
 
 class Tables;
 QT_BEGIN_NAMESPACE
@@ -66,6 +67,7 @@ private:
     ExportExcel EE;
     HideBelonging hb;
     LoadQRText QR;
+    DeleteItem DI;
     void keyPressEvent(QKeyEvent *event) override;
 
 };

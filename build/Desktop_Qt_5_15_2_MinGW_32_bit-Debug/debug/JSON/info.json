@@ -4,7 +4,12 @@
             "NoteTaker": [
                 {
                     "belongings": [
-                    ]
+                        {
+                            "item": "شارژر",
+                            "visible": 1
+                        }
+                    ],
+                    "fullName": "برجسته نگار هوشمند همراه"
                 },
                 "N"
             ]
@@ -13,7 +18,8 @@
             "Soroush": [
                 {
                     "belongings": [
-                    ]
+                    ],
+                    "fullName": "سروش"
                 },
                 "S"
             ]
@@ -22,15 +28,8 @@
             "BJ4": [
                 {
                     "belongings": [
-                        {
-                            "item": "aa",
-                            "visible": 1
-                        },
-                        {
-                            "item": "bb",
-                            "visible": 1
-                        }
-                    ]
+                    ],
+                    "fullName": "برجسته نگار 4"
                 },
                 "B"
             ]

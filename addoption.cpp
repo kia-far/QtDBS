@@ -42,11 +42,11 @@ void AddOption::setupBelonging(QString deviceName){
 
 void AddOption::showError(QString errorMessage) {
     QMessageBox msgBox;
-    msgBox.setIcon(QMessageBox::Critical);  // Set error icon
-    msgBox.setWindowTitle("Error");         // Set title
-    msgBox.setText(errorMessage);           // Set error message
-    msgBox.setStandardButtons(QMessageBox::Ok);  // Add an OK button
-    msgBox.exec();  // Show the message box
+    msgBox.setIcon(QMessageBox::Critical);
+    msgBox.setWindowTitle("Error");
+    msgBox.setText(errorMessage);
+    msgBox.setStandardButtons(QMessageBox::Ok);
+    msgBox.exec();
 }
 
 void AddOption::setupDevice() {
@@ -124,7 +124,9 @@ void AddOption::on_pushButton_clicked()
             showError("هر سه خانه را پر کنید");
         }
         else{
-            ItemHandler::addDevices(text,lineEdit_2->text().toUpper(),lineEdit_3->text());}
+            ItemHandler::addDevices(text,lineEdit_2->text().toUpper(),lineEdit_3->text());
+            emit refreshDevices(ui->lineEdit->text());
+        }
     }
     else if (func == "belonging"){
 

@@ -22,8 +22,8 @@ DatabaseConnection::DatabaseConnection() {
             QMessageBox msgBox;
             msgBox.setIcon(QMessageBox::Critical);
             msgBox.setWindowTitle("Error");
-            msgBox.setText("آدرس دیتابیس خالی است"
-                           "در حال باز کردن دیتابیس محلی");
+            msgBox.setText(" آدرس دیتابیس خالی است "
+                           " در حال باز کردن دیتابیس محلی ");
             msgBox.setStandardButtons(QMessageBox::Ok);
             msgBox.exec();
             openDatabase(adr+"/DB/InfoDB");

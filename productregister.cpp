@@ -76,7 +76,7 @@ void ProductRegister::regSubmit()
             msgBox.exec();
         }
         else{
-            if(!(MyFunctions::deviceFromLetter( ui->lineEdit_8->text().at(0),ui->comboBox->currentText()))){
+            if(!((MyFunctions::deviceFromLetter( ui->lineEdit_8->text().at(0),ui->comboBox->currentText()))||MyFunctions::checkOldSN(ui->lineEdit_8->text()))){
                 QMessageBox msgBox;
                 msgBox.setIcon(QMessageBox::Critical);
                 msgBox.setWindowTitle("Error");
@@ -206,7 +206,7 @@ void ProductRegister::setup() {
         ui->lineEdit_8->setReadOnly(true);
 
         loadProductInfo();
-        loadProductSecInfo();
+        // loadProductSecInfo();
     }
         this->show();
     this->activateWindow();
@@ -230,6 +230,40 @@ void ProductRegister::loadProductInfo(){
             currentComboText = ui->comboBox->currentText();
             ui->lineEdit_10->setText(query.value("Invoice").toString());
             ui->lineEdit_11->setText(query.value("AnyDeskNO").toString());
+            QCalendar calendar(QCalendar::System::Jalali);
+            ui->dateEdit_2->setCalendar(calendar);
+            QString rt = query.value("GuarantyExp").toString();
+            QStringList parts = rt.split('/');
+            if (parts.size() == 3) {
+                int year = parts[0].toInt();
+                int month = parts[1].toInt();
+                int day = parts[2].toInt();
+                QDate jalaliDate = QDate(year, month, day, calendar);
+                if (jalaliDate.isValid()) {
+                    ui->dateEdit_2->setDate(jalaliDate);
+                } else {
+                    ui->dateEdit_2->setDate(QDate::currentDate());
+                }
+            } else {
+                ui->dateEdit_2->setDate(QDate::currentDate());
+            }
+            // QCalendar calendar(QCalendar::System::Jalali);
+            ui->dateEdit->setCalendar(calendar);
+            rt = query.value("PurchaseDate").toString();
+            parts = rt.split('/');
+            if (parts.size() == 3) {
+                int year = parts[0].toInt();
+                int month = parts[1].toInt();
+                int day = parts[2].toInt();
+                QDate jalaliDate = QDate(year, month, day, calendar);
+                if (jalaliDate.isValid()) {
+                    ui->dateEdit->setDate(jalaliDate);
+                } else {
+                    ui->dateEdit->setDate(QDate::currentDate().addYears(1));
+                }
+            } else {
+                ui->dateEdit->setDate(QDate::currentDate().addYears(1));}
+            ui->textEdit->setText(query.value("Description").toString());
         } else {
             qDebug() << "No data found for serial number:" << Serialnum;
         }
@@ -240,7 +274,7 @@ void ProductRegister::loadProductSecInfo(){
 
 
     QSqlQuery query(db.getConnection());
-    query.prepare("SELECT * FROM ProductSecInfo WHERE SerialNO = :serialNumber");
+    query.prepare("SELECT Guara FROM ProductInfo WHERE SerialNO = :serialNumber");
     query.bindValue(":serialNumber", QString::number(Serialnum));
 //    qDebug() << "Executing query for ProductSecInfo with Serialnum:" << Serialnum;
 
@@ -320,7 +354,7 @@ void ProductRegister::updateProductInfo(){
 void ProductRegister::updateProductSecInfo(){
 
     QSqlQuery qe(db.getConnection());
-    qe.prepare("UPDATE ProductSecInfo SET GuarantyExp = ?, PurchaseDate = ?, Description = ? WHERE SerialNO = ?");
+    qe.prepare("UPDATE ProductInfo SET GuarantyExp = ?, PurchaseDate = ?, Description = ? WHERE SerialNO = ?");
     qe.addBindValue(a[4]);
     qe.addBindValue(a[5]);
     qe.addBindValue(a[6]);
@@ -356,11 +390,12 @@ bool ProductRegister::registerProductSecInfo(){
 
 
     QSqlQuery q(db.getConnection());
-    q.prepare("INSERT INTO ProductSecInfo (SerialNO, GuarantyExp, PurchaseDate, Description) VALUES (?, ?, ?, ?)");
-    q.addBindValue(a[0]);
-    q.addBindValue(a[4]);
-    q.addBindValue(a[5]);
-    q.addBindValue(a[6]);
+    //
+    q.prepare("UPDATE ProductInfo SET PurchaseDate  = ? , GuarantyExp = ? , Description = ? WHERE SerialNO = ?");
+    q.addBindValue(a[5]);//p
+    q.addBindValue(a[4]);//g
+    q.addBindValue(a[6]);//d
+    q.addBindValue(a[0]);//s
 
     bool err = q.exec();
     if (!err) {

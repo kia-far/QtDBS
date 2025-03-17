@@ -36,7 +36,9 @@ release/DllHandler.o
 release/MyTableProxy.o
 release/addabr.o
 release/addoption.o
+release/customcombobox.o
 release/customerform.o
+release/deleteitem.o
 release/deleteoption.o
 release/deviceform.o
 release/edititem.o
@@ -61,7 +63,9 @@ release/moc_DatabaseConnection.o
 release/moc_MyTableProxy.o
 release/moc_addabr.o
 release/moc_addoption.o
+release/moc_customcombobox.o
 release/moc_customerform.o
+release/moc_deleteitem.o
 release/moc_deleteoption.o
 release/moc_deviceform.o
 release/moc_edititem.o

@@ -58,17 +58,15 @@ void ProductProxy::loadData(QString searchParam, QString searchText) {
         // Dynamically construct the main query for each product
         if (searchParam == "ProductInfo.SerialNO") {
             res = MyFunctions::searchHandler(
-                "ProductInfo.*, ProductSecInfo.PurchaseDate, ProductSecInfo.GuarantyExp, ProductSecInfo.Description, "
-                    + productName + ".CustomerName",
-                "ProductInfo INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO "
-                "INNER JOIN " + productName + " ON " + productName + ".SerialNumber = ProductInfo.SerialNO",
+                " ProductInfo.*, "
+                    + productName + ".CustomerName ",
+                " ProductInfo "
+                " INNER JOIN " + productName + " ON " + productName + ".SerialNumber = ProductInfo.SerialNO",
                 searchParam, searchText);
         } else {
-            res = "SELECT ProductInfo.*, ProductSecInfo.PurchaseDate, ProductSecInfo.GuarantyExp, "
-                  "ProductSecInfo.Description, " + productName + ".CustomerName "
-                                  "FROM ProductInfo "
-                                  "INNER JOIN ProductSecInfo ON ProductInfo.SerialNO = ProductSecInfo.SerialNO "
-                                  "INNER JOIN " + productName + " ON " + productName + ".SerialNumber = ProductInfo.SerialNO "
+            res = "SELECT ProductInfo.* ," + productName + ".CustomerName "
+                                  " FROM ProductInfo "
+                                  " INNER JOIN " + productName + " ON " + productName + ".SerialNumber = ProductInfo.SerialNO "
                                                          "WHERE " + searchParam + " LIKE '%" + searchText + "%'";
         }
 
