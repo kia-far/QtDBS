@@ -46,8 +46,9 @@ signals:
     void editService(unsigned int serialNum);
     void addCustomer();
     void editCustomer(unsigned int serialNum);
-
+    void callHelp(QString text);
 private slots:
+    void showHelpPop();
     void getExport();
 
     void on_comboBox_currentIndexChanged(const QString &arg1);

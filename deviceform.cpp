@@ -702,6 +702,11 @@ void DeviceForm::keyBinds(){
 
     connect(f2, SIGNAL(triggered()), this, SLOT(adminMode()));
     this->addAction(f2);
+    QAction *f3 = new QAction(this);
+    f3->setShortcut(Qt::Key_F1);
+
+    connect(f3, SIGNAL(triggered()), this, SLOT(showHelpPop()));
+    this->addAction(f3);
 
 }
 
@@ -1023,4 +1028,6 @@ bool DeviceForm::checkItem(QString deviceName,QString itemName){
 
 }
 
-
+void DeviceForm::showHelpPop(){
+    emit callHelpPop("لیست میانبر ها : \n CTRL + Q => بستن صفحه \n CTRL + S => ثبت کردن \n CTRL + M => باز کردن و بستن حالت ادمین \n \n در حالت ادمین دستگاه ها میتوان  \n * نوع دستگاه جدیدی تعریف کرد \n * برای شماره سریال دستگاه های موجود حرف جدید تعریف کرد \n * متن QR Code قابل چاپ را تغییر داد \n * قطعات و متعلقات را تغییر داد، افزایش داد یا حذف و پنهان کرد");
+}

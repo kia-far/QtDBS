@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Tables_t {
-    QByteArrayData data[34];
-    char stringdata0[482];
+    QByteArrayData data[37];
+    char stringdata0[508];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -51,21 +51,24 @@ QT_MOC_LITERAL(15, 125, 10), // "addService"
 QT_MOC_LITERAL(16, 136, 11), // "editService"
 QT_MOC_LITERAL(17, 148, 11), // "addCustomer"
 QT_MOC_LITERAL(18, 160, 12), // "editCustomer"
-QT_MOC_LITERAL(19, 173, 9), // "getExport"
-QT_MOC_LITERAL(20, 183, 31), // "on_comboBox_currentIndexChanged"
-QT_MOC_LITERAL(21, 215, 4), // "arg1"
-QT_MOC_LITERAL(22, 220, 18), // "on_EditBtn_clicked"
-QT_MOC_LITERAL(23, 239, 20), // "on_tableView_clicked"
-QT_MOC_LITERAL(24, 260, 11), // "QModelIndex"
-QT_MOC_LITERAL(25, 272, 20), // "on_SearchBtn_clicked"
-QT_MOC_LITERAL(26, 293, 17), // "on_AddBtn_clicked"
-QT_MOC_LITERAL(27, 311, 21), // "on_RefreshBtn_clicked"
-QT_MOC_LITERAL(28, 333, 24), // "on_mainWindowBtn_clicked"
-QT_MOC_LITERAL(29, 358, 33), // "on_comboBox_2_currentIndexCha..."
-QT_MOC_LITERAL(30, 392, 26), // "on_tableView_doubleClicked"
-QT_MOC_LITERAL(31, 419, 20), // "on_deleteBtn_clicked"
-QT_MOC_LITERAL(32, 440, 21), // "on_toolButton_clicked"
-QT_MOC_LITERAL(33, 462, 19) // "on_printBtn_clicked"
+QT_MOC_LITERAL(19, 173, 8), // "callHelp"
+QT_MOC_LITERAL(20, 182, 4), // "text"
+QT_MOC_LITERAL(21, 187, 11), // "showHelpPop"
+QT_MOC_LITERAL(22, 199, 9), // "getExport"
+QT_MOC_LITERAL(23, 209, 31), // "on_comboBox_currentIndexChanged"
+QT_MOC_LITERAL(24, 241, 4), // "arg1"
+QT_MOC_LITERAL(25, 246, 18), // "on_EditBtn_clicked"
+QT_MOC_LITERAL(26, 265, 20), // "on_tableView_clicked"
+QT_MOC_LITERAL(27, 286, 11), // "QModelIndex"
+QT_MOC_LITERAL(28, 298, 20), // "on_SearchBtn_clicked"
+QT_MOC_LITERAL(29, 319, 17), // "on_AddBtn_clicked"
+QT_MOC_LITERAL(30, 337, 21), // "on_RefreshBtn_clicked"
+QT_MOC_LITERAL(31, 359, 24), // "on_mainWindowBtn_clicked"
+QT_MOC_LITERAL(32, 384, 33), // "on_comboBox_2_currentIndexCha..."
+QT_MOC_LITERAL(33, 418, 26), // "on_tableView_doubleClicked"
+QT_MOC_LITERAL(34, 445, 20), // "on_deleteBtn_clicked"
+QT_MOC_LITERAL(35, 466, 21), // "on_toolButton_clicked"
+QT_MOC_LITERAL(36, 488, 19) // "on_printBtn_clicked"
 
     },
     "Tables\0editDevice\0\0device\0id\0edit\0"
@@ -73,8 +76,9 @@ QT_MOC_LITERAL(33, 462, 19) // "on_printBtn_clicked"
     "Device\0editProduct\0refreshActive\0"
     "addProduct\0addDevice\0addService\0"
     "editService\0addCustomer\0editCustomer\0"
-    "getExport\0on_comboBox_currentIndexChanged\0"
-    "arg1\0on_EditBtn_clicked\0on_tableView_clicked\0"
+    "callHelp\0text\0showHelpPop\0getExport\0"
+    "on_comboBox_currentIndexChanged\0arg1\0"
+    "on_EditBtn_clicked\0on_tableView_clicked\0"
     "QModelIndex\0on_SearchBtn_clicked\0"
     "on_AddBtn_clicked\0on_RefreshBtn_clicked\0"
     "on_mainWindowBtn_clicked\0"
@@ -91,40 +95,42 @@ static const uint qt_meta_data_Tables[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      24,   14, // methods
+      26,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      11,       // signalCount
+      12,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    2,  134,    2, 0x06 /* Public */,
-       5,    2,  139,    2, 0x06 /* Public */,
-       8,    2,  144,    2, 0x06 /* Public */,
-      11,    1,  149,    2, 0x06 /* Public */,
-      12,    1,  152,    2, 0x06 /* Public */,
-      13,    0,  155,    2, 0x06 /* Public */,
-      14,    1,  156,    2, 0x06 /* Public */,
-      15,    0,  159,    2, 0x06 /* Public */,
-      16,    1,  160,    2, 0x06 /* Public */,
-      17,    0,  163,    2, 0x06 /* Public */,
-      18,    1,  164,    2, 0x06 /* Public */,
+       1,    2,  144,    2, 0x06 /* Public */,
+       5,    2,  149,    2, 0x06 /* Public */,
+       8,    2,  154,    2, 0x06 /* Public */,
+      11,    1,  159,    2, 0x06 /* Public */,
+      12,    1,  162,    2, 0x06 /* Public */,
+      13,    0,  165,    2, 0x06 /* Public */,
+      14,    1,  166,    2, 0x06 /* Public */,
+      15,    0,  169,    2, 0x06 /* Public */,
+      16,    1,  170,    2, 0x06 /* Public */,
+      17,    0,  173,    2, 0x06 /* Public */,
+      18,    1,  174,    2, 0x06 /* Public */,
+      19,    1,  177,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      19,    0,  167,    2, 0x08 /* Private */,
-      20,    1,  168,    2, 0x08 /* Private */,
-      22,    0,  171,    2, 0x08 /* Private */,
-      23,    1,  172,    2, 0x08 /* Private */,
-      25,    0,  175,    2, 0x08 /* Private */,
-      26,    0,  176,    2, 0x08 /* Private */,
-      27,    0,  177,    2, 0x08 /* Private */,
-      28,    0,  178,    2, 0x08 /* Private */,
-      29,    1,  179,    2, 0x08 /* Private */,
-      30,    1,  182,    2, 0x08 /* Private */,
-      31,    0,  185,    2, 0x08 /* Private */,
-      32,    0,  186,    2, 0x08 /* Private */,
-      33,    0,  187,    2, 0x08 /* Private */,
+      21,    0,  180,    2, 0x08 /* Private */,
+      22,    0,  181,    2, 0x08 /* Private */,
+      23,    1,  182,    2, 0x08 /* Private */,
+      25,    0,  185,    2, 0x08 /* Private */,
+      26,    1,  186,    2, 0x08 /* Private */,
+      28,    0,  189,    2, 0x08 /* Private */,
+      29,    0,  190,    2, 0x08 /* Private */,
+      30,    0,  191,    2, 0x08 /* Private */,
+      31,    0,  192,    2, 0x08 /* Private */,
+      32,    1,  193,    2, 0x08 /* Private */,
+      33,    1,  196,    2, 0x08 /* Private */,
+      34,    0,  199,    2, 0x08 /* Private */,
+      35,    0,  200,    2, 0x08 /* Private */,
+      36,    0,  201,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString, QMetaType::UInt,    3,    4,
@@ -138,18 +144,20 @@ static const uint qt_meta_data_Tables[] = {
     QMetaType::Void, QMetaType::UInt,    6,
     QMetaType::Void,
     QMetaType::Void, QMetaType::UInt,    6,
+    QMetaType::Void, QMetaType::QString,   20,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   21,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 24,    7,
+    QMetaType::Void, QMetaType::QString,   24,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 27,    7,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   21,
-    QMetaType::Void, 0x80000000 | 24,    7,
+    QMetaType::Void, QMetaType::QString,   24,
+    QMetaType::Void, 0x80000000 | 27,    7,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -174,19 +182,21 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 8: _t->editService((*reinterpret_cast< uint(*)>(_a[1]))); break;
         case 9: _t->addCustomer(); break;
         case 10: _t->editCustomer((*reinterpret_cast< uint(*)>(_a[1]))); break;
-        case 11: _t->getExport(); break;
-        case 12: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 13: _t->on_EditBtn_clicked(); break;
-        case 14: _t->on_tableView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 15: _t->on_SearchBtn_clicked(); break;
-        case 16: _t->on_AddBtn_clicked(); break;
-        case 17: _t->on_RefreshBtn_clicked(); break;
-        case 18: _t->on_mainWindowBtn_clicked(); break;
-        case 19: _t->on_comboBox_2_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 20: _t->on_tableView_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
-        case 21: _t->on_deleteBtn_clicked(); break;
-        case 22: _t->on_toolButton_clicked(); break;
-        case 23: _t->on_printBtn_clicked(); break;
+        case 11: _t->callHelp((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 12: _t->showHelpPop(); break;
+        case 13: _t->getExport(); break;
+        case 14: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 15: _t->on_EditBtn_clicked(); break;
+        case 16: _t->on_tableView_clicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 17: _t->on_SearchBtn_clicked(); break;
+        case 18: _t->on_AddBtn_clicked(); break;
+        case 19: _t->on_RefreshBtn_clicked(); break;
+        case 20: _t->on_mainWindowBtn_clicked(); break;
+        case 21: _t->on_comboBox_2_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 22: _t->on_tableView_doubleClicked((*reinterpret_cast< const QModelIndex(*)>(_a[1]))); break;
+        case 23: _t->on_deleteBtn_clicked(); break;
+        case 24: _t->on_toolButton_clicked(); break;
+        case 25: _t->on_printBtn_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -268,6 +278,13 @@ void Tables::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
                 return;
             }
         }
+        {
+            using _t = void (Tables::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&Tables::callHelp)) {
+                *result = 11;
+                return;
+            }
+        }
     }
 }
 
@@ -300,13 +317,13 @@ int Tables::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 24)
+        if (_id < 26)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 24;
+        _id -= 26;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 24)
+        if (_id < 26)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 24;
+        _id -= 26;
     }
     return _id;
 }
@@ -383,6 +400,13 @@ void Tables::editCustomer(unsigned int _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 10, _a);
+}
+
+// SIGNAL 11
+void Tables::callHelp(QString _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 11, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

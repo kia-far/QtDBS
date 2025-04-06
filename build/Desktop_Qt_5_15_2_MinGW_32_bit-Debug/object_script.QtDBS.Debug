@@ -43,6 +43,7 @@ debug/deleteoption.o
 debug/deviceform.o
 debug/edititem.o
 debug/exporttoexcel.o
+debug/helppopup.o
 debug/hidebelonging.o
 debug/itemhandler.o
 debug/jsonhandler.o
@@ -70,6 +71,7 @@ debug/moc_deleteoption.o
 debug/moc_deviceform.o
 debug/moc_edititem.o
 debug/moc_exporttoexcel.o
+debug/moc_helppopup.o
 debug/moc_hidebelonging.o
 debug/moc_itemhandler.o
 debug/moc_jsonhandler.o

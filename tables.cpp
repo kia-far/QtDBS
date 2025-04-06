@@ -440,6 +440,11 @@ void Tables::keybinds(){
 
    connect(f4, SIGNAL(triggered()), this, SLOT(getExport()));
    this->addAction(f4);
+   QAction *f5 = new QAction(this);
+   f5->setShortcut(Qt::Key_F1);
+
+   connect(f5, SIGNAL(triggered()), this, SLOT(showHelpPop()));
+   this->addAction(f5);
 //    QAction *f5 = new QAction(this);
 //    f5->setShortcut(Qt::Key_C | Qt::CTRL);
 
@@ -714,6 +719,9 @@ void Tables::handleBtnEnable(bool a){
     ui->tableView->setDisabled(a);
     ui->toolButton->setDisabled(a);
     ui->printBtn->setDisabled(a);
+}
+void Tables::showHelpPop(){
+    emit callHelp("لیست میانبر های جدول اصلی : \n CTRL + Q => بستن و برگشتن به صفحه اصلی \n CTRL + R => بازخوانی جدول \n CTRL + F =>  جستجو در جدول \n CTRL + N =>  افزودن  \n CTRL + E => گرفتن خروجی اکسل از جدول");
 }
 void Tables::getExport(){
         if(!batchInProgress){

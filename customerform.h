@@ -31,10 +31,11 @@ public:
 
 signals:
     void callPageRefresh();
+    void callHelpPop(QString text);
 
 private slots:
     void on_pushButton_clicked();
-
+    void showHelpPop();
 private:
     Ui::CustomerForm *ui;
     void keyBinds();

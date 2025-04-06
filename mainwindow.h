@@ -21,6 +21,7 @@
 #include <DllHandler.h>
 #include "loadqrtext.h"
 #include "deleteitem.h"
+#include "helppopup.h"
 
 class Tables;
 QT_BEGIN_NAMESPACE
@@ -68,6 +69,7 @@ private:
     HideBelonging hb;
     LoadQRText QR;
     DeleteItem DI;
+    helpPopUp HPO;
     void keyPressEvent(QKeyEvent *event) override;
 
 };

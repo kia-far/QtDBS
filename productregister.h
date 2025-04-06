@@ -36,6 +36,7 @@ signals :
     void devicePage();
     void pageUpdate();
     void addAbr();
+    void callHelpPop(QString text);
 private slots:
     void on_pushButton_clicked();
 
@@ -51,6 +52,7 @@ private slots:
     void on_pushButton_2_clicked();
 
     void on_comboBox_currentTextChanged(const QString &arg1);
+    void showHelpPop();
 
 private:
     Ui::ProductRegister *ui;

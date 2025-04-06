@@ -25,6 +25,7 @@ SOURCES += \
     deviceform.cpp \
     edititem.cpp \
     exporttoexcel.cpp \
+    helppopup.cpp \
     hidebelonging.cpp \
     itemhandler.cpp \
     jsonhandler.cpp \
@@ -54,6 +55,7 @@ HEADERS += \
     deviceform.h \
     edititem.h \
     exporttoexcel.h \
+    helppopup.h \
     hidebelonging.h \
     itemhandler.h \
     jsonhandler.h \
@@ -78,6 +80,7 @@ FORMS += \
     deleteoption.ui\
     deviceform.ui \
     edititem.ui \
+    helppopup.ui \
     hidebelonging.ui \
     loadqrtext.ui \
     mainwindow.ui \

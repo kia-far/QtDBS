@@ -64,6 +64,11 @@ MainWindow::MainWindow(QWidget *parent)
     QObject::connect(&a, &AddOption::refreshDevices,&d, &DeviceForm::refresh);
     QObject::connect(&DI, &DeleteItem::refreshDevices,&d,&DeviceForm::refresh);
     QObject::connect(&DI, &DeleteItem::refreshTable,x,&Tables::pageRefresh);
+    QObject::connect(x, &Tables::callHelp, &HPO, &helpPopUp::setHelp);
+    QObject::connect(&s, &serviceEdit::callHelpPop, &HPO, &helpPopUp::setHelp);
+    QObject::connect(&b, &ProductRegister::callHelpPop,&HPO, &helpPopUp::setHelp);
+    QObject::connect(&d, &DeviceForm::callHelpPop, &HPO, &helpPopUp::setHelp);
+    QObject::connect(&c , &CustomerForm::callHelpPop,&HPO, &helpPopUp::setHelp);
 //    MyFunctions* myFunctions = new MyFunctions(this);  // Create MyFunctions object
 //    QObject::connect(myFunctions, &MyFunctions::dataReady, this, &MainWindow::onDataReady);
     setBtnIcon();

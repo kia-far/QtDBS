@@ -50,6 +50,7 @@ signals:
     void closeEditItem();
     void openQREdit();
     void openDeleteItem(QString device);
+    void callHelpPop(QString text);
 private slots:
     void on_comboBox_currentIndexChanged(const QString &arg1);
 
@@ -78,7 +79,7 @@ private slots:
 
     void on_pushButton_4_clicked();
 
-
+    void showHelpPop();
 private:
     void createBelonging(QString itemName,int index);
     void createNewItem(QString itemName , int index);

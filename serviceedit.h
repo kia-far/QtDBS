@@ -27,6 +27,7 @@ public:
 
 signals:
     void callPageRefresh();
+    void callHelpPop(QString text);
 private slots:
     void on_pushButton_clicked();
 
@@ -41,6 +42,8 @@ private slots:
     void on_ProductCombo_activated(int index);
 
     void onCustomerComboActivated(const QString &text);
+
+    void showHelpPop();
 
 private:
     Ui::serviceEdit *ui;

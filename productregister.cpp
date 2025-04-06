@@ -452,6 +452,11 @@ void ProductRegister::keybinds(){
 
     connect(f2, SIGNAL(triggered()), this, SLOT(adminMode()));
     this->addAction(f2);
+    QAction *f3 = new QAction(this);
+    f3->setShortcut(Qt::Key_F1);
+
+    connect(f3, SIGNAL(triggered()), this, SLOT(showHelpPop()));
+    this->addAction(f3);
 }
 
 void ProductRegister::on_comboBox_currentIndexChanged(int index)
@@ -530,4 +535,8 @@ void ProductRegister::loadLastSN(QString device) {
     if(this->max>0)
         ui->label_8->setText(MyFunctions::intToStr(this->max)+ " : " +"آخرین شماره سریال ");
     qDebug() << "Executed query:" << query.executedQuery();
+}
+
+void ProductRegister::showHelpPop(){
+    emit callHelpPop("لیست میانبر ها : \n CTRL + Q => بستن صفحه \n CTRL + S => ثبت کردن \n CTRL + M => باز کردن و بستن حالت ادمین \n \n در حالت ادمین محصولات میتوان نوع دستگاه جدیدی تعریف کرد یا برای شماره سریال دستگاهی حرف جدیدی تعریف کرد.");
 }

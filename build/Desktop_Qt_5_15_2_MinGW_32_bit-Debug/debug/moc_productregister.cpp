@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ProductRegister_t {
-    QByteArrayData data[13];
-    char stringdata0[194];
+    QByteArrayData data[16];
+    char stringdata0[223];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,22 +37,26 @@ QT_MOC_LITERAL(1, 16, 10), // "devicePage"
 QT_MOC_LITERAL(2, 27, 0), // ""
 QT_MOC_LITERAL(3, 28, 10), // "pageUpdate"
 QT_MOC_LITERAL(4, 39, 6), // "addAbr"
-QT_MOC_LITERAL(5, 46, 21), // "on_pushButton_clicked"
-QT_MOC_LITERAL(6, 68, 31), // "on_comboBox_currentIndexChanged"
-QT_MOC_LITERAL(7, 100, 5), // "index"
-QT_MOC_LITERAL(8, 106, 17), // "on_devBtn_clicked"
-QT_MOC_LITERAL(9, 124, 9), // "adminMode"
-QT_MOC_LITERAL(10, 134, 23), // "on_pushButton_2_clicked"
-QT_MOC_LITERAL(11, 158, 30), // "on_comboBox_currentTextChanged"
-QT_MOC_LITERAL(12, 189, 4) // "arg1"
+QT_MOC_LITERAL(5, 46, 11), // "callHelpPop"
+QT_MOC_LITERAL(6, 58, 4), // "text"
+QT_MOC_LITERAL(7, 63, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(8, 85, 31), // "on_comboBox_currentIndexChanged"
+QT_MOC_LITERAL(9, 117, 5), // "index"
+QT_MOC_LITERAL(10, 123, 17), // "on_devBtn_clicked"
+QT_MOC_LITERAL(11, 141, 9), // "adminMode"
+QT_MOC_LITERAL(12, 151, 23), // "on_pushButton_2_clicked"
+QT_MOC_LITERAL(13, 175, 30), // "on_comboBox_currentTextChanged"
+QT_MOC_LITERAL(14, 206, 4), // "arg1"
+QT_MOC_LITERAL(15, 211, 11) // "showHelpPop"
 
     },
     "ProductRegister\0devicePage\0\0pageUpdate\0"
-    "addAbr\0on_pushButton_clicked\0"
+    "addAbr\0callHelpPop\0text\0on_pushButton_clicked\0"
     "on_comboBox_currentIndexChanged\0index\0"
     "on_devBtn_clicked\0adminMode\0"
     "on_pushButton_2_clicked\0"
-    "on_comboBox_currentTextChanged\0arg1"
+    "on_comboBox_currentTextChanged\0arg1\0"
+    "showHelpPop"
 };
 #undef QT_MOC_LITERAL
 
@@ -62,38 +66,42 @@ static const uint qt_meta_data_ProductRegister[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       9,   14, // methods
+      11,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       4,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   59,    2, 0x06 /* Public */,
-       3,    0,   60,    2, 0x06 /* Public */,
-       4,    0,   61,    2, 0x06 /* Public */,
+       1,    0,   69,    2, 0x06 /* Public */,
+       3,    0,   70,    2, 0x06 /* Public */,
+       4,    0,   71,    2, 0x06 /* Public */,
+       5,    1,   72,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,   62,    2, 0x08 /* Private */,
-       6,    1,   63,    2, 0x08 /* Private */,
-       8,    0,   66,    2, 0x08 /* Private */,
-       9,    0,   67,    2, 0x08 /* Private */,
-      10,    0,   68,    2, 0x08 /* Private */,
-      11,    1,   69,    2, 0x08 /* Private */,
+       7,    0,   75,    2, 0x08 /* Private */,
+       8,    1,   76,    2, 0x08 /* Private */,
+      10,    0,   79,    2, 0x08 /* Private */,
+      11,    0,   80,    2, 0x08 /* Private */,
+      12,    0,   81,    2, 0x08 /* Private */,
+      13,    1,   82,    2, 0x08 /* Private */,
+      15,    0,   85,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    6,
 
  // slots: parameters
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,    7,
+    QMetaType::Void, QMetaType::Int,    9,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   12,
+    QMetaType::Void, QMetaType::QString,   14,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -107,12 +115,14 @@ void ProductRegister::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->devicePage(); break;
         case 1: _t->pageUpdate(); break;
         case 2: _t->addAbr(); break;
-        case 3: _t->on_pushButton_clicked(); break;
-        case 4: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 5: _t->on_devBtn_clicked(); break;
-        case 6: _t->adminMode(); break;
-        case 7: _t->on_pushButton_2_clicked(); break;
-        case 8: _t->on_comboBox_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: _t->callHelpPop((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: _t->on_pushButton_clicked(); break;
+        case 5: _t->on_comboBox_currentIndexChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->on_devBtn_clicked(); break;
+        case 7: _t->adminMode(); break;
+        case 8: _t->on_pushButton_2_clicked(); break;
+        case 9: _t->on_comboBox_currentTextChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 10: _t->showHelpPop(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -135,6 +145,13 @@ void ProductRegister::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             using _t = void (ProductRegister::*)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ProductRegister::addAbr)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (ProductRegister::*)(QString );
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&ProductRegister::callHelpPop)) {
+                *result = 3;
                 return;
             }
         }
@@ -170,13 +187,13 @@ int ProductRegister::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 9)
+        if (_id < 11)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 9;
+        _id -= 11;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 9)
+        if (_id < 11)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 9;
+        _id -= 11;
     }
     return _id;
 }
@@ -197,6 +214,13 @@ void ProductRegister::pageUpdate()
 void ProductRegister::addAbr()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void ProductRegister::callHelpPop(QString _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

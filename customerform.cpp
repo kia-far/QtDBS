@@ -160,6 +160,11 @@ void CustomerForm::keyBinds(){
 
     connect(f1, SIGNAL(triggered()), this, SLOT(on_pushButton_clicked()));
     this->addAction(f1);
+    QAction *f2 = new QAction(this);
+    f2->setShortcut(Qt::Key_F1);
+
+    connect(f2, SIGNAL(triggered()), this, SLOT(showHelpPop()));
+    this->addAction(f2);
 
 }
 
@@ -199,4 +204,8 @@ void CustomerForm::keyPressEvent(QKeyEvent *event){
         event->accept();
     }
     else{}
+}
+
+void CustomerForm::showHelpPop(){
+    emit callHelpPop("لیست میانبر ها : \n CTRL + Q => بستن صفحه \n CTRL + S => ثبت کردن");
 }
